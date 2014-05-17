@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ES6 Rocks</title>
+    <title>hello world - ES6 Rocks</title>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="css/rocks.css">
@@ -34,70 +34,42 @@
             <img class="logo" src="images/logo.svg" alt="ES6Rocks" />
         </section>
     </header>
-    <section id="posts" class="posts">
-        <ul class="postList">
-            
-            <li class="post">
-                <span class="post__date">
-                    17 may
-                </span>
-                <img class="post__authorPic" src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg"/>
-                <a class="post__title" href="/hello-world.html">hello world</a>
-                <a class="post__author" href="https://twitter.com/jaydson" target="_blank">
-                    Jaydson
-                </a>
-            </li>
-            
-        </ul>
-    </section>
-    <section class="organizers">
-        <ul class="organizers__list">
-            <li class="organizers__item">
-                <a href="https://twitter.com/atilafassina">
-                    <div class="organizers__pic">
-                        <img src="https://pbs.twimg.com/profile_images/378800000380374908/7b5cb905760b8d3e3ea6e03732845c33_400x400.jpeg" alt="Átila Fassina photo">
-                    </div>
-                </a>
-                <span class="organizers__name">
-                    Átila Fassina
-                </span>
-            </li>
+<body>
+<header class="postContent__title">
+    <h2>
+      hello world
+    </h2>
+</header>
+<article class="postContent">
+	<p>
+Hello everybody, welcome to ES6Rocks!
+The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.</p>
+<p>ES6 is awesome, and is coming soon.
+You can use it today, and you can learn it today!
+The main mission here is to discuss everything about ES6, and help everyone to start learning.</p>
+<p>ES6Rocks is open for everyone.
+If you want to help, you can contribute sharing your ES6 knowledge and experience.
+You cant write an article, start a discussion, etc.</p>
+<p>This website was built using our static site generator <a href="https://github.com/es6rocks/harmonic/">Harmonic</a>(currently in pre-alpha).
+Feel free to hack on Harmonic and other tools we may have.</p>
 
-            <li class="organizers__item">
-                <a href="https://twitter.com/felipenmoura">
-                    <div class="organizers__pic">
-                        <img src="https://pbs.twimg.com/profile_images/1182045890/me_400x400.jpg" alt="Felipe Moura photo">
-                    </div>
-                </a>
-                <span class="organizers__name">
-                    Felipe Moura
-                </span>
-            </li>
+</article>
+<section id="comments" class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'es6rocks'; // required: replace example with your forum shortname
 
-            <li class="organizers__item">
-                <a href="https://twitter.com/jaydson">
-                    <div class="organizers__pic">
-                        <img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes photo">
-                    </div>
-                </a>
-                <span class="organizers__name">
-                    Jaydson Gomes
-                </span>
-            </li>
-
-            <li class="organizers__item">
-                <a href="https://twitter.com/jcemer">
-                    <div class="organizers__pic">
-                        <img src="https://pbs.twimg.com/profile_images/378800000102797711/6f48a1c46fd6af873f94bae0db0847fc_400x400.jpeg" alt="Jean Carlo Emer photo">
-                    </div>
-                </a>
-                <span class="organizers__name">
-                    Jean Carlo Emer
-                </span>
-            </li>
-        </ul>
-    </section>
-</main>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
 <footer class="bottom">
     <span class="licenses">
         Content licensed under <a href="">Creative Commons</a><br />
@@ -115,5 +87,7 @@
   ga('send', 'pageview');
 
 </script>
+</body>
+</html>
 </body>
 </html>
