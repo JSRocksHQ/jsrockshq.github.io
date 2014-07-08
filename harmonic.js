@@ -1333,7 +1333,7 @@ var Harmonic = function Harmonic(name) {
       "description": "Interview with David Herman about ES6",
       "categories": ["ES6", " Interview"],
       "link": "2014/07/es6-interview-with-david-herman",
-      "content": "<p>We did a nice interview with <a href=\"https://twitter.com/littlecalculist\">David Herman</a> about his thoughts about ES6.<br>David is the principal researcher and founder of Mozilla Research, where he works to expand the foundations of the Open Web. He participate in a number of Web platform projects, including: <a href=\"http://taskjs.org/\">task.js</a>, <a href=\"http://sweetjs.org/\">sweet.js</a>, <a href=\"http://asmjs.org/\">asm.js</a>, <a href=\"http://www.rust-lang.org/\">Rust</a>, <a href=\"https://github.com/mozilla/servo/\">Servo</a> and Parallel JS.  </p>\n",
+      "content": "<p>We did a nice interview with <a href=\"https://twitter.com/littlecalculist\">David Herman</a> about his thoughts about ES6.\nDavid is the principal researcher and founder of Mozilla Research, where he works to expand the foundations of the Open Web. He participates in a number of Web platform projects, including: <a href=\"http://taskjs.org/\">task.js</a>, <a href=\"http://sweetjs.org/\">sweet.js</a>, <a href=\"http://asmjs.org/\">asm.js</a>, <a href=\"http://www.rust-lang.org/\">Rust</a>, <a href=\"https://github.com/mozilla/servo/\">Servo</a> and Parallel JS.</p>\n",
       "file": "./src/posts/es6-interview-with-david-herman.md",
       "filename": "es6-interview-with-david-herman"
     }, {
