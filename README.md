@@ -12,7 +12,13 @@ npm install harmonic -g
 You'll need node 0.11.* an npm already installed.  
 Check it out the main Harmonic documentation if you're trouble.  
 
-- Clone this repo
+- Fork and clone es6rocks.github.io
 ```shell
-git clone 
-`'`
+git clone git@github.com:[USER]/es6rocks.github.io.git
+```
+
+- Checkout to the _src_ branch
+```shell
+git checkout src
+```
+
