@@ -41,13 +41,21 @@ All you'll need to do is copy the public folder to the master branch.
 ```shell
 cp public/ -r /tmp/esrocks-website
 ```
-Commit your changes and checkout to the master branch:
+- Commit your changes and checkout to the master branch
 ```shell
 git add .
 git commit -m "posts about promises"
 git checkout master
 ```
-On the master branch, put all the content from your public folder previously copied.  
+- On the master branch, put all the content from your public folder previously copied
 ```shell
-cp public/ -r /tmp/esrocks-website
+cp /tmp/esrocks-website/* -r ./
 ```
+- Commit, push and open a pull-request
+```shell
+git add .
+git commit -m "posts about promises"
+git push origin master
+```
+Go to Github.com on your fork page, and create a pull-request.
+
