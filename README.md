@@ -35,7 +35,7 @@ harmonic run
 ```
 This command will build and run ES6Rocks website in the defalut port 9356.
 
-- Copy the public folfer to the master branch
+- Copy the public folfer to the master branch  
 The result of Harmonic run is the /public folder.  
 All you'll need to do is copy the public folder to the master branch.  
 ```shell
