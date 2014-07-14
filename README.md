@@ -26,7 +26,7 @@ git checkout src
 ```shell
 harmonic new_post "My awesome post"
 ```
-This commando will create a new markdown file in /src/posts.  
+This command will create a new markdown file in /src/posts.  
 
 - Test
 Run Harmonic to check if your post is ok:
