@@ -2,9 +2,7 @@
     <ul class="flags">
         {% for flag in config.i18n.languages %}
             <li>
-                <a href="{% if flag ==  config.i18n.default %}/ {% else %}/{{ flag }}{% endif %}">
-                    <img src="/images/flag-{{ flag }}.jpg">
-                </a>
+                <a href="{% if flag ==  config.i18n.default %}/ {% else %}/{{ flag }}{% endif %}"><i class="flag-icon flag-icon-{{ flag }}"></i></a>
             </li>
         {% endfor %}
     </ul>
