@@ -3,14 +3,14 @@
 # How to contribute
 Contribute to ES6Rocks is easy, choose what type of contribution you want.
 
-## Writing and article
-ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.  
-- First thing you need to do is install harmonic.  
+## Writing an article
+ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
+- First thing you need to do is install harmonic.
 ```javascript
 npm install harmonic -g
 ```
-You'll need node 0.11.* an npm already installed.  
-Check it out the main [Harmonic](https://github.com/es6rocks/harmonic/) documentation if you're trouble.  
+You'll need node 0.11.* an npm already installed.
+Check it out the main [Harmonic](https://github.com/es6rocks/harmonic/) documentation if you're trouble.
 
 - Fork and clone es6rocks.github.io
 ```shell
@@ -26,7 +26,7 @@ git checkout src
 ```shell
 harmonic new_post "My awesome post"
 ```
-This command will create a new markdown file in /src/posts.  
+This command will create a new markdown file in /src/posts.
 
 - Test
 Run Harmonic to check if your post is ok:
@@ -35,9 +35,9 @@ harmonic run
 ```
 This command will build and run ES6Rocks website in the defalut port 9356.
 
-- Copy the public folfer to the master branch  
-The result of Harmonic run is the /public folder.  
-All you'll need to do is copy the public folder to the master branch.  
+- Copy the public folfer to the master branch
+The result of Harmonic run is the /public folder.
+All you'll need to do is copy the public folder to the master branch.
 ```shell
 cp public/ -r /tmp/esrocks-website
 ```
