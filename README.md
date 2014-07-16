@@ -51,11 +51,14 @@ git checkout master
 ```shell
 cp /tmp/esrocks-website/* -r ./
 ```
-- Commit, push and open a pull-request
+- Commit, push and open a pull-request for both master and src branches
 ```shell
 git add .
 git commit -m "posts about promises"
 git push origin master
+
+git checkout src
+git push origin src
 ```
 Go to Github.com on your fork page, and create a pull-request.
 
