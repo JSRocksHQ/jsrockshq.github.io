@@ -76,7 +76,8 @@
 
 	<article class="postContent">
 		<p>TC39 - ECMAScript group is finishing the sixth version of ECMAScript specification. The <a href="http://www.2ality.com/2014/06/es6-schedule.html">group schedule</a> points to next June as the release date. By now, no significant differences may appear. It is time to deepen your knowledge into the subject.<br>
-This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like <a href="http://jsmodules.io">JavaScript Modules</a>, by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.</p>
+This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like <a href="http://jsmodules.io">JavaScript Modules</a>, by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.
+</p>
 <h2 id="nowadays-formats">Nowadays formats</h2>
 <p>The most famous modules formats until now are the <a href="http://requirejs.org/docs/whyamd.html#amd">AMD</a>, that are the most used by client-side libraries, and the <a href="http://wiki.commonjs.org/wiki/Modules/1.1">CommonJS</a> that was adopted by platforms like Node.js and transported to browsers with Browserify. Each one has characteristics determined by its environment. For example the AMD format wraps each module inside a function to scope and allow asynchronous loading of dependencies at browsers. On the other hand, the CommonJS modules implicitly define the scope of a module making impossible to use this kind of format in browsers without translation.</p>
 <h2 id="choosing-a-module-format">Choosing a module format</h2>

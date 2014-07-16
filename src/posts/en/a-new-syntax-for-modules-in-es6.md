@@ -16,6 +16,7 @@ authorPicture: https://avatars2.githubusercontent.com/u/353504?s=460
 TC39 - ECMAScript group is finishing the sixth version of ECMAScript specification. The [group schedule](http://www.2ality.com/2014/06/es6-schedule.html) points to next June as the release date. By now, no significant differences may appear. It is time to deepen your knowledge into the subject.  
 <!-- more -->
 This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like [JavaScript Modules](http://jsmodules.io), by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.
+<!--more-->
 
 ## Nowadays formats
 
