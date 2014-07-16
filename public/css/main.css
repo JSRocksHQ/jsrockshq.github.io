@@ -1,4 +1,3 @@
-.social__list,
 .postList,
 .organizers__list,
 .postContent__title,
@@ -157,25 +156,32 @@ a:focus {
   opacity: 0.75;
 }
 .social {
+  width: 100%;
+  padding: 0 5%;
   background-color: #000;
   overflow: hidden;
-}
-.social__list {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .social__item {
   display: inline-block;
   font-size: 1.2rem;
   margin: 0.5em 1em;
 }
-.social__item.avatar {
-  float: left;
+.avatar {
+  display: none;
 }
-.social__item.avatar svg > path {
+.avatar svg > path {
   fill: #fff;
 }
+@media (min-width: 450px) {
+  .avatar {
+    display: inline-block;
+  }
+}
 @media (min-width: 840px) {
-  .social__item.avatar {
+  .avatar {
     display: none;
   }
 }
@@ -186,16 +192,10 @@ a:focus {
 .social__link:focus path {
   fill: #fafa64;
 }
-.flags {
-  width: 165px;
-  float: left;
-  margin-top: 10px;
-  margin-left: 10px;
-}
 .flags li {
   display: inline-block;
   font-size: 1.2rem;
-  margin: 0.5em 0.1em;
+  margin: 0.5em 0.25em;
 }
 .lobby {
   width: 100%;

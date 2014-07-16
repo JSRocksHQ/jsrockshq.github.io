@@ -3,18 +3,17 @@
         {% for flag in config.i18n.languages %}
             <li>
                 <a href="{% if flag ==  config.i18n.default %}/ {% else %}/{{ flag }}{% endif %}">
-                    <img src="/images/flag-{{ flag }}.jpg">
+                    <img src="/images/flag-{{ flag }}.svg" alt="{{ flag }}" title="{{ flag }}" />
                 </a>
             </li>
         {% endfor %}
     </ul>
 
+    <a class="avatar" href="https://es6rocks.com">
+        {% include "partials/components/avatar.html" %}
+    </a>
+
     <ul class="social__list">
-        <li class="social__item avatar">
-            <a href="https://es6rocks.com">
-                {% include "partials/components/avatar.html" %}
-            </a>
-        </li>
         <li class="social__item">
             <a class="social__link" href="https://twitter.com/es6rocks">
                 {% include "partials/components/twitter.html" %}
