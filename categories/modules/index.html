@@ -78,82 +78,6 @@
                     <section class="post__excerpt">
                         <p>TC39 - ECMAScript group is finishing the sixth version of ECMAScript specification. The <a href="http://www.2ality.com/2014/06/es6-schedule.html">group schedule</a> points to next June as the release date. By now, no significant differences may appear. It is time to deepen your knowledge into the subject.<br><!-- more -->
 This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like <a href="http://jsmodules.io">JavaScript Modules</a>, by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.</p>
-<h2 id="nowadays-formats">Nowadays formats</h2>
-<p>The most famous modules formats until now are the <a href="http://requirejs.org/docs/whyamd.html#amd">AMD</a>, that are the most used by client-side libraries, and the <a href="http://wiki.commonjs.org/wiki/Modules/1.1">CommonJS</a> that was adopted by platforms like Node.js and transported to browsers with Browserify. Each one has characteristics determined by its environment. For example the AMD format wraps each module inside a function to scope and allow asynchronous loading of dependencies at browsers. On the other hand, the CommonJS modules implicitly define the scope of a module making impossible to use this kind of format in browsers without translation.</p>
-<h2 id="choosing-a-module-format">Choosing a module format</h2>
-<p>Libraries are the most affected by this decision. The inconsistency can be normalized using an abstraction that embraces the module code and makes it compatible with more than one format. The project <a href="https://github.com/umdjs/umd">Universal Module Definition (UMD)</a> keeps a collection of this kind of abstractions.</p>
-<p>Observing the formats evolution and adoption the appearance of the UMD project should be interpreted as a unified solution. This is wrong. The UMD project keeps more than ten variations and all of them deflect the module code of its objective: solve the problem that the code is written for. Look at this toy example of the UMD module <code>add2</code> that has <code>add</code> as dependency:</p>
-<pre><code class="lang-javascript">(function (factory) {
-  if (typeof define === &#39;function&#39; &amp;&amp; define.amd) {
-    define([&#39;add&#39;], factory);
-  } else if (typeof exports === &#39;object&#39;) {
-    module.exports = factory(require(&#39;add&#39;));
-  }
-}(function (add) {
-  return function (param) {
-    return add(2, param);
-  };
-}));
-</code></pre>
-<p>Write valid code for two module formats (or more) is not a good option. The solution is to analyse the formats to identify which one has more expressiveness power.</p>
-<p>The AMD modules encapsulate the code inside a function and it is a kind of harmfulness that doesn&#39;t bring expressiveness. Functions are part of another universe of problem solutions. The new specification should consider that each module file have its own scope. Remember that a new language version can change its behaviour. Saying that, <a href="http://blog.millermedeiros.com/amd-is-better-for-the-web-than-commonjs-modules">there are no reasons to adopt AMD anymore</a>.</p>
-<p>CommonJS Modules are more expressive. It is a great advantage to leave aside encapsulation through functions and still be able to indicate which part of the code will be used like this <code>var debug = require(&#39;util&#39;).debug;</code> or even use: <code>require(&#39;util&#39;).debug(&#39;message on stderr&#39;);</code>.</p>
-<p>Let&#39;s keep considering CommonJS modules and pointing which are their weak points that gradually lead to the adoption of a new syntax.</p>
-<h2 id="module-encapsulation">Module encapsulation</h2>
-<p>Networks protocols currently available in browsers penalize performance when several module files are required. Packing all modules in one file to be used in browser is a good practice. This necessitie does not exist in platforms like Node.js, that have quick access to the filesystem.</p>
-<p>CommonJS modules does not consider browser environment and another prove is that different modules can&#39;t be part of the same file. By the way, <a href="http://browserify.org">Browserify</a> enables the use of CommonJS modules in browsers and allow multiple modules in a single file. This is only possible by making use of functions to encapsulate the code of each module. A problem is that the result is hard to read, <a href="https://gist.github.com/jcemer/b52db6503eebc42a414d">look at the file bundler.js</a>.</p>
-<p>Nowadays the <strong>only way to define scope in Javascript is beyond functions</strong>. As said, a new specification allows changing the language functionality. The module scope definition could be better solved out than in <a href="https://github.com/joyent/node/blob/b55c9d68aa713e75ff5077cd425cbaafde010b92/src/node.js#L788-L791">Node.js, which still uses functions under the hood</a>.</p>
-<p>ES6 specs brings a new exclusive syntax to define module scope. Throught syntax, it is possible to define more than one module in a single file without reaching out to functions that made us give up on AMD format. The result is a significative gain in expressivity:</p>
-<pre><code class="lang-javascript">module &#39;foo&#39; {
-    // Module code
-}
-module &#39;bar&#39; {
-    // Module code
-}
-</code></pre>
-<h2 id="requesting-dependencies-imports-">Requesting dependencies (imports)</h2>
-<p>CommonJS modules were conceived to require dependencies synchronously. <strong>Script execution is blocked while a dependency is loaded</strong>. Again, this approach does not bring any inconvenient to Node.js that has quick access to the filesystem.</p>
-<p>Considering network protocol evolution and even thinking on present days, a module format which fit to browsers needs to operate by loading async dependencies. For this, modules need to be <a href="http://en.wikipedia.org/wiki/Static_program_analysis">statically analised</a> to <strong>identify its dependencies before being executed</strong>. By this way, it&#39;s possible to download dependencies simultaneously and evaluate the module only when dependencies are ready.</p>
-<p><strong>The module formats that we have nowadays does not allow static analysis</strong>. Getting as an example the CommonJS module format, its <a href="http://wiki.commonjs.org/wiki/Modules/1.0">specification points</a> that the <code>require</code> is just a function that accepts a module identifier. Like any other function, its argument might be evaluated in different ways. Analise the code bellow that suffers by its random argument evaluation and the influence of control flow too:</p>
-<pre><code class="lang-javascript">if (type == &#39;me&#39;) {
-  var user = require(&#39;me&#39;);
-} else {
-  var user = require(&#39;module&#39; + Math.random());
-}
-</code></pre>
-<p>I hope that it proves that it is not possible to identify the dependencies in nowadays formats without code execution. Tools like Browserify <a href="https://github.com/substack/node-browserify/issues/377">doesn&#39;t convert modules that have dynamic dependencies</a> for example. That should cause confusion and break production code. Just with a specific syntax to require  modules is possible to prevent that code end up written like these.</p>
-<p>ES6 modules bring all the dependency declaration flexibility of the CommonJS modules allowing static analises of the code:</p>
-<pre><code class="lang-javascript">import asap from &#39;asap&#39;;
-import { later } from &#39;asap&#39;;
-import asap, { later } from &#39;asap&#39;;
-</code></pre>
-<p>According to a <a href="https://github.com/wycats/jsmodules/issues/8#issuecomment-47960446">comment by Yehuda Katz</a>, it is not allowed to write code like <code>if (type == &#39;me&#39;) { import user from &#39;me&#39;; }</code>. However, the specification doesn&#39;t leave apart the possibility to require dynamic dependencies using promises:</p>
-<pre><code class="lang-javascript">if (type == &#39;me&#39;) {
-  this.import(&#39;me&#39;).then(function(user) {
-    // do stuff here
-  });
-}
-</code></pre>
-<h2 id="code-export-exports-">Code export (exports)</h2>
-<p>CommonJS module format allow export code through object properties of an object stored at the variable <code>exports</code>. The result of module evaluation is just an object with properties. Node.js implementation also allows overwriting the default returned value to others types like functions, look at the <code>foo</code> module example:</p>
-<pre><code class="lang-javascript">module.exports = exports = function defaultFn() {
-  return &#39;default&#39;;
-};
-
-exports.another = function () { return &#39;another&#39;; };
-</code></pre>
-<p>The above code should be required like <code>require(&#39;foo&#39;)()</code> and <code>require(&#39;foo&#39;).another()</code>. The side-effect of this approach is the addition of properties in the function object <code>defaultFn</code>.</p>
-<p>Using the new syntax, it is possible to declare a value to be required as default. In this case, the others exported values doesn&#39;t be assigned to properties of <code>defaultFn</code>. The code below is the translation to the new ES6 module syntax:</p>
-<pre><code class="lang-javascript">export default function defaultFn() {
-  return &#39;default&#39;;
-};
-
-export function another() { return &#39;another&#39;; };
-</code></pre>
-<h2 id="final-words">Final words</h2>
-<p>The ES6 specification also defines a module loader that allows to require different module formats. This loader is outside the bounds of this article. The section <a href="https://gist.github.com/wycats/51c96e3adcdb3a68cbc3#the-compilation-pipeline">The Compilation Pipeline</a> of the article ES6 Modules explains all features and possibilities of the loader.</p>
-<p>I expect that this article has convinced you of the superiority of the new syntax against other module formats. A new syntax adds a toll to learn its use. But in this case, the gain of expressiveness and possibilites compensates that.</p>
-<p>The new module syntax mastery takes into account all the different JavaScript used environments: web server, desktop, command line and browsers. The modules substantially change the language operation and are undoubtedly the best new feature.</p>
 
                     </section>
                 </article>
@@ -236,6 +160,7 @@ export function another() { return &#39;another&#39;; };
 
 <footer class="bottom">
     <span class="licenses">
+        <a href="/rss.xml">RSS</a><br>
         Content licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons</a><br />
         Code licensed under <a href="https://github.com/es6rocks/harmonic/blob/master/LICENSE">MIT</a><br />
         Static website proudly powered by <a href="https://github.com/es6rocks/harmonic/">Harmonic</a>

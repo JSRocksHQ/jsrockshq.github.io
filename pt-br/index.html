@@ -78,83 +78,6 @@
                     <section class="post__excerpt">
                         <p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento. A partir de agora, poucas mudanças significativas devem surgir. Já é tempo de se aprofundar no estudo.</p>
 <p>Este artigo não pretende abordar a importância da escrita de código modularizado. Já escrevi sobre o assunto no artigo <a href="http://tableless.com.br/modularizacao-em-javascript">Modularização em JavaScript</a>. Sites como <a href="http://jsmodules.io">JavaScript Modules</a> entre outros já são uma ótima referência sobre como escrever módulos ES6. A intenção aqui é esclarecer e justificar a necessidade de uma nova sintaxe para escrita de módulos.</p>
-<h2 id="formatos-atuais">Formatos atuais</h2>
-<p>Os mais famosos formatos de definição de módulos até então eram o AMD, padrão para bibliotecas <em>client-side</em> e CommonJS, adotado pelo Node.js e levado para  navegadores pelo Browserify. Cada um  possui características determinadas pelo ecossistema em que são utilizados. A exemplo, o AMD encapsula cada módulo no interior de uma função definindo escopo e permitindo carregamento assíncrono de suas dependências nos navegadores. Por outro lado, os módulos CommonJS implicitamente definem a criação de um escopo de módulo o que inviabiliza seu uso diretamente em navegadores.</p>
-<h2 id="a-escolha-de-um-formato">A escolha de um formato</h2>
-<p>As bibliotecas são as que mais sofrem com a existência de diferentes formatos. A inconsistência pode ser normalizada com uma abstração que encapsula os módulos  e os torna funcionais em mais de um formato. O projeto <a href="https://github.com/umdjs/umd">Universal Module Definition (UMD)</a> guarda uma coleção destas abstrações.</p>
-<p>Acompanhando a evolução e observando o surgimento desta unificação, o problema de modularização parece resolvido. Engano. O projeto UMD guarda mais de dez variações de abstrações e todas desviam o código do módulo do seu objetivo: resolver o problema que é responsável. Observe o exemplo fictício do módulo UMD <code>add2</code> que depende de <code>add</code>:</p>
-<pre><code class="lang-javascript">(function (factory) {
-  if (typeof define === &#39;function&#39; &amp;&amp; define.amd) {
-    define([&#39;add&#39;], factory);
-  } else if (typeof exports === &#39;object&#39;) {
-    module.exports = factory(require(&#39;add&#39;));
-  }
-}(function (add) {
-  return function (param) {
-    return add(2, param);
-  };
-}));
-</code></pre>
-<p>Seguir escrevendo código para dois formatos (ou mais) seguindo o UMD não é uma boa opção. Por que não jogar <a href="http://mapadobrincar.folha.com.br/brincadeiras/formulas-de-escolha/320-dois-ou-um">dois ou um</a> entre os membros do TC39 e escolher um único formato? Melhor analisar cada um dos formatos e identificar qual é mais poderoso em termos de expressividade.</p>
-<h3 id="analisando-os-formatos-atuais">Analisando os formatos atuais</h3>
-<p>No formato AMD, encapsular o código do módulo em uma função trata-se de um contra tempo que não traz ganho algum em expressividade. A função faz parte de outro universo de resolução de problemas. Uma nova especificação poderia muito bem considerar que cada arquivo de módulo já possui seu próprio escopo, lembre-se que é uma nova versão da linguagem. Não nos restaria <a href="http://blog.millermedeiros.com/amd-is-better-for-the-web-than-commonjs-modules">nenhuma razão para adotar AMD</a>.</p>
-<p>Os CommonJS Modules são mais expressivos. Trata-se de uma grande vantagem deixar de lado o encapsulamento através de funções e ainda poder indicar qual porção de código da dependência será utilizado já na sua importação <code>var debug = require(&#39;util&#39;).debug;</code> ou até já utilizar o código <code>require(&#39;util&#39;).debug(&#39;message on stderr&#39;);</code>.</p>
-<p>Seguiremos considerando os módulos CommonJS e apontando quais seus pontos fracos que levaram gradativamente a adoção de uma nova sintaxe.</p>
-<h2 id="encapsulamento-para-m-dulos">Encapsulamento para módulos</h2>
-<p>Os protocolos de rede disponíveis atualmente nos navegadores penalizam a performance para o caso de vários arquivos de módulo serem requisitados. Empacotar todos os módulos em um único arquivo para serem utilizados no navegador é uma boa prática. Esta necessidade não existe em plataformas como Node.js, que possui rápido acesso ao sistema de arquivos.</p>
-<p>Os módulos CommonJS não consideram o ambiente dos navegadores, diferentes módulos não podem fazer parte de um mesmo arquivo. A ferramenta <a href="http://browserify.org">Browserify</a> viabiliza o uso de módulos <em>CommonJS</em> em navegadores. Isto somente é possível fazendo uso de funções para encapsular o código de cada um dos módulos. O resultado é de difícil leitura, <a href="https://gist.github.com/jcemer/b52db6503eebc42a414d">veja o arquivo bundler.js</a>.</p>
-<p>Atualmente, a <strong>única maneira de definir escopos no JavaScript é através de funções</strong>. Uma nova especificação permite mudar o funcionamento da linguagem. A necessária criação dos escopos poderia ser melhor resolvida que no <a href="https://github.com/joyent/node/blob/b55c9d68aa713e75ff5077cd425cbaafde010b92/src/node.js#L788-L791">Node.js que ainda utiliza funções por baixo dos panos</a>.</p>
-<p>A especificação ES6 traz consigo uma sintaxe exclusiva para definição de escopo de módulos. Através da sintaxe, é possível definir mais de um módulo em um mesmo arquivo sem apelar para o uso de funções que nos fizeram abrir mão do formato AMD. O resultado é um ganho significativo em expressividade, observe:</p>
-<pre><code class="lang-javascript">module &#39;foo&#39; {
-    // Module code
-}
-module &#39;bar&#39; {
-    // Module code
-}
-</code></pre>
-<h2 id="requisi-o-de-depend-ncias-imports-">Requisição de dependências (imports)</h2>
-<p>Os módulos CommonJS foram concebidos para requisitar as dependências sincronamente. <strong>A execução do script é bloqueada enquanto uma dependência é carregada</strong>. Novamente, esta abordagem não traz nenhum inconveniente para o Node.js que possui um acesso rápido ao sistema de arquivos.</p>
-<p>Considerando evoluções futuras nos protocolos de redes e mesmo se pensarmos nos dias atuais, um formato de módulo adequado para navegadores precisa operar com carregamento assíncrono das dependências. Para isto, os módulos precisam ser <a href="http://en.wikipedia.org/wiki/Static_program_analysis">analisados estaticamente</a> a título de <strong>identificar suas dependências antes de serem executados</strong>. Assim é possível fazer o <em>download</em> simultâneo das dependências e condicionar a execução do módulo para quando as dependências estiverem prontas.</p>
-<p><strong>Os formatos de módulos que dispomos não permitem análise estática</strong>. Pegando como exemplo o formato CommonJS, <a href="http://wiki.commonjs.org/wiki/Modules/1.0">sua especificação esclarece</a> que o <code>require</code> trata-se de uma função que aceita um identificador de módulo. Assim como qualquer outra função, seu argumento pode ser calculado de diferentes maneiras. Analise o código a seguir que também sofre a influência do controle de fluxo:</p>
-<pre><code class="lang-javascript">if (type == &#39;me&#39;) {
-  var user = require(&#39;me&#39;);
-} else {
-  var user = require(&#39;module&#39; + Math.random());
-}
-</code></pre>
-<p>Espero que isto já sirva para atestar como não é possível identificar as dependências nestes formatos sem que o código seja executado. Ferramentas como o Browserify <a href="https://github.com/substack/node-browserify/issues/377">já não convertem módulos que tenham dependências dinâmicas</a> causando uma certa confusão. Apenas com uma sintaxe específica é possível coibir declarações de dependências como estas.</p>
-<p>Os módulos ES6 trazem consigo toda a flexibilidade de declaração de dependências dos módulos CommonJS permitindo a análise estática do código:</p>
-<pre><code class="lang-javascript">import asap from &#39;asap&#39;;
-import { later } from &#39;asap&#39;;
-import asap, { later } from &#39;asap&#39;;
-</code></pre>
-<p>Como apontado em <a href="https://github.com/wycats/jsmodules/issues/8#issuecomment-47960446">um comentário do Yehuda Katz</a>, não são permitidos códigos como este <code>if (type == &#39;me&#39;) { import user from &#39;me&#39;; }</code>. Entretanto, a especificação não deixa de fora a possibilidade de executar requisições dinâmicas utilizando promessas:</p>
-<pre><code class="lang-javascript">if (type == &#39;me&#39;) {
-  this.import(&#39;me&#39;).then(function(user) {
-    // do stuff here
-  });
-}
-</code></pre>
-<h2 id="exportando-c-digo-exports-">Exportando código (exports)</h2>
-<p>O formato CommonJS permite exportar código através de propriedades no objeto contido na variável <code>exports</code>. O retorno de um módulo é um objeto com propriedades. Uma variação na implementação do Node.js possibilita que módulos retornem <em>por padrão</em> outros tipos de valores, observe o módulo <code>foo</code>:</p>
-<pre><code class="lang-javascript">module.exports = exports = function defaultFn() {
-  return &#39;default&#39;;
-};
-
-exports.another = function () { return &#39;another&#39;; };
-</code></pre>
-<p>O código acima permite executar <code>require(&#39;foo&#39;)()</code> e <code>require(&#39;foo&#39;).another()</code>. O efeito colateral desta abordagem é adicionar propriedades diretamente na função <code>defaultFn</code>.</p>
-<p>Utilizando a nova sintaxe, é possível declarar um retorno <em>padrão</em>. Os demais valores exportados não serão mais atribuídos na forma de propriedades na função <code>defaultFn</code>. Veja o mesmo exemplo transcrito:</p>
-<pre><code class="lang-javascript">export default function defaultFn() {
-  return &#39;default&#39;;
-};
-
-export function another() { return &#39;another&#39;; };
-</code></pre>
-<h2 id="palavras-finais">Palavras finais</h2>
-<p>A especificação do ES6 também abrange a definição de um <em>loader</em> responsável por requisições assíncronas que ainda permite utilizar módulos em diferentes formatos. O assunto está fora do escopo deste artigo. A seção <a href="https://gist.github.com/wycats/51c96e3adcdb3a68cbc3#the-compilation-pipeline">The Compilation Pipeline</a> do artigo ES6 Modules de Yehuda Katz apresenta muito bem as possibilidades.</p>
-<p>Espero que tenha convencido você da superioridade da nova sintaxe em relação a outros formatos de módulos. Claro que sintaxes trazem consigo o ônus do seu aprendizado. Mas neste caso, permitem ganho de expressividade e aumento das possibilidades.</p>
-<p>A nova sintaxe de módulos leva em consideração com maestria todos os diferentes ambientes em que a linguagem é utilizada: <em>web server</em>, <em>desktop</em>, linha de comando e navegadores. Os módulos alteram significativamente o funcionamento da linguagem e são sem dúvida o melhor da nova especificação.</p>
 
                     </section>
                 </article>
@@ -351,6 +274,7 @@ Nossa missão aqui é discutir sobre a <a href="http://wiki.ecmascript.org/doku.
 
 <footer class="bottom">
     <span class="licenses">
+        <a href="/rss.xml">RSS</a><br>
         Content licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons</a><br />
         Code licensed under <a href="https://github.com/es6rocks/harmonic/blob/master/LICENSE">MIT</a><br />
         Static website proudly powered by <a href="https://github.com/es6rocks/harmonic/">Harmonic</a>
