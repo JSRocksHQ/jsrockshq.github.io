@@ -583,6 +583,13 @@ a:focus {
     width: 60%;
   }
 }
+.postContent__author,
+.postContent__author time {
+  text-align: center;
+  font-style: italic;
+  color: #808080;
+  font-size: 0.9em;
+}
 .bottom {
   position: relative;
   height: 10rem;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Entrevista sobre ES6 com o David Herman - ES6 Rocks</title>
+    <title>ECMAScript 6 - A Better JavaScript for the Ambient Computing Era - ES6 Rocks</title>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta property="og:image" content="http://es6rocks.com/images/es6rocks.png" />
@@ -60,88 +60,33 @@
 			</a>
 		</h2>
 	    <h1>
-	      Entrevista sobre ES6 com o David Herman
+	      ECMAScript 6 - A Better JavaScript for the Ambient Computing Era
 	    </h1>
 	</header>
     <ul class="categories">
     	
     		<li>
-    			<a class="categoryTag ES6" 
-    				href="/categories/pt-br/es6">
-    				ES6
-    			</a>
-    		</li>
-    	
-    		<li>
-    			<a class="categoryTag  Interview" 
-    				href="/categories/pt-br/interview">
-    				 Interview
+    			<a class="categoryTag talks" 
+    				href="/categories/talks">
+    				talks
     			</a>
     		</li>
     	
     </ul>
-
+    
+     <div class="postContent__author">
+        By <a href="http://twitter.com/jaydson">Jaydson</a> at <time pubdate="" class="date">Tue May 27 2014 03:18:47 GMT-0300 (BRT)</time>
+    </div>
 	<article class="postContent">
-		<p>Fizemos uma entrevista bem legal com o <a href="https://twitter.com/littlecalculist">David Herman</a> sobre ES6.<br>Para quem não conhece, o David é o principal pesquisador e fundador da Mozilla Research, onde ele trabalha para expandir as fundações da Open Web. Ele está envolvido com diversos projetos de plataformas Web, incluindo <a href="http://taskjs.org/">task.js</a>, <a href="http://sweetjs.org/">sweet.js</a>, <a href="http://asmjs.org/">asm.js</a>, <a href="http://www.rust-lang.org/">Rust</a>, <a href="https://github.com/mozilla/servo/">Servo</a> e Parallel JS.<br>
-David ainda participa de padrões abertos, em particular como representante no <a href="http://www.ecma-international.org/memento/TC39.htm">TC39</a>, o comitê que padroniza o JavaScript.    </p>
-<h2 id="m-dulos-uma-das-principais-features-da-es6-s-o-os-m-dulos-voc-como-um-dos-contribuidores-core-da-especifica-o-pode-explicar-o-que-os-m-dulos-v-o-trazer-para-os-desenvolvedores-javascript-">Módulos! Uma das principais features da ES6 são os módulos. Você, como um dos contribuidores core da especificação, pode explicar o que os módulos vão trazer para os desenvolvedores JavaScript?</h2>
-<p>Os módulos podem ser descritos como uma boa forma de estruturar um código, especialmente no Node, mas cada vez mais no desenvolvimento do client-side também.
-O que estamos fazendo é unificar os já existententes sistemas de módulos no JavaScript em um padrão que pode funcionar em todas as plataformas.<br>Além disso, nós fornecemos uma sintaxe dedicada e algumas limpezas no comportamento, incluindo o carregamento assíncrono sem a necessidade de ferramentas de compilação.<br>Nós também levamos em conta os padrões mais populares, tais como módulos que possem um único ou principal export (como jQuery e underscore), fornecendo um <em>sweet syntax</em> para encorajar e apoiar as melhores práticas.<br>Nós criamos um site dando aos desenvolvedores um tutorial sobre módulos, que explica um pouco mais como eles funcionam e como usá-los:
-<a href="http://jsmodules.io">http://jsmodules.io</a>  </p>
-<h2 id="classes-s-o-controversas-alguns-amam-e-outros-nem-tanto-pode-nos-dizer-a-sua-opini-o-sobre-classes-no-javascript-qual-o-real-prop-sito-e-quais-s-o-os-benef-cios-para-a-linguagem-">Classes são controversas. Alguns amam e outros nem tanto. Pode nos dizer a sua opinião sobre classes no JavaScript? Qual é o real propósito e quais são os benefícios para a linguagem?</h2>
-<p>Eu sempre gosto de ressaltar primeiro que as classes na ES6 não estão introduzindo algo conceitualmente novo no JavaScript; é apenas um <em>syntax sugar</em> para os padrões existentens que as pessoas já usam, com funções construtoras e prototypes.<br>Classes são totalmente dinâmicas; por exemplo, você pode escrever uma classe literal como uma expressão:  </p>
-<pre><code class="lang-javascript">  var myClass = myMixin(class C { /* ... */ });
-</code></pre>
-<p>assim como você poderia fazer com padrões existentes:  </p>
-<pre><code class="lang-javascript">  function C(/* ... */) { /* ... */ }
+		<p>Allen Wirfs-Brock (<a href="https://twitter.com/awbjs">awbjs</a> on Twitter) is a TC39 member. Actually, he is the &quot;Project Editor of the ECMAScript Language Specification&quot;.
 
-  C.prototype = /* ... */;
-
-  var myClass = myMixin(C);
-</code></pre>
-<p>E as classes são totalmente interoperáveis com prototypes. Por exemplo, as classes podem herdar de construtores tradicionais e vice-versa:  </p>
-<pre><code class="lang-javascript">  // extend Node&#39;s EventEmitter class
-  class MyEventEmitter extends events.EventEmitter {
-    constructor() {
-      super();
-      // ...
-    }
-    // ...
-  }
-</code></pre>
-<p>Observe a chamada <code>super</code> no construtor - este é o caminho menos doloroso que os padrões que as pessoas são forçadas a usar para as suas classes feitas à mão hoje.<br>[1] ES6 suporta <code>super</code> para ambos os construtores e métodos.  </p>
-<p>Em outras palavras, classes adicionam métodos convenientes de padrões comuns, e elimina a necessidade abstraões de classe que existem hoje.  </p>
-<p>Another feature is the ability to subclass built-in classes like Arrays:  </p>
-<pre><code class="lang-javascript">  class Stack extends Array {
-    constructor() { super() }
-    top() { return this[this.length - 1]; }
-  }
-
-  var s = new Stack();
-  s.push(&quot;world&quot;);
-  s.push(&quot;hello&quot;);
-  console.log(s.top());  // &quot;hello&quot;
-  console.log(s.length); // 2
-</code></pre>
-<p>Personally, my feeling about classes is that they are a useful way to structure certain kinds of programming, but when taken as the central unifying principle for everything they can run you into trouble.<br>Classes are a nice lightweight way to implement data abstractions in JavaScript, and inheritance is useful for providing good defaults and letting people override those defaults.<br>But when people start organizing all their abstractions in big elaborate inheritance hierarchies, or when they start throwing functions in classes that really should just be functions, that&#39;s when I get off the train.  </p>
-<h2 id="browser-vendors-have-evolved-in-the-last-years-implementing-new-standards-and-bringing-new-features-much-faster-can-you-try-to-predict-the-future-and-tell-us-when-developers-will-have-the-power-of-es6-to-create-theirs-applications-with-native-browsers-support-">Browser vendors have evolved in the last years, implementing new standards and bringing new features much faster. Can you try to &quot;predict the future&quot;, and tell us when developers will have the power of ES6 to create theirs applications with native browsers support?</h2>
-<p>All I can promise you is that we work as hard as we can to bring this future as fast as possible. :)  </p>
-<h2 id="december-2014-is-the-target-date-for-the-new-standard-s-ratification-why-did-es6-take-so-long-to-be-released-">December 2014 is the target date for the new standard&#39;s ratification. Why did ES6 take so long to be released?</h2>
-<p>ES6 is in the last stages of a feature-based process that leads to infrequent spec releases.<br>For post-ES6 work we&#39;re moving to a &quot;train model,&quot; similar to how browsers ship on timed releases instead of feature-based releases.<br>Our goal is to move to spec releases once a year. The final version of the spec will probably not be ratified until 2015, in fact, but the ratification date is not important.<br>What matters is that features stabilize and start shipping in production JavaScript implementations -- and this is already happening.<br>That said, the standardization process does affect when things get shipped, and some smaller, less controversial features (such as destructuring and rest-args) could have probably shipped sooner if their specifications had stabilized sooner.<br>So the move to a train model should help ship features when they&#39;re ready rather than being gated on entire collections of features.  </p>
-<h2 id="there-s-a-plan-for-the-next-release-i-mean-es7-is-in-development-right-">There&#39;s a plan for the next release, I mean, ES7 is in development, right?</h2>
-<p>Yes. We&#39;ll probably tweak the new model as we go along, but there are a number of post-ES6 features under active discussion, including <code>Object.observe</code>, typed objects, value types, <code>async</code>/<code>await</code>, and async generators.<br>You can see a list of the current topics here:<br><a href="https://github.com/tc39/ecma262/blob/master/README.md">https://github.com/tc39/ecma262/blob/master/README.md</a>  </p>
-<h2 id="nowadays-there-are-some-features-of-es6-natively-available-in-some-browsers-transpilers-and-compilers-are-the-solution-to-create-future-s-javascript-applications-today-is-that-a-safe-approach-or-must-developers-wait-until-the-final-release-">Nowadays there are some features of ES6 natively available in some browsers. Transpilers and compilers are the solution to create future&#39;s JavaScript applications today. Is that a safe approach, or must developers wait until the final release?</h2>
-<p>I&#39;m a huge proponent of transpilers playing an active role in standardization, and I&#39;m thrilled to see how far this idea has come in practice.<br>Transpilers give people a realistic way to give features a test-drive and feed actual hands-on experience into the design process.<br>It&#39;s my hope that as projects like Traceur [2], sweet.js [3], and esnext [4] mature, it will get easier and easier for people to prototype early implementations of features under active discussion.  </p>
-<p>Here&#39;s why transpilers are so important:  </p>
-<ul>
-<li><p>They allow developers to become active participants in the design and standardization process. We can gather real world feedback from communities of early adopters, and the transpiler implementors become subject matter experts who can provide invaluable feedback combining the implementor&#39;s perspective with the user developer&#39;s perspective.  </p>
-</li>
-<li><p>They provide a smoother adoption path. Allowing developers to start using features sooner helps provide greater pressure on browser vendors to implement features natively.  </p>
-</li>
-</ul>
-<p>In many ways these points echo the philosophy of the Extensible Web [5].  </p>
-<p>The one caveat, which goes for any polyfill or prollyfill [6], is that implementations may not be fully correct implementations of the standard, and you should be careful not to depend on implementation quirks or non-standard behavior of a transpiler. But it&#39;s worth the risk, in my opinion, for the value of getting better and better channels of collaboration and feedback between developers and standards.  </p>
-<p>[1] <a href="http://techblog.netflix.com/2014/05/improving-performance-of-our-javascript.html">http://techblog.netflix.com/2014/05/improving-performance-of-our-javascript.html</a><br>[2] <a href="https://github.com/google/traceur-compiler">https://github.com/google/traceur-compiler</a><br>[3] <a href="http://sweetjs.org">http://sweetjs.org</a><br>[4] <a href="https://github.com/square/esnext">https://github.com/square/esnext</a><br>[5] <a href="http://extensiblewebmanifesto.org/">http://extensiblewebmanifesto.org/</a><br>[6] <a href="http://prollyfill.org/">http://prollyfill.org/</a>  </p>
+I&#39;m not pretty sure where he gave this talk, but i&#39;m looking forward to watch the recording.
+The slides content are great and explains a lot of things about ES6, and about the JavaScript itself.</p>
+<p>A little descriptions about his talk (by him):
+&quot;We&#39;ve entered the Ambient Computing Era and JavaScript is its dominant programing language, But a new computing era needs a new and better JavaScript. It&#39;s called ECMAScript 6 and it&#39;s about to become the new JavaScript standard. Why do we need it? Why did it take so long? What&#39;s in it? When can you use it? Answers will be given.&quot;</p>
+<p>As soon as this talk recording is available, we&#39;ll post it here.
+By now, follows the slides.</p>
+<p><iframe src="http://www.slideshare.net/slideshow/embed_code/34230355" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/allenwb/wdc14-allebwb" title="ECMAScript 6: A Better JavaScript for the Ambient Computing Era" target="_blank">ECMAScript 6: A Better JavaScript for the Ambient Computing Era</a> </strong> from <strong><a href="http://www.slideshare.net/allenwb" target="_blank">Allen Wirfs-Brock</a></strong> </div></p>
 
 	</article>
 

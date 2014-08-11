@@ -32,7 +32,10 @@
     		</li>
     	{% endfor %}
     </ul>
-
+    
+     <div class="postContent__author">
+        By <a href="{{ post.metadata.authorLink }}">{{ post.metadata.authorName }}</a> at <time pubdate="" class="date">{{ post.metadata.date }}</time>
+    </div>
 	<article class="postContent">
 		{{ post.content }}
 	</article>
