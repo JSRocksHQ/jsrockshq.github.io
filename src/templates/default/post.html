@@ -5,7 +5,9 @@
     <title>{{ post.metadata.title }} - {{ config.title }}</title>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta property="og:image" content="http://es6rocks.com/images/es6rocks.png" />
+    <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+    <meta property="og:title" content="{{ post.metadata.title }}" />
+    <meta property="og:type" content="article" />
     <link href="/css/vendor/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -25,7 +27,7 @@
     <ul class="categories">
     	{% for category in post.metadata.categories %}
     		<li>
-    			<a class="categoryTag {{ category }}" 
+    			<a class="categoryTag {{ category }}"
     				href="/categories/{% if post.metadata.default_lang %}{{ post.metadata.lang }}/{% endif %}{{ category | lower | trim }}">
     				{{ category }}
     			</a>

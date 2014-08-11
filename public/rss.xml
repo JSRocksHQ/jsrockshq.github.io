@@ -6,7 +6,11 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
+<<<<<<< HEAD
         <pubDate>Mon, 11 Aug 2014 01:42:14 GMT</pubDate>
+=======
+        <pubDate>Wed, 16 Jul 2014 13:37:09 GMT</pubDate>
+>>>>>>> 5aabde2446ef9b8ae5baf5fbfdc83a60a8dbc427
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
