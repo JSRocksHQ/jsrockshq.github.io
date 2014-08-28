@@ -6,9 +6,73 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Mon, 11 Aug 2014 02:36:41 GMT</pubDate>
+        <pubDate>Thu, 28 Aug 2014 04:15:42 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>What you need to know about block scope - let</title>
+            <link>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <description><![CDATA[<p>Variables declaration in any programming language are something pretty basic.<br>Regardless the language, understanding how variable scope works is essential to write any kind of program.<br>In Python, for example, as well as in most languages​​, there are two scopes: Local and Global.<br>Variables defined at the top of the file, without identation, are global scope variables.<br>Variables declared inside the function body are considered as local scope.<br>So far, everything is very similar. In JavaScript, the behavior is quite similar.<br>Let&#39;s see one example in both languages:  </p>
+<pre><code class="lang-python"># Python
+x = 1 # global scope
+y = 3
+
+def sum(a, b):
+    s = a + b # local scope
+    return s
+</code></pre>
+<pre><code class="lang-javascript">// JavaScript
+var x = 1;  // global scope
+var y = 3;
+
+function sum(a, b) {
+    var s = a + b;  // local scope
+    return s;
+}
+</code></pre>
+<p>In most C-based languages(JavaScript, PHP), variables are created at the spot where they were declared.<br>However, in JavaScrpt this is different, and can become complicated.<br>When you declare a variable in the body of a function, it is moved to the top or to the global scope. This behavior is called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting"><em>hoisting</em></a>.<br>Unlike Python and other languages, in JavaScript, a variable declared in a for loop leaks its value.<br>See the example below:  </p>
+<pre><code class="lang-javascript">// JavaScript
+for (var i = 0; i &lt;= 2; i += 1) {
+    console.log(i); // current i
+}
+console.log(i); // last i
+</code></pre>
+<p>In this case, even outside of the for loop block, the variable i is still there, with the last value stored.<br>This is a pretty common issue where a program can be easily broken by lack of attention.<br>Another important factor in JavaScript is that the omission of <em>var</em> to declare a variable causes it to be allocated in the global scope, and this can cause many problems.  </p>
+<h2 id="let-declaration">let declaration</h2>
+<p>The <em>let</em> arrives in ES6 as a substitute for <em>var</em>. Yes, the idea is that var will be discontinued in a distant future,  because today it would be impossible completely stop supporting it without breaking the whole internet.<br>The <em>let</em> works as expected, setting the variable in the place where it was declared.<br>Example:  </p>
+<pre><code class="lang-javascript">let foo = true;
+if  (foo) {
+    let bar = &#39;baz&#39;;
+    console.log(bar); // outputs &#39;baz&#39;
+}
+
+try {
+    console.log(bar);
+} catch (e) {
+    console.log(&quot;bar doesn&#39;t exist&quot;);
+}
+</code></pre>
+<p>As you might imagine, <em>let</em> solves the problem with the variable in the for loop.<br>See:  </p>
+<pre><code class="lang-javascript">// JavaScript
+for (let i = 0; i &lt;= 2; i += 1) {
+    console.log(i); // current i
+}
+try {
+    console.log(i);
+} catch (e) {
+    console.log(&quot;i doesn&#39;t exist&quot;);
+}
+</code></pre>
+<h2 id="support-today">Support today</h2>
+<p>You can use <em>let</em> today!<br>Check out the awesome Kangax ES6 table &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> is currently supported by the modern browsers (even IE11) in theirs last versions and <a href="https://github.com/google/traceur-compiler">Traceur</a> as well.<br>You can try ES6 <em>let</em> on Firefox devtools:  </p>
+<p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Although simple, declaring variables in JavaScript can cause headache for beginners in the language.<br>With <em>let</em>, to declare variables is much more intuitive and consistent with a C-based language.<br>The use of <em>var</em> should be discontinued, and only the <em>let</em> must exist in the future.<br>There&#39;s no <em>hoisting</em> behavior for variables declared with <em>let</em>.  </p>
+]]></description>
+            <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+        </item>
         
         <item>
             <title>A new syntax for modules in ES6</title>
