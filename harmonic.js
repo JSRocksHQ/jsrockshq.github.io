@@ -1361,6 +1361,21 @@ var Harmonic = function Harmonic(name) {
     return {
       "en": [{
         "layout": "post",
+        "title": "What's next for JavaScript",
+        "date": "2014-08-29T03:04:03.666Z",
+        "comments": "true",
+        "published": "true",
+        "keywords": "talks",
+        "description": "A talk by Dr. Axel Rauschmayer about what's next for JavaScript",
+        "categories": ["talks"],
+        "content": "<p>If you&#39;re interested in ES6 you must follow <a href=\"https://twitter.com/rauschma\">Dr. Axel Rauschmayer</a>.<br>He maintains the awesome <a href=\"http://www.2ality.com/\">2ality</a> blog and writes a lot of good stuff around ES6.<br>In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  </p>\n<script async class=\"speakerdeck-embed\" data-id=\"4126347010d6013231af66d414c0f9a8\" data-ratio=\"1.33333333333333\" src=\"//speakerdeck.com/assets/embed.js\"></script>",
+        "file": "./src/posts/what-is-next-for-javascript.md",
+        "filename": "what-is-next-for-javascript",
+        "link": "2014/08/what-is-next-for-javascript",
+        "lang": "en",
+        "default_lang": false
+      }, {
+        "layout": "post",
         "title": "What you need to know about block scope - let",
         "date": "2014-08-28T01:58:23.465Z",
         "comments": "true",
@@ -1494,6 +1509,21 @@ var Harmonic = function Harmonic(name) {
         "default_lang": false
       }],
       "pt-br": [{
+        "layout": "post",
+        "title": "O que podemos esperar do novo JavaScript",
+        "date": "2014-08-29T03:04:03.666Z",
+        "comments": "true",
+        "published": "true",
+        "keywords": "talks",
+        "description": "Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos esperar da nova versão do JavaScript",
+        "categories": ["talks"],
+        "content": "<p>Se você está interessado em ES6, você deve seguir o <a href=\"https://twitter.com/rauschma\">Dr. Axel Rauschmayer</a>.<br>Ele mantêm o incrível blog <a href=\"http://www.2ality.com/\">2ality</a> e escreve uma série de coisas legais sobre ES6.<br>Nessa sua talk ele fala sobre várias novas features da ES6 e mostra o que podemos esperar do futuro.  </p>\n<script async class=\"speakerdeck-embed\" data-id=\"4126347010d6013231af66d414c0f9a8\" data-ratio=\"1.33333333333333\" src=\"//speakerdeck.com/assets/embed.js\"></script>",
+        "file": "./src/posts/what-is-next-for-javascript.md",
+        "filename": "what-is-next-for-javascript",
+        "link": "pt-br/2014/08/what-is-next-for-javascript",
+        "lang": "pt-br",
+        "default_lang": true
+      }, {
         "layout": "post",
         "title": "O que você precisa saber sobre block scope - let",
         "date": "2014-08-28T01:58:23.465Z",

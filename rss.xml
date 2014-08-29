@@ -6,9 +6,18 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Thu, 28 Aug 2014 04:15:42 GMT</pubDate>
+        <pubDate>Fri, 29 Aug 2014 03:27:22 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>What's next for JavaScript</title>
+            <link>http://es6rocks.com/2014/08/what-is-next-for-javascript</link>
+            <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>He maintains the awesome <a href="http://www.2ality.com/">2ality</a> blog and writes a lot of good stuff around ES6.<br>In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  </p>
+<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>]]></description>
+            <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/08/what-is-next-for-javascript</guid>
+        </item>
         
         <item>
             <title>What you need to know about block scope - let</title>
