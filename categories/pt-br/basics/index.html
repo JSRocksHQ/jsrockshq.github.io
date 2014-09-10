@@ -71,7 +71,7 @@
                     Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/08/what-you-need-to-know-about-block-scope-let">
+                    <a class="post__title" href="/pt-br/2014/09/what-you-need-to-know-about-block-scope-let">
                         O que você precisa saber sobre block scope - let
                     </a>
                     <section class="post__excerpt">
@@ -128,8 +128,11 @@ try {
 }
 </code></pre>
 <h2 id="suporte-atual">Suporte atual</h2>
-<p>Você pode usar <em>let</em> hoje!<br>Olhe a excelente tabela ES6 feita pelo Kangax &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no <a href="https://github.com/google/traceur-compiler">Traceur</a>.<br>Você pode brincar com ES6 <em>let</em> no Firefox devtools:  </p>
+<p>Você pode usar <em>let</em> hoje*<br>Olhe a excelente tabela ES6 feita pelo Kangax &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no <a href="https://github.com/google/traceur-compiler">Traceur</a>.<br>Você pode brincar com ES6 <em>let</em> no Firefox devtools:  </p>
 <p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
+<ul>
+<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (do post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
+</ul>
 <h2 id="conclus-o">Conclusão</h2>
 <p>Apesar de simples, declarar variáveis no JavaScript pode causar dor de cabeça em iniciantes na linguagem.<br>Com o <em>let</em>, declarar variáveis fica muito mais intuítivo e coerente com uma linguagem baseada em C.<br>O uso do <em>var</em> deve ser descontinuado, e apenas o <em>let</em> deve existir no futuro.<br>Não existe o comportamento de <em>hoisting</em> para variáveis declaradas com <em>let</em>.  </p>
 <h2 id="outras-refer-ncias">Outras referências</h2>
