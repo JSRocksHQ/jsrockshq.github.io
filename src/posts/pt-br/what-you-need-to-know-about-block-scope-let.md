@@ -88,12 +88,15 @@ try {
 ```
 
 ## Suporte atual
-Você pode usar _let_ hoje!  
+Você pode usar _let_ hoje*  
 Olhe a excelente tabela ES6 feita pelo Kangax > [http://kangax.github.io/compat-table/es6/#](http://kangax.github.io/compat-table/es6/#).  
 _let_ é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no [Traceur](https://github.com/google/traceur-compiler).  
 Você pode brincar com ES6 _let_ no Firefox devtools:  
 
 ![let on firefox nightly](/img/let.gif)  
+
+* __NOTA__: Como bem apontado pelo Michał Gołębiowski nos comentários (do post em inglês http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.  
+Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  
 
 ## Conclusão
 Apesar de simples, declarar variáveis no JavaScript pode causar dor de cabeça em iniciantes na linguagem.  

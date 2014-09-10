@@ -89,12 +89,15 @@ try {
 ```
 
 ## Support today
-You can use _let_ today!  
+You can use _let_ today*  
 Check out the awesome Kangax ES6 table > [http://kangax.github.io/compat-table/es6/#](http://kangax.github.io/compat-table/es6/#).  
 _let_ is currently supported by the modern browsers (even IE11) in theirs last versions and [Traceur](https://github.com/google/traceur-compiler) as well.  
 You can try ES6 _let_ on Firefox devtools:  
 
 ![let on firefox nightly](/img/let.gif)  
+
+* __NOTE__: As well pointed by Michał Gołębiowski on the comments below, browsers implementations are not fully according with the spec, so you may find some bugs.  
+For real world applications, you'll need to use a traspiler (at least, for a while until mid 2015).  
 
 ## Conclusion
 Although simple, declaring variables in JavaScript can cause headache for beginners in the language.  
