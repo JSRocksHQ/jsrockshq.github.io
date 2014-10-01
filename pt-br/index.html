@@ -68,10 +68,302 @@
             
             <li class="post">
                 <span class="post__date">
+                    Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)
+                </span>
+                <article class="post__content">
+                    <a class="post__title" href="/pt-br/2014/10/arrow-functions-and-their-scope">
+                        Arrow Functions and their scope
+                    </a>
+                    <section class="post__excerpt">
+                        <h1 id="arrow-functions-e-seu-escopo">Arrow Functions e seu escopo</h1>
+<p>Entre as tantas novas features presentes no ES6, Arrow Functions(ou Fat Arrow Functions), é uma que merece boa atenção!
+É muito legal, ótima para trabalhar com escopos, serve como &quot;atalho&quot; para algumas tecnicas que utilizamos hoje, diminui o código...
+Mas...pode ser um pouco mais difícil de ler caso não esteja a par de como ela funciona.
+Então, vamos mergulhar no assunto!</p>
+<h2 id="come-ando">Começando</h2>
+<p>Para estudar e tester por você mesmo, você pode simplesmente copiar alguns dos exemplos deste artigo, e colar no console de seu browser.
+Até o momento, você pode usar o Firefox(22+) Developer Tools, que já oferece suporte a arrow functions.
+No Google Chrome, você precisará habilita-lo:</p>
+<ul>
+<li>- Habilite: Vá até &quot;about:flags&quot;, e habilite a opção &quot;Experimental JavaScript&quot;</li>
+<li>- Use sempre em uma função em strict mode, por tanto, para rodar no console do Google Chrome, use:</li>
+</ul>
+<pre><code class="lang-javascript">(function(){
+&quot;use strict&quot;;
+// use arrow functions aqui
+}());
+</code></pre>
+<p>Com tempo, felizmente, mais browsers suportarão as features do ES6.
+Agora que tudo está preparado, vamos começar!</p>
+<h2 id="um-novo-token">Um novo Token</h2>
+<p>Um novo Token foi adicionado ao ES6, e é chamado &quot;fat arrow&quot;, representado por:</p>
+<pre><code class="lang-javascript">=&gt;
+</code></pre>
+<h2 id="a-nova-sintaxe">A nova sintaxe</h2>
+<p>COm este novo token, entra uma nova sintaxe:</p>
+<pre><code class="lang-javascript">param =&gt; expression
+</code></pre>
+<p>Sintaxe a qual podemos usar algumas variações, de acordo com o número de statements na expressão, e número de parâmetros passados para a função:</p>
+<pre><code class="lang-javascript">// single param, single statement
+param =&gt; expression;
+
+// multiple params, single statement
+(param [, param]) =&gt; expression;
+
+// single param, multiple statements
+param =&gt; {
+statements;
+}
+
+// multiple params, multiple statements
+([param] [, param]) =&gt; {
+statements
+}
+
+// with no params, single statement
+() =&gt; expression;
+
+// with no params
+() =&gt; {
+statements;
+}
+
+// one statement, returning an object
+([param]) =&gt; ({ key: value });
+</code></pre>
+<h2 id="como-funciona">Como funciona</h2>
+<p>Se fossemos &quot;traduzir&quot; arrow functions para algo que já usamos hoje em dia, seria algo assim:</p>
+<pre><code class="lang-javascript">// esta função
+var func = function (param) {
+return param.split(&quot; &quot;);
+}
+
+// se tornaria:
+var func= param =&gt; param.split(&quot; &quot;);
+</code></pre>
+<p>Isto quer dizer que esta sintaxe realmente retorna uma nova função, com os parâmetros e statements.
+Ou seja, podemos chamar esta função do mesmo modo que já estamos acostumados:</p>
+<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // retorna [&quot;Felipe&quot;, &quot;Moura&quot;]
+</code></pre>
+<h2 id="immediately-invoked-function-expression-iife-">Immediately-invoked function expression (IIFE)</h2>
+<p>Sim, você pode invocar funções imediatamente, já que elas são na verdade, expressões.</p>
+<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
+</code></pre>
+<p>Uma função será criada. Esta função recebe o parâmetro &quot;x&quot;, e retorna &quot;x * 2&quot;, então, é imediatamente executada passando o valor &quot;3&quot; como parâmetro.</p>
+<p>Caso tenha mais statements ou parâmetros:</p>
+<pre><code class="lang-javascript">( (x, y) =&gt; {
+x= x * 2;
+return x + y;
+})( 3, &quot;A&quot; ); // &quot;6A&quot;
+</code></pre>
+<h2 id="considera-es-relevantes">Considerações Relevantes</h2>
+<p>Considerando:</p>
+<pre><code class="lang-javascript">func = x =&gt; {
+return x++;
+};
+</code></pre>
+<p>Podemos apontar algumas considerações relevantes:</p>
+<p><strong>- <em>arguments</em> funciona exatamente como esperado</strong></p>
+<pre><code class="lang-javascript">console.log(arguments);
+</code></pre>
+<p><strong>- <em>typeof</em> e <em>instanceof</em> também</strong></p>
+<pre><code class="lang-javascript">func instanceof Function; // true
+typeof func; // function
+func.constructor == Function; // true
+</code></pre>
+<p><strong>- Usando parênteses internos, como sugerido pelo jsLint, NÃO funciona</strong></p>
+<pre><code class="lang-javascript">// funciona, como sugerido pelo JSLint
+(function (x, y){
+x= x * 2;
+return x + y;
+} (3, &quot;B&quot;) );
+
+// não funciona
+( (x, y) =&gt; {
+x= x * 2;
+return x + y;
+} ( 3, &quot;A&quot; ) );
+
+// mas funcionaria, se a última linha fosse
+// })(3, &quot;A&quot;);
+</code></pre>
+<p><strong>- Apesar de ser uma função, não funciona como um Constructor</strong></p>
+<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
+</code></pre>
+<p><strong>- Não tem um prototype</strong></p>
+<pre><code class="lang-javascript">func.prototype; // undefined
+</code></pre>
+<h2 id="escopo">Escopo</h2>
+<p>O <em>this</em> no escopo de arrow functions funciona de uma forma diferente.
+No modo como estamos acostumados, <em>this</em> pode referenciar-se a: <em>window</em>(se for acessado globalmente), <em>undefined</em>(se acessado globalmente, em strict mode), uma <em>instancia</em>(se em um construtor), um <em>objeto</em>(se for um método ou função dentro de um objeto ou instância) ou em um <em>.bind/.apply</em>. Pode ser também um <em>DOMElement</em>, por exemplo, quando usado em um addEventListener.
+Algumas vezes, isto incomoda bastante, ou pode até mesmo nos pegar de surpresa e causar algum problema!
+Além disso, <em>this</em> é referenciado como <em>&quot;scope-by-flow&quot;</em> (fluxo-escopo). O que quero dizer com isto?</p>
+<p>Vejamos primero, como <em>this</em> se comporta em diferentes situações:</p>
+<p>Em um EventListener:</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
+console.log(this); // o próprio HTMLBodyElement
+});
+</code></pre>
+<p>Em instâncias:</p>
+<pre><code class="lang-javascript">function Person () {
+let fullName = null;
+this.getName = function () {
+return fullName;
+};
+this.setName = function (name) {
+fullName = name;
+return this;
+};
+}
+
+let jon = new Person();
+jon.setName(&quot;Jon Doe&quot;);
+console.log(jon.getName()); // &quot;Jon Doe&quot;
+</code></pre>
+<p>Nesta situação em particular, uma vez que <em>Person.setName</em> é &quot;chainable&quot;(retornando a própria instancia), poderíamos também usar assim:</p>
+<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
+.getName(); // &quot;Jon Doe&quot;
+</code></pre>
+<p>Em um objeto:</p>
+<pre><code class="lang-javascript">let obj = {
+foo: &quot;bar&quot;,
+getIt: function () {
+return this.foo;
+}
+};
+
+console.log( obj.getIt() ); // &quot;bar&quot;
+</code></pre>
+<p>Mas então, vem a situação que citei acima, do formato escopo/fluxo.
+Se tanto o fluxo ou o escopo mudam, <em>this</em> muda com ele.\</p>
+<pre><code class="lang-javascript">function Student(data){
+
+this.name = data.name || &quot;Jon Doe&quot;;
+this.age = data.age&gt;=0 ? data.age : -1;
+
+this.getInfo = function () {
+return this.name + &quot;, &quot; + this.age;
+};
+
+this.sayHi = function () {
+window.setTimeout( function () {
+console.log( this );
+}, 100 );
+}
+
+}
+
+let mary = new Student({
+name: &quot;Mary Lou&quot;,
+age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// window
+</code></pre>
+<p>Uma vez que <em>setTimeout</em> muda o fluxo da execução, a referência ao <em>this</em> se torna a referência &quot;global&quot;, neste caso, <em>window</em>, ou <em>undefined</em> se em &quot;strict mode&quot;.
+Por causa disto, acabamos usando algumas técnicas como o uso de variáveis como &quot;self&quot;, &quot;that&quot;, ou alguma coisa assim, ou tendo que usar &quot;.bind&quot;.</p>
+<p>Mas não se preocupe, arrow functions estão aqui para ajudar!
+Com arrow functions, o escopo é mantido com ela, de onde ela foi chamada.</p>
+<p>Vejamos o MESMO exemplo acima, mas usando arrow function, passada para a chamada do _setTimeout.</p>
+<pre><code class="lang-javascript">function Student(data){
+
+this.name = data.name || &quot;Jon Doe&quot;;
+this.age = data.age&gt;=0 ? data.age : -1;
+
+this.getInfo = function () {
+return this.name + &quot;, &quot; + this.age;
+};
+
+this.sayHi = function () {
+window.setTimeout( ()=&gt;{ // a única diferença está aqui
+console.log( this );
+}, 100 );
+}
+
+}
+
+let mary = new Student({
+name: &quot;Mary Lou&quot;,
+age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
+</code></pre>
+<h2 id="abordagens-teis-e-interessantes">Abordagens úteis e interessantes</h2>
+<p>Já que é muito fácil criar arrow functions, e seus escopos funcionam como o mensionado, podemosusa-las de várias formas.</p>
+<p>Por exemplo, podemos usa-las diretamente na chamada de um forEach, em uma Array:</p>
+<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.forEach(vowel =&gt; {
+console.log(vowel);
+});
+</code></pre>
+<p>Ou em um Array.map:</p>
+<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.map(vogal =&gt; {
+return vogal.toUpperCase();
+});
+// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
+</code></pre>
+<p>Ou em uma função recursiva:</p>
+<pre><code class="lang-javascript">var fatorial = (n) =&gt; {
+if(n==0) {
+return 1;
+}
+return (n * fatorial (n-1) );
+}
+
+fatorial(6); // 720
+</code></pre>
+<p>Também, digamos, ordenando uma Array de tráz para frente:</p>
+<pre><code class="lang-javascript">let arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
+</code></pre>
+<p>Ou em listeners:</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, body=&gt;console.log(body));
+</code></pre>
+<h2 id="links-teis">Links úteis</h2>
+<p>Aqui, pegue alguns links úteis para dar uma olhada:</p>
+<ul>
+<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions na documentação da MDN</a></li>
+<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki sobre Arrow Function</a></li>
+<li>- <a href="https://github.com/esnext">ESNext</a></li>
+<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
+<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
+<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
+<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
+</ul>
+<h2 id="conclus-o">Conclusão</h2>
+<p>Mesmo que Arrow Functions tornem seu código um popuco mais complicado de ler(mas que você acaba se acostumando rápido), é uma grande solução para referências ao <em>this</em> em escopos e fluxos diferentes, um modo rápido para colocar as coisas para funcionar, e em parceria com o keyword &quot;let&quot;, levará nosso JavaScript para um próximo nível!
+Experimente você mesmo, crie alguns testes, rode em seus browsers e deixe alguma solução ou uso interessante que encontrou, nos comentários!
+Espero que tenha apreciado este artigo tanto quanto apreciará utilizar arrow functions em um futuro muito próximo!</p>
+
+                    </section>
+                </article>
+                <!--
+                <section class="post__author">
+                    <figure class="author">
+                        <img class="author__photo" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62" />
+                        <figcaption>
+                            <a class="author__link" href="http://twitter.com/felipenmoura">@Jaydson</a>
+                        </figcaption>
+                    </figure>
+                    <section class="author__description">
+                        FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+                    </section>
+                </section>
+                -->
+            </li>
+            
+            <li class="post">
+                <span class="post__date">
                     Fri Aug 29 2014 00:04:03 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/08/what-is-next-for-javascript">
+                    <a class="post__title" href="/pt-br/2014/10/what-is-next-for-javascript">
                         O que podemos esperar do novo JavaScript
                     </a>
                     <section class="post__excerpt">
@@ -99,7 +391,7 @@
                     Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/08/what-you-need-to-know-about-block-scope-let">
+                    <a class="post__title" href="/pt-br/2014/10/what-you-need-to-know-about-block-scope-let">
                         O que você precisa saber sobre block scope - let
                     </a>
                     <section class="post__excerpt">
@@ -159,7 +451,7 @@ try {
 <p>Você pode usar <em>let</em> hoje*<br>Olhe a excelente tabela ES6 feita pelo Kangax &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no <a href="https://github.com/google/traceur-compiler">Traceur</a>.<br>Você pode brincar com ES6 <em>let</em> no Firefox devtools:  </p>
 <p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
 <ul>
-<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
+<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (do post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
 </ul>
 <h2 id="conclus-o">Conclusão</h2>
 <p>Apesar de simples, declarar variáveis no JavaScript pode causar dor de cabeça em iniciantes na linguagem.<br>Com o <em>let</em>, declarar variáveis fica muito mais intuítivo e coerente com uma linguagem baseada em C.<br>O uso do <em>var</em> deve ser descontinuado, e apenas o <em>let</em> deve existir no futuro.<br>Não existe o comportamento de <em>hoisting</em> para variáveis declaradas com <em>let</em>.  </p>
@@ -188,7 +480,7 @@ try {
                     Fri Jul 11 2014 04:18:47 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/07/a-new-syntax-for-modules-in-es6">
+                    <a class="post__title" href="/pt-br/2014/10/a-new-syntax-for-modules-in-es6">
                         Uma nova sintaxe para módulos na ES6
                     </a>
                     <section class="post__excerpt">
@@ -217,7 +509,7 @@ try {
                     Thu Jul 03 2014 22:08:30 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/07/es6-interview-with-david-herman">
+                    <a class="post__title" href="/pt-br/2014/10/es6-interview-with-david-herman">
                         Entrevista sobre ES6 com o David Herman
                     </a>
                     <section class="post__excerpt">
@@ -245,7 +537,7 @@ try {
                     Tue May 27 2014 04:18:47 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/05/practical-workflows-es6-modules">
+                    <a class="post__title" href="/pt-br/2014/10/practical-workflows-es6-modules">
                         Workflows para os módulos da ES6, Fluent 2014
                     </a>
                     <section class="post__excerpt">
@@ -274,7 +566,7 @@ Ele também escreveu um artigo sonre isso. Se você está interessado neste assu
                     Tue May 27 2014 03:18:47 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era">
+                    <a class="post__title" href="/pt-br/2014/10/ecmascript-6-a-better-javascript-for-the-ambient-computing-era">
                         ECMAScript 6 - Um melhor JavaScript para a Ambient Computing Era
                     </a>
                     <section class="post__excerpt">
@@ -302,7 +594,7 @@ Ele também escreveu um artigo sonre isso. Se você está interessado neste assu
                     Tue May 27 2014 02:18:47 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/05/ecmascript-6-the-future-is-here">
+                    <a class="post__title" href="/pt-br/2014/10/ecmascript-6-the-future-is-here">
                         ECMAScript 6 - O futuro está aqui
                     </a>
                     <section class="post__excerpt">
@@ -330,7 +622,7 @@ Ele também escreveu um artigo sonre isso. Se você está interessado neste assu
                     Sat May 17 2014 05:18:47 GMT-0300 (BRT)
                 </span>
                 <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/05/hello-world">
+                    <a class="post__title" href="/pt-br/2014/10/hello-world">
                         Hello World
                     </a>
                     <section class="post__excerpt">
