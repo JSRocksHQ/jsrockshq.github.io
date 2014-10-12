@@ -13,17 +13,17 @@ authorDescription: FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curat
 authorPicture: https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62
 -->
 
-Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention!
-It is not just awesome, it's also great to work with scopes, shortcuts some tecniques we are used to use nowadays, shrink number of lines of code...
-But...it may be a little harder to read if you are not used to the way it works.
+Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
+It is not just awesome, it's also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
+But it may be a little harder to read if you are not used to the way it works.
 So, let's take a look at it, right now!
 
 ## Making it work
 
 To study and try it for yourself, you can simply copy some of the examples and paste them on your browser's console.
-By now, you can use the Firefox(22+) Developer Tools, which already offers support to arrow functions, or on Google Chrome.
-But to use it in your chrome, you will have to:
-- \- Enable it: Go to in about:flags, and enable the "Experimental JavaScript" flag
+By now, you can use the Firefox (22+) Developer Tools, which already supports arrow functions, or on Google Chrome.
+But to use it in your Chrome, you will have to:
+- \- Enable it: Open about:flags in the address bar, and enable the "Experimental JavaScript" flag
 - \- Use it always in a function in "use strict" mode, so, to run it on Google Chrome's console:
 
 ```javascript
@@ -33,12 +33,12 @@ But to use it in your chrome, you will have to:
 }());
 ```
 
-With time, fortunatelly, more browsers will support the new features in ES6.
-Now that it's all setup, let's dive deep into it!
+With time, fortunately, more browsers will support the new ES6 features.
+Now that it's all set up, let's dive deep into it!
 
 ## A New Token
 
-A new token's been added to ES6, and it is called "fat arrow", represented by
+A new token has been added to ES6, and it is called "fat arrow", represented by
 ```javascript
 =>
 ```
@@ -73,7 +73,7 @@ param => {
 // with no params, single statement
 () => expression;
 
-// with no params
+// with no params, multiple statements
 () => {
     statements;
 }
@@ -94,13 +94,13 @@ var func = function (param) {
 }
 
 // would become:
-var func= param => param.split(" ");
+var func = param => param.split(" ");
 
 ```
 
 That means this syntax actually returns a new function, with the given statements and params.
 
-Therefore, we can call the same way we are used to:
+Therefore, we can call the function the same way we are already used to:
 
 ```javascript
 func("Felipe Moura"); // returns ["Felipe", "Moura"]
@@ -108,20 +108,20 @@ func("Felipe Moura"); // returns ["Felipe", "Moura"]
 
 ## Immediately-invoked function expression (IIFE)
 
-Yes, you can invoke such functions emediately, once they are, indeed, expressions.
+Yes, you can invoke such functions immediately, as they are, indeed, expressions.
 Like so:
 
 ```javascript
 ( x => x * 2 )( 3 ); // 6
 ```
 
-It creates a function, which receives the argument "x", and return "x * 2", then, it immidiatelly execute this expression, passing the value "3" as argument.
+It creates a function, which receives the argument `x` and returns `x * 2`, then it immediately executes this expression, passing the value `3` as argument.
 
 In case you have more statements to execute, or more params:
 
 ```javascript
 ( (x, y) => {
-    x= x * 2;
+    x = x * 2;
     return x + y;
 })( 3, "A" ); // "6A"
 
@@ -132,19 +132,19 @@ In case you have more statements to execute, or more params:
 Considering:
 
 ```javascript
-func = x => {
+var func = x => {
     return x++;
 };
 ```
 
 We may point some relevant considerations:
 
-**- _arguments_ works just as expected**
+**- `arguments` works just as expected**
 ```javascript
 console.log(arguments);
 ```
 
-**- _typeof_ and _instanceof_ work just fine as well**
+**- `typeof` and `instanceof` work just fine as well**
 ```javascript
 func instanceof Function; // true
 typeof func; // function
@@ -153,13 +153,13 @@ func.constructor == Function; // true
 
 **- Using parentheses inside, as suggested by jsLint will not work**
 ```javascript
-// works, as suggested by JSLint
+// works with regular function syntax, as suggested by JSLint
 (function (x, y){
     x= x * 2;
     return x + y;
 } (3, "B") );
 
-// doesn't work
+// doesn't work with Arrow Functions
 ( (x, y) => {
     x= x * 2;
     return x + y;
@@ -183,12 +183,12 @@ func.prototype; // undefined
 
 ## Scope
 
-The _this_ in arrow functions' scopes works a little bit different, as well.
-The way we are used to it, the _this_ keyword may reference to: _window_(if accessed globally, not in strict mode), _undefined_(if accessed globally, in strict mode), an _instance_(if in a constructor), an _object_(if in a method or function inside an object or instance) or a _binded/applied value_. It may also be a _DOMElement_, for example, in cases when you are using addEventListener.
+The `this` in arrow functions' scopes works a little bit different, as well.
+The way we are used to it, the `this` keyword may reference to: `window` (if accessed globally, not in strict mode), `undefined` (if accessed globally, in strict mode), an _instance_ (if in a constructor), an _object_ (if in a method or function inside an object or instance) or a _binded/applied value_. It may also be a `DOMElement`, for example, in cases when you are using addEventListener. <!-- TODO "accessed globally" needs better wording -->
 This might be annoying some times, or even tricky, causing you some trouble!
 Besides, it is referenced as _"scope-by-flow"_. What do I mean by saying that?
 
-Let's see, firstly, how the _this_ token behaves in different situations:
+Let's see, firstly, how the `this` token behaves in different situations:
 
 In an EventListener:
 ```javascript
@@ -200,13 +200,13 @@ document.body.addEventListener('click', function(evt){
 In instances:
 ```javascript
 function Person () {
-    
+
     let fullName = null;
-    
+
     this.getName = function () {
         return fullName;
     };
-    
+
     this.setName = function (name) {
         fullName = name;
         return this;
@@ -218,7 +218,7 @@ jon.setName("Jon Doe");
 console.log(jon.getName()); // "Jon Doe"
 ```
 
-In this particular case, once _Person.setName_ is "chainable"(by returning itself), we could also use it like this:
+In this particular case, once `Person.setName` is "chainable" (by returning itself), we could also use it like this:
 ```javascript
 jon.setName("Jon Doe")
    .getName(); // "Jon Doe"
@@ -237,7 +237,7 @@ console.log( obj.getIt() ); // "bar"
 ```
 
 But then, comes the "scope-by-flow" I mentioned.
-If any the flow or scope changes, the _this_ reference changes as well.
+If either the flow or scope changes, the `this` reference changes as well.
 
 ```javascript
 function Student(data){
@@ -268,13 +268,13 @@ mary.sayHi();
 
 ```
 
-Once _setTimeout_ changes the execution flow, the reference to _this_ becomes the "global" reference, in this case, _window_, or _undefined_ in strict modes.
-Due to this, we end up using techniques like the use of variables like "self", "that" or something like it, or having to use ".bind".
+Once `setTimeout` changes the execution flow, the `this` reference becomes the global object (in this case, `window`), or `undefined` in strict mode.
+Due to this, we end up using techniques like the use of variables like "self", "that" or something like it, or having to use the `.bind` method.
 
 But don't worry, arrow functions are here to help!
 With arrow functions, the scope is kept with it, from where it was called.
 
-Let's see the SAME example as before, but using an arrow function, passed to the _setTimeout_ call.
+Let's see the **same** example as before, but using an arrow function, passed to the `setTimeout` call.
 ```javascript
 function Student(data){
 
@@ -306,19 +306,19 @@ mary.sayHi();
 
 ## Interesting and useful usage
 
-Once it is very easy to create arrow functions, and their scopes work as mentioned before,we can use it in a variety of ways.
+As it is very easy to create arrow functions, and their scopes work as mentioned before, we can use it in a variety of ways.
 
-For example, in can use it straight in a forEach call in an Array:
+For example, it can be used directly in an `Array#forEach` call:
 ```javascript
-var arr= ['a', 'e', 'i', 'o', 'u'];
+var arr = ['a', 'e', 'i', 'o', 'u'];
 arr.forEach(vowel => {
     console.log(vowel);
 });
 ```
 
-Or in an Array.map:
+Or in an `Array#map`:
 ```javascript
-var arr= ['a', 'e', 'i', 'o', 'u'];
+var arr = ['a', 'e', 'i', 'o', 'u'];
 arr.map(vowel => {
     return vowel.toUpperCase();
 });
@@ -340,7 +340,7 @@ factorial(6); // 720
 
 Also, let's say, sorting backwards an array:
 ```javascript
-let arr= ['a', 'e', 'i', 'o', 'u'];
+let arr = ['a', 'e', 'i', 'o', 'u'];
 arr.sort( (a, b)=> a < b? 1: -1 );
 ```
 
@@ -349,9 +349,11 @@ Or maybe in event listeners:
 document.body.addEventListener('click', body=>console.log(body));
 ```
 
+<!-- TODO above example doesn't make much sense, the `body` parameter receives an event object -->
+
 ## Useful links
 
-Here, take a list of interesting, useful links you can take a look at:
+Here is a list of interesting, useful links you can take a look at:
 - \- [Arrow Functions in MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 - \- [TC39 Wiki about Arrow Function](http://tc39wiki.calculist.org/es6/arrow-functions/)
 - \- [ESNext](https://github.com/esnext)
@@ -362,6 +364,6 @@ Here, take a list of interesting, useful links you can take a look at:
 
 ## Conclusion
 
-Although arrow functions may make your source code a little bit less readable(and you can get used to it pretty fast), it is indeed, a great solution for scopable references to the _this_ token, a quick way to get things working, and, in association with the "let" keyword, will take our JavaScript, deffinetly to the next level!
-Try and use it, create some tests, run it in your browsers and leave in the comments, interesting solutions and uses you found to arrow functions!
+Although arrow functions may make your source code a little bit less readable (and you can get used to it pretty fast), it is, indeed, a great solution to capture the outer scope's `this` value, a quick way to get things working and, in association with the `let` keyword, will definitely take our JavaScript to the next level!
+Try and use it, create some tests, run it in your browsers and leave comments with interesting solutions and uses you've found to arrow functions!
 I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.
