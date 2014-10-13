@@ -6,9 +6,13 @@ comments: true
 published: true
 keywords: talks
 description: A talk by Dr. Axel Rauschmayer about what's next for JavaScript
-categories: talks
+categories: talks, videos
 -->
 If you're interested in ES6 you must follow [Dr. Axel Rauschmayer](https://twitter.com/rauschma).  
 He maintains the awesome [2ality](http://www.2ality.com/) blog and writes a lot of good stuff around ES6.  
 In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  
-<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>  
+
+[UPDATE October, 2014]  
+The video is already online! (Thanks [Ciro Costa](https://github.com/cirocosta) for point this).  
+<iframe width="560" height="315" src="//www.youtube.com/embed/G21rdWfa_as" frameborder="0" allowfullscreen></iframe>

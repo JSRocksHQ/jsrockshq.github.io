@@ -6,7 +6,7 @@ comments: true
 published: true
 keywords: JavaScript, ES6, talks
 description: talk about es6
-categories: talks
+categories: talks, videos
 authorName: Jaydson
 authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
@@ -21,6 +21,10 @@ A little descriptions about his talk (by him):
 "We've entered the Ambient Computing Era and JavaScript is its dominant programing language, But a new computing era needs a new and better JavaScript. It's called ECMAScript 6 and it's about to become the new JavaScript standard. Why do we need it? Why did it take so long? What's in it? When can you use it? Answers will be given."
 
 As soon as this talk recording is available, we'll post it here.
-By now, follows the slides.
+By now, follows the slides.  
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/34230355" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/allenwb/wdc14-allebwb" title="ECMAScript 6: A Better JavaScript for the Ambient Computing Era" target="_blank">ECMAScript 6: A Better JavaScript for the Ambient Computing Era</a> </strong> from <strong><a href="http://www.slideshare.net/allenwb" target="_blank">Allen Wirfs-Brock</a></strong> </div>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/34230355" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/allenwb/wdc14-allebwb" title="ECMAScript 6: A Better JavaScript for the Ambient Computing Era" target="_blank">ECMAScript 6: A Better JavaScript for the Ambient Computing Era</a> </strong> from <strong><a href="http://www.slideshare.net/allenwb" target="_blank">Allen Wirfs-Brock</a></strong> </div>  
+
+[UPDATE October, 2014]  
+The video is already online! (Thanks [Ciro Costa](https://github.com/cirocosta) for point this).  
+<iframe width="560" height="315" src="//www.youtube.com/embed/ZGY8Cktn6W4" frameborder="0" allowfullscreen></iframe>
