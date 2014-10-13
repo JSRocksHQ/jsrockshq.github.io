@@ -6,13 +6,13 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 01 Oct 2014 14:14:55 GMT</pubDate>
+        <pubDate>Mon, 13 Oct 2014 04:16:54 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Arrow Functions and their scope</title>
-            <link>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</link>
+            <link>http://es6rocks.com/2014/09/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention!
 It is not just awesome, it&#39;s also great to work with scopes, shortcuts some tecniques we are used to use nowadays, shrink number of lines of code...
 But...it may be a little harder to read if you are not used to the way it works.
@@ -283,21 +283,21 @@ Try and use it, create some tests, run it in your browsers and leave in the comm
 I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.</p>
 ]]></description>
             <pubDate>Tue, 23 Sep 2014 04:01:41 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</guid>
+            <guid>http://es6rocks.com/2014/09/arrow-functions-and-their-scope</guid>
         </item>
         
         <item>
             <title>What's next for JavaScript</title>
-            <link>http://es6rocks.com/2014/10/what-is-next-for-javascript</link>
+            <link>http://es6rocks.com/2014/08/what-is-next-for-javascript</link>
             <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>He maintains the awesome <a href="http://www.2ality.com/">2ality</a> blog and writes a lot of good stuff around ES6.<br>In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  </p>
 <script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/what-is-next-for-javascript</guid>
+            <guid>http://es6rocks.com/2014/08/what-is-next-for-javascript</guid>
         </item>
         
         <item>
             <title>What you need to know about block scope - let</title>
-            <link>http://es6rocks.com/2014/10/what-you-need-to-know-about-block-scope-let</link>
+            <link>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</link>
             <description><![CDATA[<p>Variables declaration in any programming language are something pretty basic.<br>Regardless the language, understanding how variable scope works is essential to write any kind of program.<br>In Python, for example, as well as in most languages​​, there are two scopes: Local and Global.<br>Variables defined at the top of the file, without identation, are global scope variables.<br>Variables declared inside the function body are considered as local scope.<br>So far, everything is very similar. In JavaScript, the behavior is quite similar.<br>Let&#39;s see one example in both languages:  </p>
 <pre><code class="lang-python"># Python
 x = 1 # global scope
@@ -359,63 +359,63 @@ try {
 <p>Although simple, declaring variables in JavaScript can cause headache for beginners in the language.<br>With <em>let</em>, to declare variables is much more intuitive and consistent with a C-based language.<br>The use of <em>var</em> should be discontinued, and only the <em>let</em> must exist in the future.<br>There&#39;s no <em>hoisting</em> behavior for variables declared with <em>let</em>.  </p>
 ]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/what-you-need-to-know-about-block-scope-let</guid>
+            <guid>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
         <item>
             <title>A new syntax for modules in ES6</title>
-            <link>http://es6rocks.com/2014/10/a-new-syntax-for-modules-in-es6</link>
+            <link>http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6</link>
             <description><![CDATA[<p>TC39 - ECMAScript group is finishing the sixth version of ECMAScript specification. The <a href="http://www.2ality.com/2014/06/es6-schedule.html">group schedule</a> points to next June as the release date. By now, no significant differences may appear. It is time to deepen your knowledge into the subject.<br><!-- more -->
 This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like <a href="http://jsmodules.io">JavaScript Modules</a>, by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.</p>
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/a-new-syntax-for-modules-in-es6</guid>
+            <guid>http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6</guid>
         </item>
         
         <item>
             <title>ES6 interview with David Herman</title>
-            <link>http://es6rocks.com/2014/10/es6-interview-with-david-herman</link>
+            <link>http://es6rocks.com/2014/07/es6-interview-with-david-herman</link>
             <description><![CDATA[<p>We did a nice interview with <a href="https://twitter.com/littlecalculist">David Herman</a> about his thoughts about ES6.
 David is the principal researcher and founder of Mozilla Research, where he works to expand the foundations of the Open Web. He participates in a number of Web platform projects, including: <a href="http://taskjs.org/">task.js</a>, <a href="http://sweetjs.org/">sweet.js</a>, <a href="http://asmjs.org/">asm.js</a>, <a href="http://www.rust-lang.org/">Rust</a>, <a href="https://github.com/mozilla/servo/">Servo</a> and Parallel JS.</p>
 ]]></description>
             <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/es6-interview-with-david-herman</guid>
+            <guid>http://es6rocks.com/2014/07/es6-interview-with-david-herman</guid>
         </item>
         
         <item>
             <title>Practical Workflows for ES6 Modules, Fluent 2014</title>
-            <link>http://es6rocks.com/2014/10/practical-workflows-es6-modules</link>
+            <link>http://es6rocks.com/2014/05/practical-workflows-es6-modules</link>
             <description><![CDATA[<p><a href="https://twitter.com/guybedford">Guy Bedford</a> gave an awesome talk about a practical workflows with ES6 modules last month at Fluent Conf.<br>Also, he write up an article about it. If you are interested on this subject, you must read the full article.  </p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/practical-workflows-es6-modules</guid>
+            <guid>http://es6rocks.com/2014/05/practical-workflows-es6-modules</guid>
         </item>
         
         <item>
             <title>ECMAScript 6 - A Better JavaScript for the Ambient Computing Era</title>
-            <link>http://es6rocks.com/2014/10/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
+            <link>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
             <description><![CDATA[<p>Allen Wirfs-Brock (<a href="https://twitter.com/awbjs">awbjs</a> on Twitter) is a TC39 member. Actually, he is the &quot;Project Editor of the ECMAScript Language Specification&quot;.</p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
+            <guid>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
         </item>
         
         <item>
             <title>ECMAScript 6 - The future is here</title>
-            <link>http://es6rocks.com/2014/10/ecmascript-6-the-future-is-here</link>
+            <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
             <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/ecmascript-6-the-future-is-here</guid>
+            <guid>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</guid>
         </item>
         
         <item>
             <title>Hello World</title>
-            <link>http://es6rocks.com/2014/10/hello-world</link>
+            <link>http://es6rocks.com/2014/05/hello-world</link>
             <description><![CDATA[<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.  </p>
 ]]></description>
             <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/hello-world</guid>
+            <guid>http://es6rocks.com/2014/05/hello-world</guid>
         </item>
         
     </channel>
