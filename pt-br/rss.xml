@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Mon, 13 Oct 2014 05:50:41 GMT</pubDate>
+        <pubDate>Mon, 13 Oct 2014 06:01:14 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -287,7 +287,10 @@ Espero que tenha apreciado este artigo tanto quanto apreciará utilizar arrow fu
             <title>O que podemos esperar do novo JavaScript</title>
             <link>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</link>
             <description><![CDATA[<p>Se você está interessado em ES6, você deve seguir o <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>Ele mantêm o incrível blog <a href="http://www.2ality.com/">2ality</a> e escreve uma série de coisas legais sobre ES6.<br>Nessa sua talk ele fala sobre várias novas features da ES6 e mostra o que podemos esperar do futuro.  </p>
-<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>]]></description>
+<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>  
+
+<p>[UPDATE October, 2014]<br>The video is already online! (Thanks <a href="https://github.com/cirocosta">Ciro Costa</a> for point this).  </p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/G21rdWfa_as" frameborder="0" allowfullscreen></iframe>]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</guid>
         </item>
