@@ -1,7 +1,7 @@
 <!--
 layout: post
 title: Arrow Functions and their scope
-date: 2014-10-23T04:01:41.369Z
+date: 2014-10-01T04:01:41.369Z
 comments: true
 published: true
 keywords: arrow functions, es6, escope
