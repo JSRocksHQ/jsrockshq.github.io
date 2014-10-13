@@ -514,11 +514,6 @@ a:focus {
     max-width: 6rem;
   }
 }
-code {
-  background: #f5f2f0;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  padding: 0 5px;
-}
 .postContent__title {
   margin: 1em 0 2em;
   display: flex;
