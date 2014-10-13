@@ -6,13 +6,13 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Mon, 13 Oct 2014 05:41:53 GMT</pubDate>
+        <pubDate>Mon, 13 Oct 2014 05:50:41 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Arrow Functions and their scope</title>
-            <link>http://es6rocks.com/2014/09/arrow-functions-and-their-scope</link>
+            <link>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
 It is not just awesome, it&#39;s also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
 But it may be a little harder to read if you are not used to the way it works.
@@ -284,8 +284,8 @@ arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
 Try and use it, create some tests, run it in your browsers and leave comments with interesting solutions and uses you&#39;ve found to arrow functions!
 I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.</p>
 ]]></description>
-            <pubDate>Tue, 23 Sep 2014 04:01:41 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/09/arrow-functions-and-their-scope</guid>
+            <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</guid>
         </item>
         
         <item>
