@@ -6,22 +6,295 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 10 Sep 2014 02:21:11 GMT</pubDate>
+        <pubDate>Wed, 01 Oct 2014 14:14:55 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Arrow Functions and their scope</title>
+            <link>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</link>
+            <description><![CDATA[<h1 id="arrow-functions-e-seu-escopo">Arrow Functions e seu escopo</h1>
+<p>Entre as tantas novas features presentes no ES6, Arrow Functions(ou Fat Arrow Functions), é uma que merece boa atenção!
+É muito legal, ótima para trabalhar com escopos, serve como &quot;atalho&quot; para algumas tecnicas que utilizamos hoje, diminui o código...
+Mas...pode ser um pouco mais difícil de ler caso não esteja a par de como ela funciona.
+Então, vamos mergulhar no assunto!</p>
+<h2 id="come-ando">Começando</h2>
+<p>Para estudar e tester por você mesmo, você pode simplesmente copiar alguns dos exemplos deste artigo, e colar no console de seu browser.
+Até o momento, você pode usar o Firefox(22+) Developer Tools, que já oferece suporte a arrow functions.
+No Google Chrome, você precisará habilita-lo:</p>
+<ul>
+<li>- Habilite: Vá até &quot;about:flags&quot;, e habilite a opção &quot;Experimental JavaScript&quot;</li>
+<li>- Use sempre em uma função em strict mode, por tanto, para rodar no console do Google Chrome, use:</li>
+</ul>
+<pre><code class="lang-javascript">(function(){
+&quot;use strict&quot;;
+// use arrow functions aqui
+}());
+</code></pre>
+<p>Com tempo, felizmente, mais browsers suportarão as features do ES6.
+Agora que tudo está preparado, vamos começar!</p>
+<h2 id="um-novo-token">Um novo Token</h2>
+<p>Um novo Token foi adicionado ao ES6, e é chamado &quot;fat arrow&quot;, representado por:</p>
+<pre><code class="lang-javascript">=&gt;
+</code></pre>
+<h2 id="a-nova-sintaxe">A nova sintaxe</h2>
+<p>COm este novo token, entra uma nova sintaxe:</p>
+<pre><code class="lang-javascript">param =&gt; expression
+</code></pre>
+<p>Sintaxe a qual podemos usar algumas variações, de acordo com o número de statements na expressão, e número de parâmetros passados para a função:</p>
+<pre><code class="lang-javascript">// single param, single statement
+param =&gt; expression;
+
+// multiple params, single statement
+(param [, param]) =&gt; expression;
+
+// single param, multiple statements
+param =&gt; {
+statements;
+}
+
+// multiple params, multiple statements
+([param] [, param]) =&gt; {
+statements
+}
+
+// with no params, single statement
+() =&gt; expression;
+
+// with no params
+() =&gt; {
+statements;
+}
+
+// one statement, returning an object
+([param]) =&gt; ({ key: value });
+</code></pre>
+<h2 id="como-funciona">Como funciona</h2>
+<p>Se fossemos &quot;traduzir&quot; arrow functions para algo que já usamos hoje em dia, seria algo assim:</p>
+<pre><code class="lang-javascript">// esta função
+var func = function (param) {
+return param.split(&quot; &quot;);
+}
+
+// se tornaria:
+var func= param =&gt; param.split(&quot; &quot;);
+</code></pre>
+<p>Isto quer dizer que esta sintaxe realmente retorna uma nova função, com os parâmetros e statements.
+Ou seja, podemos chamar esta função do mesmo modo que já estamos acostumados:</p>
+<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // retorna [&quot;Felipe&quot;, &quot;Moura&quot;]
+</code></pre>
+<h2 id="immediately-invoked-function-expression-iife-">Immediately-invoked function expression (IIFE)</h2>
+<p>Sim, você pode invocar funções imediatamente, já que elas são na verdade, expressões.</p>
+<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
+</code></pre>
+<p>Uma função será criada. Esta função recebe o parâmetro &quot;x&quot;, e retorna &quot;x * 2&quot;, então, é imediatamente executada passando o valor &quot;3&quot; como parâmetro.</p>
+<p>Caso tenha mais statements ou parâmetros:</p>
+<pre><code class="lang-javascript">( (x, y) =&gt; {
+x= x * 2;
+return x + y;
+})( 3, &quot;A&quot; ); // &quot;6A&quot;
+</code></pre>
+<h2 id="considera-es-relevantes">Considerações Relevantes</h2>
+<p>Considerando:</p>
+<pre><code class="lang-javascript">func = x =&gt; {
+return x++;
+};
+</code></pre>
+<p>Podemos apontar algumas considerações relevantes:</p>
+<p><strong>- <em>arguments</em> funciona exatamente como esperado</strong></p>
+<pre><code class="lang-javascript">console.log(arguments);
+</code></pre>
+<p><strong>- <em>typeof</em> e <em>instanceof</em> também</strong></p>
+<pre><code class="lang-javascript">func instanceof Function; // true
+typeof func; // function
+func.constructor == Function; // true
+</code></pre>
+<p><strong>- Usando parênteses internos, como sugerido pelo jsLint, NÃO funciona</strong></p>
+<pre><code class="lang-javascript">// funciona, como sugerido pelo JSLint
+(function (x, y){
+x= x * 2;
+return x + y;
+} (3, &quot;B&quot;) );
+
+// não funciona
+( (x, y) =&gt; {
+x= x * 2;
+return x + y;
+} ( 3, &quot;A&quot; ) );
+
+// mas funcionaria, se a última linha fosse
+// })(3, &quot;A&quot;);
+</code></pre>
+<p><strong>- Apesar de ser uma função, não funciona como um Constructor</strong></p>
+<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
+</code></pre>
+<p><strong>- Não tem um prototype</strong></p>
+<pre><code class="lang-javascript">func.prototype; // undefined
+</code></pre>
+<h2 id="escopo">Escopo</h2>
+<p>O <em>this</em> no escopo de arrow functions funciona de uma forma diferente.
+No modo como estamos acostumados, <em>this</em> pode referenciar-se a: <em>window</em>(se for acessado globalmente), <em>undefined</em>(se acessado globalmente, em strict mode), uma <em>instancia</em>(se em um construtor), um <em>objeto</em>(se for um método ou função dentro de um objeto ou instância) ou em um <em>.bind/.apply</em>. Pode ser também um <em>DOMElement</em>, por exemplo, quando usado em um addEventListener.
+Algumas vezes, isto incomoda bastante, ou pode até mesmo nos pegar de surpresa e causar algum problema!
+Além disso, <em>this</em> é referenciado como <em>&quot;scope-by-flow&quot;</em> (fluxo-escopo). O que quero dizer com isto?</p>
+<p>Vejamos primero, como <em>this</em> se comporta em diferentes situações:</p>
+<p>Em um EventListener:</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
+console.log(this); // o próprio HTMLBodyElement
+});
+</code></pre>
+<p>Em instâncias:</p>
+<pre><code class="lang-javascript">function Person () {
+let fullName = null;
+this.getName = function () {
+return fullName;
+};
+this.setName = function (name) {
+fullName = name;
+return this;
+};
+}
+
+let jon = new Person();
+jon.setName(&quot;Jon Doe&quot;);
+console.log(jon.getName()); // &quot;Jon Doe&quot;
+</code></pre>
+<p>Nesta situação em particular, uma vez que <em>Person.setName</em> é &quot;chainable&quot;(retornando a própria instancia), poderíamos também usar assim:</p>
+<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
+.getName(); // &quot;Jon Doe&quot;
+</code></pre>
+<p>Em um objeto:</p>
+<pre><code class="lang-javascript">let obj = {
+foo: &quot;bar&quot;,
+getIt: function () {
+return this.foo;
+}
+};
+
+console.log( obj.getIt() ); // &quot;bar&quot;
+</code></pre>
+<p>Mas então, vem a situação que citei acima, do formato escopo/fluxo.
+Se tanto o fluxo ou o escopo mudam, <em>this</em> muda com ele.\</p>
+<pre><code class="lang-javascript">function Student(data){
+
+this.name = data.name || &quot;Jon Doe&quot;;
+this.age = data.age&gt;=0 ? data.age : -1;
+
+this.getInfo = function () {
+return this.name + &quot;, &quot; + this.age;
+};
+
+this.sayHi = function () {
+window.setTimeout( function () {
+console.log( this );
+}, 100 );
+}
+
+}
+
+let mary = new Student({
+name: &quot;Mary Lou&quot;,
+age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// window
+</code></pre>
+<p>Uma vez que <em>setTimeout</em> muda o fluxo da execução, a referência ao <em>this</em> se torna a referência &quot;global&quot;, neste caso, <em>window</em>, ou <em>undefined</em> se em &quot;strict mode&quot;.
+Por causa disto, acabamos usando algumas técnicas como o uso de variáveis como &quot;self&quot;, &quot;that&quot;, ou alguma coisa assim, ou tendo que usar &quot;.bind&quot;.</p>
+<p>Mas não se preocupe, arrow functions estão aqui para ajudar!
+Com arrow functions, o escopo é mantido com ela, de onde ela foi chamada.</p>
+<p>Vejamos o MESMO exemplo acima, mas usando arrow function, passada para a chamada do _setTimeout.</p>
+<pre><code class="lang-javascript">function Student(data){
+
+this.name = data.name || &quot;Jon Doe&quot;;
+this.age = data.age&gt;=0 ? data.age : -1;
+
+this.getInfo = function () {
+return this.name + &quot;, &quot; + this.age;
+};
+
+this.sayHi = function () {
+window.setTimeout( ()=&gt;{ // a única diferença está aqui
+console.log( this );
+}, 100 );
+}
+
+}
+
+let mary = new Student({
+name: &quot;Mary Lou&quot;,
+age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
+</code></pre>
+<h2 id="abordagens-teis-e-interessantes">Abordagens úteis e interessantes</h2>
+<p>Já que é muito fácil criar arrow functions, e seus escopos funcionam como o mensionado, podemosusa-las de várias formas.</p>
+<p>Por exemplo, podemos usa-las diretamente na chamada de um forEach, em uma Array:</p>
+<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.forEach(vowel =&gt; {
+console.log(vowel);
+});
+</code></pre>
+<p>Ou em um Array.map:</p>
+<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.map(vogal =&gt; {
+return vogal.toUpperCase();
+});
+// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
+</code></pre>
+<p>Ou em uma função recursiva:</p>
+<pre><code class="lang-javascript">var fatorial = (n) =&gt; {
+if(n==0) {
+return 1;
+}
+return (n * fatorial (n-1) );
+}
+
+fatorial(6); // 720
+</code></pre>
+<p>Também, digamos, ordenando uma Array de tráz para frente:</p>
+<pre><code class="lang-javascript">let arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
+</code></pre>
+<p>Ou em listeners:</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, body=&gt;console.log(body));
+</code></pre>
+<h2 id="links-teis">Links úteis</h2>
+<p>Aqui, pegue alguns links úteis para dar uma olhada:</p>
+<ul>
+<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions na documentação da MDN</a></li>
+<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki sobre Arrow Function</a></li>
+<li>- <a href="https://github.com/esnext">ESNext</a></li>
+<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
+<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
+<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
+<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
+</ul>
+<h2 id="conclus-o">Conclusão</h2>
+<p>Mesmo que Arrow Functions tornem seu código um popuco mais complicado de ler(mas que você acaba se acostumando rápido), é uma grande solução para referências ao <em>this</em> em escopos e fluxos diferentes, um modo rápido para colocar as coisas para funcionar, e em parceria com o keyword &quot;let&quot;, levará nosso JavaScript para um próximo nível!
+Experimente você mesmo, crie alguns testes, rode em seus browsers e deixe alguma solução ou uso interessante que encontrou, nos comentários!
+Espero que tenha apreciado este artigo tanto quanto apreciará utilizar arrow functions em um futuro muito próximo!</p>
+]]></description>
+            <pubDate>Tue, 23 Sep 2014 04:01:41 GMT</pubDate>
+            <guid>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</guid>
+        </item>
+        
+        <item>
             <title>O que podemos esperar do novo JavaScript</title>
-            <link>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</link>
+            <link>http://es6rocks.com/pt-br/2014/10/what-is-next-for-javascript</link>
             <description><![CDATA[<p>Se você está interessado em ES6, você deve seguir o <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>Ele mantêm o incrível blog <a href="http://www.2ality.com/">2ality</a> e escreve uma série de coisas legais sobre ES6.<br>Nessa sua talk ele fala sobre várias novas features da ES6 e mostra o que podemos esperar do futuro.  </p>
 <script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/what-is-next-for-javascript</guid>
         </item>
         
         <item>
             <title>O que você precisa saber sobre block scope - let</title>
-            <link>http://es6rocks.com/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <link>http://es6rocks.com/pt-br/2014/10/what-you-need-to-know-about-block-scope-let</link>
             <description><![CDATA[<p>Declaração de variáveis em qualquer linguagem de programação é algo básico.<br>Independente da linguagem, entender o funcionamento do escopo de variáveis é imprescindível para escrever qualquer programa.<br>Em Python, por exemplo, assim como na maioria das linguagens, existem 2 escopos: Local e Global.<br>Variáveis definidas na raíz do arquivo, sem identação são variáveis de escopo Global.<br>Variáveis que são declaradas dentro do corpo de uma função são consideradas de escopo local.<br>Até aqui, tudo é muito parecido. No JavaScript o comportamente é bem semelhante.<br>Vejamos um exemplo nas 2 linguagens:  </p>
 <pre><code class="lang-python"># Python
 x = 1 # global scope
@@ -78,7 +351,7 @@ try {
 <p>Você pode usar <em>let</em> hoje*<br>Olhe a excelente tabela ES6 feita pelo Kangax &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no <a href="https://github.com/google/traceur-compiler">Traceur</a>.<br>Você pode brincar com ES6 <em>let</em> no Firefox devtools:  </p>
 <p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
 <ul>
-<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
+<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (do post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
 </ul>
 <h2 id="conclus-o">Conclusão</h2>
 <p>Apesar de simples, declarar variáveis no JavaScript pode causar dor de cabeça em iniciantes na linguagem.<br>Com o <em>let</em>, declarar variáveis fica muito mais intuítivo e coerente com uma linguagem baseada em C.<br>O uso do <em>var</em> deve ser descontinuado, e apenas o <em>let</em> deve existir no futuro.<br>Não existe o comportamento de <em>hoisting</em> para variáveis declaradas com <em>let</em>.  </p>
@@ -86,64 +359,64 @@ try {
 <p><a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let</a><br><a href="http://odetocode.com/blogs/scott/archive/2014/07/31/the-features-of-es6-part-1-let.aspx">http://odetocode.com/blogs/scott/archive/2014/07/31/the-features-of-es6-part-1-let.aspx</a>  </p>
 ]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
         <item>
             <title>Uma nova sintaxe para módulos na ES6</title>
-            <link>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</link>
+            <link>http://es6rocks.com/pt-br/2014/10/a-new-syntax-for-modules-in-es6</link>
             <description><![CDATA[<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento. A partir de agora, poucas mudanças significativas devem surgir. Já é tempo de se aprofundar no estudo.</p>
 <p>Este artigo não pretende abordar a importância da escrita de código modularizado. Já escrevi sobre o assunto no artigo <a href="http://tableless.com.br/modularizacao-em-javascript">Modularização em JavaScript</a>. Sites como <a href="http://jsmodules.io">JavaScript Modules</a> entre outros já são uma ótima referência sobre como escrever módulos ES6. A intenção aqui é esclarecer e justificar a necessidade de uma nova sintaxe para escrita de módulos.</p>
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/a-new-syntax-for-modules-in-es6</guid>
         </item>
         
         <item>
             <title>Entrevista sobre ES6 com o David Herman</title>
-            <link>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</link>
+            <link>http://es6rocks.com/pt-br/2014/10/es6-interview-with-david-herman</link>
             <description><![CDATA[<p>Fizemos uma entrevista bem legal com o <a href="https://twitter.com/littlecalculist">David Herman</a> sobre ES6.<br>Para quem não conhece, o David é o principal pesquisador e fundador da Mozilla Research, onde ele trabalha para expandir as fundações da Open Web. Ele está envolvido com diversos projetos de plataformas Web, incluindo <a href="http://taskjs.org/">task.js</a>, <a href="http://sweetjs.org/">sweet.js</a>, <a href="http://asmjs.org/">asm.js</a>, <a href="http://www.rust-lang.org/">Rust</a>, <a href="https://github.com/mozilla/servo/">Servo</a> e Parallel JS.  </p>
 ]]></description>
             <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/es6-interview-with-david-herman</guid>
         </item>
         
         <item>
             <title>Workflows para os módulos da ES6, Fluent 2014</title>
-            <link>http://es6rocks.com/pt-br/2014/05/practical-workflows-es6-modules</link>
+            <link>http://es6rocks.com/pt-br/2014/10/practical-workflows-es6-modules</link>
             <description><![CDATA[<p>O <a href="https://twitter.com/guybedford">Guy Bedford</a> deu um palestra incrível sobre workflows com módulos ES6 no último mês na Fluent Conf.
 Ele também escreveu um artigo sonre isso. Se você está interessado neste assunto, você deve ler o artigo por completo.</p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/05/practical-workflows-es6-modules</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/practical-workflows-es6-modules</guid>
         </item>
         
         <item>
             <title>ECMAScript 6 - Um melhor JavaScript para a Ambient Computing Era</title>
-            <link>http://es6rocks.com/pt-br/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
+            <link>http://es6rocks.com/pt-br/2014/10/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
             <description><![CDATA[<p>Allen Wirfs-Brock (<a href="https://twitter.com/awbjs">awbjs</a> no Twitter) é um membro do comitê TC39. Na verdade, ele é o &quot;Project Editor of the ECMAScript Language Specification&quot;, ou seja, editor chefe da ECMA.  </p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
         </item>
         
         <item>
             <title>ECMAScript 6 - O futuro está aqui</title>
-            <link>http://es6rocks.com/pt-br/2014/05/ecmascript-6-the-future-is-here</link>
+            <link>http://es6rocks.com/pt-br/2014/10/ecmascript-6-the-future-is-here</link>
             <description><![CDATA[<p>Uma palestra do <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> mostrando algumas features da ES6 como scoping, generators, collections, modules and proxies.  </p>
 ]]></description>
             <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/05/ecmascript-6-the-future-is-here</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/ecmascript-6-the-future-is-here</guid>
         </item>
         
         <item>
             <title>Hello World</title>
-            <link>http://es6rocks.com/pt-br/2014/05/hello-world</link>
+            <link>http://es6rocks.com/pt-br/2014/10/hello-world</link>
             <description><![CDATA[<p>Olá pessoal, bem-vindos ao ES6Rocks!
 Nossa missão aqui é discutir sobre a <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">a nova versão do JavaScript</a>, mais conhecida como Harmony ou ES.next.</p>
 ]]></description>
             <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/05/hello-world</guid>
+            <guid>http://es6rocks.com/pt-br/2014/10/hello-world</guid>
         </item>
         
     </channel>
