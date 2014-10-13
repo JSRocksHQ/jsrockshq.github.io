@@ -6,23 +6,23 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Mon, 13 Oct 2014 04:16:54 GMT</pubDate>
+        <pubDate>Mon, 13 Oct 2014 05:41:53 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Arrow Functions and their scope</title>
             <link>http://es6rocks.com/2014/09/arrow-functions-and-their-scope</link>
-            <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention!
-It is not just awesome, it&#39;s also great to work with scopes, shortcuts some tecniques we are used to use nowadays, shrink number of lines of code...
-But...it may be a little harder to read if you are not used to the way it works.
+            <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
+It is not just awesome, it&#39;s also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
+But it may be a little harder to read if you are not used to the way it works.
 So, let&#39;s take a look at it, right now!</p>
 <h2 id="making-it-work">Making it work</h2>
 <p>To study and try it for yourself, you can simply copy some of the examples and paste them on your browser&#39;s console.
-By now, you can use the Firefox(22+) Developer Tools, which already offers support to arrow functions, or on Google Chrome.
-But to use it in your chrome, you will have to:</p>
+By now, you can use the Firefox (22+) Developer Tools, which already supports arrow functions, or on Google Chrome.
+But to use it in your Chrome, you will have to:</p>
 <ul>
-<li>- Enable it: Go to in about:flags, and enable the &quot;Experimental JavaScript&quot; flag</li>
+<li>- Enable it: Open about:flags in the address bar, and enable the &quot;Experimental JavaScript&quot; flag</li>
 <li>- Use it always in a function in &quot;use strict&quot; mode, so, to run it on Google Chrome&#39;s console:</li>
 </ul>
 <pre><code class="lang-javascript">(function(){
@@ -30,10 +30,10 @@ But to use it in your chrome, you will have to:</p>
     // use arrow functions here
 }());
 </code></pre>
-<p>With time, fortunatelly, more browsers will support the new features in ES6.
-Now that it&#39;s all setup, let&#39;s dive deep into it!</p>
+<p>With time, fortunately, more browsers will support the new ES6 features.
+Now that it&#39;s all set up, let&#39;s dive deep into it!</p>
 <h2 id="a-new-token">A New Token</h2>
-<p>A new token&#39;s been added to ES6, and it is called &quot;fat arrow&quot;, represented by</p>
+<p>A new token has been added to ES6, and it is called &quot;fat arrow&quot;, represented by</p>
 <pre><code class="lang-javascript">=&gt;
 </code></pre>
 <h2 id="the-new-syntax">The new Syntax</h2>
@@ -60,7 +60,7 @@ param =&gt; {
 // with no params, single statement
 () =&gt; expression;
 
-// with no params
+// with no params, multiple statements
 () =&gt; {
     statements;
 }
@@ -76,47 +76,47 @@ var func = function (param) {
 }
 
 // would become:
-var func= param =&gt; param.split(&quot; &quot;);
+var func = param =&gt; param.split(&quot; &quot;);
 </code></pre>
 <p>That means this syntax actually returns a new function, with the given statements and params.</p>
-<p>Therefore, we can call the same way we are used to:</p>
+<p>Therefore, we can call the function the same way we are already used to:</p>
 <pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]
 </code></pre>
 <h2 id="immediately-invoked-function-expression-iife-">Immediately-invoked function expression (IIFE)</h2>
-<p>Yes, you can invoke such functions emediately, once they are, indeed, expressions.
+<p>Yes, you can invoke such functions immediately, as they are, indeed, expressions.
 Like so:</p>
 <pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
 </code></pre>
-<p>It creates a function, which receives the argument &quot;x&quot;, and return &quot;x * 2&quot;, then, it immidiatelly execute this expression, passing the value &quot;3&quot; as argument.</p>
+<p>It creates a function, which receives the argument <code>x</code> and returns <code>x * 2</code>, then it immediately executes this expression, passing the value <code>3</code> as argument.</p>
 <p>In case you have more statements to execute, or more params:</p>
 <pre><code class="lang-javascript">( (x, y) =&gt; {
-    x= x * 2;
+    x = x * 2;
     return x + y;
 })( 3, &quot;A&quot; ); // &quot;6A&quot;
 </code></pre>
 <h2 id="relevant-considerations">Relevant considerations</h2>
 <p>Considering:</p>
-<pre><code class="lang-javascript">func = x =&gt; {
+<pre><code class="lang-javascript">var func = x =&gt; {
     return x++;
 };
 </code></pre>
 <p>We may point some relevant considerations:</p>
-<p><strong>- <em>arguments</em> works just as expected</strong></p>
+<p><strong>- <code>arguments</code> works just as expected</strong></p>
 <pre><code class="lang-javascript">console.log(arguments);
 </code></pre>
-<p><strong>- <em>typeof</em> and <em>instanceof</em> work just fine as well</strong></p>
+<p><strong>- <code>typeof</code> and <code>instanceof</code> work just fine as well</strong></p>
 <pre><code class="lang-javascript">func instanceof Function; // true
 typeof func; // function
 func.constructor == Function; // true
 </code></pre>
 <p><strong>- Using parentheses inside, as suggested by jsLint will not work</strong></p>
-<pre><code class="lang-javascript">// works, as suggested by JSLint
+<pre><code class="lang-javascript">// works with regular function syntax, as suggested by JSLint
 (function (x, y){
     x= x * 2;
     return x + y;
 } (3, &quot;B&quot;) );
 
-// doesn&#39;t work
+// doesn&#39;t work with Arrow Functions
 ( (x, y) =&gt; {
     x= x * 2;
     return x + y;
@@ -132,11 +132,11 @@ func.constructor == Function; // true
 <pre><code class="lang-javascript">func.prototype; // undefined
 </code></pre>
 <h2 id="scope">Scope</h2>
-<p>The <em>this</em> in arrow functions&#39; scopes works a little bit different, as well.
-The way we are used to it, the <em>this</em> keyword may reference to: <em>window</em>(if accessed globally, not in strict mode), <em>undefined</em>(if accessed globally, in strict mode), an <em>instance</em>(if in a constructor), an <em>object</em>(if in a method or function inside an object or instance) or a <em>binded/applied value</em>. It may also be a <em>DOMElement</em>, for example, in cases when you are using addEventListener.
+<p>The <code>this</code> in arrow functions&#39; scopes works a little bit different, as well.
+The way we are used to it, the <code>this</code> keyword may reference to: <code>window</code> (if accessed globally, not in strict mode), <code>undefined</code> (if accessed globally, in strict mode), an <em>instance</em> (if in a constructor), an <em>object</em> (if in a method or function inside an object or instance) or a <em>binded/applied value</em>. It may also be a <code>DOMElement</code>, for example, in cases when you are using addEventListener. <!-- TODO "accessed globally" needs better wording -->
 This might be annoying some times, or even tricky, causing you some trouble!
 Besides, it is referenced as <em>&quot;scope-by-flow&quot;</em>. What do I mean by saying that?</p>
-<p>Let&#39;s see, firstly, how the <em>this</em> token behaves in different situations:</p>
+<p>Let&#39;s see, firstly, how the <code>this</code> token behaves in different situations:</p>
 <p>In an EventListener:</p>
 <pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
     console.log(this); // the HTMLBodyElement itself
@@ -161,7 +161,7 @@ let jon = new Person();
 jon.setName(&quot;Jon Doe&quot;);
 console.log(jon.getName()); // &quot;Jon Doe&quot;
 </code></pre>
-<p>In this particular case, once <em>Person.setName</em> is &quot;chainable&quot;(by returning itself), we could also use it like this:</p>
+<p>In this particular case, once <code>Person.setName</code> is &quot;chainable&quot; (by returning itself), we could also use it like this:</p>
 <pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
    .getName(); // &quot;Jon Doe&quot;
 </code></pre>
@@ -176,7 +176,7 @@ console.log(jon.getName()); // &quot;Jon Doe&quot;
 console.log( obj.getIt() ); // &quot;bar&quot;
 </code></pre>
 <p>But then, comes the &quot;scope-by-flow&quot; I mentioned.
-If any the flow or scope changes, the <em>this</em> reference changes as well.</p>
+If either the flow or scope changes, the <code>this</code> reference changes as well.</p>
 <pre><code class="lang-javascript">function Student(data){
 
     this.name = data.name || &quot;Jon Doe&quot;;
@@ -203,11 +203,11 @@ console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
 mary.sayHi();
 // window
 </code></pre>
-<p>Once <em>setTimeout</em> changes the execution flow, the reference to <em>this</em> becomes the &quot;global&quot; reference, in this case, <em>window</em>, or <em>undefined</em> in strict modes.
-Due to this, we end up using techniques like the use of variables like &quot;self&quot;, &quot;that&quot; or something like it, or having to use &quot;.bind&quot;.</p>
+<p>Once <code>setTimeout</code> changes the execution flow, the <code>this</code> reference becomes the global object (in this case, <code>window</code>), or <code>undefined</code> in strict mode.
+Due to this, we end up using techniques like the use of variables like &quot;self&quot;, &quot;that&quot; or something like it, or having to use the <code>.bind</code> method.</p>
 <p>But don&#39;t worry, arrow functions are here to help!
 With arrow functions, the scope is kept with it, from where it was called.</p>
-<p>Let&#39;s see the SAME example as before, but using an arrow function, passed to the <em>setTimeout</em> call.</p>
+<p>Let&#39;s see the <strong>same</strong> example as before, but using an arrow function, passed to the <code>setTimeout</code> call.</p>
 <pre><code class="lang-javascript">function Student(data){
 
     this.name = data.name || &quot;Jon Doe&quot;;
@@ -235,15 +235,15 @@ mary.sayHi();
 // Object { name: &quot;Mary Lou&quot;, age: 13, ... }
 </code></pre>
 <h2 id="interesting-and-useful-usage">Interesting and useful usage</h2>
-<p>Once it is very easy to create arrow functions, and their scopes work as mentioned before,we can use it in a variety of ways.</p>
-<p>For example, in can use it straight in a forEach call in an Array:</p>
-<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+<p>As it is very easy to create arrow functions, and their scopes work as mentioned before, we can use it in a variety of ways.</p>
+<p>For example, it can be used directly in an <code>Array#forEach</code> call:</p>
+<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
 arr.forEach(vowel =&gt; {
     console.log(vowel);
 });
 </code></pre>
-<p>Or in an Array.map:</p>
-<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+<p>Or in an <code>Array#map</code>:</p>
+<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
 arr.map(vowel =&gt; {
     return vowel.toUpperCase();
 });
@@ -260,14 +260,16 @@ arr.map(vowel =&gt; {
 factorial(6); // 720
 </code></pre>
 <p>Also, let&#39;s say, sorting backwards an array:</p>
-<pre><code class="lang-javascript">let arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
 arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
 </code></pre>
 <p>Or maybe in event listeners:</p>
 <pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, body=&gt;console.log(body));
 </code></pre>
+<!-- TODO above example doesn't make much sense, the `body` parameter receives an event object -->
+
 <h2 id="useful-links">Useful links</h2>
-<p>Here, take a list of interesting, useful links you can take a look at:</p>
+<p>Here is a list of interesting, useful links you can take a look at:</p>
 <ul>
 <li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions in MDN Documentation</a></li>
 <li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki about Arrow Function</a></li>
@@ -278,8 +280,8 @@ arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
 <li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>Although arrow functions may make your source code a little bit less readable(and you can get used to it pretty fast), it is indeed, a great solution for scopable references to the <em>this</em> token, a quick way to get things working, and, in association with the &quot;let&quot; keyword, will take our JavaScript, deffinetly to the next level!
-Try and use it, create some tests, run it in your browsers and leave in the comments, interesting solutions and uses you found to arrow functions!
+<p>Although arrow functions may make your source code a little bit less readable (and you can get used to it pretty fast), it is, indeed, a great solution to capture the outer scope&#39;s <code>this</code> value, a quick way to get things working and, in association with the <code>let</code> keyword, will definitely take our JavaScript to the next level!
+Try and use it, create some tests, run it in your browsers and leave comments with interesting solutions and uses you&#39;ve found to arrow functions!
 I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.</p>
 ]]></description>
             <pubDate>Tue, 23 Sep 2014 04:01:41 GMT</pubDate>
