@@ -6,7 +6,7 @@ comments: true
 published: true
 keywords: JavaScript, ES6, talks
 description: talk about es6
-categories: talks
+categories: talks, videos
 authorName: Jaydson
 authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
@@ -23,4 +23,8 @@ Uma breve descrição sobre sua palestra (por ele):
 Assim que a gravação estiver disponível, vamos postar aqui.  
 Por agora, segue os slides.  
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/34230355" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/allenwb/wdc14-allebwb" title="ECMAScript 6: A Better JavaScript for the Ambient Computing Era" target="_blank">ECMAScript 6: A Better JavaScript for the Ambient Computing Era</a> </strong> from <strong><a href="http://www.slideshare.net/allenwb" target="_blank">Allen Wirfs-Brock</a></strong> </div>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/34230355" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/allenwb/wdc14-allebwb" title="ECMAScript 6: A Better JavaScript for the Ambient Computing Era" target="_blank">ECMAScript 6: A Better JavaScript for the Ambient Computing Era</a> </strong> from <strong><a href="http://www.slideshare.net/allenwb" target="_blank">Allen Wirfs-Brock</a></strong> </div>  
+
+[UPDATE Outubro, 2014]  
+O vídeo já está disponível! (Obrigado [Ciro Costa](https://github.com/cirocosta) por avisar).  
+<iframe width="560" height="315" src="//www.youtube.com/embed/ZGY8Cktn6W4" frameborder="0" allowfullscreen></iframe>

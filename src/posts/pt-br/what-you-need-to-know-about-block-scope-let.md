@@ -95,7 +95,7 @@ Você pode brincar com ES6 _let_ no Firefox devtools:
 
 ![let on firefox nightly](/img/let.gif)  
 
-* __NOTA__: Como bem apontado pelo Michał Gołębiowski nos comentários (do post em inglês http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.  
+* __NOTA__: Como bem apontado pelo Michał Gołębiowski nos comentários (post em inglês http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.  
 Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  
 
 ## Conclusão
