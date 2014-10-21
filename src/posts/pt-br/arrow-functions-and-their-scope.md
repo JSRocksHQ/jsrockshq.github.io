@@ -15,9 +15,9 @@ authorPicture: https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0
 
 # Arrow Functions e seu escopo
 
-Entre as tantas novas features presentes no ES6, Arrow Functions(ou Fat Arrow Functions), é uma que merece boa atenção!
+Entre as tantas novas features presentes no ES6, Arrow Functions (ou Fat Arrow Functions), é uma que merece boa atenção!
 É muito legal, ótima para trabalhar com escopos, serve como "atalho" para algumas tecnicas que utilizamos hoje, diminui o código...
-Mas...pode ser um pouco mais difícil de ler caso não esteja a par de como ela funciona.
+Mas pode ser um pouco mais difícil de ler caso não esteja a par de como ela funciona.
 Então, vamos mergulhar no assunto!
 
 ## Começando
@@ -47,7 +47,7 @@ Um novo Token foi adicionado ao ES6, e é chamado "fat arrow", representado por:
 
 ## A nova sintaxe
 
-COm este novo token, entra uma nova sintaxe:
+Com este novo token, entra uma nova sintaxe:
 
 ```javascript
 param => expression
@@ -115,7 +115,7 @@ Sim, você pode invocar funções imediatamente, já que elas são na verdade, e
 ( x => x * 2 )( 3 ); // 6
 ```
 
-Uma função será criada. Esta função recebe o parâmetro "x", e retorna "x * 2", então, é imediatamente executada passando o valor "3" como parâmetro.
+Uma função será criada. Esta função recebe o parâmetro `x`, e retorna `x * 2`, então, é imediatamente executada passando o valor `3` como parâmetro.
 
 Caso tenha mais statements ou parâmetros:
 
@@ -132,19 +132,19 @@ Caso tenha mais statements ou parâmetros:
 Considerando:
 
 ```javascript
-func = x => {
+var func = x => {
     return x++;
 };
 ```
 
 Podemos apontar algumas considerações relevantes:
 
-**- _arguments_ funciona exatamente como esperado**
+**- `arguments` funciona exatamente como esperado**
 ```javascript
 console.log(arguments);
 ```
 
-**- _typeof_ e _instanceof_ também**
+**- `typeof` e `instanceof` também**
 ```javascript
 func instanceof Function; // true
 typeof func; // function
@@ -183,12 +183,12 @@ func.prototype; // undefined
 
 ## Escopo
 
-O _this_ no escopo de arrow functions funciona de uma forma diferente.
-No modo como estamos acostumados, _this_ pode referenciar-se a: _window_(se for acessado globalmente), _undefined_(se acessado globalmente, em strict mode), uma _instancia_(se em um construtor), um _objeto_(se for um método ou função dentro de um objeto ou instância) ou em um _.bind/.apply_. Pode ser também um _DOMElement_, por exemplo, quando usado em um addEventListener.
+O `this` no escopo de arrow functions funciona de uma forma diferente.
+No modo como estamos acostumados, `this` pode referenciar-se a: `window` (se for acessado globalmente), `undefined` (se acessado globalmente, em strict mode), uma _instância_ (se em um construtor), um _objeto_ (se for um método ou função dentro de um objeto ou instância) ou em um `.bind`/`.apply`. Pode ser também um `DOMElement`, por exemplo, quando usado em um addEventListener. <!-- TODO buscar melhor termo para "acessado globalmente" -->
 Algumas vezes, isto incomoda bastante, ou pode até mesmo nos pegar de surpresa e causar algum problema!
 Além disso, _this_ é referenciado como _"scope-by-flow"_ (fluxo-escopo). O que quero dizer com isto?
 
-Vejamos primero, como _this_ se comporta em diferentes situações:
+Vejamos primero, como `this` se comporta em diferentes situações:
 
 Em um EventListener:
 ```javascript
@@ -215,7 +215,7 @@ jon.setName("Jon Doe");
 console.log(jon.getName()); // "Jon Doe"
 ```
 
-Nesta situação em particular, uma vez que _Person.setName_ é "chainable"(retornando a própria instancia), poderíamos também usar assim:
+Nesta situação em particular, uma vez que `Person.setName` é "chainable" (retornando a própria instância), poderíamos também usar assim:
 ```javascript
 jon.setName("Jon Doe")
    .getName(); // "Jon Doe"
@@ -234,7 +234,7 @@ console.log( obj.getIt() ); // "bar"
 ```
 
 Mas então, vem a situação que citei acima, do formato escopo/fluxo.
-Se tanto o fluxo ou o escopo mudam, _this_ muda com ele.\
+Se tanto o fluxo ou o escopo mudam, `this` muda com ele.
 
 ```javascript
 function Student(data){
@@ -265,8 +265,8 @@ mary.sayHi();
 
 ```
 
-Uma vez que _setTimeout_ muda o fluxo da execução, a referência ao _this_ se torna a referência "global", neste caso, _window_, ou _undefined_ se em "strict mode".
-Por causa disto, acabamos usando algumas técnicas como o uso de variáveis como "self", "that", ou alguma coisa assim, ou tendo que usar ".bind".
+Uma vez que `setTimeout` muda o fluxo da execução, a referência ao `this` se torna a referência "global" (neste caso, `window`), ou `undefined` se em "strict mode".
+Por causa disto, acabamos usando algumas técnicas como o uso de variáveis como "self", "that", ou alguma coisa assim, ou tendo que usar `.bind`.
 
 Mas não se preocupe, arrow functions estão aqui para ajudar!
 Com arrow functions, o escopo é mantido com ela, de onde ela foi chamada.
@@ -302,7 +302,7 @@ mary.sayHi();
 
 ## Abordagens úteis e interessantes
 
-Já que é muito fácil criar arrow functions, e seus escopos funcionam como o mensionado, podemosusa-las de várias formas.
+Já que é muito fácil criar arrow functions, e seus escopos funcionam como o mensionado, podemos usá-las de várias formas.
 
 Por exemplo, podemos usa-las diretamente na chamada de um forEach, em uma Array:
 ```javascript
@@ -312,7 +312,7 @@ console.log(vowel);
 });
 ```
 
-Ou em um Array.map:
+Ou em um `Array#map`:
 ```javascript
 var arr= ['a', 'e', 'i', 'o', 'u'];
 arr.map(vogal => {
@@ -334,7 +334,7 @@ var fatorial = (n) => {
 fatorial(6); // 720
 ```
 
-Também, digamos, ordenando uma Array de tráz para frente:
+Também, digamos, ordenando uma Array de trás para frente:
 ```javascript
 let arr= ['a', 'e', 'i', 'o', 'u'];
 arr.sort( (a, b)=> a < b? 1: -1 );
@@ -358,6 +358,6 @@ Aqui, pegue alguns links úteis para dar uma olhada:
 
 ## Conclusão
 
-Mesmo que Arrow Functions tornem seu código um popuco mais complicado de ler(mas que você acaba se acostumando rápido), é uma grande solução para referências ao _this_ em escopos e fluxos diferentes, um modo rápido para colocar as coisas para funcionar, e em parceria com o keyword "let", levará nosso JavaScript para um próximo nível!
+Mesmo que Arrow Functions tornem seu código um pouco mais complicado de ler (mas que você acaba se acostumando rápido), é uma grande solução para referências ao `this` em escopos e fluxos diferentes, um modo rápido para colocar as coisas para funcionar, e em parceria com o keyword `let`, levará nosso JavaScript para um próximo nível!
 Experimente você mesmo, crie alguns testes, rode em seus browsers e deixe alguma solução ou uso interessante que encontrou, nos comentários!
 Espero que tenha apreciado este artigo tanto quanto apreciará utilizar arrow functions em um futuro muito próximo!
