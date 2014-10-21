@@ -219,6 +219,7 @@ console.log(jon.getName()); // "Jon Doe"
 ```
 
 In this particular case, once `Person.setName` is "chainable" (by returning itself), we could also use it like this:
+
 ```javascript
 jon.setName("Jon Doe")
    .getName(); // "Jon Doe"
@@ -346,14 +347,13 @@ arr.sort( (a, b)=> a < b? 1: -1 );
 
 Or maybe in event listeners:
 ```javascript
-document.body.addEventListener('click', body=>console.log(body));
+document.body.addEventListener('click', event=>console.log(event, this)); // EventObject, BodyElement
 ```
-
-<!-- TODO above example doesn't make much sense, the `body` parameter receives an event object -->
 
 ## Useful links
 
 Here is a list of interesting, useful links you can take a look at:
+
 - \- [Arrow Functions in MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 - \- [TC39 Wiki about Arrow Function](http://tc39wiki.calculist.org/es6/arrow-functions/)
 - \- [ESNext](https://github.com/esnext)
