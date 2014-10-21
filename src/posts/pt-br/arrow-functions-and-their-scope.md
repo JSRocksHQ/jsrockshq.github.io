@@ -11,8 +11,7 @@ authorName: Felipe N. Moura
 authorLink: http://twitter.com/felipenmoura
 authorDescription: FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62
--->
- 
+--> 
  
 # Arrow Functions e seu escopo
  
@@ -31,8 +30,8 @@ No Google Chrome, você precisará habilita-lo:
  
 ```javascript
 (function(){
-"use strict";
-// use arrow functions aqui
+    "use strict";
+    // use arrow functions aqui
 }());
 ```
  
@@ -65,12 +64,12 @@ param => expression;
  
 // single param, multiple statements
 param => {
-statements;
+    statements;
 }
  
 // multiple params, multiple statements
 ([param] [, param]) => {
-statements
+    statements
 }
  
 // with no params, single statement
@@ -78,7 +77,7 @@ statements
  
 // with no params
 () => {
-statements;
+    statements;
 }
  
 // one statement, returning an object
@@ -93,7 +92,7 @@ Se fossemos "traduzir" arrow functions para algo que já usamos hoje em dia, ser
 ```javascript
 // esta função
 var func = function (param) {
-return param.split(" ");
+    return param.split(" ");
 }
  
 // se tornaria:
@@ -122,8 +121,8 @@ Caso tenha mais statements ou parâmetros:
  
 ```javascript
 ( (x, y) => {
-x= x * 2;
-return x + y;
+    x= x * 2;
+    return x + y;
 })( 3, "A" ); // "6A"
  
 ```
@@ -134,36 +133,36 @@ Considerando:
  
 ```javascript
 func = x => {
-return x++;
+    return x++;
 };
 ```
  
 Podemos apontar algumas considerações relevantes:
- 
+
 **- _arguments_ funciona exatamente como esperado**
 ```javascript
 console.log(arguments);
 ```
- 
+
 **- _typeof_ e _instanceof_ também**
 ```javascript
 func instanceof Function; // true
 typeof func; // function
 func.constructor == Function; // true
 ```
- 
+
 **- Usando parênteses internos, como sugerido pelo jsLint, NÃO funciona**
 ```javascript
 // funciona, como sugerido pelo JSLint
 (function (x, y){
-x= x * 2;
-return x + y;
+    x= x * 2;
+    return x + y;
 } (3, "B") );
  
 // não funciona
 ( (x, y) => {
-x= x * 2;
-return x + y;
+    x= x * 2;
+    return x + y;
 } ( 3, "A" ) );
  
 // mas funcionaria, se a última linha fosse
@@ -183,34 +182,34 @@ func.prototype; // undefined
 ```
  
 ## Escopo
- 
+
 O _this_ no escopo de arrow functions funciona de uma forma diferente.
 No modo como estamos acostumados, _this_ pode referenciar-se a: _window_(se for acessado globalmente), _undefined_(se acessado globalmente, em strict mode), uma _instancia_(se em um construtor), um _objeto_(se for um método ou função dentro de um objeto ou instância) ou em um _.bind/.apply_. Pode ser também um _DOMElement_, por exemplo, quando usado em um addEventListener.
 Algumas vezes, isto incomoda bastante, ou pode até mesmo nos pegar de surpresa e causar algum problema!
 Além disso, _this_ é referenciado como _"scope-by-flow"_ (fluxo-escopo). O que quero dizer com isto?
- 
+
 Vejamos primero, como _this_ se comporta em diferentes situações:
  
 Em um EventListener:
 ```javascript
 document.body.addEventListener('click', function(evt){
-console.log(this); // o próprio HTMLBodyElement
+    console.log(this); // o próprio HTMLBodyElement
 });
 ```
  
 Em instâncias:
 ```javascript
 function Person () {
-let fullName = null;
-this.getName = function () {
-return fullName;
-};
-this.setName = function (name) {
-fullName = name;
-return this;
-};
+    let fullName = null;
+    this.getName = function () {
+        return fullName;
+    };
+    this.setName = function (name) {
+        fullName = name;
+        return this;
+    };
 }
- 
+
 let jon = new Person();
 jon.setName("Jon Doe");
 console.log(jon.getName()); // "Jon Doe"
@@ -219,16 +218,16 @@ console.log(jon.getName()); // "Jon Doe"
 Nesta situação em particular, uma vez que _Person.setName_ é "chainable"(retornando a própria instancia), poderíamos também usar assim:
 ```javascript
 jon.setName("Jon Doe")
-.getName(); // "Jon Doe"
+   .getName(); // "Jon Doe"
 ```
  
 Em um objeto:
 ```javascript
 let obj = {
-foo: "bar",
-getIt: function () {
-return this.foo;
-}
+    foo: "bar",
+    getIt: function () {
+        return this.foo;
+    }
 };
  
 console.log( obj.getIt() ); // "bar"
@@ -240,24 +239,24 @@ Se tanto o fluxo ou o escopo mudam, _this_ muda com ele.\
 ```javascript
 function Student(data){
  
-this.name = data.name || "Jon Doe";
-this.age = data.age>=0 ? data.age : -1;
+    this.name = data.name || "Jon Doe";
+    this.age = data.age>=0 ? data.age : -1;
  
-this.getInfo = function () {
-return this.name + ", " + this.age;
-};
+    this.getInfo = function () {
+        return this.name + ", " + this.age;
+    };
  
-this.sayHi = function () {
-window.setTimeout( function () {
-console.log( this );
-}, 100 );
-}
+    this.sayHi = function () {
+        window.setTimeout( function () {
+            console.log( this );
+        }, 100 );
+    }
  
 }
  
 let mary = new Student({
-name: "Mary Lou",
-age: 13
+    name: "Mary Lou",
+    age: 13
 });
  
 console.log( mary.getInfo() ); // "Mary Lou, 13"
@@ -276,24 +275,24 @@ Vejamos o MESMO exemplo acima, mas usando arrow function, passada para a chamada
 ```javascript
 function Student(data){
  
-this.name = data.name || "Jon Doe";
-this.age = data.age>=0 ? data.age : -1;
+    this.name = data.name || "Jon Doe";
+    this.age = data.age>=0 ? data.age : -1;
  
-this.getInfo = function () {
-return this.name + ", " + this.age;
-};
+    this.getInfo = function () {
+        return this.name + ", " + this.age;
+    };
  
-this.sayHi = function () {
-window.setTimeout( ()=>{ // a única diferença está aqui
-console.log( this );
-}, 100 );
-}
+    this.sayHi = function () {
+        window.setTimeout( ()=>{ // a única diferença está aqui
+            console.log( this );
+        }, 100 );
+    }
  
 }
  
 let mary = new Student({
-name: "Mary Lou",
-age: 13
+    name: "Mary Lou",
+    age: 13
 });
  
 console.log( mary.getInfo() ); // "Mary Lou, 13"
@@ -317,7 +316,7 @@ Ou em um Array.map:
 ```javascript
 var arr= ['a', 'e', 'i', 'o', 'u'];
 arr.map(vogal => {
-return vogal.toUpperCase();
+    return vogal.toUpperCase();
 });
 // [ "A", "E", "I", "O", "U" ]
 ```
@@ -326,24 +325,24 @@ Ou em uma função recursiva:
  
 ```javascript
 var fatorial = (n) => {
-if(n==0) {
-return 1;
-}
-return (n * fatorial (n-1) );
+    if(n==0) {
+        return 1;
+    }
+    return (n * fatorial (n-1) );
 }
  
 fatorial(6); // 720
 ```
- 
+
 Também, digamos, ordenando uma Array de tráz para frente:
 ```javascript
 let arr= ['a', 'e', 'i', 'o', 'u'];
 arr.sort( (a, b)=> a < b? 1: -1 );
 ```
- 
+
 Ou em listeners:
 ```javascript
-document.body.addEventListener('click', body=>console.log(body));
+document.body.addEventListener('click', event=>console.log(event, this)); // EventObject, BodyElement
 ```
  
 ## Links úteis
