@@ -58,17 +58,6 @@ CommonJS modules does not consider browser environment and another prove is that
 
 Nowadays the **only way to define scope in Javascript is beyond functions**. As said, a new specification allows changing the language functionality. The module scope definition could be better solved out than in [Node.js, which still uses functions under the hood](https://github.com/joyent/node/blob/b55c9d68aa713e75ff5077cd425cbaafde010b92/src/node.js#L788-L791).
 
-ES6 specs brings a new exclusive syntax to define module scope. Throught syntax, it is possible to define more than one module in a single file without reaching out to functions that made us give up on AMD format. The result is a significative gain in expressivity:
-
-```javascript
-module 'foo' {
-    // Module code
-}
-module 'bar' {
-    // Module code
-}
-```
-
 ## Requesting dependencies (imports)
 
 CommonJS modules were conceived to require dependencies synchronously. **Script execution is blocked while a dependency is loaded**. Again, this approach does not bring any inconvenient to Node.js that has quick access to the filesystem.

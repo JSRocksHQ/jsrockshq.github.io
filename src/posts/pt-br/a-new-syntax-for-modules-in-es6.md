@@ -60,17 +60,6 @@ Os módulos CommonJS não consideram o ambiente dos navegadores, diferentes mód
 
 Atualmente, a **única maneira de definir escopos no JavaScript é através de funções**. Uma nova especificação permite mudar o funcionamento da linguagem. A necessária criação dos escopos poderia ser melhor resolvida que no [Node.js que ainda utiliza funções por baixo dos panos](https://github.com/joyent/node/blob/b55c9d68aa713e75ff5077cd425cbaafde010b92/src/node.js#L788-L791).
 
-A especificação ES6 traz consigo uma sintaxe exclusiva para definição de escopo de módulos. Através da sintaxe, é possível definir mais de um módulo em um mesmo arquivo sem apelar para o uso de funções que nos fizeram abrir mão do formato AMD. O resultado é um ganho significativo em expressividade, observe:
-
-```javascript
-module 'foo' {
-    // Module code
-}
-module 'bar' {
-    // Module code
-}
-```
-
 ## Requisição de dependências (imports)
 
 Os módulos CommonJS foram concebidos para requisitar as dependências sincronamente. **A execução do script é bloqueada enquanto uma dependência é carregada**. Novamente, esta abordagem não traz nenhum inconveniente para o Node.js que possui um acesso rápido ao sistema de arquivos.
