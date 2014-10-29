@@ -75,10 +75,10 @@
                         ES6 modules today with 6to5
                     </a>
                     <section class="post__excerpt">
-                        <p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy i were.<br>It&#39;s great what <a href="http://en.wikipedia.org/wiki/Source-to-source_compiler">transpilers</a> can do. In JavaScript&#39;s World it&#39;s like a time machine we can forward to the near future of awesomeness ES6 will bring.<br>In this tutorial we&#39;ll show how to start writing <a href="http://jsmodules.io/">ES6 modules</a> today, using the awesome <a href="https://github.com/sebmck/6to5">6to5</a>.  </p>
+                        <p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.<br>It&#39;s great what <a href="http://en.wikipedia.org/wiki/Source-to-source_compiler">transpilers</a> can do. In JavaScript&#39;s World it&#39;s like a time machine we can forward to the near future of awesomeness ES6 will bring.<br>In this tutorial we&#39;ll show how to start writing <a href="http://jsmodules.io/">ES6 modules</a> today, using the awesome <a href="https://github.com/sebmck/6to5">6to5</a>.  </p>
 <p><img src="/img/modules-today-6to5.png" alt="modules today with 6to5"></p>
 <h1 id="first-step">First step</h1>
-<p>If you are not familiar with ES6 modules, please check <a href="http://jsmodules.io/">JSModules.io</a> for an brief introduction.<br>Also, i recommend you to read <a href="http://twitter.com/jcemer">@jcemer</a>&#39;s article <a href="http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/">A new syntax for modules in ES6</a>, here in <a href="http://es6rocks.com">ES6Rocks</a>, that cover a lot of more cool stuff around modules in JavaScript.<br>For this tutorial we&#39;ll use the 6to5 transpiler.<br>Basically, <em>&quot;6to5 turns ES6 code into vanilla ES5, so you can use ES6 features today&quot;</em>.<br><em>6to5</em> have some advantages over other transpilers, here are the main features:<br><strong>Readable</strong>: formatting is retained if possible so your generated code is as similar as possible.<br><strong>Extensible</strong>: with a large range of plugins and browser support.<br><strong>Lossless</strong>: source map support so you can debug your compiled code with ease.<br><strong>Compact</strong>: maps directly to the equivalent ES5 with no runtime.  </p>
+<p>If you are not familiar with ES6 modules, please check <a href="http://jsmodules.io/">JSModules.io</a> for an brief introduction.<br>Also, I recommend you to read <a href="http://twitter.com/jcemer">@jcemer</a>&#39;s article <a href="http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/">A new syntax for modules in ES6</a>, here in <a href="http://es6rocks.com">ES6Rocks</a>, that covers a lot of more cool stuff around modules in JavaScript.<br>For this tutorial we&#39;ll use the 6to5 transpiler.<br>Basically, <em>&quot;6to5 turns ES6 code into vanilla ES5, so you can use ES6 features today&quot;</em>.<br><em>6to5</em> has some advantages over other transpilers, here are the main features:<br><strong>Readable</strong>: formatting is retained if possible so your generated code is as similar as possible.<br><strong>Extensible</strong>: with a large range of plugins and browser support.<br><strong>Lossless</strong>: source map support so you can debug your compiled code with ease.<br><strong>Compact</strong>: maps directly to the equivalent ES5 with no runtime.  </p>
 <h1 id="writing-modules">Writing modules</h1>
 <p>Let&#39;s start writing modules!<br>Our application will do nothing but logs, but the main idea here is make you understand how modules works and how to implement ES6 modules right now in your applications.<br>Our basic app structure:  </p>
 <pre><code>├── Gruntfile.js
@@ -98,7 +98,7 @@ import bar from &quot;./modules/bar&quot;;
 console.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);
 console.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);
 </code></pre>
-<p>It&#39;s pretty simple. The code above does exactly what it looks like.<br>We&#39;re importing module <code>foo</code> and module <code>bar</code>, and then logging the content of each one.<br>To be more clear, let&#39;s look each module:  </p>
+<p>It&#39;s pretty simple. The code above does exactly what it looks like.<br>We&#39;re importing module <code>foo</code> and module <code>bar</code>, and then logging the content of each one.<br>To be more clear, let&#39;s look at each module:  </p>
 <pre><code class="lang-javascript">// foo
 let foo = &#39;foo&#39;;
 
@@ -109,9 +109,9 @@ let bar = &#39;bar&#39;;
 
 export default bar;
 </code></pre>
-<p>In both modules we&#39;re just exporting the strings &#39;foo&#39; and &#39;bar&#39;.<br>When we import the module, our variable have the data we exported.<br>Then, <code>foo</code> in <code>import foo from &quot;foo&quot;</code> have the data <code>&quot;foo&quot;</code> we exported in <code>export default foo</code>.<br>You can also export objects, classes, functions, etc.<br>Now, you can start to hack this simple example and write your own modules.  </p>
+<p>In both modules we&#39;re just exporting the strings <code>&#39;foo&#39;</code> and <code>&#39;bar&#39;</code>.<br>When we import the module, our variable has the data we exported.<br>Then, <code>foo</code> in <code>import foo from &quot;foo&quot;</code> has the data <code>&#39;foo&#39;</code> we exported in <code>export default foo</code>.<br>You can also export objects, classes, functions, etc.<br>Now, you can start to hack this simple example and write your own modules.  </p>
 <h1 id="build">Build</h1>
-<p>As you may know, <a href="http://kangax.github.io/compat-table/es6/">ES6 modules are not supported yet</a> by any browser or node.<br>The only way to write ES6 modules today is using a transpiler.<br>As i mentioned before, i&#39;m using 6to5, that does exactly what we want.<br>The task runner we choose was <a href="http://gruntjs.com/">Grunt</a>, and we&#39;ll use <a href="https://twitter.com/sindresorhus">@sindresorhus</a>&#39;s <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a>.  </p>
+<p>As you may know, <a href="http://kangax.github.io/compat-table/es6/">ES6 modules are not supported yet</a> by any browser nor Node.js.<br>The only way to write ES6 modules today is using a transpiler.<br>As I mentioned before, I&#39;m using 6to5, that does exactly what we want.<br>The task runner we chose was <a href="http://gruntjs.com/">Grunt</a>, and we&#39;ll use <a href="https://twitter.com/sindresorhus">@sindresorhus</a>&#39;s <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a>.  </p>
 <pre><code class="lang-shell">npm install grunt-cli -g
 npm install grunt --save-dev
 npm install grunt-6to5 --save-dev
@@ -134,8 +134,8 @@ npm install grunt-6to5 --save-dev
     }
 });
 </code></pre>
-<p>A pretty simple configuration and we&#39;re almost there.<br>The 6to5 task just run 6to5 against the <code>src</code> dir and transpile the code to <code>dist</code> directory.<br>Note the <code>modules: &#39;common&#39;</code> option. This tells 6to5 to transpile our modules to ES5 <a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> modules style.<br>6to5 also supports <a href="http://requirejs.org/docs/whyamd.html">AMD</a> which is great, because we can integrate ES6 modules to our current environment, independent of our legacy/current modules style choice.  </p>
-<p>To test in the browser, i made a copy task that just copy the <code>sample/index.html</code> file to our <code>dist</code> directory.<br>The HTML file looks like this:  </p>
+<p>A pretty simple configuration and we&#39;re almost there.<br>The 6to5 task just runs 6to5 against the <code>src</code> dir and transpiles the code to the <code>dist</code> directory.<br>Note the <code>modules: &#39;common&#39;</code> option. This tells 6to5 to transpile our modules to ES5 <a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> modules style.<br>6to5 also supports <a href="http://requirejs.org/docs/whyamd.html">AMD</a> which is great, because we can integrate ES6 modules to our current environment, independent of our legacy/current modules style choice.  </p>
+<p>To test it in the browser, I made a copy task that just copies the <code>sample/index.html</code> file to our <code>dist</code> directory.<br>The HTML file looks like this:  </p>
 <pre><code class="lang-markup">&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -150,7 +150,7 @@ npm install grunt-6to5 --save-dev
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>Look at the code above, we put RequireJS as our AMD library and then just require the app.<br>For this test works, you&#39;ll need to change the option <code>modules: amd</code>.  </p>
+<p>Look at the code above, we put RequireJS as our AMD library and then just require the app.<br>For this test to work, you&#39;ll need to set the option <code>modules: amd</code>.  </p>
 <h1 id="running">Running</h1>
 <p>Now we have everything set, you can just run <code>grunt</code>.<br>If you missed something, you can clone the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, and run <code>npm install</code>.  </p>
 <p>Remember, the Grunt task will generate a <code>dist</code> folder with the transpiled code.<br>So, if you choose to transpile ES6 modules to CommonJS, you can test the app with node:  </p>
@@ -159,7 +159,7 @@ npm install grunt-6to5 --save-dev
 <p><img src="/img/running-node.png" alt="Running with node"></p>
 <p>If you choose AMD, just serve the <code>dist</code> folder, and access the page <code>index.html</code>.<br><img src="/img/amd-es6.png" alt="AMD ES6"></p>
 <h1 id="conclusion">Conclusion</h1>
-<p>With this simple tutorial you can see how easy is to setup an ES6 environment to work with modules.<br>6to5 is an excelent painless tool you can use today to transpile future ES6 code to current ES5 code.<br>Go ahead and fork the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, submit issues, questions or pull-requests.<br>Comments are welcome :)  </p>
+<p>With this simple tutorial you can see how easy it is to setup an ES6 environment to work with modules.<br>6to5 is an excelent painless tool you can use today to transpile future ES6 code to current ES5 code.<br>Go ahead and fork the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, submit issues, questions or pull-requests.<br>Comments are welcome :)  </p>
 
                     </section>
                 </article>
