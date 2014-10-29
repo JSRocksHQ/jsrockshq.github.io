@@ -1,1 +1,6 @@
 public/
+
+# IDEs
+*.sublime-*
+.project
+.idea/
