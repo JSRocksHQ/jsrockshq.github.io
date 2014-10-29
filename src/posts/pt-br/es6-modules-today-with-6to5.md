@@ -17,11 +17,11 @@ Nesse tutorial nós vamos mostrar como começar a escrever [ES6 modules](http://
 ![modules today with 6to5](/img/modules-today-6to5.png)
 
 # Primeiro passo
-Se você não esta familiarizado com módules ES6, por favor dê uma olhada no [JSModules.io](http://jsmodules.io/) para ter uma breve introdução.  
-Eu também recomendo a leitura do artigo [Uma nova sintaxe para módulos na ES6](http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6/)do [@jcemer](http://twitter.com/jcemer), aqui mesmo no [ES6Rocks](http://es6rocks.com), que cobre um monte de coisas mais legais sobre módulos no JavaScript.  
+Se você não esta familiarizado com módulos ES6, por favor dê uma olhada no [JSModules.io](http://jsmodules.io/) para ter uma breve introdução.  
+Eu também recomendo a leitura do artigo [Uma nova sintaxe para módulos na ES6](http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6/) do [@jcemer](http://twitter.com/jcemer), aqui mesmo no [ES6Rocks](http://es6rocks.com), que cobre um monte de coisas mais legais sobre módulos no JavaScript.  
 Para esse tutorial nós vamos utilizar o 6to5 como transpiler.  
-Basicamente, o 6to5 converte código ES6 e vanilla ES5, fazendo com que você possa usar features de ES6 hoje mesmo.  
-O _6to5_  possui alguma vantagens sobre outros transpilers, aqui estçao algumas das principais features:  
+Basicamente, o 6to5 converte código ES6 em vanilla ES5, fazendo com que você possa usar features de ES6 hoje mesmo.  
+O _6to5_  possui algumas vantagens sobre outros transpilers, aqui estão algumas das principais features:  
 __Readable__: se possível, a formatação é mantida para que o seu código gerado seja o mais semelhante possível.  
 __Extensible__: uma grande variedade de plugins e suporte a Browsers.  
 __Lossless__: source map para que você possa depurar o código compilado com facilidade.  
@@ -52,7 +52,7 @@ import bar from "./modules/bar";
 console.log('From module foo >>> ', foo);
 console.log('From module bar >>> ', bar);
 ```
-É bem simples. O código abaixo faz exatamente o que parece.  
+É bem simples. O código acima faz exatamente o que parece.  
 Nós estamos importando o módulo `foo` e o módulo `bar`, e então estamos logando o conteúdo de cada um.  
 Para ser mais claro, vamos olhar cada módulo:  
 ```javascript
