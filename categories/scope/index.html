@@ -326,10 +326,8 @@ factorial(6); // 720
 arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
 </code></pre>
 <p>Or maybe in event listeners:</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, body=&gt;console.log(body));
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
 </code></pre>
-<!-- TODO above example doesn't make much sense, the `body` parameter receives an event object -->
-
 <h2 id="useful-links">Useful links</h2>
 <p>Here is a list of interesting, useful links you can take a look at:</p>
 <ul>
