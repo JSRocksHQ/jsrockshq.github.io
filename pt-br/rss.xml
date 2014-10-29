@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 29 Oct 2014 03:58:28 GMT</pubDate>
+        <pubDate>Wed, 29 Oct 2014 04:14:09 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -16,7 +16,7 @@
             <description><![CDATA[<p>Eu postei a imagem abaixo no <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a>, mostrando o quanto feliz eu etava.<br>É muito legal o que os <a href="http://en.wikipedia.org/wiki/Source-to-source_compiler">transpilers</a> podem fazer. No mundo do JavaScript é como uma máquina do tempo, onde podemos avançar para um futuro próximo de coisas muito legais que a ES6 irá nos trazer.<br>Nesse tutorial nós vamos mostrar como começar a escrever <a href="http://jsmodules.io/">ES6 modules</a> hoje, usando o excelente <a href="https://github.com/sebmck/6to5">6to5</a>;  </p>
 <p><img src="/img/modules-today-6to5.png" alt="modules today with 6to5"></p>
 <h1 id="primeiro-passo">Primeiro passo</h1>
-<p>Se você não esta familiarizado com módules ES6, por favor dê uma olhada no <a href="http://jsmodules.io/">JSModules.io</a> para ter uma breve introdução.<br>Eu também recomendo a leitura do artigo <a href="http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6/">Uma nova sintaxe para módulos na ES6</a>do <a href="http://twitter.com/jcemer">@jcemer</a>, aqui mesmo no <a href="http://es6rocks.com">ES6Rocks</a>, que cobre um monte de coisas mais legais sobre módulos no JavaScript.<br>Para esse tutorial nós vamos utilizar o 6to5 como transpiler.<br>Basicamente, o 6to5 converte código ES6 e vanilla ES5, fazendo com que você possa usar features de ES6 hoje mesmo.<br>O <em>6to5</em>  possui alguma vantagens sobre outros transpilers, aqui estçao algumas das principais features:<br><strong>Readable</strong>: se possível, a formatação é mantida para que o seu código gerado seja o mais semelhante possível.<br><strong>Extensible</strong>: uma grande variedade de plugins e suporte a Browsers.<br><strong>Lossless</strong>: source map para que você possa depurar o código compilado com facilidade.<br><strong>Compact</strong>: mapeia diretamente para equivalente código ES5, sem qualquer necessidade de um runtime.  </p>
+<p>Se você não esta familiarizado com módulos ES6, por favor dê uma olhada no <a href="http://jsmodules.io/">JSModules.io</a> para ter uma breve introdução.<br>Eu também recomendo a leitura do artigo <a href="http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6/">Uma nova sintaxe para módulos na ES6</a> do <a href="http://twitter.com/jcemer">@jcemer</a>, aqui mesmo no <a href="http://es6rocks.com">ES6Rocks</a>, que cobre um monte de coisas mais legais sobre módulos no JavaScript.<br>Para esse tutorial nós vamos utilizar o 6to5 como transpiler.<br>Basicamente, o 6to5 converte código ES6 em vanilla ES5, fazendo com que você possa usar features de ES6 hoje mesmo.<br>O <em>6to5</em>  possui algumas vantagens sobre outros transpilers, aqui estão algumas das principais features:<br><strong>Readable</strong>: se possível, a formatação é mantida para que o seu código gerado seja o mais semelhante possível.<br><strong>Extensible</strong>: uma grande variedade de plugins e suporte a Browsers.<br><strong>Lossless</strong>: source map para que você possa depurar o código compilado com facilidade.<br><strong>Compact</strong>: mapeia diretamente para equivalente código ES5, sem qualquer necessidade de um runtime.  </p>
 <h1 id="escrevendo-m-dulos">Escrevendo módulos</h1>
 <p>Vamos começar a escrever módulos!<br>Nossa aplicação não vai fazer nada além de logs, mas a ideia principal aqui é fazer você entender como os módulos funcionam e como implementar módulos ES6 agora em suas aplicações.<br>Nossa app possui essa estrutura básica:  </p>
 <pre><code>├── Gruntfile.js
@@ -36,7 +36,7 @@ import bar from &quot;./modules/bar&quot;;
 console.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);
 console.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);
 </code></pre>
-<p>É bem simples. O código abaixo faz exatamente o que parece.<br>Nós estamos importando o módulo <code>foo</code> e o módulo <code>bar</code>, e então estamos logando o conteúdo de cada um.<br>Para ser mais claro, vamos olhar cada módulo:  </p>
+<p>É bem simples. O código acima faz exatamente o que parece.<br>Nós estamos importando o módulo <code>foo</code> e o módulo <code>bar</code>, e então estamos logando o conteúdo de cada um.<br>Para ser mais claro, vamos olhar cada módulo:  </p>
 <pre><code class="lang-javascript">// foo
 let foo = &#39;foo&#39;;
 
@@ -96,7 +96,7 @@ npm install grunt-6to5 --save-dev
 <p><img src="/img/running-node.png" alt="Running with node"></p>
 <p>Se você optou por usar AMD, apenas sirva o diretório <code>dist</code>, e acesse a página <code>index.html</code>.<br><img src="/img/amd-es6.png" alt="AMD ES6"></p>
 <h1 id="conclus-o">Conclusão</h1>
-<p>Com este simples tutorial você pode ver como é fácil configurar um ambiente ES6 para trabalhar com módulos.<br>O 6to5 é uma excelente ferramente que você pode uasr hoje para transpilar código ES6 para ES5.<br>Forke o repositório <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a> e submeta issues, perguntas ou pull-requests.  </p>
+<p>Com este simples tutorial você pode ver como é fácil configurar um ambiente ES6 para trabalhar com módulos.<br>O 6to5 é uma excelente ferramente que você pode uasr hoje para transpilar código ES6 para ES5.<br>Forke o repositório <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a> e submeta issues, perguntas ou pull-requests.<br>Comentário são bem-vindos :)</p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/10/es6-modules-today-with-6to5</guid>

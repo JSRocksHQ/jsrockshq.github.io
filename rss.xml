@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 29 Oct 2014 03:58:28 GMT</pubDate>
+        <pubDate>Wed, 29 Oct 2014 04:14:09 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -97,7 +97,7 @@ npm install grunt-6to5 --save-dev
 <p><img src="/img/running-node.png" alt="Running with node"></p>
 <p>If you choose AMD, just serve the <code>dist</code> folder, and access the page <code>index.html</code>.<br><img src="/img/amd-es6.png" alt="AMD ES6"></p>
 <h1 id="conclusion">Conclusion</h1>
-<p>With this simple tutorial you can see how easy is to setup an ES6 environment to work with modules.<br>6to5 is an excelent painless tool you can use today to transpile future ES6 code to current ES5 code.<br>Go ahead and fork the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, submit issues, questions or pull-requests.  </p>
+<p>With this simple tutorial you can see how easy is to setup an ES6 environment to work with modules.<br>6to5 is an excelent painless tool you can use today to transpile future ES6 code to current ES5 code.<br>Go ahead and fork the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, submit issues, questions or pull-requests.<br>Comments are welcome :)  </p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</guid>
