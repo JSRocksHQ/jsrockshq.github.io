@@ -1,7 +1,7 @@
 ![es6rocks](https://raw.githubusercontent.com/es6rocks/es6rocks.github.io/master/images/es6rocks.png)
 
 # How to contribute
-ES6Rocks.com is a collaborative website.  
+[ES6Rocks.com](http://es6rocks.com/) is a collaborative website about the ECMAScript language sixth version, a.k.a ES6.  
 Anyone can contribute by writing an article, making a layout change, suggest new sections, reporting issues, etc.  
 Contributing to ES6Rocks is super easy, choose the type of contribution you want.  
 
@@ -9,7 +9,7 @@ Contributing to ES6Rocks is super easy, choose the type of contribution you want
 ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
 - First thing you need to do is to install Harmonic.
 ```javascript
-npm install harmonic -g
+npm install harmonic -gche
 ```
 You'll need node 0.11.* and npm already installed.  
 Check out the main [Harmonic documentation](https://github.com/es6rocks/harmonic/) if you're in trouble.  
@@ -37,7 +37,7 @@ harmonic run
 ```
 This command will build and run the ES6Rocks website in the default port 9356.
 
-- Commit your changes and checkout to the master branch
+- Commit your changes
 ```shell
 git add .
 git commit -m "postsmy awesome article"
