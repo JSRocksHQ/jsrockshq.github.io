@@ -1353,13 +1353,28 @@ var Harmonic = function Harmonic(name) {
       "index_posts": 10,
       "i18n": {
         "default": "en",
-        "languages": ["en", "pt-br"]
+        "languages": ["en", "pt-br", "cn"]
       }
     };
   },
   getPosts: function() {
     return {
       "en": [{
+        "layout": "post",
+        "title": "使用6to5，让今天就来写ES6的模块化开发！",
+        "date": "2014-11-05T13:21:05.456Z",
+        "comments": "true",
+        "published": "true",
+        "keywords": "",
+        "description": "",
+        "categories": [""],
+        "content": "<h1 id=\"-6to5-es6-\">使用6to5，让今天就来写ES6的模块化开发！</h1>\n",
+        "file": "./src/posts/6to5-es6.md",
+        "filename": "6to5-es6",
+        "link": "2014/11/6to5-es6",
+        "lang": "en",
+        "default_lang": false
+      }, {
         "layout": "post",
         "title": "ES6 modules today with 6to5",
         "date": "2014-10-28T12:49:54.528Z",
@@ -1561,6 +1576,21 @@ var Harmonic = function Harmonic(name) {
       }],
       "pt-br": [{
         "layout": "post",
+        "title": "使用6to5，让今天就来写ES6的模块化开发！",
+        "date": "2014-11-05T13:21:05.456Z",
+        "comments": "true",
+        "published": "true",
+        "keywords": "",
+        "description": "",
+        "categories": [""],
+        "content": "<h1 id=\"-6to5-es6-\">使用6to5，让今天就来写ES6的模块化开发！</h1>\n",
+        "file": "./src/posts/6to5-es6.md",
+        "filename": "6to5-es6",
+        "link": "pt-br/2014/11/6to5-es6",
+        "lang": "pt-br",
+        "default_lang": true
+      }, {
+        "layout": "post",
         "title": "Módulos ES6 hoje com o 6to5",
         "date": "2014-10-28T12:49:54.528Z",
         "comments": "true",
@@ -1753,6 +1783,22 @@ var Harmonic = function Harmonic(name) {
         "filename": "hello-world",
         "link": "pt-br/2014/05/hello-world",
         "lang": "pt-br",
+        "default_lang": true
+      }],
+      "cn": [{
+        "layout": "post",
+        "title": "使用6to5，让今天就来写ES6的模块化开发！",
+        "date": "2014-11-05T13:21:05.456Z",
+        "comments": "true",
+        "published": "true",
+        "keywords": "",
+        "description": "",
+        "categories": [""],
+        "content": "<h1 id=\"-6to5-es6-\">使用6to5，让今天就来写ES6的模块化开发！</h1>\n<p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>\n<figure>\n    <a href=\"http://es6rocks.com/img/modules-today-6to5.png\">\n        <img src=\"http://es6rocks.com/img/modules-today-6to5.png\" alt=\"home\" />\n    </a>\n    <figcaption>使用6to5让今天就可以练手ES6的模块化</figcaption>\n</figure>\n\n<h1 id=\"-\">第一步</h1>\n<p>如果你现在还不了解ES6的模块化开发，请在<a href=\"http://JSModules.io\">JSModules.io</a>上了解一下。我也推荐大家读一下@jcemer的文章<a href=\"http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/\">A new syntax for modules in ES6</a>，它涉及到了很多非常酷的关于JS模块化的东西。他可以指导我们使用6to5。总的来说，6to5能在支持ES5d的环境下提前尝试ES6 模块化开发的快感。\n6to5比其他降级工具有一下几个优势：</p>\n<ul>\n<li>可读性：你的格式化的代码尽可能的保留。</li>\n<li>可扩展性：有非常庞大的插件库和浏览器的支持。</li>\n<li>可调式性：因为支持source map，你可以方便的调试已经编译过后的代码</li>\n<li>高效率：直接转化为与ES相当的代码，不会增加额外的运行十几</li>\n</ul>\n<h1 id=\"-\">一起来写模块</h1>\n<p>让我们来尝试着写模块吧！\n我们的应用除了输出日志不会做其他事情，其主要的目的就是让你了解模块化如何工作和如何让你现有的环境使用ES6的模块化开发。\n基本的目录结构：</p>\n<pre><code>├── Gruntfile.js\n├── package.json\n└── src\n    ├── app.js\n    ├── modules\n    │   ├── bar.js\n    │   ├── baz.js\n    │   └── foo.js\n    └── sample\n        └── index.html\n</code></pre><p>app.js是主程序，包含了我们将要存储的模块化的目录\n下面是app.js的代码：</p>\n<pre><code class=\"lang-javascript\">import foo from &quot;./modules/foo&quot;;\nimport bar from &quot;./modules/bar&quot;;\n\nconsole.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);\nconsole.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);\n</code></pre>\n<p>以上代码非常简单，我们导入了foo模块和bar模块，然后分别打印出他们</p>\n<pre><code class=\"lang-javascript\">// foo.js\nlet foo = &#39;foo&#39;;\n\nexport default foo;\n\n\n// bar.js\nlet bar = &#39;bar&#39;;\n\nexport default bar;\n</code></pre>\n<p>在这些模块一面我们只是导出了两个字符串&#39;foo&#39;和&#39;bar&#39;，当我们导入这些模块，我们的变量其实已经有数据。\n当然，我们何以导出对象，类，函数，等等\n现在，你可以开始模仿这个例子写出你自己的模块</p>\n<h1 id=\"-\">构建</h1>\n<p>就像你已经知道的，<a href=\"http://kangax.github.io/compat-table/es6/\">ES6不支持你现在的浏览器和Node</a>.js，只有一条路，那就是使用降级转换器来编写ES6的模块化代码。\n正如我之前提到的那个，我使用6to5，他可以精确的达到我们想要的效果。\n这个任务是运行在Grunt上的,我们使用 @sindresorhus的 <a href=\"https://github.com/sindresorhus/grunt-6to5\">grunt-6to5</a></p>\n<pre><code class=\"lang-shell\">npm install grunt-cli -g\nnpm install grunt --save-dev\nnpm install grunt-6to5 --save-dev\n</code></pre>\n<p>我们的Gruntfile类似于一下：</p>\n<pre><code class=\"lang-javascript\">grunt.initConfig({\n    &#39;6to5&#39;: {\n        options: {\n            modules: &#39;common&#39;\n        },\n\n        build: {\n            files: [{\n                expand: true,\n                cwd: &#39;src/&#39;,\n                src: [&#39;**/*.js&#39;],\n                dest: &#39;dist/&#39;,\n            }],\n        }\n    }\n});\n</code></pre>\n<p>这是个简单又给力的配置，我们也几乎完成了。\n当你指定好源文件和输出文件后，这个任务就可以来运行了。\n&#39;common&#39;选项的目的在于告诉6to5我们将输出ES5CommonJS模块化风格。\n当然，6to5也支持AMD，我写了sample/index.html，让他在浏览器环境下测试一下，这个HTML的代码如下：</p>\n<pre><code class=\"lang-html\">&lt;!doctype html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;ES6 modules 6to5&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;script src=&quot;//[cdnjs URL]/require.min.js&quot;&gt;&lt;/script&gt;\n    &lt;script&gt;\n        require([&#39;app.js&#39;]);\n    &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n</code></pre>\n<p>观察上面的代码，我们使用AMD的RequireJS框架来加载这个JS，对于这个例子，你需要将上面的配置文件改为 modules: &#39;amd&#39;</p>\n<h1 id=\"-\">运行</h1>\n<p>万事俱备东风只欠，我们的代码已经放在<a href=\"https://github.com/es6rocks/es6-modules-today-with-6to5\">es6-modules-today-with-6to5</a>，你可以克隆下来自己玩玩。使用npm install安装6to5</p>\n<p>记住一点，Grunt任务会生成一个目标文件夹来存放转化后的代码\n所以，如果你想测试使用CommonJS规范的转化后的ES6的代码，你可以执行一下命令</p>\n<pre><code class=\"lang-shell\">node dist/app.js\n</code></pre>\n<figure>\n    <a href=\"http://es6rocks.com/img/running-node.png\">\n        <img src=\"http://es6rocks.com/img/running-node.png\" alt=\"home\" />\n    </a>\n    <figcaption>Node.js上的运行效果</figcaption>\n</figure>\n\n<p>如果你使用AMD规范的，请在浏览器访问index.html(<strong>吐槽一下，老外竟然不知道中国的<a href=\"https://github.com/seajs/seajs\">sea.js</a></strong>)</p>\n<figure>\n    <a href=\"http://es6rocks.com/img/amd-es6.png\">\n        <img src=\"http://es6rocks.com/img/amd-es6.png\" alt=\"home\" />\n    </a>\n    <figcaption>在浏览器执行的效果</figcaption>\n</figure>\n\n<h1 id=\"-\">结论</h1>\n<p>通过这个简单的实例你学会了如果简单的使用ES6模块化风格来编写代码。6to5是胃肠棒的工具让你穿越到未来提前体验ES6模块化带来的快感。资源下载<a href=\"https://github.com/es6rocks/es6-modules-today-with-6to5\">es6-modules-today-with-6to5</a>，欢迎提交一些问题的反馈</p>\n",
+        "file": "./src/posts/6to5-es6.md",
+        "filename": "6to5-es6",
+        "link": "cn/2014/11/6to5-es6",
+        "lang": "cn",
         "default_lang": true
       }]
     };
