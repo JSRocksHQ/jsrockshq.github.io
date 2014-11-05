@@ -9,7 +9,7 @@ Contributing to ES6Rocks is super easy, choose the type of contribution you want
 ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
 - First thing you need to do is to install Harmonic.
 ```javascript
-npm install harmonic -gche
+npm install harmonic -g
 ```
 You'll need node 0.11.* and npm already installed.  
 Check out the main [Harmonic documentation](https://github.com/es6rocks/harmonic/) if you're in trouble.  
