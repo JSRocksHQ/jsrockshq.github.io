@@ -19,7 +19,8 @@
         "default": "en",
         "languages": [
             "en",
-            "pt-br"
+            "pt-br",
+            "cn"
         ]
     }
 }
