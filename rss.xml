@@ -6,9 +6,18 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 29 Oct 2014 09:08:24 GMT</pubDate>
+        <pubDate>Wed, 05 Nov 2014 13:23:27 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>使用6to5，让今天就来写ES6的模块化开发！</title>
+            <link>http://es6rocks.com/2014/11/6to5-es6</link>
+            <description><![CDATA[<h1 id="-6to5-es6-">使用6to5，让今天就来写ES6的模块化开发！</h1>
+]]></description>
+            <pubDate>Wed, 05 Nov 2014 13:21:05 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/11/6to5-es6</guid>
+        </item>
         
         <item>
             <title>ES6 modules today with 6to5</title>
@@ -503,15 +512,6 @@ David is the principal researcher and founder of Mozilla Research, where he work
 ]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
-        </item>
-        
-        <item>
-            <title>ECMAScript 6 - The future is here</title>
-            <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
-            <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
-]]></description>
-            <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</guid>
         </item>
         
     </channel>
