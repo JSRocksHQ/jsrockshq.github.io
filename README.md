@@ -30,8 +30,7 @@ harmonic new_post "My awesome post"
 ```
 This command will create a new markdown file in `/src/posts/[LANG]`.  
 
-- Test
-Run Harmonic to check if your post is ready:
+- Run Harmonic to check if your post is ready
 ```shell
 harmonic run
 ```
