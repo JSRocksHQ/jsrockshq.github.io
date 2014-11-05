@@ -28,7 +28,7 @@ git checkout src
 ```shell
 harmonic new_post "My awesome post"
 ```
-This command will create a new markdown file in `/src/posts/[LANG]`.
+This command will create a new markdown file in `/src/posts/[LANG]`.  
 
 - Test
 Run Harmonic to check if your post is ready:
@@ -40,10 +40,10 @@ This command will build and run the ES6Rocks website in the default port 9356.
 - Commit your changes
 ```shell
 git add .
-git commit -m "postsmy awesome article"
+git commit -m "my awesome article"
 ```
 
-- push and open a pull-request for the src branche
+- push and open a pull-request for the src branch
 ```shell
 git push origin src
 ```
