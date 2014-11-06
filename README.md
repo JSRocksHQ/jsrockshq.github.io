@@ -49,5 +49,5 @@ git push origin src
 Go to your forked repository's page on Github.com and create a pull-request.
 
 ## Issues
-You can help us by finding a bug in the website, a typo in an article or even an incorrect sentence.  
-File an [issue](https://github.com/es6rocks/es6rocks.github.io/issues) about it, and we'll solve it ASAP.
+You can help ES6Rocks by finding a bug in the website, a typo in an article or even an incorrect sentence.  
+File an [issue](https://github.com/es6rocks/es6rocks.github.io/issues), and we will solve it ASAP.
