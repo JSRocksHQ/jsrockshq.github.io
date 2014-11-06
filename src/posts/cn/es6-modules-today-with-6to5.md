@@ -5,7 +5,7 @@ date: 2014-11-05T15:19:50.612Z
 comments: true
 published: true
 keywords: ES6, modules, 6to5
-description:
+description: 使用基于Node.js的6to5，让支持ES5的环境也能使用ES6的模块化
 categories: Modules, Tutorial
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
