@@ -1,12 +1,14 @@
 <!--
 layout: post
 title: 使用6to5，让今天就来写ES6的模块化开发!
-date: 2014-11-05T15:19:50.612Z
+date: 2014-10-28T12:49:54.528Z
 comments: true
 published: true
-keywords:
-description:
-categories:
+keywords:ES6, modules, 6to5
+description:使用基于Node.js的6to5，让支持ES5的环境也能使用ES6的模块化
+categories:Modules, Tutorial
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
 -->
 
 我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。
