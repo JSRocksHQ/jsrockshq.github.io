@@ -1,6 +1,6 @@
 <!--
 layout: post
-title: JavaScript 统一编码
+title: JavaScript ♥ 统一编码
 date: 2014-10-13T19:22:32.267Z
 comments: true
 published: true
