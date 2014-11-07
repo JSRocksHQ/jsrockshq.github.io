@@ -6,7 +6,7 @@ Anyone can contribute by writing an article, making a layout change, suggesting 
 Contributing to ES6Rocks is super easy, choose the type of contribution you want.  
 
 ## Writing an article
-ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
+The ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
 - First thing you need to do is to install Harmonic.
 ```javascript
 npm install harmonic -g
