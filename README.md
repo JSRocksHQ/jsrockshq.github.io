@@ -16,12 +16,16 @@ Check out the main [Harmonic documentation](https://github.com/es6rocks/harmonic
 
 - Fork and clone the es6rocks.github.io repository
 ```shell
-git clone git@github.com:[USER]/es6rocks.github.io.git
+# replace YOUR_USERNAME with your GitHub username below
+git clone https://github.com/YOUR_USERNAME/es6rocks.github.io.git
+cd es6rocks.github.io
+git remote add upstream https://github.com/es6rocks/es6rocks.github.io.git
 ```
 
-- Checkout to the `src` branch
+- Create a new branch using `upstream/src` as base and checkout to it
 ```shell
-git checkout src
+git fetch upstream
+git checkout -b my-awesome-post upstream/src
 ```
 
 - Create a new post
@@ -42,11 +46,11 @@ git add .
 git commit -m "my awesome article"
 ```
 
-- push and open a pull-request for the `src` branch
+- Push your new branch to your forked repository
 ```shell
-git push origin src
+git push origin HEAD
 ```
-Go to your forked repository's page on Github.com and create a pull-request.
+Go to your forked repository's page on Github.com and create a pull request for the `src` branch.
 
 ## Issues
 You can help ES6Rocks by finding a bug in the website, a typo in an article or even an incorrect sentence.  
