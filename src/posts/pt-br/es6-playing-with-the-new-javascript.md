@@ -1,7 +1,7 @@
 <!--
 layout: post
 title: ES6: Brincando com o novo Javascript
-date: 2014-11-12T01:56:23.830Z
+date: 2014-11-13T23:30:23.830Z
 comments: true
 published: true
 keywords: ES6, 6to5, Javascript
