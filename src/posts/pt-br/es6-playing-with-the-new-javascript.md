@@ -10,14 +10,14 @@ categories: Articles
 authorName: Pedro Nauck
 authorLink: http://twitter.com/pedronauck
 -->
-Acredito que boa parte dos desenvolvedores que tem convivío com JavaScript, já estão ouvindo falar da [nova versão do JavaScript](http://tc39wiki.calculist.org/es6/), conhecida também como ECMAScript 6 ou apenas ES6. Sei que alguns já ouviram falar, porém ainda não deram muita bola, e que outros nem sequer fazem idéia do que se trata. Se você se encaixa em ambos os casos, fique tranquilo, tudo isso ainda é relativemente novo. A notícia boa é que você tem tempo para estudar e aprender mais sobre o que está por vir.
+Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da [nova versão do JavaScript](http://tc39wiki.calculist.org/es6/), conhecida também como ECMAScript 6 ou apenas ES6. Sei que alguns já ouviram falar, porém ainda não deram muita bola, e que outros nem sequer fazem idéia do que se trata. Se você se encaixa em ambos os casos, fique tranquilo, tudo isso ainda é relativemente novo. A notícia boa é que você tem tempo para estudar e aprender mais sobre o que está por vir.
 
 > Amanhã, amanhã, não hoje! É o que todas as pessoas preguiçosas dizem.
 - Provérbio Alemão
 
-Mesmo sendo uma implementação nova, o ES6 já tem a maior parte sua estrutura pronta e, aos poucos, vão surgindo [diversas ferramentas](https://github.com/addyosmani/es6-tools) que podem lhe auxiliar à usa-lá tanto no ambiente no browser, quanto no server. Usufruindo dos famosos [polyfills](https://github.com/addyosmani/es6-tools#polyfills), ou usando [transpilers](https://github.com/addyosmani/es6-tools#transpilers) para gerar códigos nativos a partir da nova especificação. Porém, sabemos que sempre há uma insegurança quanto a usar algo que não está 100% pronto em um ambiente de produção.
+Mesmo sendo uma implementação nova, o ES6 já tem a maior parte sua estrutura pronta e, aos poucos, vão surgindo [diversas ferramentas](https://github.com/addyosmani/es6-tools) que podem lhe auxiliar a usá-la tanto no ambiente no browser, quanto no server. Usufruindo dos famosos [polyfills](https://github.com/addyosmani/es6-tools#polyfills), ou usando [transpilers](https://github.com/addyosmani/es6-tools#transpilers) para gerar códigos nativos a partir da nova especificação. Porém, sabemos que sempre há uma insegurança quanto a usar algo que não está 100% pronto em um ambiente de produção.
 
-Mas já que ES6 veio para ficar e que muito em breve você terá que aprender - de um jeito ou de outro - por que não já ir estudando e testando na medida do possível. Assim você minimiza os riscos e já adianta conhecimento. Pois é, foi isso que pensei a um mês atrás quando começei a estudar sobre o assunto e decidi brincar um pouco com a "nova linguagem". Começar a estudar esta nova versão do JavaScript está sendo realmente uma experiência muito incrível.
+Mas já que ES6 veio para ficar e que muito em breve você terá que aprender - de um jeito ou de outro - por que não já ir estudando e testando na medida do possível. Assim você minimiza os riscos e já adianta conhecimento. Pois é, foi isso que pensei a um mês atrás quando comecei a estudar sobre o assunto e decidi brincar um pouco com a "nova linguagem". Começar a estudar esta nova versão do JavaScript está sendo realmente uma experiência muito incrível.
 
 Neste post vou tentar contar um pouco do que aprendi, e espero de alguma forma, conseguir estimular você a fazer o mesmo.
 
@@ -31,7 +31,7 @@ Foi então que surgiu a idéia de criar o [algorithms-with-es6](https://github.c
 
 ## Arrow Functions e adeus bind()
 
-Umas das primeiras features que me deparei e que me deixaram realmente impolgado com ES6 foram as `Arrow Functions`, ou também conhecidas como `Fat Arrows`. Feature largamente implementada em CoffeScript.
+Umas das primeiras features que me deparei e que me deixaram realmente empolgado com ES6 foram as `Arrow Functions`, ou também conhecidas como `Fat Arrows`. Feature largamente utilizada em CoffeScript.
 
 **Aviso:** Vou passar *apenas alguns detalhes* sobre Arrows Functions, não vou explicar muito a fundo, até porque o [Felipe Moura](https://twitter.com/felipenmoura) já fez um [excelente post](http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope/) aqui no ES6 Rocks falando sobre isso.
 
@@ -56,7 +56,7 @@ Poderíamos melhorar um pouco essa função usando [Operadores Ternários](https
   };
 ```
 
-Esta é uma função relativamente simples que conseguimos usar apenas 3 linhas para cria-lá. Mas se analisarmos, existe alguns [tokens](http://ariya.ofilabs.com/2012/07/most-popular-javascript-tokens.html) dentro dessa função que sempre se repetem e que poderíamos não precisar escrevê-los, como é o caso do `function`, `return` e `{}`. Arrow Functions nos dá exatamente esta possibilidade. A mesma função acima, ficaria assim:
+Esta é uma função relativamente simples que conseguimos usar apenas 3 linhas para criá-la. Mas se analisarmos, existem alguns [tokens](http://ariya.ofilabs.com/2012/07/most-popular-javascript-tokens.html) dentro dessa função que sempre se repetem e que poderíamos não precisar escrevê-los, como é o caso do `function`, `return` e `{}`. Arrow Functions nos dão exatamente esta possibilidade. A mesma função acima ficaria assim:
 
 ```javascript
   var fib = (n) => (n <= 1) ? n : (fib(n - 1) + fib(n - 2));
@@ -64,7 +64,7 @@ Esta é uma função relativamente simples que conseguimos usar apenas 3 linhas 
 
 O resultado final é o mesmo, com uma quantidade considerável de código a menos. Até esse ponto você poderia pensar que isto é apenas um *~syntax sugar~*, mas não é bem por aí.
 
-Além de nos possibilitar escrever menos código, Arrows Functions também muda a maneira com que lidamos com o escopo da função, fazendo com que o `this` quando chamado dentro de uma função, pertença ao escopo do local onde foi executado e não à função.
+Além de nos possibilitar escrever menos código, Arrows Functions também mudam a maneira com que lidamos com o escopo da função, fazendo com que o `this` quando chamado dentro de uma função, pertença ao escopo do local onde foi executado e não à função.
 
 ```javascript
   var school = {
@@ -87,7 +87,7 @@ Além de nos possibilitar escrever menos código, Arrows Functions também muda 
   school.getAverages(students) // 80, 83.33
 ```
 
-Como podem ver, `this.calcAverage()` é executado dentro da função `map()`, porém seu escopo permance sendo o escopo do objeto. Fazendo com que `this` neste caso se referencie a variável `school`. Veja como teríamos que fazer para o mesmo código funcionar na syntax atual de JavaScript:
+Como podem ver, `this.calcAverage()` esta sendo executado dentro da função `map()`, porém seu escopo permanece sendo o do método `getAverages` e não o da função `map` ao qual o método está sendo executado. Fazendo com que `this` neste caso se referencie a variável `school`. Veja como teríamos que fazer para o mesmo código funcionar na syntax atual de JavaScript:
 
 ```javascript
   var school = {
@@ -116,8 +116,9 @@ Basicamente, o `let` vem como um substituto para o `var` com a responsabilidade 
 
 No início é inevitável que você estranhe declarar variáveis usando um novo tipo de declaração, já que estamos tão acostumados com o `var`, mas como tudo na vida, com o tempo as coisas vão ficando naturais.
 
-Como mencionei acima, o `let` vem pra solucionar um problema de escopo, o que faz com que JavaScript passe a ter um comportamento que é o comportamento natural de muitas linguagens, onde o escopo de uma varíavel declarada, pertenca ao escopo da onde a mesma foi declarada. Caso você não saiba por que isso acontece, aconselho você a estudar sobre **Hoisting em JavaScript**. Segue alguns posts que indicido sobre o assunto:
+Como mencionei acima, o `let` vem pra solucionar um problema de escopo, o que faz com que JavaScript passe a ter um comportamento que é o comportamento natural de muitas linguagens, onde os escopos são definidos a partir de qualquer bloco (instrução entre `{}`). No ES5 - e versões menores - as limitações de escopo se referem apenas ao escopo global e/ou escopo de função. Essa limitação da linguagem faz com que muitas vezes você acabe sobrescrevendo variáveis já declaradas anteriormente, caso você não saiba por que isso acontece, aconselho você a estudar sobre **Escopo e Hoisting em JavaScript**. Segue alguns posts que indicido sobre o assunto:
 
+- [Hoisting e Escopo em Javascript](http://loopinfinito.com.br/2014/10/29/hoisting-e-escopo-em-javascript/)
 - [Entendendo escopo e hoisting no JavaScript](http://www.hugobessa.com.br/posts/entendendo-escopo-e-hoisting-no-javascript/)
 - [Hoisting no JavaScript](http://felipenmoura.org/articles/hoisting-no-javascript)
 - [Elevação ou JavaScript Hoisting](http://tableless.com.br/elevacao-ou-javascript-hoisting/)
@@ -139,7 +140,7 @@ Problemas com escopo sempre foram um vilão pra quem lida com JavaScript. Não s
   };
 ```
 
-Neste caso, estamos usufruindo do `let` para guardar um variável dentro do escopo do `for` e atribuímos ela outras duas variáveis que estão fora do escopo do loop. Como podem ver, se tentarmos acessar `temp` fora do loop, ela não estará declarada. Caso fisessemos o mesmo com var, ela seria acessível fora do escopo do `for`.
+Neste caso, estamos usufruindo do `let` para guardar um variável dentro do escopo do `for` e atribuímos ela outras duas variáveis que estão fora do escopo do loop. Como podem ver, se tentarmos acessar `temp` fora do loop, ela não estará declarada. Caso fizéssemos o mesmo com `var`, ela seria acessível fora do escopo do `for`.
 
 **PS:** Este caso é apenas ilustrativo, pois não precisamos necessariamente de `temp`, mas é interessante para notar como podemos criar escopo sem ter que usar uma `function`.
 
@@ -151,7 +152,7 @@ Como você pode ver no algoritmo escrito acima, algumas coisas também mudaram e
   let [previous, current, result] = [0, 1];
 ```
 
-Isto só é possível, devido a nova feature do ES6 chamada Destructuring Assignment. Resumindo, ele é um *syntax sugar* - realmente eficiente e conciso - na hora de declarar as coisas, pois ele permite que você gere valores através uma estrutura de dados simples. Para gerar o mesmo resultado acima, teríamos que ter um código como este:
+Isto só é possível, devido a nova feature do ES6 chamada Destructuring Assignment. Resumindo, ele é um *syntax sugar* - realmente eficiente e conciso - na hora de declarar as coisas, pois ele permite que você gere valores através de uma estrutura de dados simples. Para gerar o mesmo resultado acima, teríamos que ter um código como este:
 
 ```javascript
   var previous = 0;
@@ -159,7 +160,7 @@ Isto só é possível, devido a nova feature do ES6 chamada Destructuring Assign
   var result;
 ```
 
-Mas não para por aí. Outra possibilidade que temos usufruindo da nova feature, é a declaração de variavéis a partir de metódos ou propriedades de um objeto:
+Mas não pára por aí. Outra possibilidade que temos usufruindo da nova feature é a declaração de variavéis a partir de metódos ou propriedades de um objeto:
 
 ```javascript
   let myObj = {
@@ -208,7 +209,7 @@ Com Destructuring Assignment e ES6 você faria assim:
   module.exports = { foo, bar };
 ```
 
-Podemos ainda, usar a nova feature para declarar parâmetros de uma função. Em uma função com muitos parâmetros isso pode fazer uma grande diferença, evitando que você use um único parâmetro para assinar todas suas variáveis internas (prática bem comum hoje em dia):
+Podemos ainda, usar a nova feature para declarar parâmetros de uma função. Em uma função com muitos parâmetros isso pode fazer uma grande diferença, evitando que você use um único parâmetro para atribuir todas suas variáveis internas (prática bem comum hoje em dia):
 
 ```javascript
   var foo = function(opts) {
@@ -247,7 +248,7 @@ Ainda sobre funções, a nova feature do ES6 nos permite facilmente criar uma fu
 
 Bacana, não?!
 
-Apesar desta não ser uma feature que influencie diretamente na estrutura da linguagem, ele pode ser muito útil no seu dia-a-dia, eliminando uma boa quantidade de código declarado no topo dos seus scripts e criando uma estrutura mais explícita para suas funções.
+Apesar desta não ser uma feature que influencie diretamente na estrutura da linguagem, ele pode ser muito útil no seu dia a dia, eliminando uma boa quantidade de código declarado no topo dos seus scripts e criando uma estrutura mais explícita para suas funções.
 
 ## Default Parameters
 
@@ -257,7 +258,7 @@ Outra coisa bem legal implementada na nova versão do JavaScript são os Default
   let foo = (x, y = 1) => x + y;
 
   console.log(foo(2)); // 2 + 1 = 3;
-  console.log(foo(2,2)) // 2 + 2 = 4;
+  console.log(foo(2,2)); // 2 + 2 = 4;
 ```
 
 Default parameters são algo amplamente implementado em uma série de linguagens, e em alguns algoritmos eles podem ser realmente úteis. É o caso de um algoritmo para deixar um Array `flattened`, onde usamos recursividade para definir o retorno da função, porém precisamos inicialmente declarar um Array vazio que será manipulado ao longo da execução. Vejamos como fica a função escrita na versão atual do JavaScript:
@@ -304,9 +305,9 @@ Podemos também definir Default Parameters usufruindo de outros paramêtros ante
 
 ## Usando ES6 hoje!
 
-Ok, você pode confessar que ficou bem tentando a poder usar essas features nos seus projetos, não ficou? Normal, eu também fiquei assim. E, felizmente, hoje já temos uma série de ferramentas que podem ajudar você a fazer isso. Porém, fica por sua conta e risco.
+Ok, você pode confessar que ficou bem tentado a poder usar essas features nos seus projetos, não ficou? Normal, eu também fiquei assim. E, felizmente, hoje já temos uma série de ferramentas que podem ajudar você a fazer isso. Porém, fica por sua conta e risco.
 
-Vou mostrar para vocês rapidamente, quais foram as melhoras alternativas que achei para poder configurar um ambiente onde eu pudesse rodar meus testes usando BDD e, claro, escritos também em ES6, e também ter uma compilação dos scripts, para ver como ficaria o código final transpilado.
+Vou mostrar para vocês rapidamente, quais foram as melhores alternativas que achei para poder configurar um ambiente onde eu pudesse rodar meus testes usando BDD e, claro, escritos também em ES6, e também ter uma compilação dos scripts, para ver como ficaria o código final transpilado.
 
 ### Ambiente de Testes
 
@@ -323,7 +324,7 @@ Decidi usar o [Jest](facebook.github.io/jest), que é uma biblioteca de testes c
   }
 ```
 
-Neste caso para criar o script, usei um transpiler bem famoso, que atualmente é [o mais completo](https://github.com/sebmck/6to5#comparison-to-other-transpilers) dentre os transpilers para ES6, o [6to5](https://github.com/sebmck/6to5). O código final é bem simples:
+Neste caso para criar o script, usei um transpiler bem famoso chamado [6to5](https://github.com/sebmck/6to5), que atualmente considero ser [o mais completo](https://github.com/sebmck/6to5#comparison-to-other-transpilers) dentre os transpilers para ES6 (em termos de suporte à features). O código final é bem simples:
 
 ```javascript
   'use strict';
@@ -335,7 +336,7 @@ Neste caso para criar o script, usei um transpiler bem famoso, que atualmente é
   };
 ```
 
-O retorno do método `process` será aonde o Jest irá transformar seu script em código ES6, usando o transpiler. Depois, é claro, você precisa adicionar o Jest como dependência do seu projeto:
+O retorno do método `process` será um código já transformado pelo transpiler que o Jest poderá executar nativamente. Depois, é claro, você precisa adicionar o Jest como dependência do seu projeto:
 
 ```bash
   $ npm install --save-dev jest jest-cli
@@ -344,11 +345,11 @@ O retorno do método `process` será aonde o Jest irá transformar seu script em
 
 E para cada teste que você deseja criar, basta criar uma pasta `__tests__` no mesmo nível de diretório do seu arquivo. Ao executar `jest` você terá todos os seus testes rodando no seu terminal. Bem simples!
 
-Caso você queria usar [Mocha](http://mochajs.org/) ou [Jasmine](http://jasmine.github.io/) para fazer aplicar seus testes, fique a vontade, pois já existe ferramentas para isso também.
+Caso você queira usar [Mocha](http://mochajs.org/) ou [Jasmine](http://jasmine.github.io/) para aplicar seus testes, fique a vontade, pois já existem ferramentas para isso também.
 
 ### Compilação para ES6
 
-Como uso bastante o [Gulp](http://gulpjs.com/) em meus projetos, decidi tentar achar alguma coisa para integrar ele no ambiente, e é claro, que não demorei muito para conseguir isso. Felizmente, o [Sindre Sorhus](https://twitter.com/sindresorhus) ~novidade~, já havia criado um plugin para integrar o 6to5 com o Gulp. A partir daí, mais fácil impossível. Veja o `gulpfile.js`:
+Como uso bastante o [gulp](http://gulpjs.com/) em meus projetos, decidi tentar achar alguma coisa para integrar ele no ambiente, e é claro que não demorei muito para conseguir isso. Felizmente, o [Sindre Sorhus](https://twitter.com/sindresorhus) ~novidade~, já havia criado um plugin para integrar o 6to5 com o gulp. A partir daí, mais fácil impossível. Veja o `gulpfile.js`:
 
 ```javascript
   var gulp = require('gulp');
@@ -374,13 +375,13 @@ E, se você usa o [Grunt](http://gruntjs.com/), novamente, fique a vontade, pois
 
 ## Conclusão
 
-Lembrando que estas são apenas algumas das features que estão por vir. Fora estas, o ES6 conta com uma [série de outras novas features](http://tc39wiki.calculist.org/es6/), sejam elas apenas *syntax sugars* para melhorar a forma com que escrevemos nosso código, ou mudança significativas em termos de estrutura da linguagem. O importante, e o que me anima bastante, é ver que todas estas features estão tendo um foco muito grande na melhoria para o desenvolvedor em termos de coisas realmente úteis derivadas de casos reais, não são apenas meras atualizações.
+Lembrando que estas são apenas algumas das features que estão por vir. Fora estas, o ES6 conta com uma [série de outras novas features](http://tc39wiki.calculist.org/es6/), sejam elas apenas *syntax sugars* para melhorar a forma com que escrevemos nosso código, ou mudanças significativas em termos de estrutura da linguagem. O importante, e o que me anima bastante, é ver que todas estas features estão tendo um foco muito grande na melhoria para o desenvolvedor em termos de coisas realmente úteis derivadas de casos reais, não são apenas meras atualizações.
 
-O intuíto deste post não foi mostrar todas as estas novas features, mas de alguma forma, tentar influenciar você para que você consiga ver que mesmo brincando ou criando um projeto open source simples, você consegue adquirir um ótimo conhecimento, e que nunca é cedo demais para estudar alguma coisa, muito pelo contrário, tente sempre se antecipar as coisas que podem acontecer, e principalmente, as que já estão acontecendo. Desta forma, você pode não só usufruir no futuro, mas também ajudar a construir no presente.
+O intuito deste post não foi mostrar todas estas novas features, mas de alguma forma, tentar influenciar você para que você consiga ver que mesmo brincando ou criando um projeto open source simples, você consegue adquirir um ótimo conhecimento, e que nunca é cedo demais para estudar alguma coisa, muito pelo contrário, tente sempre antecipar as coisas que podem acontecer, e principalmente, as que já estão acontecendo. Desta forma, você pode não só usufruir no futuro, mas também ajudar a construir no presente.
 
-Mesmo estudando pouco tempo sobre a nova especificação da ECMAScript, já pude notar uma grande diferença em como irei escrever meus códigos em um futuro não muito distante, e confesso que estou bem empolgado para que chegue logo a época onde todas estas features sejam suportadas nativamente nos browsers. Sei que isto pode demorar um pouco *(a previsão é junho de 2015)*, mas pode ter certeza que aonde eu puder aplicar ES6, eu irei.
+Mesmo estudando pouco tempo sobre a nova especificação da ECMAScript, já pude notar uma grande diferença em como irei escrever meus códigos em um futuro não muito distante, e confesso que estou bem empolgado para que chegue logo a época onde todas estas features sejam suportadas nativamente nos browsers. Sei que isto pode demorar um pouco *(a previsão é junho de 2015)*, mas pode ter certeza que onde eu puder aplicar ES6, eu irei.
 
-Se você quiser conhecer um pouco sobre outra features, você pode dar uma olhada em [uma talk](http://bit.ly/es6-talk) que fiz falando um pouco sobre as features que achei mais legal na nova implementação:
+Se você quiser conhecer um pouco sobre outra features, você pode dar uma olhada em [uma talk](http://bit.ly/es6-talk) que fiz falando um pouco sobre as features que achei mais legais na nova implementação:
 
 <script async class="speakerdeck-embed" data-id="f8ad5c1045fa013234d07a3f7c519e69" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
