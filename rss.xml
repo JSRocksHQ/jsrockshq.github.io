@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Wed, 29 Oct 2014 09:08:24 GMT</pubDate>
+        <pubDate>Thu, 13 Nov 2014 23:31:56 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -106,8 +106,9 @@ npm install grunt-6to5 --save-dev
         <item>
             <title>JavaScript ♥  Unicode</title>
             <link>http://es6rocks.com/2014/10/javascript-unicode</link>
-            <description><![CDATA[<p>Mathias Bynens gave an awesome talk on the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.<br>He talked about Unicode in JavaScript, and if you need to work hard with strings, you MUST watch this talk.<br>Actually, even if you&#39;re not working hard with strings and JavaScript, those Unicode tricks presented by Mathias are pretty usefull.  </p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/zi0w7J7MCrk" frameborder="0" allowfullscreen></iframe>]]></description>
+            <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.<br>He talked about Unicode in JavaScript, and if you need to work hard with strings, you MUST watch this talk.<br>Actually, even if you&#39;re not working hard with strings and JavaScript, these Unicode tricks presented by Mathias are pretty useful.  </p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/zi0w7J7MCrk" frameborder="0" allowfullscreen></iframe>
+]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/javascript-unicode</guid>
         </item>

@@ -68,6 +68,311 @@
             
             <li class="post">
                 <span class="post__date">
+                    Thu Nov 13 2014 21:30:23 GMT-0200 (BRST)
+                </span>
+                <article class="post__content">
+                    <a class="post__title" href="/pt-br/2014/11/es6-playing-with-the-new-javascript">
+                        ES6: Brincando com o novo Javascript
+                    </a>
+                    <section class="post__excerpt">
+                        <p>Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da <a href="http://tc39wiki.calculist.org/es6/">nova versão do JavaScript</a>, conhecida também como ECMAScript 6 ou apenas ES6. Sei que alguns já ouviram falar, porém ainda não deram muita bola, e que outros nem sequer fazem idéia do que se trata. Se você se encaixa em ambos os casos, fique tranquilo, tudo isso ainda é relativemente novo. A notícia boa é que você tem tempo para estudar e aprender mais sobre o que está por vir.</p>
+<blockquote>
+<p>Amanhã, amanhã, não hoje! É o que todas as pessoas preguiçosas dizem.</p>
+<ul>
+<li>Provérbio Alemão</li>
+</ul>
+</blockquote>
+<p>Mesmo sendo uma implementação nova, o ES6 já tem a maior parte sua estrutura pronta e, aos poucos, vão surgindo <a href="https://github.com/addyosmani/es6-tools">diversas ferramentas</a> que podem lhe auxiliar a usá-la tanto no ambiente no browser, quanto no server. Usufruindo dos famosos <a href="https://github.com/addyosmani/es6-tools#polyfills">polyfills</a>, ou usando <a href="https://github.com/addyosmani/es6-tools#transpilers">transpilers</a> para gerar códigos nativos a partir da nova especificação. Porém, sabemos que sempre há uma insegurança quanto a usar algo que não está 100% pronto em um ambiente de produção.</p>
+<p>Mas já que ES6 veio para ficar e que muito em breve você terá que aprender - de um jeito ou de outro - por que não já ir estudando e testando na medida do possível. Assim você minimiza os riscos e já adianta conhecimento. Pois é, foi isso que pensei a um mês atrás quando comecei a estudar sobre o assunto e decidi brincar um pouco com a &quot;nova linguagem&quot;. Começar a estudar esta nova versão do JavaScript está sendo realmente uma experiência muito incrível.</p>
+<p>Neste post vou tentar contar um pouco do que aprendi, e espero de alguma forma, conseguir estimular você a fazer o mesmo.</p>
+<h2 id="algoritmos-com-es6">Algoritmos com ES6</h2>
+<p>Confesso que no início, passei algumas semanas apenas lendo e aplicando alguns conceitos, sem muito esforço. Porém, vi que precisava de um estudo um pouco mais aprofundado sobre o assunto. Pensei durante um bom tempo onde eu poderia aplicar meus estudos com ES6 para conseguir extrair o seu melhor, e tentar ver onde estava realmente suas diferenças.</p>
+<p>Naquela época eu estava estudando sobre algoritmos com JavaScript e lendo o livro <a href="http://shop.oreilly.com/product/0636920029557.do">Data Structures and Algorithms with JavaScript</a>. Lendo alguns exemplos de código no livro, comecei a notar a quantidade de linhas escrita para fazer algo relativamente simples. Como bom <a href="http://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful/">programador priguiçoso</a> que sou, queria escrever menos linhas. Foi então que me surgiu a dúvida: <em>&quot;Como ficaria este mesmo código implementado em ES6 com Fat Arrows?&quot;</em> Isso me abriu a mente a implementar exemplos do livro usando a nova syntax. Fui um pouco mais a fundo e descobri um <a href="https://github.com/felipernb/algorithms.js/">repositório incrível</a> do <a href="https://github.com/felipernb">Felipe Ribeiro</a> que aplica uma série de algoritmos usando JavaScript. Então pensei: <em>&quot;Porque não implementar estes algoritmos com ES6?!&quot;</em>.</p>
+<p>Foi então que surgiu a idéia de criar o <a href="https://github.com/pedronauck/algorithms-with-es6">algorithms-with-es6</a>.</p>
+<h2 id="arrow-functions-e-adeus-bind-">Arrow Functions e adeus bind()</h2>
+<p>Umas das primeiras features que me deparei e que me deixaram realmente empolgado com ES6 foram as <code>Arrow Functions</code>, ou também conhecidas como <code>Fat Arrows</code>. Feature largamente utilizada em CoffeScript.</p>
+<p><strong>Aviso:</strong> Vou passar <em>apenas alguns detalhes</em> sobre Arrows Functions, não vou explicar muito a fundo, até porque o <a href="https://twitter.com/felipenmoura">Felipe Moura</a> já fez um <a href="http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope/">excelente post</a> aqui no ES6 Rocks falando sobre isso.</p>
+<p>Por JavaScript ter fortemente um <a href="http://www.functionaljavascript.com/">paradigma funcional</a>, ela é, e sempre será, uma linguagem regada a functions, callbacks e closures. E estes são conceitos realmente incríveis e poderosos. Porém podem facilmente se tornar um pouco verbosos e complicados. Veja um exemplo usando recursividade para criar um <a href="http://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci">algoritmo de Sequência de Fibonnaci</a>:</p>
+<pre><code class="lang-javascript">  var fib = function(n) {
+    if (n &lt;= 1) {
+      return n;
+    }
+    else {
+      return fib(n - 1) + fib(n - 1);
+    }
+  };
+</code></pre>
+<p>Poderíamos melhorar um pouco essa função usando <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Operadores Ternários</a>:</p>
+<pre><code class="lang-javascript">  var fib = function(n) {
+    return (n &lt;= 1) ? n : (fib(n - 1) + fib(n - 2));
+  };
+</code></pre>
+<p>Esta é uma função relativamente simples que conseguimos usar apenas 3 linhas para criá-la. Mas se analisarmos, existem alguns <a href="http://ariya.ofilabs.com/2012/07/most-popular-javascript-tokens.html">tokens</a> dentro dessa função que sempre se repetem e que poderíamos não precisar escrevê-los, como é o caso do <code>function</code>, <code>return</code> e <code>{}</code>. Arrow Functions nos dão exatamente esta possibilidade. A mesma função acima ficaria assim:</p>
+<pre><code class="lang-javascript">  var fib = (n) =&gt; (n &lt;= 1) ? n : (fib(n - 1) + fib(n - 2));
+</code></pre>
+<p>O resultado final é o mesmo, com uma quantidade considerável de código a menos. Até esse ponto você poderia pensar que isto é apenas um <em>~syntax sugar~</em>, mas não é bem por aí.</p>
+<p>Além de nos possibilitar escrever menos código, Arrows Functions também mudam a maneira com que lidamos com o escopo da função, fazendo com que o <code>this</code> quando chamado dentro de uma função, pertença ao escopo do local onde foi executado e não à função.</p>
+<pre><code class="lang-javascript">  var school = {
+    getAverages(students) {
+      return students.map(student =&gt; this.calcAverage(student.grades));
+    },
+    calcAverage(grades) {
+      return grades.reduce((sum, num) =&gt; sum + num) / grades.length;
+    }
+  };
+
+  var students = [{
+    name: &#39;John&#39;,
+    grades: [70,80,90]
+  }, {
+    name: &#39;Peter&#39;,
+    grades: [80,80,90]
+  }];
+
+  school.getAverages(students) // 80, 83.33
+</code></pre>
+<p>Como podem ver, <code>this.calcAverage()</code> esta sendo executado dentro da função <code>map()</code>, porém seu escopo permanece sendo o do método <code>getAverages</code> e não o da função <code>map</code> ao qual o método está sendo executado. Fazendo com que <code>this</code> neste caso se referencie a variável <code>school</code>. Veja como teríamos que fazer para o mesmo código funcionar na syntax atual de JavaScript:</p>
+<pre><code class="lang-javascript">  var school = {
+    getAverages: function(students) {
+      return students.map(function(student) {
+        return this.calcAverage(student.grades);
+      }.bind(this));
+    },
+    calcAverage: function(grades) {
+      return grades.reduce(function(sum, num) {
+        return sum + num;
+      }) / grades.length;
+    }
+  };
+</code></pre>
+<p>Teríamos alguns <code>returns</code> a mais, e teríamos que usufruir do <code>.bind(this)</code> para conseguir de alguma forma chamar o método <code>this.calcAverage()</code> dentro do escopo da função <code>map</code>.</p>
+<p>Um pouco mais confuso e verboso, não?!</p>
+<h2 id="let-e-block-scoping">Let e Block Scoping</h2>
+<p>Uma feature bem interessante, mas que pode acabar confundindo um pouco quem está começando a migrar da antiga para a nova versão do JavaScript, é em relação a declarar varíaveis usando <code>let</code>.</p>
+<p>Basicamente, o <code>let</code> vem como um substituto para o <code>var</code> com a responsabilidade de corrigir problemas relacionados a escopo e hoisting. Como o <a href="https://twitter.com/jaydson">Jaydson</a> falou <a href="http://es6rocks.com/pt-br/2014/08/what-you-need-to-know-about-block-scope-let/">no seu post sobre <code>let</code></a> - onde ele explica mais aprofundado os detalhes da nova maneira de declarar variáveis - a intenção é que futuramente o <code>var</code> seja descontinuado em função do <code>let</code>.</p>
+<p>No início é inevitável que você estranhe declarar variáveis usando um novo tipo de declaração, já que estamos tão acostumados com o <code>var</code>, mas como tudo na vida, com o tempo as coisas vão ficando naturais.</p>
+<p>Como mencionei acima, o <code>let</code> vem pra solucionar um problema de escopo, o que faz com que JavaScript passe a ter um comportamento que é o comportamento natural de muitas linguagens, onde os escopos são definidos a partir de qualquer bloco (instrução entre <code>{}</code>). No ES5 - e versões menores - as limitações de escopo se referem apenas ao escopo global e/ou escopo de função. Essa limitação da linguagem faz com que muitas vezes você acabe sobrescrevendo variáveis já declaradas anteriormente, caso você não saiba por que isso acontece, aconselho você a estudar sobre <strong>Escopo e Hoisting em JavaScript</strong>. Segue alguns posts que indicido sobre o assunto:</p>
+<ul>
+<li><a href="http://loopinfinito.com.br/2014/10/29/hoisting-e-escopo-em-javascript/">Hoisting e Escopo em Javascript</a></li>
+<li><a href="http://www.hugobessa.com.br/posts/entendendo-escopo-e-hoisting-no-javascript/">Entendendo escopo e hoisting no JavaScript</a></li>
+<li><a href="http://felipenmoura.org/articles/hoisting-no-javascript">Hoisting no JavaScript</a></li>
+<li><a href="http://tableless.com.br/elevacao-ou-javascript-hoisting/">Elevação ou JavaScript Hoisting</a></li>
+</ul>
+<p>Problemas com escopo sempre foram um vilão pra quem lida com JavaScript. Não saber lidar com ele pode causar grandes confusões e sérios problemas em tempo de execução. Vou usar novamente o algoritmo de Fibonnaci para exemplificar, porém desta vez usando uma lógica diferente:</p>
+<pre><code class="lang-javascript">  let fibonacci = (num) =&gt; {
+    if (num &lt;= 1) return num;
+    let [previous, current, result] = [0, 1];
+
+    for (let i = 1; i &lt; num; i++) {
+      let temp = previous + current;
+      [previous, current] = [current, current = result = temp];
+    }
+
+    console.log(temp) // throw
+    return result;
+  };
+</code></pre>
+<p>Neste caso, estamos usufruindo do <code>let</code> para guardar um variável dentro do escopo do <code>for</code> e atribuímos ela outras duas variáveis que estão fora do escopo do loop. Como podem ver, se tentarmos acessar <code>temp</code> fora do loop, ela não estará declarada. Caso fizéssemos o mesmo com <code>var</code>, ela seria acessível fora do escopo do <code>for</code>.</p>
+<p><strong>PS:</strong> Este caso é apenas ilustrativo, pois não precisamos necessariamente de <code>temp</code>, mas é interessante para notar como podemos criar escopo sem ter que usar uma <code>function</code>.</p>
+<h2 id="destructuring-assignment">Destructuring Assignment</h2>
+<p>Como você pode ver no algoritmo escrito acima, algumas coisas também mudaram em relação à declaração de variáveis. É o caso onde declaramos as 3 primeiras variáveis <code>previous</code>, <code>current</code> e <code>result</code>.</p>
+<pre><code class="lang-javascript">  let [previous, current, result] = [0, 1];
+</code></pre>
+<p>Isto só é possível, devido a nova feature do ES6 chamada Destructuring Assignment. Resumindo, ele é um <em>syntax sugar</em> - realmente eficiente e conciso - na hora de declarar as coisas, pois ele permite que você gere valores através de uma estrutura de dados simples. Para gerar o mesmo resultado acima, teríamos que ter um código como este:</p>
+<pre><code class="lang-javascript">  var previous = 0;
+  var current = 1,
+  var result;
+</code></pre>
+<p>Mas não pára por aí. Outra possibilidade que temos usufruindo da nova feature é a declaração de variavéis a partir de metódos ou propriedades de um objeto:</p>
+<pre><code class="lang-javascript">  let myObj = {
+    foo: &#39;foo&#39;,
+    bar: &#39;bar&#39;
+  };
+
+  let { foo, bar } = myObj;
+</code></pre>
+<p>Isto seria o mesmo que isto:</p>
+<pre><code class="lang-javascript">  var myObj = {
+    foo: &#39;foo&#39;,
+    bar: &#39;bar&#39;
+  };
+
+  var foo = myObj.foo;
+  var bar = myObj.bar;
+</code></pre>
+<p>Seguindo este tipo de declaração algumas coisas podem mudar. Por exemplo, caso você use bastante o padrão de módulos <a href="http://pt.wikipedia.org/wiki/CommonJS">CommonJS</a>, você deve estar familiarizado com isto:</p>
+<pre><code class="lang-javascript">  var foo = function() {
+    return &#39;foo&#39;;
+  };
+
+  var bar = function() {
+    return &#39;bar&#39;;
+  };
+
+  module.exports = {
+    foo: foo,
+    bar: bar
+  };
+</code></pre>
+<p>Com Destructuring Assignment e ES6 você faria assim:</p>
+<pre><code class="lang-javascript">  let foo = () =&gt; &#39;foo&#39;;
+  let bar = () =&gt; &#39;bar&#39;;
+
+  module.exports = { foo, bar };
+</code></pre>
+<p>Podemos ainda, usar a nova feature para declarar parâmetros de uma função. Em uma função com muitos parâmetros isso pode fazer uma grande diferença, evitando que você use um único parâmetro para atribuir todas suas variáveis internas (prática bem comum hoje em dia):</p>
+<pre><code class="lang-javascript">  var foo = function(opts) {
+    var bar = opts.bar;
+    var baz = opts.baz;
+
+    return bar + baz;
+  };
+
+  foo({ bar: &#39;bar&#39;, baz: &#39;baz&#39; });
+</code></pre>
+<p>Ao invés de termos uma variável <code>opts</code>, teríamos a seguinte declaração:</p>
+<pre><code class="lang-javascript">  let foo = ({bar, baz}) =&gt; bar + baz;
+
+  foo({ bar: &#39;bar&#39;, baz: &#39;baz&#39; });
+</code></pre>
+<p>Você pode também renomear o parâmetro, passando o valor que deseja como sendo a <code>key</code> do objeto:</p>
+<pre><code class="lang-javascript">  let foo = ({b1: bar, b2: baz}) =&gt; b1 + b2;
+</code></pre>
+<p>Ainda sobre funções, a nova feature do ES6 nos permite facilmente criar uma função que possa retornar múltiplos valores:</p>
+<pre><code class="lang-javascript">  let foo = () =&gt; [1,2];
+  let [x, y] = foo();
+
+  console.log(x) // 1;
+  console.log(y) // 2;
+</code></pre>
+<p>Bacana, não?!</p>
+<p>Apesar desta não ser uma feature que influencie diretamente na estrutura da linguagem, ele pode ser muito útil no seu dia a dia, eliminando uma boa quantidade de código declarado no topo dos seus scripts e criando uma estrutura mais explícita para suas funções.</p>
+<h2 id="default-parameters">Default Parameters</h2>
+<p>Outra coisa bem legal implementada na nova versão do JavaScript são os Default Parameters. Não preciso explicar muito do que se trata, pois o próprio nome já deixa claro seu significado. Basicamente, ele possibilita que você declare valores padrões para um parâmetro de uma função, caso o mesmo não seja passado:</p>
+<pre><code class="lang-javascript">  let foo = (x, y = 1) =&gt; x + y;
+
+  console.log(foo(2)); // 2 + 1 = 3;
+  console.log(foo(2,2)); // 2 + 2 = 4;
+</code></pre>
+<p>Default parameters são algo amplamente implementado em uma série de linguagens, e em alguns algoritmos eles podem ser realmente úteis. É o caso de um algoritmo para deixar um Array <code>flattened</code>, onde usamos recursividade para definir o retorno da função, porém precisamos inicialmente declarar um Array vazio que será manipulado ao longo da execução. Vejamos como fica a função escrita na versão atual do JavaScript:</p>
+<pre><code class="lang-javascript">  var flatten = function(arr, newArr) {
+    newArr = newArr || [];
+
+    arr.forEach(function(item) {
+      (Array.isArray(item)) &amp;&amp; (flatten(item, newArr));
+      (!Array.isArray(item)) &amp;&amp; (newArr.push(item));
+    });
+
+    return newArr;
+  };
+
+  console.log(flatten([0,1,[2,3,[4,5]]])) // [0,1,2,3,4,5];
+</code></pre>
+<p>Neste caso para conseguirmos aplicar a recursividade, precisamos redefinir o parâmetro <code>newArr</code> no topo da função a cada execução, caso o segundo parâmetro <code>newArr</code> não for passado, o mesmo será um Array vazio. Desta forma conseguimos simular um paramêtro padrão para nossa função.</p>
+<p>Com a nova especificação, precisamos apenas definir o valor padrão do parâmetro ao declarar o mesmo na função:</p>
+<pre><code class="lang-javascript">  let flatten = (arr, newArr = []) =&gt; {
+    arr.forEach((item) =&gt; {
+      (Array.isArray(item)) &amp;&amp; (flatten(item, newArr));
+      (!Array.isArray(item)) &amp;&amp; (givenArr.push(item));
+    });
+
+    return givenArr;
+  };
+
+  console.log(flatten([0,1,[2,3,[4,5]]])) // [0,1,2,3,4,5];
+</code></pre>
+<p>O retorno de ambas as função serão iguais e dessa forma evitamos declarações desnecessárias no algoritmo.</p>
+<p>Podemos também definir Default Parameters usufruindo de outros paramêtros anteriores ou até mesmo outros Default Parameters:</p>
+<pre><code class="lang-javascript">  let greet = (name, prefix = &#39;hello&#39;, msg = `${prefix} ${name}`) =&gt; msg;
+</code></pre>
+<h2 id="usando-es6-hoje-">Usando ES6 hoje!</h2>
+<p>Ok, você pode confessar que ficou bem tentado a poder usar essas features nos seus projetos, não ficou? Normal, eu também fiquei assim. E, felizmente, hoje já temos uma série de ferramentas que podem ajudar você a fazer isso. Porém, fica por sua conta e risco.</p>
+<p>Vou mostrar para vocês rapidamente, quais foram as melhores alternativas que achei para poder configurar um ambiente onde eu pudesse rodar meus testes usando BDD e, claro, escritos também em ES6, e também ter uma compilação dos scripts, para ver como ficaria o código final transpilado.</p>
+<h3 id="ambiente-de-testes">Ambiente de Testes</h3>
+<p>Decidi usar o <a href="facebook.github.io/jest">Jest</a>, que é uma biblioteca de testes criada pelo Facebook, pois ele é por padrão definido em cima de CommonJS e tem um maneira muito fácil de integrar um transpiler. O Jest provém uma <a href="http://facebook.github.io/jest/docs/api.html#config-cachedirectory-string">série de configurações</a> que podem ser definidas a partir do seu <code>package.json</code>, e uma delas é uma propriedade chamada <code>scritpProcessor</code>, que será o caminho para um script que fará o parse do seu código de teste:</p>
+<pre><code class="lang-javascript">  {
+    &quot;name&quot;: &quot;algorithms-with-es6&quot;,
+    ...
+    &quot;jest&quot;: {
+      &quot;scriptPreprocessor&quot;: &quot;./utils/es6-transformer.js&quot;
+    },
+    ...
+  }
+</code></pre>
+<p>Neste caso para criar o script, usei um transpiler bem famoso chamado <a href="https://github.com/sebmck/6to5">6to5</a>, que atualmente considero ser <a href="https://github.com/sebmck/6to5#comparison-to-other-transpilers">o mais completo</a> dentre os transpilers para ES6 (em termos de suporte à features). O código final é bem simples:</p>
+<pre><code class="lang-javascript">  &#39;use strict&#39;;
+
+  module.exports = {
+    process: function (src, path) {
+      return require(&#39;6to5&#39;).transform(src).code;
+    }
+  };
+</code></pre>
+<p>O retorno do método <code>process</code> será um código já transformado pelo transpiler que o Jest poderá executar nativamente. Depois, é claro, você precisa adicionar o Jest como dependência do seu projeto:</p>
+<pre><code class="lang-bash">  $ npm install --save-dev jest jest-cli
+  $ npm install -g jest-cli
+</code></pre>
+<p>E para cada teste que você deseja criar, basta criar uma pasta <code>__tests__</code> no mesmo nível de diretório do seu arquivo. Ao executar <code>jest</code> você terá todos os seus testes rodando no seu terminal. Bem simples!</p>
+<p>Caso você queira usar <a href="http://mochajs.org/">Mocha</a> ou <a href="http://jasmine.github.io/">Jasmine</a> para aplicar seus testes, fique a vontade, pois já existem ferramentas para isso também.</p>
+<h3 id="compila-o-para-es6">Compilação para ES6</h3>
+<p>Como uso bastante o <a href="http://gulpjs.com/">gulp</a> em meus projetos, decidi tentar achar alguma coisa para integrar ele no ambiente, e é claro que não demorei muito para conseguir isso. Felizmente, o <a href="https://twitter.com/sindresorhus">Sindre Sorhus</a> ~novidade~, já havia criado um plugin para integrar o 6to5 com o gulp. A partir daí, mais fácil impossível. Veja o <code>gulpfile.js</code>:</p>
+<pre><code class="lang-javascript">  var gulp = require(&#39;gulp&#39;);
+  var to5 = require(&#39;gulp-6to5&#39;);
+
+  gulp.task(&#39;build&#39;, function () {
+    var paths = [
+      &#39;utils/*.js&#39;,
+      &#39;src/**/*.js&#39;,
+      &#39;!**/__tests__/*.js&#39;,
+      &#39;!utils/es6-transformer.js&#39;
+    ];
+
+    gulp.src(paths)
+      .pipe(to5())
+      .pipe(gulp.dest(&#39;compiled&#39;));
+  });
+</code></pre>
+<p>Dessa forma eu consegui um ambiente bem simples e sem muitas dependências e acredito que esta seja uma estrutura que pode servir para muitos projetos.</p>
+<p>E, se você usa o <a href="http://gruntjs.com/">Grunt</a>, novamente, fique a vontade, pois já existe um <a href="https://github.com/sindresorhus/grunt-6to5">plugin para o 6to5</a> para Grunt, e adivinha? Feito pelo Sindre.</p>
+<h2 id="conclus-o">Conclusão</h2>
+<p>Lembrando que estas são apenas algumas das features que estão por vir. Fora estas, o ES6 conta com uma <a href="http://tc39wiki.calculist.org/es6/">série de outras novas features</a>, sejam elas apenas <em>syntax sugars</em> para melhorar a forma com que escrevemos nosso código, ou mudanças significativas em termos de estrutura da linguagem. O importante, e o que me anima bastante, é ver que todas estas features estão tendo um foco muito grande na melhoria para o desenvolvedor em termos de coisas realmente úteis derivadas de casos reais, não são apenas meras atualizações.</p>
+<p>O intuito deste post não foi mostrar todas estas novas features, mas de alguma forma, tentar influenciar você para que você consiga ver que mesmo brincando ou criando um projeto open source simples, você consegue adquirir um ótimo conhecimento, e que nunca é cedo demais para estudar alguma coisa, muito pelo contrário, tente sempre antecipar as coisas que podem acontecer, e principalmente, as que já estão acontecendo. Desta forma, você pode não só usufruir no futuro, mas também ajudar a construir no presente.</p>
+<p>Mesmo estudando pouco tempo sobre a nova especificação da ECMAScript, já pude notar uma grande diferença em como irei escrever meus códigos em um futuro não muito distante, e confesso que estou bem empolgado para que chegue logo a época onde todas estas features sejam suportadas nativamente nos browsers. Sei que isto pode demorar um pouco <em>(a previsão é junho de 2015)</em>, mas pode ter certeza que onde eu puder aplicar ES6, eu irei.</p>
+<p>Se você quiser conhecer um pouco sobre outra features, você pode dar uma olhada em <a href="http://bit.ly/es6-talk">uma talk</a> que fiz falando um pouco sobre as features que achei mais legais na nova implementação:</p>
+<script async class="speakerdeck-embed" data-id="f8ad5c1045fa013234d07a3f7c519e69" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+<p>Espero que tenham gostado, qualquer dúvida, comentário ou correção podem deixar abaixo nos comentários. Caso você queira acompanhar as discussões e propostas em relação a nova especificação, o <a href="https://twitter.com/ForbesLindesay">Forbes Lindesay</a> criou um <a href="https://esdiscuss.org/">site bem bacana</a> para isso, com as notas oficiais das reuniões do <a href="http://tc39wiki.calculist.org/">TC39</a> e tópicos a respeito do que está rolando.</p>
+<p>Convido você também a forkar o <a href="https://github.com/pedronauck/algorithms-with-es6">algorithms-with-es6</a> e brincar um pouco com o projeto, será um prazer receber um pull request seu.</p>
+<p>May the force be with you!</p>
+<h2 id="refer-ncias">Referências</h2>
+<ul>
+<li><a href="http://es6rocks.com/2014/10/arrow-functions-and-their-scope/">Arrow Functions and their scope</a></li>
+<li><a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/">What you need to know about block scope - let</a></li>
+<li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring assignment</a></li>
+<li><a href="http://fitzgeraldnick.com/weblog/50/">Destructuring Assignment in ECMAScript 6</a></li>
+<li><a href="http://ericleads.com/2013/04/fun-with-javascript-destructuring-assignment/">Fun With JavaScript Destructuring Assignment</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">Default parameters</a></li>
+</ul>
+
+                    </section>
+                </article>
+                <!--
+                <section class="post__author">
+                    <figure class="author">
+                        <img class="author__photo" src="" />
+                        <figcaption>
+                            <a class="author__link" href="http://twitter.com/pedronauck">@Jaydson</a>
+                        </figcaption>
+                    </figure>
+                    <section class="author__description">
+                        
+                    </section>
+                </section>
+                -->
+            </li>
+            
+            <li class="post">
+                <span class="post__date">
                     Tue Oct 28 2014 10:49:54 GMT-0200 (BRST)
                 </span>
                 <article class="post__content">
@@ -713,34 +1018,6 @@ Ele também escreveu um artigo sonre isso. Se você está interessado neste assu
                     </a>
                     <section class="post__excerpt">
                         <p>Allen Wirfs-Brock (<a href="https://twitter.com/awbjs">awbjs</a> no Twitter) é um membro do comitê TC39. Na verdade, ele é o &quot;Project Editor of the ECMAScript Language Specification&quot;, ou seja, editor chefe da ECMA.  </p>
-
-                    </section>
-                </article>
-                <!--
-                <section class="post__author">
-                    <figure class="author">
-                        <img class="author__photo" src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" />
-                        <figcaption>
-                            <a class="author__link" href="http://twitter.com/jaydson">@Jaydson</a>
-                        </figcaption>
-                    </figure>
-                    <section class="author__description">
-                        JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-                    </section>
-                </section>
-                -->
-            </li>
-            
-            <li class="post">
-                <span class="post__date">
-                    Tue May 27 2014 02:18:47 GMT-0300 (BRT)
-                </span>
-                <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/05/ecmascript-6-the-future-is-here">
-                        ECMAScript 6 - O futuro está aqui
-                    </a>
-                    <section class="post__excerpt">
-                        <p>Uma palestra do <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> mostrando algumas features da ES6 como scoping, generators, collections, modules and proxies.  </p>
 
                     </section>
                 </article>
