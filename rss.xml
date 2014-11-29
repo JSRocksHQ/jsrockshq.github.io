@@ -6,98 +6,14 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Thu, 13 Nov 2014 23:31:56 GMT</pubDate>
+        <pubDate>Sat, 29 Nov 2014 05:29:22 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>ES6 modules today with 6to5</title>
             <link>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</link>
-            <description><![CDATA[<p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.<br>It&#39;s great what <a href="http://en.wikipedia.org/wiki/Source-to-source_compiler">transpilers</a> can do. In JavaScript&#39;s World it&#39;s like a time machine we can forward to the near future of awesomeness ES6 will bring.<br>In this tutorial we&#39;ll show how to start writing <a href="http://jsmodules.io/">ES6 modules</a> today, using the awesome <a href="https://github.com/sebmck/6to5">6to5</a>.  </p>
-<p><img src="/img/modules-today-6to5.png" alt="modules today with 6to5"></p>
-<h1 id="first-step">First step</h1>
-<p>If you are not familiar with ES6 modules, please check <a href="http://jsmodules.io/">JSModules.io</a> for an brief introduction.<br>Also, I recommend you to read <a href="http://twitter.com/jcemer">@jcemer</a>&#39;s article <a href="http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/">A new syntax for modules in ES6</a>, here in <a href="http://es6rocks.com">ES6Rocks</a>, that covers a lot of more cool stuff around modules in JavaScript.<br>For this tutorial we&#39;ll use the 6to5 transpiler.<br>Basically, <em>&quot;6to5 turns ES6 code into vanilla ES5, so you can use ES6 features today&quot;</em>.<br><em>6to5</em> has some advantages over other transpilers, here are the main features:<br><strong>Readable</strong>: formatting is retained if possible so your generated code is as similar as possible.<br><strong>Extensible</strong>: with a large range of plugins and browser support.<br><strong>Lossless</strong>: source map support so you can debug your compiled code with ease.<br><strong>Compact</strong>: maps directly to the equivalent ES5 with no runtime.  </p>
-<h1 id="writing-modules">Writing modules</h1>
-<p>Let&#39;s start writing modules!<br>Our application will do nothing but logs, but the main idea here is make you understand how modules works and how to implement ES6 modules right now in your applications.<br>Our basic app structure:  </p>
-<pre><code>├── Gruntfile.js
-├── package.json
-└── src
-    ├── app.js
-    ├── modules
-    │   ├── bar.js
-    │   ├── baz.js
-    │   └── foo.js
-    └── sample
-        └── index.html
-</code></pre><p><code>app.js</code> is the main file, and inside the <code>modules</code> directory we&#39;ll store all our modules.<br>Take a look at app.js:  </p>
-<pre><code class="lang-javascript">import foo from &quot;./modules/foo&quot;;
-import bar from &quot;./modules/bar&quot;;
-
-console.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);
-console.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);
-</code></pre>
-<p>It&#39;s pretty simple. The code above does exactly what it looks like.<br>We&#39;re importing module <code>foo</code> and module <code>bar</code>, and then logging the content of each one.<br>To be more clear, let&#39;s look at each module:  </p>
-<pre><code class="lang-javascript">// foo
-let foo = &#39;foo&#39;;
-
-export default foo;
-</code></pre>
-<pre><code class="lang-javascript">// bar
-let bar = &#39;bar&#39;;
-
-export default bar;
-</code></pre>
-<p>In both modules we&#39;re just exporting the strings <code>&#39;foo&#39;</code> and <code>&#39;bar&#39;</code>.<br>When we import the module, our variable has the data we exported.<br>Then, <code>foo</code> in <code>import foo from &quot;foo&quot;</code> has the data <code>&#39;foo&#39;</code> we exported in <code>export default foo</code>.<br>You can also export objects, classes, functions, etc.<br>Now, you can start to hack this simple example and write your own modules.  </p>
-<h1 id="build">Build</h1>
-<p>As you may know, <a href="http://kangax.github.io/compat-table/es6/">ES6 modules are not supported yet</a> by any browser nor Node.js.<br>The only way to write ES6 modules today is using a transpiler.<br>As I mentioned before, I&#39;m using 6to5, that does exactly what we want.<br>The task runner we chose was <a href="http://gruntjs.com/">Grunt</a>, and we&#39;ll use <a href="https://twitter.com/sindresorhus">@sindresorhus</a>&#39;s <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a>.  </p>
-<pre><code class="lang-shell">npm install grunt-cli -g
-npm install grunt --save-dev
-npm install grunt-6to5 --save-dev
-</code></pre>
-<p>Our Gruntfile will look like this:  </p>
-<pre><code class="lang-javascript">grunt.initConfig({
-    &#39;6to5&#39;: {
-        options: {
-            modules: &#39;common&#39;
-        },
-
-        build: {
-            files: [{
-                expand: true,
-                cwd: &#39;src/&#39;,
-                src: [&#39;**/*.js&#39;],
-                dest: &#39;dist/&#39;,
-            }],
-        }
-    }
-});
-</code></pre>
-<p>A pretty simple configuration and we&#39;re almost there.<br>The 6to5 task just runs 6to5 against the <code>src</code> dir and transpiles the code to the <code>dist</code> directory.<br>Note the <code>modules: &#39;common&#39;</code> option. This tells 6to5 to transpile our modules to ES5 <a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> modules style.<br>6to5 also supports <a href="http://requirejs.org/docs/whyamd.html">AMD</a> which is great, because we can integrate ES6 modules to our current environment, independent of our legacy/current modules style choice.  </p>
-<p>To test it in the browser, I made a copy task that just copies the <code>sample/index.html</code> file to our <code>dist</code> directory.<br>The HTML file looks like this:  </p>
-<pre><code class="lang-markup">&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;ES6 modules 6to5&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;script src=&quot;//[cdnjs URL]/require.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        require([&#39;app.js&#39;]);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>Look at the code above, we put RequireJS as our AMD library and then just require the app.<br>For this test to work, you&#39;ll need to set the option <code>modules: amd</code>.  </p>
-<h1 id="running">Running</h1>
-<p>Now we have everything set, you can just run <code>grunt</code>.<br>If you missed something, you can clone the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, and run <code>npm install</code>.  </p>
-<p>Remember, the Grunt task will generate a <code>dist</code> folder with the transpiled code.<br>So, if you choose to transpile ES6 modules to CommonJS, you can test the app with node:  </p>
-<pre><code class="lang-shell">node dist/app.js
-</code></pre>
-<p><img src="/img/running-node.png" alt="Running with node"></p>
-<p>If you choose AMD, just serve the <code>dist</code> folder, and access the page <code>index.html</code>.<br><img src="/img/amd-es6.png" alt="AMD ES6"></p>
-<h1 id="conclusion">Conclusion</h1>
-<p>With this simple tutorial you can see how easy it is to setup an ES6 environment to work with modules.<br>6to5 is an excelent painless tool you can use today to transpile future ES6 code to current ES5 code.<br>Go ahead and fork the repo <a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>, submit issues, questions or pull-requests.<br>Comments are welcome :)  </p>
+            <description><![CDATA[<p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.  </p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</guid>
@@ -106,8 +22,7 @@ npm install grunt-6to5 --save-dev
         <item>
             <title>JavaScript ♥  Unicode</title>
             <link>http://es6rocks.com/2014/10/javascript-unicode</link>
-            <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.<br>He talked about Unicode in JavaScript, and if you need to work hard with strings, you MUST watch this talk.<br>Actually, even if you&#39;re not working hard with strings and JavaScript, these Unicode tricks presented by Mathias are pretty useful.  </p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/zi0w7J7MCrk" frameborder="0" allowfullscreen></iframe>
+            <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.  </p>
 ]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/javascript-unicode</guid>
@@ -116,274 +31,7 @@ npm install grunt-6to5 --save-dev
         <item>
             <title>Arrow Functions and their scope</title>
             <link>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</link>
-            <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
-It is not just awesome, it&#39;s also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
-But it may be a little harder to read if you are not used to the way it works.
-So, let&#39;s take a look at it, right now!</p>
-<h2 id="making-it-work">Making it work</h2>
-<p>To study and try it for yourself, you can simply copy some of the examples and paste them on your browser&#39;s console.
-By now, you can use the Firefox (22+) Developer Tools, which already supports arrow functions, or on Google Chrome.
-But to use it in your Chrome, you will have to:</p>
-<ul>
-<li>- Enable it: Open about:flags in the address bar, and enable the &quot;Experimental JavaScript&quot; flag</li>
-<li>- Use it always in a function in &quot;use strict&quot; mode, so, to run it on Google Chrome&#39;s console:</li>
-</ul>
-<pre><code class="lang-javascript">(function(){
-    &quot;use strict&quot;;
-    // use arrow functions here
-}());
-</code></pre>
-<p>With time, fortunately, more browsers will support the new ES6 features.
-Now that it&#39;s all set up, let&#39;s dive deep into it!</p>
-<h2 id="a-new-token">A New Token</h2>
-<p>A new token has been added to ES6, and it is called &quot;fat arrow&quot;, represented by</p>
-<pre><code class="lang-javascript">=&gt;
-</code></pre>
-<h2 id="the-new-syntax">The new Syntax</h2>
-<p>With this new token and feature, came this new syntax:</p>
-<pre><code class="lang-javascript">param =&gt; expression
-</code></pre>
-<p>Syntax with which we can use some variations, according to the number of statements in the expression, and number of parameters we want to use:</p>
-<pre><code class="lang-javascript">// single param, single statement
-param =&gt; expression;
-
-// multiple params, single statement
-(param [, param]) =&gt; expression;
-
-// single param, multiple statements
-param =&gt; {
-    statements;
-}
-
-// multiple params, multiple statements
-([param] [, param]) =&gt; {
-   statements
-}
-
-// with no params, single statement
-() =&gt; expression;
-
-// with no params, multiple statements
-() =&gt; {
-    statements;
-}
-
-// one statement, returning an object
-([param]) =&gt; ({ key: value });
-</code></pre>
-<h2 id="how-it-works">How it works</h2>
-<p>If we would &quot;translate&quot; it to something we already do today, it would be something like this:</p>
-<pre><code class="lang-javascript">// this function
-var func = function (param) {
-    return param.split(&quot; &quot;);
-}
-
-// would become:
-var func = param =&gt; param.split(&quot; &quot;);
-</code></pre>
-<p>That means this syntax actually returns a new function, with the given statements and params.</p>
-<p>Therefore, we can call the function the same way we are already used to:</p>
-<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]
-</code></pre>
-<h2 id="immediately-invoked-function-expression-iife-">Immediately-invoked function expression (IIFE)</h2>
-<p>Yes, you can invoke such functions immediately, as they are, indeed, expressions.
-Like so:</p>
-<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
-</code></pre>
-<p>It creates a function, which receives the argument <code>x</code> and returns <code>x * 2</code>, then it immediately executes this expression, passing the value <code>3</code> as argument.</p>
-<p>In case you have more statements to execute, or more params:</p>
-<pre><code class="lang-javascript">( (x, y) =&gt; {
-    x = x * 2;
-    return x + y;
-})( 3, &quot;A&quot; ); // &quot;6A&quot;
-</code></pre>
-<h2 id="relevant-considerations">Relevant considerations</h2>
-<p>Considering:</p>
-<pre><code class="lang-javascript">var func = x =&gt; {
-    return x++;
-};
-</code></pre>
-<p>We may point some relevant considerations:</p>
-<p><strong>- <code>arguments</code> works just as expected</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
-</code></pre>
-<p><strong>- <code>typeof</code> and <code>instanceof</code> work just fine as well</strong></p>
-<pre><code class="lang-javascript">func instanceof Function; // true
-typeof func; // function
-func.constructor == Function; // true
-</code></pre>
-<p><strong>- Using parentheses inside, as suggested by jsLint will not work</strong></p>
-<pre><code class="lang-javascript">// works with regular function syntax, as suggested by JSLint
-(function (x, y){
-    x= x * 2;
-    return x + y;
-} (3, &quot;B&quot;) );
-
-// doesn&#39;t work with Arrow Functions
-( (x, y) =&gt; {
-    x= x * 2;
-    return x + y;
-} ( 3, &quot;A&quot; ) );
-
-// but it would work if the last line was
-// })(3, &quot;A&quot;);
-</code></pre>
-<p><strong>- Although it is a function, is not a constructor</strong></p>
-<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
-</code></pre>
-<p><strong>- It has no prototype</strong></p>
-<pre><code class="lang-javascript">func.prototype; // undefined
-</code></pre>
-<h2 id="scope">Scope</h2>
-<p>The <code>this</code> in arrow functions&#39; scopes works a little bit different, as well.
-The way we are used to it, the <code>this</code> keyword may reference to: <code>window</code> (if accessed globally, not in strict mode), <code>undefined</code> (if accessed globally, in strict mode), an <em>instance</em> (if in a constructor), an <em>object</em> (if in a method or function inside an object or instance) or a <em>binded/applied value</em>. It may also be a <code>DOMElement</code>, for example, in cases when you are using addEventListener. <!-- TODO "accessed globally" needs better wording -->
-This might be annoying some times, or even tricky, causing you some trouble!
-Besides, it is referenced as <em>&quot;scope-by-flow&quot;</em>. What do I mean by saying that?</p>
-<p>Let&#39;s see, firstly, how the <code>this</code> token behaves in different situations:</p>
-<p>In an EventListener:</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
-    console.log(this); // the HTMLBodyElement itself
-});
-</code></pre>
-<p>In instances:</p>
-<pre><code class="lang-javascript">function Person () {
-
-    let fullName = null;
-
-    this.getName = function () {
-        return fullName;
-    };
-
-    this.setName = function (name) {
-        fullName = name;
-        return this;
-    };
-}
-
-let jon = new Person();
-jon.setName(&quot;Jon Doe&quot;);
-console.log(jon.getName()); // &quot;Jon Doe&quot;
-</code></pre>
-<p>In this particular case, once <code>Person.setName</code> is &quot;chainable&quot; (by returning itself), we could also use it like this:</p>
-<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
-   .getName(); // &quot;Jon Doe&quot;
-</code></pre>
-<p>In an object:</p>
-<pre><code class="lang-javascript">let obj = {
-    foo: &quot;bar&quot;,
-    getIt: function () {
-        return this.foo;
-    }
-};
-
-console.log( obj.getIt() ); // &quot;bar&quot;
-</code></pre>
-<p>But then, comes the &quot;scope-by-flow&quot; I mentioned.
-If either the flow or scope changes, the <code>this</code> reference changes as well.</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( function () {
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// window
-</code></pre>
-<p>Once <code>setTimeout</code> changes the execution flow, the <code>this</code> reference becomes the global object (in this case, <code>window</code>), or <code>undefined</code> in strict mode.
-Due to this, we end up using techniques like the use of variables like &quot;self&quot;, &quot;that&quot; or something like it, or having to use the <code>.bind</code> method.</p>
-<p>But don&#39;t worry, arrow functions are here to help!
-With arrow functions, the scope is kept with it, from where it was called.</p>
-<p>Let&#39;s see the <strong>same</strong> example as before, but using an arrow function, passed to the <code>setTimeout</code> call.</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( ()=&gt;{ // the only difference is here
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
-</code></pre>
-<h2 id="interesting-and-useful-usage">Interesting and useful usage</h2>
-<p>As it is very easy to create arrow functions, and their scopes work as mentioned before, we can use it in a variety of ways.</p>
-<p>For example, it can be used directly in an <code>Array#forEach</code> call:</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.forEach(vowel =&gt; {
-    console.log(vowel);
-});
-</code></pre>
-<p>Or in an <code>Array#map</code>:</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.map(vowel =&gt; {
-    return vowel.toUpperCase();
-});
-// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
-</code></pre>
-<p>You can also use it in recursion:</p>
-<pre><code class="lang-javascript">var factorial = (n) =&gt; {
-    if(n==0) {
-        return 1;
-    }
-    return (n * factorial (n-1) );
-}
-
-factorial(6); // 720
-</code></pre>
-<p>Also, let&#39;s say, sorting backwards an array:</p>
-<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
-</code></pre>
-<p>Or maybe in event listeners:</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
-</code></pre>
-<h2 id="useful-links">Useful links</h2>
-<p>Here is a list of interesting, useful links you can take a look at:</p>
-<ul>
-<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions in MDN Documentation</a></li>
-<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki about Arrow Function</a></li>
-<li>- <a href="https://github.com/esnext">ESNext</a></li>
-<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
-<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
-<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
-<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
-</ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>Although arrow functions may make your source code a little bit less readable (and you can get used to it pretty fast), it is, indeed, a great solution to capture the outer scope&#39;s <code>this</code> value, a quick way to get things working and, in association with the <code>let</code> keyword, will definitely take our JavaScript to the next level!
-Try and use it, create some tests, run it in your browsers and leave comments with interesting solutions and uses you&#39;ve found to arrow functions!
-I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.</p>
+            <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!</p>
 ]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</guid>
@@ -392,11 +40,8 @@ I hope you have enjoyed this article, as much as you are going to enjoy arrow fu
         <item>
             <title>What's next for JavaScript</title>
             <link>http://es6rocks.com/2014/08/what-is-next-for-javascript</link>
-            <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>He maintains the awesome <a href="http://www.2ality.com/">2ality</a> blog and writes a lot of good stuff around ES6.<br>In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  </p>
-<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>  
-
-<p>[UPDATE October, 2014]<br>The video is already online! (Thanks <a href="https://github.com/cirocosta">Ciro Costa</a> for point this).  </p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/G21rdWfa_as" frameborder="0" allowfullscreen></iframe>]]></description>
+            <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.  </p>
+]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
             <guid>http://es6rocks.com/2014/08/what-is-next-for-javascript</guid>
         </item>
@@ -404,66 +49,7 @@ I hope you have enjoyed this article, as much as you are going to enjoy arrow fu
         <item>
             <title>What you need to know about block scope - let</title>
             <link>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</link>
-            <description><![CDATA[<p>Variables declaration in any programming language are something pretty basic.<br>Regardless the language, understanding how variable scope works is essential to write any kind of program.<br>In Python, for example, as well as in most languages​​, there are two scopes: Local and Global.<br>Variables defined at the top of the file, without identation, are global scope variables.<br>Variables declared inside the function body are considered as local scope.<br>So far, everything is very similar. In JavaScript, the behavior is quite similar.<br>Let&#39;s see one example in both languages:  </p>
-<pre><code class="lang-python"># Python
-x = 1 # global scope
-y = 3
-
-def sum(a, b):
-    s = a + b # local scope
-    return s
-</code></pre>
-<pre><code class="lang-javascript">// JavaScript
-var x = 1;  // global scope
-var y = 3;
-
-function sum(a, b) {
-    var s = a + b;  // local scope
-    return s;
-}
-</code></pre>
-<p>In most C-based languages(JavaScript, PHP), variables are created at the spot where they were declared.<br>However, in JavaScrpt this is different, and can become complicated.<br>When you declare a variable in the body of a function, it is moved to the top or to the global scope. This behavior is called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting"><em>hoisting</em></a>.<br>Unlike Python and other languages, in JavaScript, a variable declared in a for loop leaks its value.<br>See the example below:  </p>
-<pre><code class="lang-javascript">// JavaScript
-for (var i = 0; i &lt;= 2; i += 1) {
-    console.log(i); // current i
-}
-console.log(i); // last i
-</code></pre>
-<p>In this case, even outside of the for loop block, the variable i is still there, with the last value stored.<br>This is a pretty common issue where a program can be easily broken by lack of attention.<br>Another important factor in JavaScript is that the omission of <em>var</em> to declare a variable causes it to be allocated in the global scope, and this can cause many problems.  </p>
-<h2 id="let-declaration">let declaration</h2>
-<p>The <em>let</em> arrives in ES6 as a substitute for <em>var</em>. Yes, the idea is that var will be discontinued in a distant future,  because today it would be impossible completely stop supporting it without breaking the whole internet.<br>The <em>let</em> works as expected, setting the variable in the place where it was declared.<br>Example:  </p>
-<pre><code class="lang-javascript">let foo = true;
-if  (foo) {
-    let bar = &#39;baz&#39;;
-    console.log(bar); // outputs &#39;baz&#39;
-}
-
-try {
-    console.log(bar);
-} catch (e) {
-    console.log(&quot;bar doesn&#39;t exist&quot;);
-}
-</code></pre>
-<p>As you might imagine, <em>let</em> solves the problem with the variable in the for loop.<br>See:  </p>
-<pre><code class="lang-javascript">// JavaScript
-for (let i = 0; i &lt;= 2; i += 1) {
-    console.log(i); // current i
-}
-try {
-    console.log(i);
-} catch (e) {
-    console.log(&quot;i doesn&#39;t exist&quot;);
-}
-</code></pre>
-<h2 id="support-today">Support today</h2>
-<p>You can use <em>let</em> today*<br>Check out the awesome Kangax ES6 table &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> is currently supported by the modern browsers (even IE11) in theirs last versions and <a href="https://github.com/google/traceur-compiler">Traceur</a> as well.<br>You can try ES6 <em>let</em> on Firefox devtools:  </p>
-<p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
-<ul>
-<li><strong>NOTE</strong>: As well pointed by Michał Gołębiowski on the comments below, browsers implementations are not fully according with the spec, so you may find some bugs.<br>For real world applications, you&#39;ll need to use a traspiler (at least, for a while until mid 2015).  </li>
-</ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>Although simple, declaring variables in JavaScript can cause headache for beginners in the language.<br>With <em>let</em>, to declare variables is much more intuitive and consistent with a C-based language.<br>The use of <em>var</em> should be discontinued, and only the <em>let</em> must exist in the future.<br>There&#39;s no <em>hoisting</em> behavior for variables declared with <em>let</em>.  </p>
-]]></description>
+            <description><![CDATA[]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
             <guid>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
@@ -471,8 +57,7 @@ try {
         <item>
             <title>A new syntax for modules in ES6</title>
             <link>http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6</link>
-            <description><![CDATA[<p>TC39 - ECMAScript group is finishing the sixth version of the ECMAScript specification. The <a href="http://www.2ality.com/2014/06/es6-schedule.html">group schedule</a> points to next June as the release date. By now, no significant differences may appear. It is time to deepen your knowledge into the subject.</p>
-<p>This post will not cover the importance of writing modular code. ES6 modules are already well displayed by websites like <a href="http://jsmodules.io">JavaScript Modules</a>, by far the best reference. The objective here is to clarify and justify the necessities of releasing a new syntax to write modules.</p>
+            <description><![CDATA[<p>TC39 - ECMAScript group is finishing the sixth version of the ECMAScript specification. The <a href="http://www.2ality.com/2014/06/es6-schedule.html">group schedule</a> points to next June as the release date.</p>
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6</guid>
@@ -481,8 +66,7 @@ try {
         <item>
             <title>ES6 interview with David Herman</title>
             <link>http://es6rocks.com/2014/07/es6-interview-with-david-herman</link>
-            <description><![CDATA[<p>We did a nice interview with <a href="https://twitter.com/littlecalculist">David Herman</a> about his thoughts about ES6.
-David is the principal researcher and founder of Mozilla Research, where he works to expand the foundations of the Open Web. He participates in a number of Web platform projects, including: <a href="http://taskjs.org/">task.js</a>, <a href="http://sweetjs.org/">sweet.js</a>, <a href="http://asmjs.org/">asm.js</a>, <a href="http://www.rust-lang.org/">Rust</a>, <a href="https://github.com/mozilla/servo/">Servo</a> and Parallel JS.</p>
+            <description><![CDATA[<p>We did a nice interview with <a href="https://twitter.com/littlecalculist">David Herman</a> about his thoughts about ES6.</p>
 ]]></description>
             <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
             <guid>http://es6rocks.com/2014/07/es6-interview-with-david-herman</guid>
@@ -491,17 +75,15 @@ David is the principal researcher and founder of Mozilla Research, where he work
         <item>
             <title>Practical Workflows for ES6 Modules, Fluent 2014</title>
             <link>http://es6rocks.com/2014/05/practical-workflows-es6-modules</link>
-            <description><![CDATA[<p><a href="https://twitter.com/guybedford">Guy Bedford</a> gave an awesome talk about a practical workflows with ES6 modules last month at Fluent Conf.<br>Also, he write up an article about it. If you are interested on this subject, you must read the full article.  </p>
-]]></description>
+            <description><![CDATA[]]></description>
             <pubDate>Tue, 27 May 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/practical-workflows-es6-modules</guid>
         </item>
         
         <item>
-            <title>ECMAScript 6 - A Better JavaScript for the Ambient Computing Era</title>
+            <title>A Better JavaScript for the Ambient Computing Era</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
-            <description><![CDATA[<p>Allen Wirfs-Brock (<a href="https://twitter.com/awbjs">awbjs</a> on Twitter) is a TC39 member. Actually, he is the &quot;Project Editor of the ECMAScript Language Specification&quot;.</p>
-]]></description>
+            <description><![CDATA[]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
         </item>
@@ -509,10 +91,18 @@ David is the principal researcher and founder of Mozilla Research, where he work
         <item>
             <title>ECMAScript 6 - The future is here</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
-            <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
-]]></description>
+            <description><![CDATA[]]></description>
             <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</guid>
+        </item>
+        
+        <item>
+            <title>Hello World</title>
+            <link>http://es6rocks.com/2014/05/hello-world</link>
+            <description><![CDATA[<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.  </p>
+]]></description>
+            <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/05/hello-world</guid>
         </item>
         
     </channel>

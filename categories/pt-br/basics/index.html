@@ -1,505 +1,326 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ES6 Rocks</title>
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
-    <meta property="og:title" content="ES6Rocks" />
-    <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
+        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ES6 Rocks</title>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+        <!-- /meta -->
 
-    <nav class="social">
-    <ul class="flags">
-        
-            <li>
-                <a href="/ ">
-                    <img src="/images/flag-en.svg" alt="en" title="en" />
+        <!-- normalize/modernize -->
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- /normalize/modernize -->
+
+        <!-- social -->
+        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+        <meta property="og:title" content="ES6Rocks" />
+        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
+        <!-- TODO: add twitter card and Google+ meta tags -->
+        <!-- /social -->
+
+        <!-- style -->
+        <link rel="stylesheet" href="/css/normalize.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <!-- /style -->
+
+    </head>
+    <body data-page-type="home">
+
+        <div class="header-container">
+    <div class="decorator-line dl-1"></div>
+    <div class="decorator-line dl-2"></div>
+    <header class="wrapper clearfix">
+
+        <div class="page-options">
+            <span class="alternative-text text"> A collaborative website about the ECMAScript sixth edition, a.k.a. ES6.</span>
+            <div class="languages">
+                <a class="icon portuguese" href="/pt-br" >Ler em Português</a>
+                <a class="icon english" href="/" >Read in English</a>
+            </div>
+            <div class="social">
+                <!--a class="icons fb" href="http://fb.com/" ></a-->
+                <a class="icon tt" href="http://twitter.com/es6rocks" >ES6Rocks on Twitter</a>
+                <a class="icon gh" href="http://github.com/es6rocks" >ES6Rocks on Github</a>
+            </div>
+        </div>
+
+        <div class="navigation-container">
+            <nav class='navigation' style="visibility: hidden;">
+                <a href="/posts">Posts</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <h1>
+                <a href="http://es6rocks.com" title="ES6 Rocks - News, tools, updates, tutorials and articles about ES6">
+                    ES6 Rocks - News, tools, updates, tutorials and articles about ES6
+                    <img class="es6-logo" src='/img/es6-logo.png' title="ES6Rocks Logo" alt="ES6 Rocks" />
                 </a>
-            </li>
-        
-            <li>
-                <a href="/pt-br">
-                    <img src="/images/flag-pt-br.svg" alt="pt-br" title="pt-br" />
-                </a>
-            </li>
-        
-    </ul>
-
-    <a class="avatar" href="https://es6rocks.com">
-        <svg version="1.1" width="32" height="32" viewBox="0 0 32 32">
-    <path id="path3" fill="#f4d122" d="M32,26.18c0,3.22-2.6,5.82-5.82,5.82h-26.18v-26.18c0-3.219,2.599-5.818,5.818-5.818h20.36c3.218,0,5.818,2.599,5.818,5.818v20.36z"/><g id="g5" fill="#323132" transform="matrix(0.1939394,0,0,0.1939394,-9.1151514,-3.39394)"><path id="path7" d="m142,157.5v-24.7c0-2.5,1.6-4.3,4.1-4.3h1.6c2.5,0,4.3,1.8,4.3,4.3v24.7"/><path id="path9" d="m157,157.5v-24.7c0-2.5,1.5-4.3,4.1-4.3h1.6c2.5,0,4.3,1.8,4.3,4.3v24.7"/><path id="path11" d="m170.5,157.6,13.2-45.8c0.7-2.4,3.2-3.8,5.6-3.1l1.6,0.5c2.4,0.7,3.8,3.2,3.1,5.6l-13.2,45.8"/><path id="path13" d="M139.2,157.4,121.7,113c-0.9-2.3-3.6-3.5-5.9-2.5l-1.5,0.6c-2.3,0.9-3.5,3.6-2.5,5.9l17.6,44.3"/></g>
-</svg>
-    </a>
-
-    <ul class="social__list">
-        <li class="social__item">
-            <a class="social__link" href="https://twitter.com/es6rocks">
-                <svg version="1.1" width="32" height="32" viewBox="0 0 32 32">
-    <path d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z" fill="#fff" />
-</svg>
-            </a>
-        </li>
-        <li class="social__item">
-            <a class="social__link" href="https://github.com/es6rocks">
-                <svg version="1.1" width="32" height="32" viewBox="0 0 32 32">
-    <path d="M0 17.388c0 1.45 0.136 2.762 0.407 3.935 0.271 1.174 0.647 2.193 1.127 3.059 0.48 0.866 1.090 1.627 1.831 2.285 0.741 0.657 1.544 1.195 2.41 1.612 0.866 0.417 1.854 0.756 2.965 1.017 1.111 0.261 2.245 0.443 3.403 0.548 1.158 0.104 2.431 0.156 3.818 0.156 1.398 0 2.676-0.052 3.834-0.156 1.158-0.104 2.295-0.287 3.411-0.548 1.116-0.261 2.11-0.6 2.981-1.017 0.871-0.417 1.68-0.954 2.425-1.612 0.746-0.657 1.361-1.419 1.846-2.285 0.485-0.866 0.863-1.886 1.134-3.059 0.271-1.174 0.407-2.486 0.407-3.935 0-2.587-0.866-4.825-2.597-6.713 0.094-0.25 0.18-0.535 0.258-0.853 0.078-0.318 0.151-0.772 0.219-1.361 0.068-0.589 0.042-1.27-0.078-2.042-0.12-0.772-0.342-1.56-0.665-2.363l-0.235-0.047c-0.167-0.031-0.441-0.023-0.822 0.024s-0.824 0.141-1.33 0.282c-0.506 0.141-1.158 0.412-1.956 0.814-0.798 0.402-1.64 0.905-2.527 1.51-1.523-0.417-3.615-0.626-6.275-0.626-2.65 0-4.736 0.209-6.259 0.626-0.887-0.605-1.734-1.108-2.543-1.51-0.808-0.402-1.453-0.673-1.933-0.814-0.48-0.141-0.928-0.232-1.346-0.274-0.417-0.042-0.681-0.055-0.79-0.039-0.11 0.016-0.196 0.034-0.258 0.055-0.323 0.803-0.545 1.591-0.665 2.363-0.12 0.772-0.146 1.453-0.078 2.042 0.068 0.589 0.141 1.043 0.219 1.361 0.078 0.318 0.164 0.602 0.258 0.853-1.732 1.888-2.598 4.126-2.598 6.713zM3.928 21.315c0-1.502 0.683-2.879 2.050-4.131 0.407-0.376 0.881-0.66 1.424-0.853 0.542-0.193 1.155-0.302 1.839-0.329 0.683-0.026 1.338-0.021 1.964 0.016 0.626 0.037 1.398 0.086 2.316 0.149 0.918 0.063 1.711 0.094 2.379 0.094 0.668 0 1.46-0.031 2.378-0.094 0.918-0.063 1.69-0.112 2.316-0.149 0.626-0.037 1.28-0.042 1.964-0.016 0.683 0.026 1.296 0.136 1.839 0.329 0.542 0.193 1.017 0.477 1.424 0.853 1.367 1.231 2.050 2.608 2.050 4.131 0 0.897-0.112 1.693-0.337 2.386-0.224 0.694-0.511 1.275-0.861 1.745-0.349 0.469-0.834 0.868-1.455 1.197-0.621 0.329-1.226 0.582-1.815 0.759-0.589 0.177-1.346 0.316-2.269 0.415-0.923 0.099-1.747 0.159-2.472 0.18-0.725 0.021-1.646 0.031-2.762 0.031-1.116 0-2.037-0.010-2.762-0.031-0.725-0.021-1.549-0.081-2.472-0.18-0.923-0.099-1.68-0.237-2.269-0.415-0.589-0.177-1.194-0.43-1.815-0.759-0.621-0.329-1.106-0.728-1.455-1.197-0.349-0.469-0.636-1.051-0.861-1.745-0.224-0.694-0.336-1.489-0.336-2.386zM20 21c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3zM8 21c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3z" fill="#fff" />
-</svg>
-            </a>
-        </li>
-    </ul>
-</nav>
-    <header class="topWrap">
-        <section class="lobby">
-            <h1 class="pageTitle">
-                ES6 Rocks
             </h1>
-            <a href="/">
-                <img class="logo" src="/images/logo.svg" alt="ES6Rocks" />
-            </a>
-        </section>
+
+            <nav class="navigation-search" style="visibility: hidden;">
+                <form>
+                    <input id="ipt-search" type="search" placeholder="Search anything?" />
+                    <span class="ipt-search-icon"></span>
+                    <input type="submit" value="OK" />
+                </form>
+                <em class="popular-searches alternative-text">
+                    Popular searches:
+                    <a href="/search/es6">es6</a>, <a href="/search/userMedia">userMedia</a>, <a href="search/foo">foo</a>
+                </em>
+            </nav>
+
+            <a href="https://github.com/es6rocks/es6rocks.github.io" class="send-a-post button">Send a post</a>
+
+        </div>
+
     </header>
+</div>
 
-    <section id="posts" class="posts">
-        <ul class="postList">
-            
-            <li class="post">
-                <span class="post__date">
-                    Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)
-                </span>
-                <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/10/arrow-functions-and-their-scope">
-                        Arrow Functions and their scope
-                    </a>
-                    <section class="post__excerpt">
-                        <h1 id="arrow-functions-e-seu-escopo">Arrow Functions e seu escopo</h1>
-<p>Entre as tantas novas features presentes no ES6, Arrow Functions (ou Fat Arrow Functions), é uma que merece boa atenção!
-É muito legal, ótima para trabalhar com escopos, serve como &quot;atalho&quot; para algumas tecnicas que utilizamos hoje, diminui o código...
-Mas pode ser um pouco mais difícil de ler caso não esteja a par de como ela funciona.
-Então, vamos mergulhar no assunto!</p>
-<h2 id="come-ando">Começando</h2>
-<p>Para estudar e tester por você mesmo, você pode simplesmente copiar alguns dos exemplos deste artigo, e colar no console de seu browser.
-Até o momento, você pode usar o Firefox(22+) Developer Tools, que já oferece suporte a arrow functions.
-No Google Chrome, você precisará habilita-lo:</p>
-<ul>
-<li>- Habilite: Vá até &quot;about:flags&quot;, e habilite a opção &quot;Experimental JavaScript&quot;</li>
-<li>- Use sempre em uma função em strict mode, por tanto, para rodar no console do Google Chrome, use:</li>
-</ul>
-<pre><code class="lang-javascript">(function(){
-    &quot;use strict&quot;;
-    // use arrow functions aqui
-}());
-</code></pre>
-<p>Com tempo, felizmente, mais browsers suportarão as features do ES6.
-Agora que tudo está preparado, vamos começar!</p>
-<h2 id="um-novo-token">Um novo Token</h2>
-<p>Um novo Token foi adicionado ao ES6, e é chamado &quot;fat arrow&quot;, representado por:</p>
-<pre><code class="lang-javascript">=&gt;
-</code></pre>
-<h2 id="a-nova-sintaxe">A nova sintaxe</h2>
-<p>Com este novo token, entra uma nova sintaxe:</p>
-<pre><code class="lang-javascript">param =&gt; expression
-</code></pre>
-<p>Sintaxe a qual podemos usar algumas variações, de acordo com o número de statements na expressão, e número de parâmetros passados para a função:</p>
-<pre><code class="lang-javascript">// single param, single statement
-param =&gt; expression;
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <div class="decorator-line dl-3"></div>
+                <div class="decorator-line dl-4"></div>
 
-// multiple params, single statement
-(param [, param]) =&gt; expression;
+                
 
-// single param, multiple statements
-param =&gt; {
-    statements;
-}
+                    
+                    <article class="recent">
+                    
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
 
-// multiple params, multiple statements
-([param] [, param]) =&gt; {
-    statements
-}
+                        <time datetime="Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)</time>
 
-// with no params, single statement
-() =&gt; expression;
+                        <a href="/pt-br/2014/10/arrow-functions-and-their-scope">
+                        
+                            <h2>Arrow Functions and their scope</h2>
+                        
+                        </a>
 
-// with no params
-() =&gt; {
-    statements;
-}
+                        <abstract class="alternative-text"></abstract>
 
-// one statement, returning an object
-([param]) =&gt; ({ key: value });
-</code></pre>
-<h2 id="como-funciona">Como funciona</h2>
-<p>Se fossemos &quot;traduzir&quot; arrow functions para algo que já usamos hoje em dia, seria algo assim:</p>
-<pre><code class="lang-javascript">// esta função
-var func = function (param) {
-    return param.split(&quot; &quot;);
-}
+                        <ul class="article-tags">
+                            
+                                <li>
+                                    <a href="/categories/scope">
+                                    scope
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/articles">
+                                     articles
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/basics">
+                                     basics
+                                    </a>
+                                </li>
+                            
 
-// se tornaria:
-var func= param =&gt; param.split(&quot; &quot;);
-</code></pre>
-<p>Isto quer dizer que esta sintaxe realmente retorna uma nova função, com os parâmetros e statements.
-Ou seja, podemos chamar esta função do mesmo modo que já estamos acostumados:</p>
-<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // retorna [&quot;Felipe&quot;, &quot;Moura&quot;]
-</code></pre>
-<h2 id="immediately-invoked-function-expression-iife-">Immediately-invoked function expression (IIFE)</h2>
-<p>Sim, você pode invocar funções imediatamente, já que elas são na verdade, expressões.</p>
-<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
-</code></pre>
-<p>Uma função será criada. Esta função recebe o parâmetro <code>x</code>, e retorna <code>x * 2</code>, então, é imediatamente executada passando o valor <code>3</code> como parâmetro.</p>
-<p>Caso tenha mais statements ou parâmetros:</p>
-<pre><code class="lang-javascript">( (x, y) =&gt; {
-    x= x * 2;
-    return x + y;
-})( 3, &quot;A&quot; ); // &quot;6A&quot;
-</code></pre>
-<h2 id="considera-es-relevantes">Considerações Relevantes</h2>
-<p>Considerando:</p>
-<pre><code class="lang-javascript">var func = x =&gt; {
-    return x++;
-};
-</code></pre>
-<p>Podemos apontar algumas considerações relevantes:</p>
-<p><strong>- <code>arguments</code> funciona exatamente como esperado</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
-</code></pre>
-<p><strong>- <code>typeof</code> e <code>instanceof</code> também</strong></p>
-<pre><code class="lang-javascript">func instanceof Function; // true
-typeof func; // function
-func.constructor == Function; // true
-</code></pre>
-<p><strong>- Usando parênteses internos, como sugerido pelo jsLint, NÃO funciona</strong></p>
-<pre><code class="lang-javascript">// funciona, como sugerido pelo JSLint
-(function (x, y){
-    x= x * 2;
-    return x + y;
-} (3, &quot;B&quot;) );
+                        </ul>
 
-// não funciona
-( (x, y) =&gt; {
-    x= x * 2;
-    return x + y;
-} ( 3, &quot;A&quot; ) );
+                        <address>
+                            <img src=" https://avatars0.githubusercontent.com/u/347387?v=3&s=100" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> Felipe N. Moura</a>
+                        </address>
+                    </article>
+                
 
-// mas funcionaria, se a última linha fosse
-// })(3, &quot;A&quot;);
-</code></pre>
-<p><strong>- Apesar de ser uma função, não funciona como um Constructor</strong></p>
-<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
-</code></pre>
-<p><strong>- Não tem um prototype</strong></p>
-<pre><code class="lang-javascript">func.prototype; // undefined
-</code></pre>
-<h2 id="escopo">Escopo</h2>
-<p>O <code>this</code> no escopo de arrow functions funciona de uma forma diferente.
-No modo como estamos acostumados, <code>this</code> pode referenciar-se a: <code>window</code> (se for acessado globalmente), <code>undefined</code> (se acessado globalmente, em strict mode), uma <em>instância</em> (se em um construtor), um <em>objeto</em> (se for um método ou função dentro de um objeto ou instância) ou em um <code>.bind</code>/<code>.apply</code>. Pode ser também um <code>DOMElement</code>, por exemplo, quando usado em um addEventListener. <!-- TODO buscar melhor termo para "acessado globalmente" -->
-Algumas vezes, isto incomoda bastante, ou pode até mesmo nos pegar de surpresa e causar algum problema!
-Além disso, <em>this</em> é referenciado como <em>&quot;scope-by-flow&quot;</em> (fluxo-escopo). O que quero dizer com isto?</p>
-<p>Vejamos primero, como <code>this</code> se comporta em diferentes situações:</p>
-<p>Em um EventListener:</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
-    console.log(this); // o próprio HTMLBodyElement
-});
-</code></pre>
-<p>Em instâncias:</p>
-<pre><code class="lang-javascript">function Person () {
-    let fullName = null;
-    this.getName = function () {
-        return fullName;
-    };
-    this.setName = function (name) {
-        fullName = name;
-        return this;
-    };
-}
+                    
+                    <article class="recent">
+                    
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
 
-let jon = new Person();
-jon.setName(&quot;Jon Doe&quot;);
-console.log(jon.getName()); // &quot;Jon Doe&quot;
-</code></pre>
-<p>Nesta situação em particular, uma vez que <code>Person.setName</code> é &quot;chainable&quot; (retornando a própria instância), poderíamos também usar assim:</p>
-<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
-   .getName(); // &quot;Jon Doe&quot;
-</code></pre>
-<p>Em um objeto:</p>
-<pre><code class="lang-javascript">let obj = {
-    foo: &quot;bar&quot;,
-    getIt: function () {
-        return this.foo;
-    }
-};
+                        <time datetime="Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)" class="alternative-text">Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)</time>
 
-console.log( obj.getIt() ); // &quot;bar&quot;
-</code></pre>
-<p>Mas então, vem a situação que citei acima, do formato escopo/fluxo.
-Se tanto o fluxo ou o escopo mudam, <code>this</code> muda com ele.</p>
-<pre><code class="lang-javascript">function Student(data){
+                        <a href="/pt-br/2014/08/what-you-need-to-know-about-block-scope-let">
+                        
+                            <h2>O que você precisa saber sobre block scope - let</h2>
+                        
+                        </a>
 
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
+                        <abstract class="alternative-text"></abstract>
 
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
+                        <ul class="article-tags">
+                            
+                                <li>
+                                    <a href="/categories/scope">
+                                    scope
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/articles">
+                                     articles
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/basics">
+                                     basics
+                                    </a>
+                                </li>
+                            
 
-    this.sayHi = function () {
-        window.setTimeout( function () {
-            console.log( this );
-        }, 100 );
-    }
+                        </ul>
 
-}
+                        <address>
+                            <img src=" http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> Jaydson Gomes</a>
+                        </address>
+                    </article>
+                
+            </div>
 
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
+            <div class="more-posts-wrapper wrapper clearfix">
+                <div class="decorator-line dl-5"></div>
+                <input type="button" value="More Posts" class="button btn"/><!-- ⟳ -->
+                <div class="decorator-line dl-6"></div>
+            </div>
+        </div>
 
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// window
-</code></pre>
-<p>Uma vez que <code>setTimeout</code> muda o fluxo da execução, a referência ao <code>this</code> se torna a referência &quot;global&quot; (neste caso, <code>window</code>), ou <code>undefined</code> se em &quot;strict mode&quot;.
-Por causa disto, acabamos usando algumas técnicas como o uso de variáveis como &quot;self&quot;, &quot;that&quot;, ou alguma coisa assim, ou tendo que usar <code>.bind</code>.</p>
-<p>Mas não se preocupe, arrow functions estão aqui para ajudar!
-Com arrow functions, o escopo é mantido com ela, de onde ela foi chamada.</p>
-<p>Vejamos o MESMO exemplo acima, mas usando arrow function, passada para a chamada do _setTimeout.</p>
-<pre><code class="lang-javascript">function Student(data){
+        <div class="testimonials-container">
+    <div class="testimonials wrapper">
+        <h4 class="wrapper-label"><span class="icon love"></span><span>Testimonials</span></h4>
 
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
+        <ul>
+            <li class="testimonial">
+                <blockquote>
+                    "ES6 improves developer ergonomics massively and es6rocks.com will help you grok the benefit you can reap and how to get it today. Love it."
+                    <span class="icon arrow"></span>
+                </blockquote>
 
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( ()=&gt;{ // a única diferença está aqui
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
-</code></pre>
-<h2 id="abordagens-teis-e-interessantes">Abordagens úteis e interessantes</h2>
-<p>Já que é muito fácil criar arrow functions, e seus escopos funcionam como o mensionado, podemos usá-las de várias formas.</p>
-<p>Por exemplo, podemos usa-las diretamente na chamada de um forEach, em uma Array:</p>
-<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.forEach(vowel =&gt; {
-console.log(vowel);
-});
-</code></pre>
-<p>Ou em um <code>Array#map</code>:</p>
-<pre><code class="lang-javascript">var arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.map(vogal =&gt; {
-    return vogal.toUpperCase();
-});
-// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
-</code></pre>
-<p>Ou em uma função recursiva:</p>
-<pre><code class="lang-javascript">var fatorial = (n) =&gt; {
-    if(n==0) {
-        return 1;
-    }
-    return (n * fatorial (n-1) );
-}
-
-fatorial(6); // 720
-</code></pre>
-<p>Também, digamos, ordenando uma Array de trás para frente:</p>
-<pre><code class="lang-javascript">let arr= [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
-</code></pre>
-<p>Ou em listeners:</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
-</code></pre>
-<h2 id="links-teis">Links úteis</h2>
-<p>Aqui, pegue alguns links úteis para dar uma olhada:</p>
-<ul>
-<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions na documentação da MDN</a></li>
-<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki sobre Arrow Function</a></li>
-<li>- <a href="https://github.com/esnext">ESNext</a></li>
-<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
-<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
-<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
-<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
-</ul>
-<h2 id="conclus-o">Conclusão</h2>
-<p>Mesmo que Arrow Functions tornem seu código um pouco mais complicado de ler (mas que você acaba se acostumando rápido), é uma grande solução para referências ao <code>this</code> em escopos e fluxos diferentes, um modo rápido para colocar as coisas para funcionar, e em parceria com o keyword <code>let</code>, levará nosso JavaScript para um próximo nível!
-Experimente você mesmo, crie alguns testes, rode em seus browsers e deixe alguma solução ou uso interessante que encontrou, nos comentários!
-Espero que tenha apreciado este artigo tanto quanto apreciará utilizar arrow functions em um futuro muito próximo!</p>
-
-                    </section>
-                </article>
-                <!--
-                <section class="post__author">
-                    <figure class="author">
-                        <img class="author__photo" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62" />
-                        <figcaption>
-                            <a class="author__link" href="http://twitter.com/felipenmoura">@Jaydson</a>
-                        </figcaption>
-                    </figure>
-                    <section class="author__description">
-                        FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-                    </section>
-                </section>
-                -->
+                <div class="author-block">
+                    <img src="/img/paul_irish.jpeg" alt="Paul Irish" class="author-avatar" />
+                    <span class="author-name">Paul Irish</span>
+                    <a href="http://twitter.com/paul_irish" class="icon tt"></a>
+                    <a href="http://github.com/paulirish" class="icon gh"></a>
+                    <div class="author-company">Google</div>
+                </div>
             </li>
-            
-            <li class="post">
-                <span class="post__date">
-                    Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)
-                </span>
-                <article class="post__content">
-                    <a class="post__title" href="/pt-br/2014/08/what-you-need-to-know-about-block-scope-let">
-                        O que você precisa saber sobre block scope - let
-                    </a>
-                    <section class="post__excerpt">
-                        <p>Declaração de variáveis em qualquer linguagem de programação é algo básico.<br>Independente da linguagem, entender o funcionamento do escopo de variáveis é imprescindível para escrever qualquer programa.<br>Em Python, por exemplo, assim como na maioria das linguagens, existem 2 escopos: Local e Global.<br>Variáveis definidas na raíz do arquivo, sem identação são variáveis de escopo Global.<br>Variáveis que são declaradas dentro do corpo de uma função são consideradas de escopo local.<br>Até aqui, tudo é muito parecido. No JavaScript o comportamente é bem semelhante.<br>Vejamos um exemplo nas 2 linguagens:  </p>
-<pre><code class="lang-python"># Python
-x = 1 # global scope
-y = 3
 
-def sum(a, b):
-    s = a + b # local scope
-    return s
-</code></pre>
-<pre><code class="lang-javascript">// JavaScript
-var x = 1;  // global scope
-var y = 3;
+            <li class="testimonial">
+                <blockquote>
+                    "ES6 Rocks is a brilliant initiative, if you're looking for relevant content about what's coming next for the JavaScript language, here's the place to find."
+                    <span class="icon arrow"></span>
+                </blockquote>
 
-function sum(a, b) {
-    var s = a + b;  // local scope
-    return s;
-}
-</code></pre>
-<p>Na maioria das linguagens baseadas em C (JavaScript, PHP), as variáveis são criadas no local onde foram declaradas.<br>Entretanto, no JavaScript isso é diferente, e pode se tornar complicado.<br>Ao declarar uma variável no corpo de uma função, a mesma é movida para o topo ou para o escopo global. Esse comportamento é chamado de <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting"><em>hoisting</em></a>.<br>Diferentemente de Python e outras linguagens, no JavaScript, uma variável declarada em um for loop acaba vazando o seu valor.<br>Veja no exemplo abaixo:  </p>
-<pre><code class="lang-javascript">// JavaScript
-for (var i = 0; i &lt;= 2; i += 1) {
-    console.log(i); // current i
-}
-console.log(i); // last i
-</code></pre>
-<p>Neste caso, mesmo fora do bloco do for loop, a variável i ainda existe e com o último valor recebido no laço.<br>Este é um problema bem comum onde um programa pode ser facilmente quebrado por falta de atenção.  </p>
-<p>Outro fator importante no JavaScript é que a omissão de <em>var</em> para declarar uma variável faz com que a mesma seja alocada no escopo global, e isso pode causar inúmeros problemas.  </p>
-<h2 id="declara-o-let">Declaração let</h2>
-<p>O <em>let</em> chega na ES6 como um substituto do <em>var</em>. Sim, a ideia é que var seja descontinuado em um futuro distante, pois hoje seria impossível não suporta-lo sem quebrar 100% da internet.<br>O <em>let</em> funciona como o esperado, definindo a variável no local onde ela foi declarada.<br>Exemplo:  </p>
-<pre><code class="lang-javascript">let foo = true;
-if  (foo) {
-    let bar = &#39;baz&#39;;
-    console.log(bar); // outputs &#39;baz&#39;
-}
-
-try {
-    console.log(bar);
-} catch (e) {
-    console.log(&quot;bar doesn&#39;t exist&quot;);
-}
-</code></pre>
-<p>Como você já deve imaginar, com <em>let</em> é possível resolver o problema com a variável no for loop.<br>Veja:  </p>
-<pre><code class="lang-javascript">// JavaScript
-for (let i = 0; i &lt;= 2; i += 1) {
-    console.log(i); // current i
-}
-try {
-    console.log(i);
-} catch (e) {
-    console.log(&quot;i doesn&#39;t exist&quot;);
-}
-</code></pre>
-<h2 id="suporte-atual">Suporte atual</h2>
-<p>Você pode usar <em>let</em> hoje*<br>Olhe a excelente tabela ES6 feita pelo Kangax &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.<br><em>let</em> é atualmente suporttado pelos browsers modernos(até no IE11) em suas últimas versões e no <a href="https://github.com/google/traceur-compiler">Traceur</a>.<br>Você pode brincar com ES6 <em>let</em> no Firefox devtools:  </p>
-<p><img src="/img/let.gif" alt="let on firefox nightly">  </p>
-<ul>
-<li><strong>NOTA</strong>: Como bem apontado pelo Michał Gołębiowski nos comentários (post em inglês <a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325">http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let/#comment-1576757325</a>), as implementações atuais dos browsers não estão totalmente de acordo com a especificação, então é possível encontrar alguns bugs.<br>Para aplicações do mundo real, você precisará utilizar um transpiler(pelo menos por enquanto, até o meio de 2015).  </li>
-</ul>
-<h2 id="conclus-o">Conclusão</h2>
-<p>Apesar de simples, declarar variáveis no JavaScript pode causar dor de cabeça em iniciantes na linguagem.<br>Com o <em>let</em>, declarar variáveis fica muito mais intuítivo e coerente com uma linguagem baseada em C.<br>O uso do <em>var</em> deve ser descontinuado, e apenas o <em>let</em> deve existir no futuro.<br>Não existe o comportamento de <em>hoisting</em> para variáveis declaradas com <em>let</em>.  </p>
-<h2 id="outras-refer-ncias">Outras referências</h2>
-<p><a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let</a><br><a href="http://odetocode.com/blogs/scott/archive/2014/07/31/the-features-of-es6-part-1-let.aspx">http://odetocode.com/blogs/scott/archive/2014/07/31/the-features-of-es6-part-1-let.aspx</a>  </p>
-
-                    </section>
-                </article>
-                <!--
-                <section class="post__author">
-                    <figure class="author">
-                        <img class="author__photo" src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" />
-                        <figcaption>
-                            <a class="author__link" href="http://twitter.com/jaydson">@Jaydson</a>
-                        </figcaption>
-                    </figure>
-                    <section class="author__description">
-                        JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-                    </section>
-                </section>
-                -->
+                <div class="author-block">
+                    <img src="/img/zeno_rocha.jpeg" alt="Zeno Rocha" class="author-avatar" />
+                    <span class="author-name">Zeno Rocha</span>
+                    <a href="http://twitter.com/zenorocha" class="icon tt"></a>
+                    <a href="http://github.com/zenorocha" class="icon gh"></a>
+                    <div class="author-company">Liferay</div>
+                </div>
             </li>
-            
+
+            <li class="testimonial">
+                <blockquote>
+                    Soon...<br>..<br>.
+                    <span class="icon arrow"></span>
+                </blockquote>
+
+                <div class="author-block">
+                    <img src="/img/guille.png" alt="Guillermo Rauch" class="author-avatar" />
+                    <span class="author-name">Guillermo Rauch</span>
+                    <a href="http://twitter.com/rauchg" class="icon tt"></a>
+                    <a href="http://github.com/guille" class="icon gh"></a>
+                    <div class="author-company">Automattic</div>
+                </div>
+            </li>
         </ul>
-    </section>
+    </div>
+</div>
+        <div class="footer-container">
+    <div class="credits">
+        Brought to you by <a href="http://jaydson.org/">Jaydson Gomes</a> and the <a href="https://github.com/es6rocks/es6rocks.github.io/graphs/contributors">awesome contributors</a>.
+        <span class="designed-by">Designed by <a href="http://italowaxman.com/">Ítalo Waxman</a></span>
+    </div>
+    <footer class="wrapper">
+        <div class="footer-content">
+            <asside class="logo-desc">
+                <img src="/img/footer-logo.jpg" class="footer-logo" />
+                <span class="footer-desc">
+                    Content licensed under <a href="https://creativecommons.org/" target="_blank">Creattive Commons</a>&nbsp;&nbsp;-&nbsp;&nbsp;Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a><br/>
+                    Static website proudly powered by <a href="https://github.com/es6rocks/harmonic" target="_blank">Harmonic</a>
+                </span>
+            </asside>
+            <asside class="social">
+                <!-- twitter button -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://es6rocks.com/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <!-- /twitter button -->
+                <!-- facebook like button -->
+                <div class="fb-like" data-href="http://es6rocks.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                <!-- /facebook like button -->
+                <!-- google plus button -->
+                <div class="g-plusone" data-size="medium" data-href="http://es6rocks.com/"></div>
+                <script type="text/javascript">
+                  (function() {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/platform.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                  })();
+                </script>
+                <!-- /google plus button -->
+                <!-- github button -->
+                <iframe src="http://ghbtns.com/github-btn.html?user=es6rocks&repo=es6rocks.github.io&type=watch&count=true"
+                        allowtransparency="true"
+                        frameborder="0"
+                        scrolling="0"
+                        width="110"
+                        height="20"></iframe>
+                <!-- /github button -->
+            </asside>
+            <asside class="js-logo">
+                <img src="/img/js-logo.jpg" />
+            </asside>
+        </div>
+    </footer>
+    <div class="decorator-line dl-7"></div>
+</div>
 
-</main>
-<section class="organizers">
-    <ul class="organizers__list">
-    <h3 class="organizers__title">
-        Brought to you by
-    </h3>
+<script type="text/javascript" src="/js/main.js" charset="utf-8"></script>
 
-        <li class="organizers__item">
-            <figure class="organizers__pic">
-                <a class="" href="http://twitter.com/atilafassina">
-                    <img class="" src="https://pbs.twimg.com/profile_images/485854342646222848/Ds8M-ezg_400x400.jpeg" alt="Átila Fassina photo"/>
-                </a>
-                <figcaption>
-                    <a class="organizers__name" href="http://twitter.com/atilafassina">Átila Fassina</a>
-                </figcaption>
-            </figure>
-        </li>
-
-        <li class="organizers__item">
-            <figure class="organizers__pic">
-                <a class="" href="http://twitter.com/jaydson">
-                    <img class="" src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes photo"/>
-                </a>
-                <figcaption>
-                    <a class="organizers__name" href="http://twitter.com/jaydson">Jaydson Gomes</a>
-                </figcaption>
-            </figure>
-        </li>
-    </ul>
-</section>
-
-<footer class="bottom">
-    <span class="licenses">
-        <a href="/rss.xml">RSS</a><br>
-        Content licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons</a><br />
-        Code licensed under <a href="https://github.com/es6rocks/harmonic/blob/master/LICENSE">MIT</a><br />
-        Static website proudly powered by <a href="https://github.com/es6rocks/harmonic/">Harmonic</a>
-    </span>
-</footer>
+<!-- Facebook structure -->
+<div id="fb-root"></div>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51061271-1', 'es6rocks.com');
-  ga('send', 'pageview');
-
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=742886022434997&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
-<script type="text/javascript" src="/js/main.js"></script>
-<script type="text/javascript" src="/js/vendor/prism.js"></script>
-</body>
+<!-- /Facebook structure -->
+
+<!-- G.A -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-51061271-1');ga('send','pageview');
+</script>
+<!-- /G.A -->
+    </body>
 </html>

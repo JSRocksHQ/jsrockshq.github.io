@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Decorators(lines)
+   ========================================================================== */
+
+.decorator-line {
+
+    // header lines
+    &.dl-1 {
+        transform: rotate(-28deg);
+        left: 50%;
+        top: 140px;
+        width: 800px;
+        margin-left: -400px;
+    }
+
+    &.dl-2 {
+        transform: rotate(-28deg);
+        left: 90%;
+        top: 70%;
+        width: 400px;
+        margin-left: -400px;
+        opacity: .7;
+    }
+
+    // articles lines
+    &.dl-3 {
+        transform: rotate(28deg);
+        left: 40%;
+        top: 45%;
+        width: 800px;
+        margin-left: -400px;
+    }
+
+    &.dl-4 {
+        transform: rotate(-28deg);
+        left: 20%;
+        top: 70%;
+        width: 800px;
+    }
+
+    // more-articles divsion
+    &.dl-5 {} // these are customized on articles.scss
+    &.dl-6 {} // they only vary on size, according to media queries
+
+    // footer
+    &.dl-7 {
+        transform: rotate(-70deg);
+        right: -30px;
+        bottom: 0;
+        width: 200px;
+        transform-origin: bottom left;
+    }
+}
+
+body[data-page-type="article"] {
+    .dl-7 {
+        transform: rotate(-33deg);
+        right: 130px;
+    }
+}

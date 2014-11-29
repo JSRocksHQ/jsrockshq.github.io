@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+php+coffeescript+bash+python+go&plugins=line-numbers */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+bash&plugins=line-highlight+line-numbers */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -15,7 +15,7 @@ pre[class*="language-"] {
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-	line-height: 1.5;
+
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -91,7 +91,6 @@ pre[class*="language-"] {
 .token.selector,
 .token.attr-name,
 .token.string,
-.token.char,
 .token.builtin {
 	color: #690;
 }
@@ -103,7 +102,7 @@ pre[class*="language-"] {
 .style .token.string,
 .token.variable {
 	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
+	background: hsla(0,0%,100%,.5);
 }
 
 .token.atrule,
@@ -112,9 +111,6 @@ pre[class*="language-"] {
 	color: #07a;
 }
 
-.token.function {
-	color: #DD4A68;
-}
 
 .token.regex,
 .token.important {
@@ -129,6 +125,53 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+}
+
+.line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em; /* Same as .prism’s padding-top */
+
+	background: hsla(24, 20%, 50%,.08);
+	background: -moz-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: -webkit-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: -o-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	
+	pointer-events: none;
+	
+	line-height: inherit;
+	white-space: pre;
+}
+
+	.line-highlight:before,
+	.line-highlight[data-end]:after {
+		content: attr(data-start);
+		position: absolute;
+		top: .4em;
+		left: .6em;
+		min-width: 1em;
+		padding: 0 .5em;
+		background-color: hsla(24, 20%, 50%,.4);
+		color: hsl(24, 20%, 95%);
+		font: bold 65%/1.5 sans-serif;
+		text-align: center;
+		vertical-align: .3em;
+		border-radius: 999px;
+		text-shadow: none;
+		box-shadow: 0 1px white;
+	}
+	
+	.line-highlight[data-end]:after {
+		content: attr(data-end);
+		top: auto;
+		bottom: .4em;
+	}
 pre.line-numbers {
 	position: relative;
 	padding-left: 3.8em;

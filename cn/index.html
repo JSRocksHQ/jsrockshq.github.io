@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
+        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ES6 Rocks</title>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+        <!-- /meta -->
+
+        <!-- normalize/modernize -->
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- /normalize/modernize -->
+
+        <!-- social -->
+        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+        <meta property="og:title" content="ES6Rocks" />
+        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
+        <!-- TODO: add twitter card and Google+ meta tags -->
+        <!-- /social -->
+
+        <!-- style -->
+        <link rel="stylesheet" href="/css/normalize.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <!-- /style -->
+
+    </head>
+    <body data-page-type="home">
+
+        <div class="header-container">
+    <div class="decorator-line dl-1"></div>
+    <div class="decorator-line dl-2"></div>
+    <header class="wrapper clearfix">
+
+        <div class="page-options">
+            <span class="alternative-text text"> A collaborative website about the ECMAScript sixth edition, a.k.a. ES6.</span>
+            <div class="languages">
+                <a class="icon portuguese" href="/pt-br" >Ler em Português</a>
+                <a class="icon english" href="/" >Read in English</a>
+            </div>
+            <div class="social">
+                <!--a class="icons fb" href="http://fb.com/" ></a-->
+                <a class="icon tt" href="http://twitter.com/es6rocks" >ES6Rocks on Twitter</a>
+                <a class="icon gh" href="http://github.com/es6rocks" >ES6Rocks on Github</a>
+            </div>
+        </div>
+
+        <div class="navigation-container">
+            <nav class='navigation' style="visibility: hidden;">
+                <a href="/posts">Posts</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <h1>
+                <a href="http://es6rocks.com" title="ES6 Rocks - News, tools, updates, tutorials and articles about ES6">
+                    ES6 Rocks - News, tools, updates, tutorials and articles about ES6
+                    <img class="es6-logo" src='/img/es6-logo.png' title="ES6Rocks Logo" alt="ES6 Rocks" />
+                </a>
+            </h1>
+
+            <nav class="navigation-search" style="visibility: hidden;">
+                <form>
+                    <input id="ipt-search" type="search" placeholder="Search anything?" />
+                    <span class="ipt-search-icon"></span>
+                    <input type="submit" value="OK" />
+                </form>
+                <em class="popular-searches alternative-text">
+                    Popular searches:
+                    <a href="/search/es6">es6</a>, <a href="/search/userMedia">userMedia</a>, <a href="search/foo">foo</a>
+                </em>
+            </nav>
+
+            <a href="https://github.com/es6rocks/es6rocks.github.io" class="send-a-post button">Send a post</a>
+
+        </div>
+
+    </header>
+</div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <div class="decorator-line dl-3"></div>
+                <div class="decorator-line dl-4"></div>
+
+                
+
+                    
+                    <article class="recent">
+                    
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Wed Nov 05 2014 13:19:50 GMT-0200 (BRST)" class="alternative-text">Wed Nov 05 2014 13:19:50 GMT-0200 (BRST)</time>
+
+                        <a href="/cn/2014/11/es6-modules-today-with-6to5">
+                        
+                            <h2>使用6to5，让今天就来写ES6的模块化开发!</h2>
+                        
+                        </a>
+
+                        <abstract class="alternative-text"><p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>
+<p><img src="/img/modules-today-6to5.png" alt="使用6to5让今天就可以练手ES6的模块化"></p>
+<h1 id="-">第一步</h1>
+<p>如果你现在还不了解ES6的模块化开发，请在<a href="http://JSModules.io">JSModules.io</a>上了解一下。我也推荐大家读一下@jcemer的文章<a href="http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/">A new syntax for modules in ES6</a>，它涉及到了很多非常酷的关于JS模块化的东西。他可以指导我们使用6to5。总的来说，6to5能在支持ES5d的环境下提前尝试ES6 模块化开发的快感。
+6to5比其他降级工具有一下几个优势：</p>
+<ul>
+<li>可读性：你的格式化的代码尽可能的保留。</li>
+<li>可扩展性：有非常庞大的插件库和浏览器的支持。</li>
+<li>可调式性：因为支持source map，你可以方便的调试已经编译过后的代码</li>
+<li>高效率：直接转化为与ES相当的代码，不会增加额外的运行十几</li>
+</ul>
+<h1 id="-">一起来写模块</h1>
+<p>让我们来尝试着写模块吧！
+我们的应用除了输出日志不会做其他事情，其主要的目的就是让你了解模块化如何工作和如何让你现有的环境使用ES6的模块化开发。
+基本的目录结构：</p>
+<pre><code>├── Gruntfile.js
+├── package.json
+└── src
+    ├── app.js
+    ├── modules
+    │   ├── bar.js
+    │   ├── baz.js
+    │   └── foo.js
+    └── sample
+        └── index.html
+</code></pre><p>app.js是主程序，包含了我们将要存储的模块化的目录
+下面是app.js的代码：</p>
+<pre><code class="lang-javascript">import foo from &quot;./modules/foo&quot;;
+import bar from &quot;./modules/bar&quot;;
+
+console.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);
+console.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);
+</code></pre>
+<p>以上代码非常简单，我们导入了foo模块和bar模块，然后分别打印出他们</p>
+<pre><code class="lang-javascript">// foo.js
+let foo = &#39;foo&#39;;
+
+export default foo;
+
+
+// bar.js
+let bar = &#39;bar&#39;;
+
+export default bar;
+</code></pre>
+<p>在这些模块一面我们只是导出了两个字符串&#39;foo&#39;和&#39;bar&#39;，当我们导入这些模块，我们的变量其实已经有数据。
+当然，我们何以导出对象，类，函数，等等
+现在，你可以开始模仿这个例子写出你自己的模块</p>
+<h1 id="-">构建</h1>
+<p>就像你已经知道的，<a href="http://kangax.github.io/compat-table/es6/">ES6不支持你现在的浏览器和Node</a>.js，只有一条路，那就是使用降级转换器来编写ES6的模块化代码。
+正如我之前提到的那个，我使用6to5，他可以精确的达到我们想要的效果。
+这个任务是运行在Grunt上的,我们使用 @sindresorhus的 <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a></p>
+<pre><code class="lang-shell">npm install grunt-cli -g
+npm install grunt --save-dev
+npm install grunt-6to5 --save-dev
+</code></pre>
+<p>我们的Gruntfile类似于一下：</p>
+<pre><code class="lang-javascript">grunt.initConfig({
+    &#39;6to5&#39;: {
+        options: {
+            modules: &#39;common&#39;
+        },
+
+        build: {
+            files: [{
+                expand: true,
+                cwd: &#39;src/&#39;,
+                src: [&#39;**/*.js&#39;],
+                dest: &#39;dist/&#39;,
+            }],
+        }
+    }
+});
+</code></pre>
+<p>这是个简单又给力的配置，我们也几乎完成了。
+当你指定好源文件和输出文件后，这个任务就可以来运行了。
+&#39;common&#39;选项的目的在于告诉6to5我们将输出ES5CommonJS模块化风格。
+当然，6to5也支持AMD，我写了sample/index.html，让他在浏览器环境下测试一下，这个HTML的代码如下：</p>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;ES6 modules 6to5&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script src=&quot;//[cdnjs URL]/require.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        require([&#39;app.js&#39;]);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>观察上面的代码，我们使用AMD的RequireJS框架来加载这个JS，对于这个例子，你需要将上面的配置文件改为 modules: &#39;amd&#39;</p>
+<h1 id="-">运行</h1>
+<p>万事俱备东风只欠，我们的代码已经放在<a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>，你可以克隆下来自己玩玩。使用npm install安装6to5</p>
+<p>记住一点，Grunt任务会生成一个目标文件夹来存放转化后的代码
+所以，如果你想测试使用CommonJS规范的转化后的ES6的代码，你可以执行一下命令</p>
+<pre><code class="lang-shell">node dist/app.js
+</code></pre>
+<figure>
+    <a href="http://es6rocks.com/img/running-node.png">
+        <img src="http://es6rocks.com/img/running-node.png" alt="home" />
+    </a>
+    <figcaption>Node.js上的运行效果</figcaption>
+</figure>
+
+<p>如果你使用AMD规范的，请在浏览器访问index.html(<strong>吐槽一下，老外竟然不知道中国的<a href="https://github.com/seajs/seajs">sea.js</a></strong>)</p>
+<figure>
+    <a href="http://es6rocks.com/img/amd-es6.png">
+        <img src="http://es6rocks.com/img/amd-es6.png" alt="home" />
+    </a>
+    <figcaption>在浏览器执行的效果</figcaption>
+</figure>
+
+<h1 id="-">结论</h1>
+<p>通过这个简单的实例你学会了如果简单的使用ES6模块化风格来编写代码。6to5是胃肠棒的工具让你穿越到未来提前体验ES6模块化带来的快感。资源下载<a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>，欢迎提交一些问题的反馈</p>
+</abstract>
+
+                        <ul class="article-tags">
+                            
+                                <li>
+                                    <a href="/categories/modules">
+                                    Modules
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/tutorial">
+                                     Tutorial
+                                    </a>
+                                </li>
+                            
+
+                        </ul>
+
+                        <address>
+                            <img src=" " class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> Jaydson Gomes</a>
+                        </address>
+                    </article>
+                
+
+                    
+                    <article class="recent">
+                    
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Mon Oct 13 2014 16:22:32 GMT-0300 (BRT)" class="alternative-text">Mon Oct 13 2014 16:22:32 GMT-0300 (BRT)</time>
+
+                        <a href="/cn/2014/10/javascript-unicode">
+                        
+                            <h2>JavaScript ♥ 统一编码</h2>
+                        
+                        </a>
+
+                        <abstract class="alternative-text"><p>Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.
+他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.
+实际上，即使你没在字符串和javascript花了很多时间，这些由Mathias提出的编码技巧也是很有用的。</p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/zi0w7J7MCrk" frameborder="0" allowfullscreen></iframe></abstract>
+
+                        <ul class="article-tags">
+                            
+                                <li>
+                                    <a href="/categories/unicode">
+                                    Unicode
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/videos">
+                                     Videos
+                                    </a>
+                                </li>
+                            
+
+                        </ul>
+
+                        <address>
+                            <img src=" " class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> </a>
+                        </address>
+                    </article>
+                
+
+                    
+                    <article>
+                    
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/cn/2014/10/arrow-functions-and-their-scope">
+                        
+                            <h3>ES6箭头函数和它的作用域</h3>
+                        
+                        </a>
+
+                        <abstract class="alternative-text"><p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>
+<h2 id="-">执行环境</h2>
+<p>你可以自己去学习和尝试下, 你可以简单的把示例程序代码复制到你的浏览器控制台下. 现在, 推荐使用Firefox(22+)开发者工具, Firefox(22+)开发者工具现在支持箭头函数,你也可以使用谷歌浏览器. 如果你使用谷歌浏览器, 你必须要做下列两件事:</p>
+<ul>
+<li>- 在谷歌浏览器中地址栏中输入：&quot;about:flags&quot;, 找到 &quot;使用体验性Javascript&quot;选项，开启使用。</li>
+<li>- 在函数的开头加上&quot;use strict&quot;,然后再在你的谷歌浏览中测试箭头函数吧(提示：请用谷歌浏览器v38,我当时就是被浏览器版本坑了):</li>
+</ul>
+<pre><code class="lang-javascript">(function(){
+    &quot;use strict&quot;;
+    // use arrow functions here
+}());
+</code></pre>
+<p>幸运的是后面会有越来越多的浏览器支持ES6特性. 现在你完成了所有准备工作, 让我们继续深入它吧!</p>
+<h2 id="-">一个新话题</h2>
+<p>最近大家在讨论关于ES6的一个话题：关于箭头函数, 像这样:</p>
+<pre><code class="lang-javascript">=&gt;
+</code></pre>
+<h2 id="-">新的语法</h2>
+<p>随着讨论产生了一个新的语法：</p>
+<pre><code class="lang-javascript">param =&gt; expression
+</code></pre>
+<p>新增的语法是作用在变量上, 可以在表达式中申明多个变量, 下面是箭头函数的使用模式:</p>
+<pre><code class="lang-javascript">//  一个参数对应一个表达式
+param =&gt; expression;// 例如 x =&gt; x+2;
+
+// 多个参数对应一个表达式
+(param [, param]) =&gt; expression; //例如 (x,y) =&gt; (x + y);
+
+// 一个参数对应多个表示式
+param =&gt; {statements;} //例如 x = &gt; { x++; return x;};
+
+//  多个参数对应多个表达式
+([param] [, param]) =&gt; {statements} // 例如 (x,y) =&gt; { x++;y++;return x*y;};
+
+//表达式里没有参数
+() =&gt; expression; //例如var flag = (() =&gt; 2)(); flag等于2
+
+() =&gt; {statements;} //例如 var flag = (() =&gt; {return 1;})(); flag就等于1
+
+ //传入一个表达式，返回一个对象
+([param]) =&gt; ({ key: value });
+//例如  var fuc = (x) =&gt; ({key:x})
+        var object = fuc(1);
+        alert(object);//{key:1}
+</code></pre>
+<h2 id="-">箭头函数是怎么实现的</h2>
+<p>我们可以把一个普通函数转换成用箭头函数来实现：</p>
+<pre><code class="lang-javascript">// 当前函数
+var func = function (param) {
+    return param.split(&quot; &quot;);
+}
+// 利用箭头函数实现
+var func = param =&gt; param.split(&quot; &quot;);
+</code></pre>
+<p>从上面的例子中我们可以看出箭头函数的语法实际上是返回了一个新的函数, 这个函数有函数体和参数</p>
+<p>因此, 我们可以这样调用刚才我们创建的函数:</p>
+<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]
+</code></pre>
+<h2 id="-iife-">立即执行函数(IIFE)</h2>
+<p>你能在立即执行函数里使用箭头函数，例如:</p>
+<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
+</code></pre>
+<p>这行代码产生了一个临时函数，这个函数有一个形参<code>x</code>，函数的返回值为<code>x*2</code>,之后系统会马上执行这个临时函数, 将<code>3</code>赋值给形参<code>x</code>.</p>
+<p>下面的例子描述了临时函数体里有多行代码的情况：</p>
+<pre><code class="lang-javascript">( (x, y) =&gt; {
+    x = x * 2;
+    return x + y;
+})( 3, &quot;A&quot; ); // &quot;6A&quot;
+</code></pre>
+<h2 id="-">相关思考</h2>
+<p>思考下面的函数：</p>
+<pre><code class="lang-javascript">var func = x =&gt; {
+    return x++;
+};
+</code></pre>
+<p>我们列出了一些常见的问题：</p>
+<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>是我们预料的那样工作</strong></p>
+<pre><code class="lang-javascript">console.log(arguments);
+</code></pre>
+<p><strong>- <code>typeof</code>和<code>instanceof</code>函数也能正常检查临时函数</strong></p>
+<pre><code class="lang-javascript">func instanceof Function; // true
+typeof func; // function
+func.constructor == Function; // true
+</code></pre>
+<p><strong>- 把箭头函数放在括号内是无效的</strong></p>
+<pre><code class="lang-javascript">//  有效的常规语法
+(function (x, y){
+    x= x * 2;
+    return x + y;
+} (3, &quot;B&quot;) );
+
+// 无效的箭头函数语法
+( (x, y) =&gt; {
+    x= x * 2;
+    return x + y;
+} ( 3, &quot;A&quot; ) );
+
+// 但是可以这样写就是有效的了：
+( (x,y) =&gt; {
+    x= x * 2;return x + y;
+} )( 3,&quot;A&quot; );//立即执行函数
+</code></pre>
+<p><strong>- 尽管箭头函数会产生一个临时函数，但是这个临时函数不是一个构造函数</strong></p>
+<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
+</code></pre>
+<p><strong>- 同样也没有原型对象</strong></p>
+<pre><code class="lang-javascript">func.prototype; // undefined
+</code></pre>
+<h2 id="-">作用域</h2>
+<p>这个箭头函数的作用域和其他函数有一些不同,如果不是严格模式，<code>this</code>关键字就是指向<code>window</code>，严格模式就是<code>undefined</code>，在构造函数里的<code>this</code>指向的是当前对象实例,如果this在一个对象的函数内则<code>this</code>指向的是这个对象，<code>this</code>有可能指向的是一个<code>dom元素</code>，例如当我们添加事件监听函数时,可能这个<code>this</code>的指向不是很直接，其实<code>this</code>（不止是<code>this</code>变量）变量的指向是根据一个规则来判断的：作用域流。下面我将演示<code>this</code>在事件监听函数和在对象函数内出现的情况： </p>
+<p>在事件监听函数中：</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
+    console.log(this); // the HTMLBodyElement itself
+});
+</code></pre>
+<p>在构造函数里：</p>
+<pre><code class="lang-javascript">function Person () {
+
+    let fullName = null;
+
+    this.getName = function () {
+        return fullName;
+    };
+
+    this.setName = function (name) {
+        fullName = name;
+        return this;
+    };
+}
+
+let jon = new Person();
+jon.setName(&quot;Jon Doe&quot;);
+console.log(jon.getName()); // &quot;Jon Doe&quot;
+//注：this关键字这里就不解释了，大家自己google,baidu吧。
+</code></pre>
+<p>在这个例子中，如果我们让Person.setName函数返回Person对象本身，我们就可以这样用：</p>
+<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
+   .getName(); // &quot;Jon Doe&quot;
+</code></pre>
+<p>在一个对象里:</p>
+<pre><code class="lang-javascript">let obj = {
+    foo: &quot;bar&quot;,
+    getIt: function () {
+        return this.foo;
+    }
+};
+
+console.log( obj.getIt() ); // &quot;bar&quot;
+</code></pre>
+<p>但是当执行流(比如使用了setTimeout)和作用域变了的时候，this也会变。</p>
+<pre><code class="lang-javascript">function Student(data){
+
+    this.name = data.name || &quot;Jon Doe&quot;;
+    this.age = data.age&gt;=0 ? data.age : -1;
+
+    this.getInfo = function () {
+        return this.name + &quot;, &quot; + this.age;
+    };
+
+    this.sayHi = function () {
+        window.setTimeout( function () {
+            console.log( this );
+        }, 100 );
+    }
+
+}
+
+let mary = new Student({
+    name: &quot;Mary Lou&quot;,
+    age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// window
+</code></pre>
+<p>当<code>setTimeout</code>函数改变了执行流的情况时，<code>this</code>的指向会变成全局对象,或者是在严格模式下就是<code>undefine</code>,这样在<code>setTimeout</code>函数里面我们使用其他的变量去指向<code>this</code>对象，比如<code>self</code>，<code>that</code>,当然不管你用什么变量，你首先应该在setTimeout访问之前，给<code>self</code>，<code>that</code>赋值，或者使用<code>bind</code>方法不然这些变量就是undefined。</p>
+<p>这是后就是箭头函数登场的时候了，它可以保持作用域，this的指向就不会变了。</p>
+<p>让我们看下上文<strong>起先</strong>的例子，在这里我们使用箭头函数：</p>
+<pre><code class="lang-javascript">function Student(data){
+
+    this.name = data.name || &quot;Jon Doe&quot;;
+    this.age = data.age&gt;=0 ? data.age : -1;
+
+    this.getInfo = function () {
+        return this.name + &quot;, &quot; + this.age;
+    };
+
+    this.sayHi = function () {
+        window.setTimeout( ()=&gt;{
+            // the only difference is here
+            console.log( this );
+        }, 100 );
+    }
+
+}
+
+let mary = new Student({
+    name: &quot;Mary Lou&quot;,
+    age: 13
+});
+
+console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
+mary.sayHi();
+// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
+</code></pre>
+<blockquote>
+<p>分析：在sayHi函数中，我们使用了箭头函数，当前作用域是在student对象的一个方法中，箭头函数生成的临时函数的作用域也就是student对象的sayHi函数的作用域。所以即使我们在setTimeout调用了箭头函数生成的临时函数，这个临时函数中的this也是正确的指向。</p>
+</blockquote>
+<h2 id="-">有趣和有用的使用</h2>
+<p>创建一个函数很容易，我们可以利用它可以保持作用域的特征：</p>
+<p>例如我们可以这么使用：Array.forEach()</p>
+<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.forEach(vowel =&gt; {
+    console.log(vowel);
+});
+</code></pre>
+<blockquote>
+<p>分析：在forEach里箭头函数会创建并返回一个临时函数 tempFun,这个tempFun你可以想象成这样的：function(vowel){ console.log(vowel);}但是Array.forEach函数会怎么去处理传入的tempFunc呢？在forEach函数里会这样调用它：tempFunc.call(this,value);所有我们看到函数的正确执行效果。</p>
+</blockquote>
+<p>//在Array.map里使用箭头函数，这里我就不分析函数执行过程了。。。。</p>
+<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.map(vowel =&gt; {
+    return vowel.toUpperCase();
+});
+// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
+</code></pre>
+<p>费布拉奇数列</p>
+<pre><code class="lang-javascript">var factorial = (n) =&gt; {
+    if(n==0) {
+        return 1;
+    }
+    return (n * factorial (n-1) );
+}
+
+factorial(6); // 720
+</code></pre>
+<p>我们也可以用在Array.sort方法里：</p>
+<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
+arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
+</code></pre>
+<p>也可以在事件监听函数里使用：</p>
+<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
+</code></pre>
+<h2 id="-">推荐的链接</h2>
+<p>下面列出了一系列有用的链接，大家可以去看一看</p>
+<ul>
+<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions in MDN Documentation</a></li>
+<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki about Arrow Function</a></li>
+<li>- <a href="https://github.com/esnext">ESNext</a></li>
+<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
+<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
+<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
+<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
+</ul>
+<h2 id="-">总结</h2>
+<p>尽管大家可能会认为使用箭头函数会降低你代码的可读性，但是由于它对作用域的特殊处理，它能让我们能很好的处理this的指向问题。箭头函数加上let关键字的使用，将会让我们javascript代码上一个层次！尽量多使用箭头函数，你可以再你的浏览器测试你写的箭头函数代码，大家可以再评论区留下你对箭头函数的想法和使用方案！我希望大家能享受这篇文章，就像你会不就的将来享受箭头函数带给你的快乐.</p>
+</abstract>
+
+                        <ul class="article-tags">
+                            
+                                <li>
+                                    <a href="/categories/作于域">
+                                    作于域
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/文章">
+                                     文章
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/categories/基本原理">
+                                     基本原理
+                                    </a>
+                                </li>
+                            
+
+                        </ul>
+
+                        <address>
+                            <img src=" " class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> Felipe N. Moura</a>
+                        </address>
+                    </article>
+                
+            </div>
+
+            <div class="more-posts-wrapper wrapper clearfix">
+                <div class="decorator-line dl-5"></div>
+                <input type="button" value="More Posts" class="button btn"/><!-- ⟳ -->
+                <div class="decorator-line dl-6"></div>
+            </div>
+        </div>
+
+        <div class="testimonials-container">
+    <div class="testimonials wrapper">
+        <h4 class="wrapper-label"><span class="icon love"></span><span>Testimonials</span></h4>
+
+        <ul>
+            <li class="testimonial">
+                <blockquote>
+                    "ES6 improves developer ergonomics massively and es6rocks.com will help you grok the benefit you can reap and how to get it today. Love it."
+                    <span class="icon arrow"></span>
+                </blockquote>
+
+                <div class="author-block">
+                    <img src="/img/paul_irish.jpeg" alt="Paul Irish" class="author-avatar" />
+                    <span class="author-name">Paul Irish</span>
+                    <a href="http://twitter.com/paul_irish" class="icon tt"></a>
+                    <a href="http://github.com/paulirish" class="icon gh"></a>
+                    <div class="author-company">Google</div>
+                </div>
+            </li>
+
+            <li class="testimonial">
+                <blockquote>
+                    "ES6 Rocks is a brilliant initiative, if you're looking for relevant content about what's coming next for the JavaScript language, here's the place to find."
+                    <span class="icon arrow"></span>
+                </blockquote>
+
+                <div class="author-block">
+                    <img src="/img/zeno_rocha.jpeg" alt="Zeno Rocha" class="author-avatar" />
+                    <span class="author-name">Zeno Rocha</span>
+                    <a href="http://twitter.com/zenorocha" class="icon tt"></a>
+                    <a href="http://github.com/zenorocha" class="icon gh"></a>
+                    <div class="author-company">Liferay</div>
+                </div>
+            </li>
+
+            <li class="testimonial">
+                <blockquote>
+                    Soon...<br>..<br>.
+                    <span class="icon arrow"></span>
+                </blockquote>
+
+                <div class="author-block">
+                    <img src="/img/guille.png" alt="Guillermo Rauch" class="author-avatar" />
+                    <span class="author-name">Guillermo Rauch</span>
+                    <a href="http://twitter.com/rauchg" class="icon tt"></a>
+                    <a href="http://github.com/guille" class="icon gh"></a>
+                    <div class="author-company">Automattic</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+        <div class="footer-container">
+    <div class="credits">
+        Brought to you by <a href="http://jaydson.org/">Jaydson Gomes</a> and the <a href="https://github.com/es6rocks/es6rocks.github.io/graphs/contributors">awesome contributors</a>.
+        <span class="designed-by">Designed by <a href="http://italowaxman.com/">Ítalo Waxman</a></span>
+    </div>
+    <footer class="wrapper">
+        <div class="footer-content">
+            <asside class="logo-desc">
+                <img src="/img/footer-logo.jpg" class="footer-logo" />
+                <span class="footer-desc">
+                    Content licensed under <a href="https://creativecommons.org/" target="_blank">Creattive Commons</a>&nbsp;&nbsp;-&nbsp;&nbsp;Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a><br/>
+                    Static website proudly powered by <a href="https://github.com/es6rocks/harmonic" target="_blank">Harmonic</a>
+                </span>
+            </asside>
+            <asside class="social">
+                <!-- twitter button -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://es6rocks.com/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <!-- /twitter button -->
+                <!-- facebook like button -->
+                <div class="fb-like" data-href="http://es6rocks.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                <!-- /facebook like button -->
+                <!-- google plus button -->
+                <div class="g-plusone" data-size="medium" data-href="http://es6rocks.com/"></div>
+                <script type="text/javascript">
+                  (function() {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/platform.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                  })();
+                </script>
+                <!-- /google plus button -->
+                <!-- github button -->
+                <iframe src="http://ghbtns.com/github-btn.html?user=es6rocks&repo=es6rocks.github.io&type=watch&count=true"
+                        allowtransparency="true"
+                        frameborder="0"
+                        scrolling="0"
+                        width="110"
+                        height="20"></iframe>
+                <!-- /github button -->
+            </asside>
+            <asside class="js-logo">
+                <img src="/img/js-logo.jpg" />
+            </asside>
+        </div>
+    </footer>
+    <div class="decorator-line dl-7"></div>
+</div>
+
+<script type="text/javascript" src="/js/main.js" charset="utf-8"></script>
+
+<!-- Facebook structure -->
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=742886022434997&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- /Facebook structure -->
+
+<!-- G.A -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-51061271-1');ga('send','pageview');
+</script>
+<!-- /G.A -->
+    </body>
+</html>

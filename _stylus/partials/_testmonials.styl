@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Testimonials
+   ========================================================================== */
+
+.testimonials-container {
+    background-color: #111;
+    background: url(../img/testimonials-bg.png);
+    background-size: 120% 100%;
+    background-position: bottom center;
+}
+
+.testimonials {
+    color: white;  
+    height: 400px;
+    position: relative;
+}
+
+.testimonial {
+    list-style: none;
+    float: left;
+
+    blockquote {
+        margin: 0;
+        padding: 1rem;
+        font-family: Georgia;
+        font-style: italic;
+        font-size: .7rem;
+        line-height: 1rem;
+        border: solid 1px fullColor;
+        border-radius: 10px;
+        position: relative;
+        cursor: default;
+        transition: background-color linear transitionTime;
+    }
+
+    &:hover {
+        blockquote {
+            background-color: alphaColor;
+        }
+    }
+
+}
+
+/* ==========================================================================
+   Testimonials Media Queries
+   ========================================================================== */
+
+@media large {
+    .testimonial {
+        margin-top: 30px;
+        width: 328px;
+        height: 200px;
+
+        blockquote {
+            width: 290px;
+        }
+    }
+}
