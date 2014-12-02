@@ -10,7 +10,7 @@ categories: modules, tutorial
 authorName: Juan Cabrera
 authorLink: http://juan.me
 -->
-There are a lot of information about gulp, not so much for ES6 and just a very few articles about how to implement ES6 modules (for the browser) properly. 
+There are a lot of information about [gulp](http://gulpjs.com/), not so much for ES6 and just a very few articles about how to implement ES6 modules (for the browser) properly. 
 
 On my last project I was using gulp + ES6 and I had to spent some time figuring out how to get ES6 modules working properly. This is how I finally did it without using Browserify or any AMD loader.
 
