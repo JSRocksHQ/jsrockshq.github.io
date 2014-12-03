@@ -23,15 +23,15 @@ The thing is that the ‘inline’ option works perfect if you are using the com
 **Install**
 
 Make sure you have installed Traceur globally:
-```
+```bash
 npm install traceur --global
 ```
 Install gulp-traceur-cmdline to your project:
-```
+```bash
 npm install gulp-traceur-cmdline --save-dev
 ```
 **Usage**
-```
+```javascript
 var gulpTraceurCmdline = require('gulp-traceur-cmdline');
 
 gulp.task('gulpTraceurCmdline',function() {
@@ -53,7 +53,7 @@ NPM: https://www.npmjs.org/package/gulp-traceur-cmdline
 **Without gulp**
 
 You can also run Traceur directly to get your ES6 modules without using this gulp wrapper, here is a basic example:
-```
+```bash
 traceur --modules inline --out mainTranspiled.js main.js
 ```
 —
