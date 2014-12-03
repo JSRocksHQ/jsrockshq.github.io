@@ -73,11 +73,11 @@
 
                         </ul>
 
-                        <!--<address>
-                            <img src=" {{ post.image }}" class="author-avatar" alt=""/>
+                        <address>
+                            <img src="{{post.authorPicture}}" class="author-avatar" alt="{{post.authorName}}"/>
                             <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> {{post.authorName}}</a>
-                        </address>-->
+                            <a href="{{post.authorLink}}" rel="author" class="author-link">{{post.authorName}}</a>
+                        </address>
                     </article>
                 {% endfor %}
             </div>
