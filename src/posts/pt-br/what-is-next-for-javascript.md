@@ -7,6 +7,10 @@ published: true
 keywords: talks
 description: Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos esperar da nova versão do JavaScript
 categories: talks, videos
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
+authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 <!--more-->
 Se você está interessado em ES6, você deve seguir o [Dr. Axel Rauschmayer](https://twitter.com/rauschma).  

@@ -9,6 +9,8 @@ description: Um tutorial sobre o uso de módulos ES6 hoje com o 6to5
 categories: Modules, Tutorial
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
+authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 <!--more-->
 Eu postei a imagem abaixo no [Twitter](https://twitter.com/jaydson/status/526882798263881730), mostrando o quanto feliz eu etava.  

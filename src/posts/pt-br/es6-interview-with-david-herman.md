@@ -7,6 +7,10 @@ published: true
 keywords: ES6
 description: Entrevista feita com David Herman sobre ES6
 categories: ES6, Interview
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
+authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 <!--more-->
 Fizemos uma entrevista bem legal com o [David Herman](https://twitter.com/littlecalculist) sobre ES6.  

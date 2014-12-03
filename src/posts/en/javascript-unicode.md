@@ -7,6 +7,10 @@ published: true
 keywords: ES6, Unicode
 description: Mathias Bynens talking about Unicode in JavaScript
 categories: Unicode, Videos
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
+authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 <!--more-->
 Mathias Bynens gave an awesome talk in the last [JSConfEU](http://2014.jsconf.eu) edition.  
