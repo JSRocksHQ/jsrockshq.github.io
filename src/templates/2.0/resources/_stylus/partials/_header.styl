@@ -1,0 +1,246 @@
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header-container {
+    position: relative;
+    height: 365px;
+}
+
+.page-options {
+    height: 30px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 3;
+    
+    .languages {
+        float: left;
+        
+        a {
+            width: 24px;
+            height: 15px;
+            padding: 0;
+            text-indent: -9999px;
+            
+            &:hover {
+                box-shadow: 0 0 20px fullColor;
+            }
+        }
+    }
+    
+    .social {
+        float: right;
+        text-indent: -9999px;
+        width: 70px;
+    }
+    
+    .text {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #fff;
+        font-style: italic;
+    }
+}
+
+.navigation-container {
+    position: relative;
+    width: 100%;
+    
+    h1 {
+        margin: 0;
+        padding: 0;
+        text-indent: -9999999px;
+    }
+}
+
+.es6-logo {
+    position: absolute;
+    left: 50%;
+    z-index: 0;
+    width: 234px;
+    margin-left: -117px;
+    top: -30px;
+}
+
+.navigation {
+    
+    a {
+        font-weight: bold;
+        float: left;
+        color: #000;
+        text-transform: uppercase;
+        position: relative;
+        border-bottom: solid 1px transparent;
+        
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            background-image: url(../img/icons.png);
+            background-position: -200px;
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            margin-left: -10px;
+            top: -1.5em;
+            opacity: 0;
+            transition: all linear transitionTime;
+        }
+        
+        &:hover {
+            color: #fff;
+            border-bottom: solid 1px #fff;
+            
+            &:before {
+                top: -1.2em; /* to adjust its top, simply change the Xrem on .navigation a */
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.navigation-search {
+    float: right;
+    position: relative;
+    
+    input[type="submit"] {
+        background: transparent;
+        color: fullColor;
+        font-weight: bold;
+        outline: none;
+        border: solid 2px #fff;
+        width: 40px;
+        height: 35px;
+        border-radius: 37px 11px 11px 37px / 20px 19px 19px 20px;
+        position: relative;
+        left: -5px;
+        top: 12px;
+        font-size: .7rem;
+        transition: background linear transitionTime;
+        
+        &:hover{
+            background: rgba(253, 207, 11, .2);
+        }
+    }
+}
+
+.ipt-search-icon {
+    background-image: url(../img/icons.png);
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: red;
+    background-position: -223px -3px;
+}
+
+#ipt-search {
+    color: #000;
+    font-style: italic;
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px #fff;
+    outline: none;
+    padding: 0 5px 5px 30px;
+    font-family: Georgia;
+    font-size: .7rem;
+    font-weight: bold;
+}
+
+// applying placeholder custom effects
+#ipt-search::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #000;
+}
+#ipt-search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000;
+    opacity:  1;
+}
+#ipt-search::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000;
+    opacity:  1;
+}
+#ipt-search:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #000;
+}
+
+#ipt-search:focus {
+    /* TODO: add some effect here */
+}
+
+
+.popular-searches {
+    color: #fff;
+    font-size: .7rem;
+    position: relative;
+    top: -5px;
+    
+    a {
+        color: fullColor;
+        display: inline;
+        
+        &:hover {
+            border-bottom: solid 1px;
+        }
+    }
+}
+
+.send-a-post {
+    
+    &:before {
+        content: "";
+        color: red;
+        display: block;
+        position: absolute;
+        left: 17px;
+        top: 7px;
+        background-image: url(../img/icons.png);
+        width: 30px;
+        height: 30px;
+        background-position: -200px;
+    }
+    
+    &:after {
+        content: "*using Github";
+        display: block;
+        position: absolute;
+        bottom: -25px;
+        left: -3px;
+        font-size: .6rem;
+        text-align: center;
+        width: 100%;
+        text-transform: none;
+        font-family: Georgia;
+        font-style: italic;
+        font-weight: normal;
+    }
+}
+
+/* ==========================================================================
+   Header Media Queries
+   ========================================================================== */
+
+@media large {
+    .navigation a {
+        margin: 80px 1rem;
+        font-size: 1.4rem;
+    }
+    
+    #ipt-search {
+        width: 220px;
+    }
+    
+    .wrapper {
+        width: 1026px; /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+    
+    .navigation-search {
+        margin: 30px 20px;
+    }
+}

@@ -8,6 +8,7 @@ keywords: talks
 description: Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos esperar da nova versão do JavaScript
 categories: talks, videos
 -->
+<!--more-->
 Se você está interessado em ES6, você deve seguir o [Dr. Axel Rauschmayer](https://twitter.com/rauschma).  
 Ele mantêm o incrível blog [2ality](http://www.2ality.com/) e escreve uma série de coisas legais sobre ES6.  
 Nessa sua talk ele fala sobre várias novas features da ES6 e mostra o que podemos esperar do futuro.  

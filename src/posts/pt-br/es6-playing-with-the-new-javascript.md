@@ -10,6 +10,7 @@ categories: Articles
 authorName: Pedro Nauck
 authorLink: http://twitter.com/pedronauck
 -->
+<!--more-->
 Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da [nova versão do JavaScript](http://tc39wiki.calculist.org/es6/), conhecida também como ECMAScript 6 ou apenas ES6. Sei que alguns já ouviram falar, porém ainda não deram muita bola, e que outros nem sequer fazem idéia do que se trata. Se você se encaixa em ambos os casos, fique tranquilo, tudo isso ainda é relativemente novo. A notícia boa é que você tem tempo para estudar e aprender mais sobre o que está por vir.
 
 > Amanhã, amanhã, não hoje! É o que todas as pessoas preguiçosas dizem.

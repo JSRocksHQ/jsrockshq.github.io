@@ -12,6 +12,7 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
+<!--more-->
 Declaração de variáveis em qualquer linguagem de programação é algo básico.  
 Independente da linguagem, entender o funcionamento do escopo de variáveis é imprescindível para escrever qualquer programa.  
 Em Python, por exemplo, assim como na maioria das linguagens, existem 2 escopos: Local e Global.  

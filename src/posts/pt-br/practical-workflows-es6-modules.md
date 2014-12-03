@@ -12,9 +12,9 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
+<!--more-->
 O [Guy Bedford](https://twitter.com/guybedford) deu um palestra incrível sobre workflows com módulos ES6 no último mês na Fluent Conf.
 Ele também escreveu um artigo sonre isso. Se você está interessado neste assunto, você deve ler o artigo por completo.
-<!--more-->
 Introdução:
 
 "Os módulos ES6 estão prestes a se tornar a futura substituição para os formatos de módulo AMD e CommonJS. Eles são definidos pela atual sspecificação ES6 e serão implementados nos motores de JavaScript no futuro, tanto o navegador e o servidor. Este artigo aborda uma variedade de fluxos de trabalho de práticas para a aplicação de módulos ES6. Essas abordagens são muito novas, e ainda haverá casos extremos, mas esses princípios fornecem um caminho para a frente, e para o uso de ES6 em novos projetos e em projetos existentes hoje".

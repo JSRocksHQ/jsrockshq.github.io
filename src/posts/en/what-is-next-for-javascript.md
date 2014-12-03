@@ -8,6 +8,7 @@ keywords: talks
 description: A talk by Dr. Axel Rauschmayer about what's next for JavaScript
 categories: talks, videos
 -->
+<!--more-->
 If you're interested in ES6 you must follow [Dr. Axel Rauschmayer](https://twitter.com/rauschma).  
 He maintains the awesome [2ality](http://www.2ality.com/) blog and writes a lot of good stuff around ES6.  
 In those slides, he cover a lot of new ES6 features and show us what we can expect for the future.  

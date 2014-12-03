@@ -8,9 +8,10 @@ keywords: ES6
 description: Entrevista feita com David Herman sobre ES6
 categories: ES6, Interview
 -->
+<!--more-->
 Fizemos uma entrevista bem legal com o [David Herman](https://twitter.com/littlecalculist) sobre ES6.  
 Para quem não conhece, o David é o principal pesquisador e fundador da Mozilla Research, onde ele trabalha para expandir as fundações da Open Web. Ele está envolvido com diversos projetos de plataformas Web, incluindo [task.js](http://taskjs.org/), [sweet.js](http://sweetjs.org/), [asm.js](http://asmjs.org/), [Rust](http://www.rust-lang.org/), [Servo](https://github.com/mozilla/servo/) e Parallel JS.  
-<!--more-->
+
 David ainda participa de padrões abertos, em particular como representante no [TC39](http://www.ecma-international.org/memento/TC39.htm), o comitê que padroniza o JavaScript.    
 
 ## Módulos! Uma das principais features da ES6 são os módulos. Você, como um dos contribuidores core da especificação, pode explicar o que os módulos vão trazer para os desenvolvedores JavaScript?

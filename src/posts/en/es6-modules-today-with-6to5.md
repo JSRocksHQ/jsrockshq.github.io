@@ -10,6 +10,7 @@ categories: Modules, Tutorial
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
 -->
+<!--more-->
 I've posted the image below on [Twitter](https://twitter.com/jaydson/status/526882798263881730) showing how happy I was.  
 It's great what [transpilers](http://en.wikipedia.org/wiki/Source-to-source_compiler) can do. In JavaScript's World it's like a time machine we can forward to the near future of awesomeness ES6 will bring.  
 In this tutorial we'll show how to start writing [ES6 modules](http://jsmodules.io/) today, using the awesome [6to5](https://github.com/sebmck/6to5).  

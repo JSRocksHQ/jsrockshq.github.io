@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
+        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ config.title }}</title>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+        <!-- /meta -->
+
+        <!-- normalize/modernize -->
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- /normalize/modernize -->
+
+        <!-- social -->
+        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+        <meta property="og:title" content="ES6Rocks" />
+        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
+        <!-- TODO: add twitter card and Google+ meta tags -->
+        <!-- /social -->
+
+        <!-- style -->
+        <link rel="stylesheet" href="/css/normalize.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <!-- /style -->
+
+    </head>
+    <body data-page-type="home">
+
+        {% include "partials/header.html" %}
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <div class="decorator-line dl-3"></div>
+                <div class="decorator-line dl-4"></div>
+
+                {% for post in posts %}
+
+                    {% if loop.index < 3 %}
+                    <article class="recent">
+                    {% else %}
+                    <article>
+                    {% endif %}
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="{{ post.date }}" class="alternative-text">{{ post.date }}</time>
+
+                        <a href="/{{ post.link }}">
+                        {% if loop.index < 3 %}
+                            <h2>{{ post.title }}</h2>
+                        {% else %}
+                            <h3>{{ post.title }}</h3>
+                        {% endif %}
+                        </a>
+
+                        <abstract class="alternative-text">{{post.content }}</abstract>
+
+                        <ul class="article-tags">
+                            {% for category in post.categories %}
+                                <li>
+                                    <a href="/categories/{% if post.metadata.default_lang %}{{ post.metadata.lang }}/{% endif %}{{ category | lower | trim }}">
+                                    {{ category }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+
+                        <!--<address>
+                            <img src=" {{ post.image }}" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link"> {{post.authorName}}</a>
+                        </address>-->
+                    </article>
+                {% endfor %}
+            </div>
+
+            <div class="more-posts-wrapper wrapper clearfix">
+                <div class="decorator-line dl-5"></div>
+                <input type="button" value="More Posts" class="button btn"/><!-- ⟳ -->
+                <div class="decorator-line dl-6"></div>
+            </div>
+        </div>
+
+        {% include "partials/testimonials.html" %}
+        {% include "partials/footer.html" %}
+    </body>
+</html>

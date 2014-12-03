@@ -12,8 +12,8 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-Allen Wirfs-Brock ([awbjs](https://twitter.com/awbjs) no Twitter) é um membro do comitê TC39. Na verdade, ele é o "Project Editor of the ECMAScript Language Specification", ou seja, editor chefe da ECMA.  
 <!--more-->
+Allen Wirfs-Brock ([awbjs](https://twitter.com/awbjs) no Twitter) é um membro do comitê TC39. Na verdade, ele é o "Project Editor of the ECMAScript Language Specification", ou seja, editor chefe da ECMA.  
 Eu não tenho certeza onde ele deu essa palestra, mas eu estou ansioso para ver a gravação.  
 O conteúdo dos slides é excelente e explica um monte de coisas sobre ES6, e sobre o próprio JavaScript.  
 

@@ -12,8 +12,8 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-Allen Wirfs-Brock ([awbjs](https://twitter.com/awbjs) on Twitter) is a TC39 member. Actually, he is the "Project Editor of the ECMAScript Language Specification".
 <!--more-->
+Allen Wirfs-Brock ([awbjs](https://twitter.com/awbjs) on Twitter) is a TC39 member. Actually, he is the "Project Editor of the ECMAScript Language Specification".
 I'm not pretty sure where he gave this talk, but i'm looking forward to watch the recording.
 The slides content are great and explains a lot of things about ES6, and about the JavaScript itself.
 

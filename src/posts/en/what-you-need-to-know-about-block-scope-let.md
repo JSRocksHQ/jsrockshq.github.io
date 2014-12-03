@@ -12,6 +12,7 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
+<!--more-->
 Variables declaration in any programming language are something pretty basic.  
 Regardless the language, understanding how variable scope works is essential to write any kind of program.  
 In Python, for example, as well as in most languages​​, there are two scopes: Local and Global.  

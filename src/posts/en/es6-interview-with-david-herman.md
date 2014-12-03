@@ -12,9 +12,9 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
+<!--more-->
 We did a nice interview with [David Herman](https://twitter.com/littlecalculist) about his thoughts about ES6.
 David is the principal researcher and founder of Mozilla Research, where he works to expand the foundations of the Open Web. He participates in a number of Web platform projects, including: [task.js](http://taskjs.org/), [sweet.js](http://sweetjs.org/), [asm.js](http://asmjs.org/), [Rust](http://www.rust-lang.org/), [Servo](https://github.com/mozilla/servo/) and Parallel JS.
-<!--more-->
 He also participates in open standards, in particular as a representative on [TC39](http://www.ecma-international.org/memento/TC39.htm), the committee that standardizes JavaScript.
 
 ## Modules! One of the main features in ES6 are modules. Can you, as one of the specification core contributors, explain in a nutshell what modules will bring for JavaScript developers?

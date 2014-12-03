@@ -12,11 +12,11 @@ authorLink: http://twitter.com/jcemer
 authorDescription: Internet craftsman, computer scientist and speaker. I am a full-stack web developer for some time and only write code that solves real problems.
 authorPicture: https://avatars2.githubusercontent.com/u/353504?s=460
 -->
+<!--more-->
 
 O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A [agenda do grupo](http://www.2ality.com/2014/06/es6-schedule.html) aponta o mês de junho do próximo ano como sendo a data de lançamento. A partir de agora, poucas mudanças significativas devem surgir. Já é tempo de se aprofundar no estudo.
 
 Este artigo não pretende abordar a importância da escrita de código modularizado. Já escrevi sobre o assunto no artigo [Modularização em JavaScript](http://tableless.com.br/modularizacao-em-javascript). Sites como [JavaScript Modules](http://jsmodules.io) entre outros já são uma ótima referência sobre como escrever módulos ES6. A intenção aqui é esclarecer e justificar a necessidade de uma nova sintaxe para escrita de módulos.
-<!--more-->
 
 ## Formatos atuais
 

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
+        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ post.metadata.title }} - {{ config.title }}</title>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+        <!-- /meta -->
+
+        <!-- normalize/modernize -->
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+         <script src="/js/vendor/prism.js"></script>
+        <!-- /normalize/modernize -->
+
+        <!-- social -->
+        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+        <meta property="og:title" content="ES6Rocks" />
+        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
+        <!-- TODO: add twitter card and Google+ meta tags -->
+        <!-- /social -->
+
+        <!-- style -->
+        <link rel="stylesheet" href="/css/vendor/normalize.min.css" />
+        <link rel="stylesheet" href="/css/vendor/prism.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <!-- /style -->
+
+    </head>
+    <body data-page-type="article">
+
+        {% include "partials/header.html" %}
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+
+                <div>
+                    <div class="article-meta">
+                        <address>
+                            <img src="{{post.metadata.image}}" class="author-avatar" alt="{{post.metadata.authorName}}"/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="{{post.metadata.authorURL}}" rel="author" class="author-link">
+                                {{post.metadata.authorName}}
+                            </a>
+                        </address>
+
+                        <time datetime="{{post.metadata.date}}" class="alternative-text">{{post.metadata.date}}</time>
+
+                        <h2>{{ post.metadata.title }}</h2>
+
+                        <ul class="article-tags">
+                            {% for category in post.metadata.categories %}
+                                <li>
+                                    <a class="categoryTag {{ category }}" href="/categories/{% if post.metadata.default_lang %}{{ post.metadata.lang }}/{% endif %}{{ category | lower | trim }}">{{ category }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <div class="icon-group">
+                            <a href="javascript: void(0);" class="icon font-up" title="Increase font size">Bigger font size</a>
+                            <a href="javascript: void(0);" class="icon font-down" title="Decrease font size">Smaller font size</a>
+                            <a href="javascript: void(0);" class="icon contrast" title="Switch contrast colors">Switch the color contrast</a>
+                            <a href="javascript: void(0);" class="icon comments" title="Comments">See comments and create new comment</a>
+                        </div>
+                    </div>
+
+                    <div class="main-article wrapper">
+                        <article class="article-content">{{ post.content }}</article>
+                    </div>
+                </div>
+
+                <div class="icon-group">
+                    <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                    <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                    <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                </div>
+
+                <div class="comments wrapper">
+                    <h4 class="wrapper-label"><span class="icon comments-label"></span><span>Comments</span></h4>
+
+                    <div class="comments-container">
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </div>
+                </div>
+
+                <h3 class="wrapper-label" style="visibility: hidden;"><span class="icon bolt"></span><span>Other posts</span></h3>
+
+                <div class="other-articles-container">
+                    <article>
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle"><h3>Arrow Functions and their scope</h3></a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+
+                    <article>
+
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle">
+                            <h3>Arrow Functions and their scope</h3>
+                        </a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+
+                    <article>
+
+                        <asside class="article-share">
+                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle">
+                            <h3>Arrow Functions and their scope</h3>
+                        </a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+                </div>
+            </div>
+
+            <div class="go-to-top-wrapper wrapper clearfix">
+                <div class="decorator-line dl-5"></div>
+                <input type="button" value="Go to Top" class="button btn btn-goToTop" /><!-- ⟳ -->
+                <div class="decorator-line dl-6"></div>
+            </div>
+        </div>
+
+        {% include "partials/footer.html" %}
+    </body>
+</html>

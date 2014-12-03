@@ -8,6 +8,7 @@ keywords: ES6, Unicode
 description: Mathias Bynens talking about Unicode in JavaScript
 categories: Unicode, Videos
 -->
+<!--more-->
 O Mathias Bynens deu uma palestra incrível na última edição da [JSConfEU](http://2014.jsconf.eu).  
 Ele falou sobre Unicode no JavaScript, e se você precisa trabalhar pesado com strings, você DEVE assistir esta palestra.  
 Na verdade, mesmo se você não pega tão pesado com strings no JavaScript, esses truques apresentados pelo Mathias são bem úteis.  
