@@ -9,6 +9,7 @@ description: How to use ES6 modules in the browser using Traceur and gulp
 categories: modules, tutorial
 authorName: Juan Cabrera
 authorLink: http://juan.me
+authorPicture: http://juan.me/images/reacticabrera.jpg
 -->
 <!--more-->
 There is a lot of information about [gulp](http://gulpjs.com/), not so much for ES6 and just a very few articles about how to implement ES6 modules (for the browser) properly. 
