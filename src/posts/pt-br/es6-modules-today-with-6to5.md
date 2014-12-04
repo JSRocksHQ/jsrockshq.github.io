@@ -12,8 +12,7 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-<!--more-->
-Eu postei a imagem abaixo no [Twitter](https://twitter.com/jaydson/status/526882798263881730), mostrando o quanto feliz eu etava.  
+Eu postei a imagem abaixo no [Twitter](https://twitter.com/jaydson/status/526882798263881730), mostrando o quanto feliz eu estava.<!--more-->  
 É muito legal o que os [transpilers](http://en.wikipedia.org/wiki/Source-to-source_compiler) podem fazer. No mundo do JavaScript é como uma máquina do tempo, onde podemos avançar para um futuro próximo de coisas muito legais que a ES6 irá nos trazer.  
 Nesse tutorial nós vamos mostrar como começar a escrever [ES6 modules](http://jsmodules.io/) hoje, usando o excelente [6to5](https://github.com/sebmck/6to5);  
 

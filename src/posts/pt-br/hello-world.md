@@ -12,9 +12,8 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-<!--more-->
 Olá pessoal, bem-vindos ao ES6Rocks!
-Nossa missão aqui é discutir sobre a [a nova versão do JavaScript](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts), mais conhecida como Harmony ou ES.next.
+Nossa missão aqui é discutir sobre a [a nova versão do JavaScript](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts), mais conhecida como Harmony ou ES.next.<!--more-->
 
 ES6 é incrível e está vindo logo.
 Você já pode usa-la e também pode aprender sobre ES6 hoje mesmo!
