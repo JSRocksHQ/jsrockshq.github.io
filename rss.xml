@@ -6,14 +6,22 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sat, 29 Nov 2014 05:29:22 GMT</pubDate>
+        <pubDate>Thu, 04 Dec 2014 01:59:06 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Using ES6 modules in the browser with gulp</title>
+            <link>http://es6rocks.com/2014/12/using-es6-modules-in-the-browser-with-gulp</link>
+            <description><![CDATA[]]></description>
+            <pubDate>Tue, 02 Dec 2014 17:14:37 GMT</pubDate>
+            <guid>http://es6rocks.com/2014/12/using-es6-modules-in-the-browser-with-gulp</guid>
+        </item>
+        
+        <item>
             <title>ES6 modules today with 6to5</title>
             <link>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</link>
-            <description><![CDATA[<p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.  </p>
+            <description><![CDATA[<p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.</p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</guid>
@@ -22,7 +30,7 @@
         <item>
             <title>JavaScript ♥  Unicode</title>
             <link>http://es6rocks.com/2014/10/javascript-unicode</link>
-            <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.  </p>
+            <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.</p>
 ]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
             <guid>http://es6rocks.com/2014/10/javascript-unicode</guid>
@@ -40,7 +48,7 @@
         <item>
             <title>What's next for JavaScript</title>
             <link>http://es6rocks.com/2014/08/what-is-next-for-javascript</link>
-            <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.  </p>
+            <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.</p>
 ]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
             <guid>http://es6rocks.com/2014/08/what-is-next-for-javascript</guid>
@@ -81,7 +89,7 @@
         </item>
         
         <item>
-            <title>A Better JavaScript for the Ambient Computing Era</title>
+            <title>ECMAScript 6 - A Better JavaScript for the Ambient Computing Era</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
             <description><![CDATA[]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
@@ -91,7 +99,8 @@
         <item>
             <title>ECMAScript 6 - The future is here</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
+]]></description>
             <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</guid>
         </item>
@@ -99,7 +108,7 @@
         <item>
             <title>Hello World</title>
             <link>http://es6rocks.com/2014/05/hello-world</link>
-            <description><![CDATA[<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.  </p>
+            <description><![CDATA[<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.</p>
 ]]></description>
             <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/05/hello-world</guid>

@@ -1,4 +1,5 @@
 //traceur runtime
+"use strict";
 (function(global) {
     'use strict';
     if (global.$traceurRuntime) {
@@ -33,7 +34,7 @@
     var method = nonEnum;
     var counter = 0;
     function newUniqueString() {
-        return '__$' + Math.floor(Math.random() * 1e9) + '$' + ++counter + '$__';
+        return '__$' + Math.floor(Math.random() * 1000000000) + '$' + ++counter + '$__';
     }
     var symbolInternalProperty = newUniqueString();
     var symbolDescriptionProperty = newUniqueString();
@@ -662,76 +663,91 @@
         Object.preventExtensions(coatedModule);
         return coatedModule;
     }
-    var ModuleStore = {
-        normalize: function(name, refererName, refererAddress) {
-            if (typeof name !== "string")
-                throw new TypeError("module name must be a string, not " + typeof name);
-            if (isAbsolute(name))
-                return canonicalizeUrl(name);
-            if (/[^\.]\/\.\.\//.test(name)) {
-                throw new Error('module name embeds /../: ' + name);
-            }
-            if (name[0] === '.' && refererName)
-                return resolveUrl(refererName, name);
-            return canonicalizeUrl(name);
-        },
-        get: function(normalizedName) {
-            var m = getUncoatedModuleInstantiator(normalizedName);
-            if (!m)
-                return undefined;
-            var moduleInstance = moduleInstances[m.url];
-            if (moduleInstance)
-                return moduleInstance;
-            moduleInstance = Module(m.getUncoatedModule(), liveModuleSentinel);
-            return moduleInstances[m.url] = moduleInstance;
-        },
-        set: function(normalizedName, module) {
-            normalizedName = String(normalizedName);
-            moduleInstantiators[normalizedName] = new UncoatedModuleInstantiator(normalizedName, (function() {
-                return module;
-            }));
-            moduleInstances[normalizedName] = module;
-        },
-        get baseURL() {
-            return baseURL;
-        },
-        set baseURL(v) {
-            baseURL = String(v);
-        },
-        registerModule: function(name, func) {
-            var normalizedName = ModuleStore.normalize(name);
-            if (moduleInstantiators[normalizedName])
-                throw new Error('duplicate module named ' + normalizedName);
-            moduleInstantiators[normalizedName] = new UncoatedModuleInstantiator(normalizedName, func);
-        },
-        bundleStore: Object.create(null),
-        register: function(name, deps, func) {
-            if (!deps || !deps.length) {
-                this.registerModule(name, func);
-            } else {
-                this.bundleStore[name] = {
-                    deps: deps,
-                    execute: func
-                };
-            }
-        },
-        getAnonymousModule: function(func) {
-            return new Module(func.call(global), liveModuleSentinel);
-        },
-        getForTesting: function(name) {
-            var $__0 = this;
-            if (!this.testingPrefix_) {
-                Object.keys(moduleInstances).some((function(key) {
-                    var m = /(traceur@[^\/]*\/)/.exec(key);
-                    if (m) {
-                        $__0.testingPrefix_ = m[1];
-                        return true;
-                    }
-                }));
-            }
-            return this.get(this.testingPrefix_ + name);
+    var ModuleStore = function(_ModuleStore) {
+      Object.defineProperties(_ModuleStore, {
+        baseURL: {
+          get: function() {
+              return baseURL;
+          },
+
+          set: function(v) {
+              baseURL = String(v);
+          }
         }
-    };
+      });
+
+      return _ModuleStore;
+    }({
+      normalize: function(name, refererName, refererAddress) {
+          if (typeof name !== "string")
+              throw new TypeError("module name must be a string, not " + typeof name);
+          if (isAbsolute(name))
+              return canonicalizeUrl(name);
+          if (/[^\.]\/\.\.\//.test(name)) {
+              throw new Error('module name embeds /../: ' + name);
+          }
+          if (name[0] === '.' && refererName)
+              return resolveUrl(refererName, name);
+          return canonicalizeUrl(name);
+      },
+
+      get: function(normalizedName) {
+          var m = getUncoatedModuleInstantiator(normalizedName);
+          if (!m)
+              return undefined;
+          var moduleInstance = moduleInstances[m.url];
+          if (moduleInstance)
+              return moduleInstance;
+          moduleInstance = Module(m.getUncoatedModule(), liveModuleSentinel);
+          return moduleInstances[m.url] = moduleInstance;
+      },
+
+      set: function(normalizedName, module) {
+          normalizedName = String(normalizedName);
+          moduleInstantiators[normalizedName] = new UncoatedModuleInstantiator(normalizedName, (function() {
+              return module;
+          }));
+          moduleInstances[normalizedName] = module;
+      },
+
+      registerModule: function(name, func) {
+          var normalizedName = ModuleStore.normalize(name);
+          if (moduleInstantiators[normalizedName])
+              throw new Error('duplicate module named ' + normalizedName);
+          moduleInstantiators[normalizedName] = new UncoatedModuleInstantiator(normalizedName, func);
+      },
+
+      bundleStore: Object.create(null),
+
+      register: function(name, deps, func) {
+          if (!deps || !deps.length) {
+              this.registerModule(name, func);
+          } else {
+              this.bundleStore[name] = {
+                  deps: deps,
+                  execute: func
+              };
+          }
+      },
+
+      getAnonymousModule: function(func) {
+          return new Module(func.call(global), liveModuleSentinel);
+      },
+
+      getForTesting: function(name) {
+          var $__0 = this;
+          if (!this.testingPrefix_) {
+              Object.keys(moduleInstances).some((function(key) {
+                  var m = /(traceur@[^\/]*\/)/.exec(key);
+                  if (m) {
+                      $__0.testingPrefix_ = m[1];
+                      return true;
+                  }
+              }));
+          }
+          return this.get(this.testingPrefix_ + name);
+      }
+    });
     ModuleStore.set('@traceur/src/runtime/ModuleStore', new Module({
         ModuleStore: ModuleStore
     }));
@@ -758,14 +774,23 @@ System.register("traceur-runtime@0.0.25/src/runtime/polyfills/utils", [], functi
     function toUint32(x) {
         return x | 0;
     }
-    return {
-        get toObject() {
-            return toObject;
+    return function(_ref) {
+      Object.defineProperties(_ref, {
+        toObject: {
+          get: function() {
+              return toObject;
+          }
         },
-        get toUint32() {
-            return toUint32;
+
+        toUint32: {
+          get: function() {
+              return toUint32;
+          }
         }
-    };
+      });
+
+      return _ref;
+    }({});
 });
 System.register("traceur-runtime@0.0.25/src/runtime/polyfills/ArrayIterator", [], function() {
     "use strict";
@@ -833,17 +858,29 @@ System.register("traceur-runtime@0.0.25/src/runtime/polyfills/ArrayIterator", []
     function values() {
         return createArrayIterator(this, ARRAY_ITERATOR_KIND_VALUES);
     }
-    return {
-        get entries() {
-            return entries;
+    return function(_ref2) {
+      Object.defineProperties(_ref2, {
+        entries: {
+          get: function() {
+              return entries;
+          }
         },
-        get keys() {
-            return keys;
+
+        keys: {
+          get: function() {
+              return keys;
+          }
         },
-        get values() {
-            return values;
+
+        values: {
+          get: function() {
+              return values;
+          }
         }
-    };
+      });
+
+      return _ref2;
+    }({});
 });
 System.register("traceur-runtime@0.0.25/node_modules/rsvp/lib/rsvp/asap", [], function() {
     "use strict";
@@ -895,11 +932,17 @@ System.register("traceur-runtime@0.0.25/node_modules/rsvp/lib/rsvp/asap", [], fu
     } else {
         scheduleFlush = useSetTimeout();
     }
-    return {
-        get default() {
-            return $__default;
+    return function(_ref3) {
+      Object.defineProperties(_ref3, {
+        default: {
+          get: function() {
+              return $__default;
+          }
         }
-    };
+      });
+
+      return _ref3;
+    }({});
 });
 System.register("traceur-runtime@0.0.25/src/runtime/polyfills/Promise", [], function() {
     "use strict";
@@ -1080,11 +1123,17 @@ System.register("traceur-runtime@0.0.25/src/runtime/polyfills/Promise", [], func
             return x;
         }
     }
-    return {
-        get Promise() {
-            return Promise;
+    return function(_ref4) {
+      Object.defineProperties(_ref4, {
+        Promise: {
+          get: function() {
+              return Promise;
+          }
         }
-    };
+      });
+
+      return _ref4;
+    }({});
 });
 System.register("traceur-runtime@0.0.25/src/runtime/polyfills/String", [], function() {
     "use strict";
@@ -1185,10 +1234,10 @@ System.register("traceur-runtime@0.0.25/src/runtime/polyfills/String", [], funct
         }
         var first = string.charCodeAt(index);
         var second;
-        if (first >= 0xD800 && first <= 0xDBFF && size > index + 1) {
+        if (first >= 55296 && first <= 56319 && size > index + 1) {
             second = string.charCodeAt(index + 1);
-            if (second >= 0xDC00 && second <= 0xDFFF) {
-                return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+            if (second >= 56320 && second <= 57343) {
+                return (first - 55296) * 1024 + second - 56320 + 65536;
             }
         }
         return first;
@@ -1219,43 +1268,67 @@ System.register("traceur-runtime@0.0.25/src/runtime/polyfills/String", [], funct
         }
         while (++index < length) {
             var codePoint = Number(arguments[index]);
-            if (!isFinite(codePoint) || codePoint < 0 || codePoint > 0x10FFFF || floor(codePoint) != codePoint) {
+            if (!isFinite(codePoint) || codePoint < 0 || codePoint > 1114111 || floor(codePoint) != codePoint) {
                 throw RangeError('Invalid code point: ' + codePoint);
             }
-            if (codePoint <= 0xFFFF) {
+            if (codePoint <= 65535) {
                 codeUnits.push(codePoint);
             } else {
-                codePoint -= 0x10000;
-                highSurrogate = (codePoint >> 10) + 0xD800;
-                lowSurrogate = (codePoint % 0x400) + 0xDC00;
+                codePoint -= 65536;
+                highSurrogate = (codePoint >> 10) + 55296;
+                lowSurrogate = (codePoint % 1024) + 56320;
                 codeUnits.push(highSurrogate, lowSurrogate);
             }
         }
         return String.fromCharCode.apply(null, codeUnits);
     }
-    return {
-        get startsWith() {
-            return startsWith;
+    return function(_ref5) {
+      Object.defineProperties(_ref5, {
+        startsWith: {
+          get: function() {
+              return startsWith;
+          }
         },
-        get endsWith() {
-            return endsWith;
+
+        endsWith: {
+          get: function() {
+              return endsWith;
+          }
         },
-        get contains() {
-            return contains;
+
+        contains: {
+          get: function() {
+              return contains;
+          }
         },
-        get repeat() {
-            return repeat;
+
+        repeat: {
+          get: function() {
+              return repeat;
+          }
         },
-        get codePointAt() {
-            return codePointAt;
+
+        codePointAt: {
+          get: function() {
+              return codePointAt;
+          }
         },
-        get raw() {
-            return raw;
+
+        raw: {
+          get: function() {
+              return raw;
+          }
         },
-        get fromCodePoint() {
-            return fromCodePoint;
+
+        fromCodePoint: {
+          get: function() {
+              return fromCodePoint;
+          }
         }
-    };
+      });
+
+      return _ref5;
+    }({});
 });
 System.register("traceur-runtime@0.0.25/src/runtime/polyfills/polyfills", [], function() {
     "use strict";
@@ -1332,522 +1405,504 @@ System.get("traceur-runtime@0.0.25/src/runtime/polyfill-import" + '');
 
 //harmonic code
 "use strict";
-var Harmonic = function Harmonic(name) {
-  this.name = name;
-};
-($traceurRuntime.createClass)(Harmonic, {
-  getConfig: function() {
-    return {
-      "name": "ES6 Rocks",
-      "title": "ES6 Rocks",
-      "domain": "http://es6rocks.com",
-      "subtitle": "Powered by Harmonic",
-      "author": "ES6 Rocks",
-      "description": "A website dedicated to teach all about ES6",
-      "bio": "Thats me",
-      "template": "2.0",
-      "preprocessor": "stylus",
-      "posts_permalink": ":language/:year/:month/:title",
-      "pages_permalink": "pages/:title",
-      "header_tokens": ["<!--", "-->"],
-      "index_posts": 20,
-      "i18n": {
-        "default": "en",
-        "languages": ["en", "pt-br", "cn"]
+"use strict";
+var Harmonic = function() {
+  var Harmonic = function Harmonic(name) {
+    this.name = name;
+  };
+  Object.defineProperties(Harmonic.prototype, {
+    getConfig: {
+      writable: true,
+      value: function() {
+        return {
+          "name": "ES6 Rocks",
+          "title": "ES6 Rocks",
+          "domain": "http://es6rocks.com",
+          "subtitle": "Powered by Harmonic",
+          "author": "ES6 Rocks",
+          "description": "A website dedicated to teach all about ES6",
+          "bio": "Thats me",
+          "template": "2.0",
+          "preprocessor": "stylus",
+          "posts_permalink": ":language/:year/:month/:title",
+          "pages_permalink": "pages/:title",
+          "header_tokens": ["<!--", "-->"],
+          "index_posts": 20,
+          "i18n": {
+            "default": "en",
+            "languages": ["en", "pt-br"]
+          }
+        };
       }
-    };
-  },
-  getPosts: function() {
-    return {
-      "en": [{
-        "layout": "post",
-        "title": "ES6 modules today with 6to5",
-        "date": "2014-10-28T12:49:54.528Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, modules, 6to5",
-        "description": "A tutorial about using ES6 modules today with 6to5",
-        "categories": ["Modules", " Tutorial"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "<p>I&#39;ve posted the image below on <a href=\"https://twitter.com/jaydson/status/526882798263881730\">Twitter</a> showing how happy I was.  </p>\n",
-        "file": "./src/posts/es6-modules-today-with-6to5.md",
-        "filename": "es6-modules-today-with-6to5",
-        "link": "2014/10/es6-modules-today-with-6to5",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "JavaScript ♥  Unicode",
-        "date": "2014-10-13T19:22:32.267Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, Unicode",
-        "description": "Mathias Bynens talking about Unicode in JavaScript",
-        "categories": ["Unicode", " Videos"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "<p>Mathias Bynens gave an awesome talk in the last <a href=\"http://2014.jsconf.eu\">JSConfEU</a> edition.  </p>\n",
-        "file": "./src/posts/javascript-unicode.md",
-        "filename": "javascript-unicode",
-        "link": "2014/10/javascript-unicode",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "Arrow Functions and their scope",
-        "date": "2014-10-01T04:01:41.369Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "arrow functions, es6, escope",
-        "description": "Read about arrow functions in ES6, and their scopes.",
-        "categories": ["scope", " articles", " basics"],
-        "authorName": "Felipe N. Moura",
-        "authorLink": "http://twitter.com/felipenmoura",
-        "authorDescription": "FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "image": "https://avatars0.githubusercontent.com/u/347387?v=3&s=100",
-        "content": "<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!</p>\n",
-        "file": "./src/posts/arrow-functions-and-their-scope.md",
-        "filename": "arrow-functions-and-their-scope",
-        "link": "2014/10/arrow-functions-and-their-scope",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "What's next for JavaScript",
-        "date": "2014-08-29T03:04:03.666Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "talks",
-        "description": "A talk by Dr. Axel Rauschmayer about what's next for JavaScript",
-        "categories": ["talks", " videos"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "<p>If you&#39;re interested in ES6 you must follow <a href=\"https://twitter.com/rauschma\">Dr. Axel Rauschmayer</a>.  </p>\n",
-        "file": "./src/posts/what-is-next-for-javascript.md",
-        "filename": "what-is-next-for-javascript",
-        "link": "2014/08/what-is-next-for-javascript",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "What you need to know about block scope - let",
-        "date": "2014-08-28T01:58:23.465Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "",
-        "description": "An introduction to block scope on ES6",
-        "categories": ["scope", " articles", " basics"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/what-you-need-to-know-about-block-scope-let.md",
-        "filename": "what-you-need-to-know-about-block-scope-let",
-        "link": "2014/08/what-you-need-to-know-about-block-scope-let",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "A new syntax for modules in ES6",
-        "date": "2014-07-11T07:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, modules",
-        "description": "Post about module syntax",
-        "categories": ["modules"],
-        "authorName": "Jean Carlo Emer",
-        "authorLink": "http://twitter.com/jcemer",
-        "image": "https://avatars1.githubusercontent.com/u/353504?v=3&s=100",
-        "authorDescription": "Internet craftsman, computer scientist and speaker. I am a full-stack web developer for some time and only write code that solves real problems.",
-        "authorPicture": "https://avatars2.githubusercontent.com/u/353504?s=460",
-        "content": "<p>TC39 - ECMAScript group is finishing the sixth version of the ECMAScript specification. The <a href=\"http://www.2ality.com/2014/06/es6-schedule.html\">group schedule</a> points to next June as the release date.</p>\n",
-        "file": "./src/posts/a-new-syntax-for-modules-in-es6.md",
-        "filename": "a-new-syntax-for-modules-in-es6",
-        "link": "2014/07/a-new-syntax-for-modules-in-es6",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "ES6 interview with David Herman",
-        "date": "2014-07-04T01:08:30.242Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6",
-        "description": "Interview with David Herman about ES6",
-        "categories": ["ES6", " Interview"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
-        "content": "<p>We did a nice interview with <a href=\"https://twitter.com/littlecalculist\">David Herman</a> about his thoughts about ES6.</p>\n",
-        "file": "./src/posts/es6-interview-with-david-herman.md",
-        "filename": "es6-interview-with-david-herman",
-        "link": "2014/07/es6-interview-with-david-herman",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "Practical Workflows for ES6 Modules, Fluent 2014",
-        "date": "2014-05-27T07:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, modules",
-        "description": "Post about modules",
-        "categories": ["modules", " talks"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
-        "content": "",
-        "file": "./src/posts/practical-workflows-es6-modules.md",
-        "filename": "practical-workflows-es6-modules",
-        "link": "2014/05/practical-workflows-es6-modules",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "A Better JavaScript for the Ambient Computing Era",
-        "date": "2014-05-27T06:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, talks",
-        "description": "talk about es6",
-        "categories": ["talks", " videos"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
-        "content": "",
-        "file": "./src/posts/ecmascript-6-a-better-javascript-for-the-ambient-computing-era.md",
-        "filename": "ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
-        "link": "2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "ECMAScript 6 - The future is here",
-        "date": "2014-05-27T05:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, talks",
-        "description": "talk about es6",
-        "categories": ["talks"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
-        "content": "",
-        "file": "./src/posts/ecmascript-6-the-future-is-here.md",
-        "filename": "ecmascript-6-the-future-is-here",
-        "link": "2014/05/ecmascript-6-the-future-is-here",
-        "lang": "en",
-        "default_lang": false
-      }, {
-        "layout": "post",
-        "title": "Hello World",
-        "date": "2014-05-17T08:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6",
-        "description": "Hello world post",
-        "categories": ["JavaScript", " ES6"],
-        "authorName": "Jaydson",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
-        "content": "<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href=\"http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts\">JavaScript&#39;s next version</a> , aka Harmony or ES.next.  </p>\n",
-        "file": "./src/posts/hello-world.md",
-        "filename": "hello-world",
-        "link": "2014/05/hello-world",
-        "lang": "en",
-        "default_lang": false
-      }],
-      "pt-br": [{
-        "layout": "post",
-        "title": "ES6: Brincando com o novo Javascript",
-        "date": "2014-11-13T23:30:23.830Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, 6to5, Javascript",
-        "description": "Como estudar e aprender ES6 criando experimentos e testes",
-        "categories": ["Articles"],
-        "authorName": "Pedro Nauck",
-        "authorLink": "http://twitter.com/pedronauck",
-        "image": "https://avatars0.githubusercontent.com/u/2029172?v=3&s=160",
-        "content": "",
-        "file": "./src/posts/es6-playing-with-the-new-javascript.md",
-        "filename": "es6-playing-with-the-new-javascript",
-        "link": "pt-br/2014/11/es6-playing-with-the-new-javascript",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Módulos ES6 hoje com o 6to5",
-        "date": "2014-10-28T12:49:54.528Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, modules, 6to5",
-        "description": "Um tutorial sobre o uso de módulos ES6 hoje com o 6to5",
-        "categories": ["Modules", " Tutorial"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/es6-modules-today-with-6to5.md",
-        "filename": "es6-modules-today-with-6to5",
-        "link": "pt-br/2014/10/es6-modules-today-with-6to5",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "JavaScript ♥  Unicode",
-        "date": "2014-10-13T19:22:32.267Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, Unicode",
-        "description": "Mathias Bynens talking about Unicode in JavaScript",
-        "categories": ["Unicode", " Videos"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/javascript-unicode.md",
-        "filename": "javascript-unicode",
-        "link": "pt-br/2014/10/javascript-unicode",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Arrow Functions and their scope",
-        "date": "2014-10-01T04:01:41.369Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "arrow functions, es6, escope",
-        "description": "Read about arrow functions in ES6, and their scopes.",
-        "categories": ["scope", " articles", " basics"],
-        "authorName": "Felipe N. Moura",
-        "authorLink": "http://twitter.com/felipenmoura",
-        "authorDescription": "FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "image": "https://avatars0.githubusercontent.com/u/347387?v=3&s=100",
-        "content": "",
-        "file": "./src/posts/arrow-functions-and-their-scope.md",
-        "filename": "arrow-functions-and-their-scope",
-        "link": "pt-br/2014/10/arrow-functions-and-their-scope",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "O que podemos esperar do novo JavaScript",
-        "date": "2014-08-29T03:04:03.666Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "talks",
-        "description": "Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos esperar da nova versão do JavaScript",
-        "categories": ["talks", " videos"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/what-is-next-for-javascript.md",
-        "filename": "what-is-next-for-javascript",
-        "link": "pt-br/2014/08/what-is-next-for-javascript",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "O que você precisa saber sobre block scope - let",
-        "date": "2014-08-28T01:58:23.465Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "",
-        "description": "Uma introdução a block scope na ES6",
-        "categories": ["scope", " articles", " basics"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/what-you-need-to-know-about-block-scope-let.md",
-        "filename": "what-you-need-to-know-about-block-scope-let",
-        "link": "pt-br/2014/08/what-you-need-to-know-about-block-scope-let",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Uma nova sintaxe para módulos na ES6",
-        "date": "2014-07-11T07:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, modules",
-        "description": "Post about module syntax",
-        "categories": ["modules"],
-        "authorName": "Jean Carlo Emer",
-        "authorLink": "http://twitter.com/jcemer",
-        "image": "https://avatars1.githubusercontent.com/u/353504?v=3&s=100",
-        "authorDescription": "Internet craftsman, computer scientist and speaker. I am a full-stack web developer for some time and only write code that solves real problems.",
-        "authorPicture": "https://avatars2.githubusercontent.com/u/353504?s=460",
-        "content": "",
-        "file": "./src/posts/a-new-syntax-for-modules-in-es6.md",
-        "filename": "a-new-syntax-for-modules-in-es6",
-        "link": "pt-br/2014/07/a-new-syntax-for-modules-in-es6",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Entrevista sobre ES6 com o David Herman",
-        "date": "2014-07-04T01:08:30.242Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6",
-        "description": "Entrevista feita com David Herman sobre ES6",
-        "categories": ["ES6", " Interview"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/es6-interview-with-david-herman.md",
-        "filename": "es6-interview-with-david-herman",
-        "link": "pt-br/2014/07/es6-interview-with-david-herman",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Workflows para os módulos da ES6, Fluent 2014",
-        "date": "2014-05-27T07:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, modules",
-        "description": "Post sobre módulos",
-        "categories": ["modules", " talks"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/practical-workflows-es6-modules.md",
-        "filename": "practical-workflows-es6-modules",
-        "link": "pt-br/2014/05/practical-workflows-es6-modules",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "ECMAScript 6 - Um melhor JavaScript para a Ambient Computing Era",
-        "date": "2014-05-27T06:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, talks",
-        "description": "talk about es6",
-        "categories": ["talks", " videos"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/ecmascript-6-a-better-javascript-for-the-ambient-computing-era.md",
-        "filename": "ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
-        "link": "pt-br/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "ECMAScript 6 - O futuro está aqui",
-        "date": "2014-05-27T05:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6, talks",
-        "description": "talk about es6",
-        "categories": ["talks"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/ecmascript-6-the-future-is-here.md",
-        "filename": "ecmascript-6-the-future-is-here",
-        "link": "pt-br/2014/05/ecmascript-6-the-future-is-here",
-        "lang": "pt-br",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "Hello World",
-        "date": "2014-05-17T08:18:47.847Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "JavaScript, ES6",
-        "description": "Hello world post",
-        "categories": ["JavaScript", " ES6"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "image": "http://www.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02.png",
-        "content": "",
-        "file": "./src/posts/hello-world.md",
-        "filename": "hello-world",
-        "link": "pt-br/2014/05/hello-world",
-        "lang": "pt-br",
-        "default_lang": true
-      }],
-      "cn": [{
-        "layout": "post",
-        "title": "使用6to5，让今天就来写ES6的模块化开发!",
-        "date": "2014-11-05T15:19:50.612Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, modules, 6to5",
-        "description": "使用基于Node.js的6to5，让支持ES5的环境也能使用ES6的模块化",
-        "categories": ["Modules", " Tutorial"],
-        "authorName": "Jaydson Gomes",
-        "authorLink": "http://twitter.com/jaydson",
-        "content": "<p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>\n<p><img src=\"/img/modules-today-6to5.png\" alt=\"使用6to5让今天就可以练手ES6的模块化\"></p>\n<h1 id=\"-\">第一步</h1>\n<p>如果你现在还不了解ES6的模块化开发，请在<a href=\"http://JSModules.io\">JSModules.io</a>上了解一下。我也推荐大家读一下@jcemer的文章<a href=\"http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/\">A new syntax for modules in ES6</a>，它涉及到了很多非常酷的关于JS模块化的东西。他可以指导我们使用6to5。总的来说，6to5能在支持ES5d的环境下提前尝试ES6 模块化开发的快感。\n6to5比其他降级工具有一下几个优势：</p>\n<ul>\n<li>可读性：你的格式化的代码尽可能的保留。</li>\n<li>可扩展性：有非常庞大的插件库和浏览器的支持。</li>\n<li>可调式性：因为支持source map，你可以方便的调试已经编译过后的代码</li>\n<li>高效率：直接转化为与ES相当的代码，不会增加额外的运行十几</li>\n</ul>\n<h1 id=\"-\">一起来写模块</h1>\n<p>让我们来尝试着写模块吧！\n我们的应用除了输出日志不会做其他事情，其主要的目的就是让你了解模块化如何工作和如何让你现有的环境使用ES6的模块化开发。\n基本的目录结构：</p>\n<pre><code>├── Gruntfile.js\n├── package.json\n└── src\n    ├── app.js\n    ├── modules\n    │   ├── bar.js\n    │   ├── baz.js\n    │   └── foo.js\n    └── sample\n        └── index.html\n</code></pre><p>app.js是主程序，包含了我们将要存储的模块化的目录\n下面是app.js的代码：</p>\n<pre><code class=\"lang-javascript\">import foo from &quot;./modules/foo&quot;;\nimport bar from &quot;./modules/bar&quot;;\n\nconsole.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);\nconsole.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);\n</code></pre>\n<p>以上代码非常简单，我们导入了foo模块和bar模块，然后分别打印出他们</p>\n<pre><code class=\"lang-javascript\">// foo.js\nlet foo = &#39;foo&#39;;\n\nexport default foo;\n\n\n// bar.js\nlet bar = &#39;bar&#39;;\n\nexport default bar;\n</code></pre>\n<p>在这些模块一面我们只是导出了两个字符串&#39;foo&#39;和&#39;bar&#39;，当我们导入这些模块，我们的变量其实已经有数据。\n当然，我们何以导出对象，类，函数，等等\n现在，你可以开始模仿这个例子写出你自己的模块</p>\n<h1 id=\"-\">构建</h1>\n<p>就像你已经知道的，<a href=\"http://kangax.github.io/compat-table/es6/\">ES6不支持你现在的浏览器和Node</a>.js，只有一条路，那就是使用降级转换器来编写ES6的模块化代码。\n正如我之前提到的那个，我使用6to5，他可以精确的达到我们想要的效果。\n这个任务是运行在Grunt上的,我们使用 @sindresorhus的 <a href=\"https://github.com/sindresorhus/grunt-6to5\">grunt-6to5</a></p>\n<pre><code class=\"lang-shell\">npm install grunt-cli -g\nnpm install grunt --save-dev\nnpm install grunt-6to5 --save-dev\n</code></pre>\n<p>我们的Gruntfile类似于一下：</p>\n<pre><code class=\"lang-javascript\">grunt.initConfig({\n    &#39;6to5&#39;: {\n        options: {\n            modules: &#39;common&#39;\n        },\n\n        build: {\n            files: [{\n                expand: true,\n                cwd: &#39;src/&#39;,\n                src: [&#39;**/*.js&#39;],\n                dest: &#39;dist/&#39;,\n            }],\n        }\n    }\n});\n</code></pre>\n<p>这是个简单又给力的配置，我们也几乎完成了。\n当你指定好源文件和输出文件后，这个任务就可以来运行了。\n&#39;common&#39;选项的目的在于告诉6to5我们将输出ES5CommonJS模块化风格。\n当然，6to5也支持AMD，我写了sample/index.html，让他在浏览器环境下测试一下，这个HTML的代码如下：</p>\n<pre><code class=\"lang-html\">&lt;!doctype html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;ES6 modules 6to5&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;script src=&quot;//[cdnjs URL]/require.min.js&quot;&gt;&lt;/script&gt;\n    &lt;script&gt;\n        require([&#39;app.js&#39;]);\n    &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n</code></pre>\n<p>观察上面的代码，我们使用AMD的RequireJS框架来加载这个JS，对于这个例子，你需要将上面的配置文件改为 modules: &#39;amd&#39;</p>\n<h1 id=\"-\">运行</h1>\n<p>万事俱备东风只欠，我们的代码已经放在<a href=\"https://github.com/es6rocks/es6-modules-today-with-6to5\">es6-modules-today-with-6to5</a>，你可以克隆下来自己玩玩。使用npm install安装6to5</p>\n<p>记住一点，Grunt任务会生成一个目标文件夹来存放转化后的代码\n所以，如果你想测试使用CommonJS规范的转化后的ES6的代码，你可以执行一下命令</p>\n<pre><code class=\"lang-shell\">node dist/app.js\n</code></pre>\n<figure>\n    <a href=\"http://es6rocks.com/img/running-node.png\">\n        <img src=\"http://es6rocks.com/img/running-node.png\" alt=\"home\" />\n    </a>\n    <figcaption>Node.js上的运行效果</figcaption>\n</figure>\n\n<p>如果你使用AMD规范的，请在浏览器访问index.html(<strong>吐槽一下，老外竟然不知道中国的<a href=\"https://github.com/seajs/seajs\">sea.js</a></strong>)</p>\n<figure>\n    <a href=\"http://es6rocks.com/img/amd-es6.png\">\n        <img src=\"http://es6rocks.com/img/amd-es6.png\" alt=\"home\" />\n    </a>\n    <figcaption>在浏览器执行的效果</figcaption>\n</figure>\n\n<h1 id=\"-\">结论</h1>\n<p>通过这个简单的实例你学会了如果简单的使用ES6模块化风格来编写代码。6to5是胃肠棒的工具让你穿越到未来提前体验ES6模块化带来的快感。资源下载<a href=\"https://github.com/es6rocks/es6-modules-today-with-6to5\">es6-modules-today-with-6to5</a>，欢迎提交一些问题的反馈</p>\n",
-        "file": "./src/posts/es6-modules-today-with-6to5.md",
-        "filename": "es6-modules-today-with-6to5",
-        "link": "cn/2014/11/es6-modules-today-with-6to5",
-        "lang": "cn",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "JavaScript ♥ 统一编码",
-        "date": "2014-10-13T19:22:32.267Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "ES6, Unicode",
-        "description": "Mathias Bynens 关于JavaScript编码的一些谈论",
-        "categories": ["Unicode", " Videos"],
-        "content": "<p>Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.\n他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.\n实际上，即使你没在字符串和javascript花了很多时间，这些由Mathias提出的编码技巧也是很有用的。</p>\n<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/zi0w7J7MCrk\" frameborder=\"0\" allowfullscreen></iframe>",
-        "file": "./src/posts/javascript-unicode.md",
-        "filename": "javascript-unicode",
-        "link": "cn/2014/10/javascript-unicode",
-        "lang": "cn",
-        "default_lang": true
-      }, {
-        "layout": "post",
-        "title": "ES6箭头函数和它的作用域",
-        "date": "2014-10-01T04:01:41.369Z",
-        "comments": "true",
-        "published": "true",
-        "keywords": "arrow functions, es6, escope",
-        "description": "关于ES6里箭头函数及其作用域的使用",
-        "categories": ["作于域", " 文章", " 基本原理"],
-        "authorName": "Felipe N. Moura",
-        "authorLink": "http://twitter.com/felipenmoura",
-        "authorDescription": "FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
-        "authorPicture": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62",
-        "translator": "liyaoning",
-        "content": "<p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>\n<h2 id=\"-\">执行环境</h2>\n<p>你可以自己去学习和尝试下, 你可以简单的把示例程序代码复制到你的浏览器控制台下. 现在, 推荐使用Firefox(22+)开发者工具, Firefox(22+)开发者工具现在支持箭头函数,你也可以使用谷歌浏览器. 如果你使用谷歌浏览器, 你必须要做下列两件事:</p>\n<ul>\n<li>- 在谷歌浏览器中地址栏中输入：&quot;about:flags&quot;, 找到 &quot;使用体验性Javascript&quot;选项，开启使用。</li>\n<li>- 在函数的开头加上&quot;use strict&quot;,然后再在你的谷歌浏览中测试箭头函数吧(提示：请用谷歌浏览器v38,我当时就是被浏览器版本坑了):</li>\n</ul>\n<pre><code class=\"lang-javascript\">(function(){\n    &quot;use strict&quot;;\n    // use arrow functions here\n}());\n</code></pre>\n<p>幸运的是后面会有越来越多的浏览器支持ES6特性. 现在你完成了所有准备工作, 让我们继续深入它吧!</p>\n<h2 id=\"-\">一个新话题</h2>\n<p>最近大家在讨论关于ES6的一个话题：关于箭头函数, 像这样:</p>\n<pre><code class=\"lang-javascript\">=&gt;\n</code></pre>\n<h2 id=\"-\">新的语法</h2>\n<p>随着讨论产生了一个新的语法：</p>\n<pre><code class=\"lang-javascript\">param =&gt; expression\n</code></pre>\n<p>新增的语法是作用在变量上, 可以在表达式中申明多个变量, 下面是箭头函数的使用模式:</p>\n<pre><code class=\"lang-javascript\">//  一个参数对应一个表达式\nparam =&gt; expression;// 例如 x =&gt; x+2;\n\n// 多个参数对应一个表达式\n(param [, param]) =&gt; expression; //例如 (x,y) =&gt; (x + y);\n\n// 一个参数对应多个表示式\nparam =&gt; {statements;} //例如 x = &gt; { x++; return x;};\n\n//  多个参数对应多个表达式\n([param] [, param]) =&gt; {statements} // 例如 (x,y) =&gt; { x++;y++;return x*y;};\n\n//表达式里没有参数\n() =&gt; expression; //例如var flag = (() =&gt; 2)(); flag等于2\n\n() =&gt; {statements;} //例如 var flag = (() =&gt; {return 1;})(); flag就等于1\n\n //传入一个表达式，返回一个对象\n([param]) =&gt; ({ key: value });\n//例如  var fuc = (x) =&gt; ({key:x})\n        var object = fuc(1);\n        alert(object);//{key:1}\n</code></pre>\n<h2 id=\"-\">箭头函数是怎么实现的</h2>\n<p>我们可以把一个普通函数转换成用箭头函数来实现：</p>\n<pre><code class=\"lang-javascript\">// 当前函数\nvar func = function (param) {\n    return param.split(&quot; &quot;);\n}\n// 利用箭头函数实现\nvar func = param =&gt; param.split(&quot; &quot;);\n</code></pre>\n<p>从上面的例子中我们可以看出箭头函数的语法实际上是返回了一个新的函数, 这个函数有函数体和参数</p>\n<p>因此, 我们可以这样调用刚才我们创建的函数:</p>\n<pre><code class=\"lang-javascript\">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]\n</code></pre>\n<h2 id=\"-iife-\">立即执行函数(IIFE)</h2>\n<p>你能在立即执行函数里使用箭头函数，例如:</p>\n<pre><code class=\"lang-javascript\">( x =&gt; x * 2 )( 3 ); // 6\n</code></pre>\n<p>这行代码产生了一个临时函数，这个函数有一个形参<code>x</code>，函数的返回值为<code>x*2</code>,之后系统会马上执行这个临时函数, 将<code>3</code>赋值给形参<code>x</code>.</p>\n<p>下面的例子描述了临时函数体里有多行代码的情况：</p>\n<pre><code class=\"lang-javascript\">( (x, y) =&gt; {\n    x = x * 2;\n    return x + y;\n})( 3, &quot;A&quot; ); // &quot;6A&quot;\n</code></pre>\n<h2 id=\"-\">相关思考</h2>\n<p>思考下面的函数：</p>\n<pre><code class=\"lang-javascript\">var func = x =&gt; {\n    return x++;\n};\n</code></pre>\n<p>我们列出了一些常见的问题：</p>\n<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>是我们预料的那样工作</strong></p>\n<pre><code class=\"lang-javascript\">console.log(arguments);\n</code></pre>\n<p><strong>- <code>typeof</code>和<code>instanceof</code>函数也能正常检查临时函数</strong></p>\n<pre><code class=\"lang-javascript\">func instanceof Function; // true\ntypeof func; // function\nfunc.constructor == Function; // true\n</code></pre>\n<p><strong>- 把箭头函数放在括号内是无效的</strong></p>\n<pre><code class=\"lang-javascript\">//  有效的常规语法\n(function (x, y){\n    x= x * 2;\n    return x + y;\n} (3, &quot;B&quot;) );\n\n// 无效的箭头函数语法\n( (x, y) =&gt; {\n    x= x * 2;\n    return x + y;\n} ( 3, &quot;A&quot; ) );\n\n// 但是可以这样写就是有效的了：\n( (x,y) =&gt; {\n    x= x * 2;return x + y;\n} )( 3,&quot;A&quot; );//立即执行函数\n</code></pre>\n<p><strong>- 尽管箭头函数会产生一个临时函数，但是这个临时函数不是一个构造函数</strong></p>\n<pre><code class=\"lang-javascript\">var instance= new func(); // TypeError: func is not a constructor\n</code></pre>\n<p><strong>- 同样也没有原型对象</strong></p>\n<pre><code class=\"lang-javascript\">func.prototype; // undefined\n</code></pre>\n<h2 id=\"-\">作用域</h2>\n<p>这个箭头函数的作用域和其他函数有一些不同,如果不是严格模式，<code>this</code>关键字就是指向<code>window</code>，严格模式就是<code>undefined</code>，在构造函数里的<code>this</code>指向的是当前对象实例,如果this在一个对象的函数内则<code>this</code>指向的是这个对象，<code>this</code>有可能指向的是一个<code>dom元素</code>，例如当我们添加事件监听函数时,可能这个<code>this</code>的指向不是很直接，其实<code>this</code>（不止是<code>this</code>变量）变量的指向是根据一个规则来判断的：作用域流。下面我将演示<code>this</code>在事件监听函数和在对象函数内出现的情况： </p>\n<p>在事件监听函数中：</p>\n<pre><code class=\"lang-javascript\">document.body.addEventListener(&#39;click&#39;, function(evt){\n    console.log(this); // the HTMLBodyElement itself\n});\n</code></pre>\n<p>在构造函数里：</p>\n<pre><code class=\"lang-javascript\">function Person () {\n\n    let fullName = null;\n\n    this.getName = function () {\n        return fullName;\n    };\n\n    this.setName = function (name) {\n        fullName = name;\n        return this;\n    };\n}\n\nlet jon = new Person();\njon.setName(&quot;Jon Doe&quot;);\nconsole.log(jon.getName()); // &quot;Jon Doe&quot;\n//注：this关键字这里就不解释了，大家自己google,baidu吧。\n</code></pre>\n<p>在这个例子中，如果我们让Person.setName函数返回Person对象本身，我们就可以这样用：</p>\n<pre><code class=\"lang-javascript\">jon.setName(&quot;Jon Doe&quot;)\n   .getName(); // &quot;Jon Doe&quot;\n</code></pre>\n<p>在一个对象里:</p>\n<pre><code class=\"lang-javascript\">let obj = {\n    foo: &quot;bar&quot;,\n    getIt: function () {\n        return this.foo;\n    }\n};\n\nconsole.log( obj.getIt() ); // &quot;bar&quot;\n</code></pre>\n<p>但是当执行流(比如使用了setTimeout)和作用域变了的时候，this也会变。</p>\n<pre><code class=\"lang-javascript\">function Student(data){\n\n    this.name = data.name || &quot;Jon Doe&quot;;\n    this.age = data.age&gt;=0 ? data.age : -1;\n\n    this.getInfo = function () {\n        return this.name + &quot;, &quot; + this.age;\n    };\n\n    this.sayHi = function () {\n        window.setTimeout( function () {\n            console.log( this );\n        }, 100 );\n    }\n\n}\n\nlet mary = new Student({\n    name: &quot;Mary Lou&quot;,\n    age: 13\n});\n\nconsole.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;\nmary.sayHi();\n// window\n</code></pre>\n<p>当<code>setTimeout</code>函数改变了执行流的情况时，<code>this</code>的指向会变成全局对象,或者是在严格模式下就是<code>undefine</code>,这样在<code>setTimeout</code>函数里面我们使用其他的变量去指向<code>this</code>对象，比如<code>self</code>，<code>that</code>,当然不管你用什么变量，你首先应该在setTimeout访问之前，给<code>self</code>，<code>that</code>赋值，或者使用<code>bind</code>方法不然这些变量就是undefined。</p>\n<p>这是后就是箭头函数登场的时候了，它可以保持作用域，this的指向就不会变了。</p>\n<p>让我们看下上文<strong>起先</strong>的例子，在这里我们使用箭头函数：</p>\n<pre><code class=\"lang-javascript\">function Student(data){\n\n    this.name = data.name || &quot;Jon Doe&quot;;\n    this.age = data.age&gt;=0 ? data.age : -1;\n\n    this.getInfo = function () {\n        return this.name + &quot;, &quot; + this.age;\n    };\n\n    this.sayHi = function () {\n        window.setTimeout( ()=&gt;{\n            // the only difference is here\n            console.log( this );\n        }, 100 );\n    }\n\n}\n\nlet mary = new Student({\n    name: &quot;Mary Lou&quot;,\n    age: 13\n});\n\nconsole.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;\nmary.sayHi();\n// Object { name: &quot;Mary Lou&quot;, age: 13, ... }\n</code></pre>\n<blockquote>\n<p>分析：在sayHi函数中，我们使用了箭头函数，当前作用域是在student对象的一个方法中，箭头函数生成的临时函数的作用域也就是student对象的sayHi函数的作用域。所以即使我们在setTimeout调用了箭头函数生成的临时函数，这个临时函数中的this也是正确的指向。</p>\n</blockquote>\n<h2 id=\"-\">有趣和有用的使用</h2>\n<p>创建一个函数很容易，我们可以利用它可以保持作用域的特征：</p>\n<p>例如我们可以这么使用：Array.forEach()</p>\n<pre><code class=\"lang-javascript\">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];\narr.forEach(vowel =&gt; {\n    console.log(vowel);\n});\n</code></pre>\n<blockquote>\n<p>分析：在forEach里箭头函数会创建并返回一个临时函数 tempFun,这个tempFun你可以想象成这样的：function(vowel){ console.log(vowel);}但是Array.forEach函数会怎么去处理传入的tempFunc呢？在forEach函数里会这样调用它：tempFunc.call(this,value);所有我们看到函数的正确执行效果。</p>\n</blockquote>\n<p>//在Array.map里使用箭头函数，这里我就不分析函数执行过程了。。。。</p>\n<pre><code class=\"lang-javascript\">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];\narr.map(vowel =&gt; {\n    return vowel.toUpperCase();\n});\n// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]\n</code></pre>\n<p>费布拉奇数列</p>\n<pre><code class=\"lang-javascript\">var factorial = (n) =&gt; {\n    if(n==0) {\n        return 1;\n    }\n    return (n * factorial (n-1) );\n}\n\nfactorial(6); // 720\n</code></pre>\n<p>我们也可以用在Array.sort方法里：</p>\n<pre><code class=\"lang-javascript\">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];\narr.sort( (a, b)=&gt; a &lt; b? 1: -1 );\n</code></pre>\n<p>也可以在事件监听函数里使用：</p>\n<pre><code class=\"lang-javascript\">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement\n</code></pre>\n<h2 id=\"-\">推荐的链接</h2>\n<p>下面列出了一系列有用的链接，大家可以去看一看</p>\n<ul>\n<li>- <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions\">Arrow Functions in MDN Documentation</a></li>\n<li>- <a href=\"http://tc39wiki.calculist.org/es6/arrow-functions/\">TC39 Wiki about Arrow Function</a></li>\n<li>- <a href=\"https://github.com/esnext\">ESNext</a></li>\n<li>- <a href=\"https://github.com/addyosmani/es6-tools\">ES6 Tools</a></li>\n<li>- <a href=\"https://www.npmjs.org/package/grunt-es6-transpiler\">Grunt ES6 Transpiler</a></li>\n<li>- <a href=\"http://www.es6fiddle.net/\">ES6 Fiddle</a></li>\n<li>- <a href=\"http://kangax.github.io/compat-table/es6/\">ES6 Compatibility Table</a></li>\n</ul>\n<h2 id=\"-\">总结</h2>\n<p>尽管大家可能会认为使用箭头函数会降低你代码的可读性，但是由于它对作用域的特殊处理，它能让我们能很好的处理this的指向问题。箭头函数加上let关键字的使用，将会让我们javascript代码上一个层次！尽量多使用箭头函数，你可以再你的浏览器测试你写的箭头函数代码，大家可以再评论区留下你对箭头函数的想法和使用方案！我希望大家能享受这篇文章，就像你会不就的将来享受箭头函数带给你的快乐.</p>\n",
-        "file": "./src/posts/arrow-functions-and-their-scope.md",
-        "filename": "arrow-functions-and-their-scope",
-        "link": "cn/2014/10/arrow-functions-and-their-scope",
-        "lang": "cn",
-        "default_lang": true
-      }]
-    };
-  },
-  getPages: function() {
-    return [];
-  }
-}, {});
+    },
+    getPosts: {
+      writable: true,
+      value: function() {
+        return {
+          "en": [{
+            "layout": "post",
+            "title": "Using ES6 modules in the browser with gulp",
+            "date": "2014-12-02T17:14:37.232Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, modules, Traceur, gulp",
+            "description": "How to use ES6 modules in the browser using Traceur and gulp",
+            "categories": ["modules", " tutorial"],
+            "authorName": "Juan Cabrera",
+            "authorLink": "http://juan.me",
+            "content": "",
+            "file": "./src/posts/using-es6-modules-in-the-browser-with-gulp.md",
+            "filename": "using-es6-modules-in-the-browser-with-gulp",
+            "link": "2014/12/using-es6-modules-in-the-browser-with-gulp",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "ES6 modules today with 6to5",
+            "date": "2014-10-28T12:49:54.528Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6, modules, 6to5",
+            "description": "A tutorial about using ES6 modules today with 6to5",
+            "categories": ["Modules", " Tutorial"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>I&#39;ve posted the image below on <a href=\"https://twitter.com/jaydson/status/526882798263881730\">Twitter</a> showing how happy I was.</p>\n",
+            "file": "./src/posts/es6-modules-today-with-6to5.md",
+            "filename": "es6-modules-today-with-6to5",
+            "link": "2014/10/es6-modules-today-with-6to5",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "JavaScript ♥  Unicode",
+            "date": "2014-10-13T19:22:32.267Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6, Unicode",
+            "description": "Mathias Bynens talking about Unicode in JavaScript",
+            "categories": ["Unicode", " Videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Mathias Bynens gave an awesome talk in the last <a href=\"http://2014.jsconf.eu\">JSConfEU</a> edition.</p>\n",
+            "file": "./src/posts/javascript-unicode.md",
+            "filename": "javascript-unicode",
+            "link": "2014/10/javascript-unicode",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "Arrow Functions and their scope",
+            "date": "2014-10-01T04:01:41.369Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "arrow functions, es6, escope",
+            "description": "Read about arrow functions in ES6, and their scopes.",
+            "categories": ["scope", " articles", " basics"],
+            "authorName": "Felipe N. Moura",
+            "authorLink": "http://twitter.com/felipenmoura",
+            "authorDescription": "FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62",
+            "content": "<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!</p>\n",
+            "file": "./src/posts/arrow-functions-and-their-scope.md",
+            "filename": "arrow-functions-and-their-scope",
+            "link": "2014/10/arrow-functions-and-their-scope",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "What's next for JavaScript",
+            "date": "2014-08-29T03:04:03.666Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "talks",
+            "description": "A talk by Dr. Axel Rauschmayer about what's next for JavaScript",
+            "categories": ["talks", " videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>If you&#39;re interested in ES6 you must follow <a href=\"https://twitter.com/rauschma\">Dr. Axel Rauschmayer</a>.</p>\n",
+            "file": "./src/posts/what-is-next-for-javascript.md",
+            "filename": "what-is-next-for-javascript",
+            "link": "2014/08/what-is-next-for-javascript",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "What you need to know about block scope - let",
+            "date": "2014-08-28T01:58:23.465Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "",
+            "description": "An introduction to block scope on ES6",
+            "categories": ["scope", " articles", " basics"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/what-you-need-to-know-about-block-scope-let.md",
+            "filename": "what-you-need-to-know-about-block-scope-let",
+            "link": "2014/08/what-you-need-to-know-about-block-scope-let",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "A new syntax for modules in ES6",
+            "date": "2014-07-11T07:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, modules",
+            "description": "Post about module syntax",
+            "categories": ["modules"],
+            "authorName": "Jean Carlo Emer",
+            "authorLink": "http://twitter.com/jcemer",
+            "authorDescription": "Internet craftsman, computer scientist and speaker. I am a full-stack web developer for some time and only write code that solves real problems.",
+            "authorPicture": "https://avatars2.githubusercontent.com/u/353504?s=460",
+            "content": "<p>TC39 - ECMAScript group is finishing the sixth version of the ECMAScript specification. The <a href=\"http://www.2ality.com/2014/06/es6-schedule.html\">group schedule</a> points to next June as the release date.</p>\n",
+            "file": "./src/posts/a-new-syntax-for-modules-in-es6.md",
+            "filename": "a-new-syntax-for-modules-in-es6",
+            "link": "2014/07/a-new-syntax-for-modules-in-es6",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "ES6 interview with David Herman",
+            "date": "2014-07-04T01:08:30.242Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6",
+            "description": "Interview with David Herman about ES6",
+            "categories": ["ES6", " Interview"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>We did a nice interview with <a href=\"https://twitter.com/littlecalculist\">David Herman</a> about his thoughts about ES6.</p>\n",
+            "file": "./src/posts/es6-interview-with-david-herman.md",
+            "filename": "es6-interview-with-david-herman",
+            "link": "2014/07/es6-interview-with-david-herman",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "Practical Workflows for ES6 Modules, Fluent 2014",
+            "date": "2014-05-27T07:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, modules",
+            "description": "Post about modules",
+            "categories": ["modules", " talks"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/practical-workflows-es6-modules.md",
+            "filename": "practical-workflows-es6-modules",
+            "link": "2014/05/practical-workflows-es6-modules",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "ECMAScript 6 - A Better JavaScript for the Ambient Computing Era",
+            "date": "2014-05-27T06:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, talks",
+            "description": "talk about es6",
+            "categories": ["talks", " videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/ecmascript-6-a-better-javascript-for-the-ambient-computing-era.md",
+            "filename": "ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
+            "link": "2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "ECMAScript 6 - The future is here",
+            "date": "2014-05-27T05:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, talks",
+            "description": "talk about es6",
+            "categories": ["talks"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>A talk by <a href=\"https://twitter.com/sebarmeli\">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>\n",
+            "file": "./src/posts/ecmascript-6-the-future-is-here.md",
+            "filename": "ecmascript-6-the-future-is-here",
+            "link": "2014/05/ecmascript-6-the-future-is-here",
+            "lang": "en",
+            "default_lang": false
+          }, {
+            "layout": "post",
+            "title": "Hello World",
+            "date": "2014-05-17T08:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6",
+            "description": "Hello world post",
+            "categories": ["JavaScript", " ES6"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href=\"http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts\">JavaScript&#39;s next version</a> , aka Harmony or ES.next.</p>\n",
+            "file": "./src/posts/hello-world.md",
+            "filename": "hello-world",
+            "link": "2014/05/hello-world",
+            "lang": "en",
+            "default_lang": false
+          }],
+          "pt-br": [{
+            "layout": "post",
+            "title": "ES6: Brincando com o novo Javascript",
+            "date": "2014-11-13T23:30:23.830Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6, 6to5, Javascript",
+            "description": "Como estudar e aprender ES6 criando experimentos e testes",
+            "categories": ["Articles"],
+            "authorName": "Pedro Nauck",
+            "authorLink": "http://twitter.com/pedronauck",
+            "authorPicture": "https://avatars0.githubusercontent.com/u/2029172?v=3&s=160",
+            "content": "<p>Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da <a href=\"http://tc39wiki.calculist.org/es6/\">nova versão do JavaScript</a>, conhecida também como ECMAScript 6 ou apenas ES6.</p>\n",
+            "file": "./src/posts/es6-playing-with-the-new-javascript.md",
+            "filename": "es6-playing-with-the-new-javascript",
+            "link": "pt-br/2014/11/es6-playing-with-the-new-javascript",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Módulos ES6 hoje com o 6to5",
+            "date": "2014-10-28T12:49:54.528Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6, modules, 6to5",
+            "description": "Um tutorial sobre o uso de módulos ES6 hoje com o 6to5",
+            "categories": ["Modules", " Tutorial"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Eu postei a imagem abaixo no <a href=\"https://twitter.com/jaydson/status/526882798263881730\">Twitter</a>, mostrando o quanto feliz eu estava.</p>\n",
+            "file": "./src/posts/es6-modules-today-with-6to5.md",
+            "filename": "es6-modules-today-with-6to5",
+            "link": "pt-br/2014/10/es6-modules-today-with-6to5",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "JavaScript ♥  Unicode",
+            "date": "2014-10-13T19:22:32.267Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6, Unicode",
+            "description": "Mathias Bynens talking about Unicode in JavaScript",
+            "categories": ["Unicode", " Videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>O Mathias Bynens deu uma palestra incrível na última edição da <a href=\"http://2014.jsconf.eu\">JSConfEU</a>.</p>\n",
+            "file": "./src/posts/javascript-unicode.md",
+            "filename": "javascript-unicode",
+            "link": "pt-br/2014/10/javascript-unicode",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Arrow Functions and their scope",
+            "date": "2014-10-01T04:01:41.369Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "arrow functions, es6, escope",
+            "description": "Read about arrow functions in ES6, and their scopes.",
+            "categories": ["scope", " articles", " basics"],
+            "authorName": "Felipe N. Moura",
+            "authorLink": "http://twitter.com/felipenmoura",
+            "authorDescription": "FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62",
+            "content": "<p>Entre as tantas novas features presentes no ES6, Arrow Functions (ou Fat Arrow Functions), é uma que merece boa atenção!</p>\n",
+            "file": "./src/posts/arrow-functions-and-their-scope.md",
+            "filename": "arrow-functions-and-their-scope",
+            "link": "pt-br/2014/10/arrow-functions-and-their-scope",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "O que podemos esperar do novo JavaScript",
+            "date": "2014-08-29T03:04:03.666Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "talks",
+            "description": "Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos esperar da nova versão do JavaScript",
+            "categories": ["talks", " videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Se você está interessado em ES6, você deve seguir o <a href=\"https://twitter.com/rauschma\">Dr. Axel Rauschmayer</a>.</p>\n",
+            "file": "./src/posts/what-is-next-for-javascript.md",
+            "filename": "what-is-next-for-javascript",
+            "link": "pt-br/2014/08/what-is-next-for-javascript",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "O que você precisa saber sobre block scope - let",
+            "date": "2014-08-28T01:58:23.465Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "",
+            "description": "Uma introdução a block scope na ES6",
+            "categories": ["scope", " articles", " basics"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/what-you-need-to-know-about-block-scope-let.md",
+            "filename": "what-you-need-to-know-about-block-scope-let",
+            "link": "pt-br/2014/08/what-you-need-to-know-about-block-scope-let",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Uma nova sintaxe para módulos na ES6",
+            "date": "2014-07-11T07:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, modules",
+            "description": "Post about module syntax",
+            "categories": ["modules"],
+            "authorName": "Jean Carlo Emer",
+            "authorLink": "http://twitter.com/jcemer",
+            "authorDescription": "Internet craftsman, computer scientist and speaker. I am a full-stack web developer for some time and only write code that solves real problems.",
+            "authorPicture": "https://avatars2.githubusercontent.com/u/353504?s=460",
+            "content": "<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href=\"http://www.2ality.com/2014/06/es6-schedule.html\">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento.</p>\n",
+            "file": "./src/posts/a-new-syntax-for-modules-in-es6.md",
+            "filename": "a-new-syntax-for-modules-in-es6",
+            "link": "pt-br/2014/07/a-new-syntax-for-modules-in-es6",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Entrevista sobre ES6 com o David Herman",
+            "date": "2014-07-04T01:08:30.242Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "ES6",
+            "description": "Entrevista feita com David Herman sobre ES6",
+            "categories": ["ES6", " Interview"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Fizemos uma entrevista bem legal com o <a href=\"https://twitter.com/littlecalculist\">David Herman</a> sobre ES6.</p>\n",
+            "file": "./src/posts/es6-interview-with-david-herman.md",
+            "filename": "es6-interview-with-david-herman",
+            "link": "pt-br/2014/07/es6-interview-with-david-herman",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Workflows para os módulos da ES6, Fluent 2014",
+            "date": "2014-05-27T07:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, modules",
+            "description": "Post sobre módulos",
+            "categories": ["modules", " talks"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/practical-workflows-es6-modules.md",
+            "filename": "practical-workflows-es6-modules",
+            "link": "pt-br/2014/05/practical-workflows-es6-modules",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "ECMAScript 6 - Um melhor JavaScript para a Ambient Computing Era",
+            "date": "2014-05-27T06:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, talks",
+            "description": "talk about es6",
+            "categories": ["talks", " videos"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "",
+            "file": "./src/posts/ecmascript-6-a-better-javascript-for-the-ambient-computing-era.md",
+            "filename": "ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
+            "link": "pt-br/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "ECMAScript 6 - O futuro está aqui",
+            "date": "2014-05-27T05:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6, talks",
+            "description": "talk about es6",
+            "categories": ["talks"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Uma palestra do <a href=\"https://twitter.com/sebarmeli\">Sebastiano Armeli</a> mostrando algumas features da ES6 como scoping, generators, collections, modules and proxies.</p>\n",
+            "file": "./src/posts/ecmascript-6-the-future-is-here.md",
+            "filename": "ecmascript-6-the-future-is-here",
+            "link": "pt-br/2014/05/ecmascript-6-the-future-is-here",
+            "lang": "pt-br",
+            "default_lang": true
+          }, {
+            "layout": "post",
+            "title": "Hello World",
+            "date": "2014-05-17T08:18:47.847Z",
+            "comments": "true",
+            "published": "true",
+            "keywords": "JavaScript, ES6",
+            "description": "Hello world post",
+            "categories": ["JavaScript", " ES6"],
+            "authorName": "Jaydson Gomes",
+            "authorLink": "http://twitter.com/jaydson",
+            "authorDescription": "JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator",
+            "authorPicture": "https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg",
+            "content": "<p>Olá pessoal, bem-vindos ao ES6Rocks!\nNossa missão aqui é discutir sobre a <a href=\"http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts\">a nova versão do JavaScript</a>, mais conhecida como Harmony ou ES.next.</p>\n",
+            "file": "./src/posts/hello-world.md",
+            "filename": "hello-world",
+            "link": "pt-br/2014/05/hello-world",
+            "lang": "pt-br",
+            "default_lang": true
+          }]
+        };
+      }
+    },
+    getPages: {
+      writable: true,
+      value: function() {
+        return [];
+      }
+    }
+  });
+  return Harmonic;
+}();

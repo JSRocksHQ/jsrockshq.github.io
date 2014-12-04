@@ -6,14 +6,15 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sat, 29 Nov 2014 05:29:22 GMT</pubDate>
+        <pubDate>Thu, 04 Dec 2014 01:59:06 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>ES6: Brincando com o novo Javascript</title>
             <link>http://es6rocks.com/pt-br/2014/11/es6-playing-with-the-new-javascript</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da <a href="http://tc39wiki.calculist.org/es6/">nova versão do JavaScript</a>, conhecida também como ECMAScript 6 ou apenas ES6.</p>
+]]></description>
             <pubDate>Thu, 13 Nov 2014 23:30:23 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/11/es6-playing-with-the-new-javascript</guid>
         </item>
@@ -21,7 +22,8 @@
         <item>
             <title>Módulos ES6 hoje com o 6to5</title>
             <link>http://es6rocks.com/pt-br/2014/10/es6-modules-today-with-6to5</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Eu postei a imagem abaixo no <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a>, mostrando o quanto feliz eu estava.</p>
+]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/10/es6-modules-today-with-6to5</guid>
         </item>
@@ -29,7 +31,8 @@
         <item>
             <title>JavaScript ♥  Unicode</title>
             <link>http://es6rocks.com/pt-br/2014/10/javascript-unicode</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>O Mathias Bynens deu uma palestra incrível na última edição da <a href="http://2014.jsconf.eu">JSConfEU</a>.</p>
+]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/10/javascript-unicode</guid>
         </item>
@@ -37,7 +40,8 @@
         <item>
             <title>Arrow Functions and their scope</title>
             <link>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Entre as tantas novas features presentes no ES6, Arrow Functions (ou Fat Arrow Functions), é uma que merece boa atenção!</p>
+]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</guid>
         </item>
@@ -45,7 +49,8 @@
         <item>
             <title>O que podemos esperar do novo JavaScript</title>
             <link>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Se você está interessado em ES6, você deve seguir o <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.</p>
+]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</guid>
         </item>
@@ -61,7 +66,8 @@
         <item>
             <title>Uma nova sintaxe para módulos na ES6</title>
             <link>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento.</p>
+]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
         </item>
@@ -69,7 +75,8 @@
         <item>
             <title>Entrevista sobre ES6 com o David Herman</title>
             <link>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Fizemos uma entrevista bem legal com o <a href="https://twitter.com/littlecalculist">David Herman</a> sobre ES6.</p>
+]]></description>
             <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</guid>
         </item>
@@ -93,7 +100,8 @@
         <item>
             <title>ECMAScript 6 - O futuro está aqui</title>
             <link>http://es6rocks.com/pt-br/2014/05/ecmascript-6-the-future-is-here</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Uma palestra do <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> mostrando algumas features da ES6 como scoping, generators, collections, modules and proxies.</p>
+]]></description>
             <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/05/ecmascript-6-the-future-is-here</guid>
         </item>
@@ -101,7 +109,9 @@
         <item>
             <title>Hello World</title>
             <link>http://es6rocks.com/pt-br/2014/05/hello-world</link>
-            <description><![CDATA[]]></description>
+            <description><![CDATA[<p>Olá pessoal, bem-vindos ao ES6Rocks!
+Nossa missão aqui é discutir sobre a <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">a nova versão do JavaScript</a>, mais conhecida como Harmony ou ES.next.</p>
+]]></description>
             <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/05/hello-world</guid>
         </item>

@@ -7,7 +7,7 @@
         <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
         <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>O que podemos esperar do novo JavaScript - ES6 Rocks</title>
+        <title>Using ES6 modules in the browser with gulp - ES6 Rocks</title>
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
         
 
@@ -89,25 +89,25 @@
                 <div>
                     <div class="article-meta">
                         <address>
-                            <img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" class="author-avatar" alt="Jaydson Gomes"/>
+                            <img src="" class="author-avatar" alt="Juan Cabrera"/>
                             <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://twitter.com/jaydson" rel="author" class="author-link">
-                                Jaydson Gomes
+                            <a href="http://juan.me" rel="author" class="author-link">
+                                Juan Cabrera
                             </a>
                         </address>
 
-                        <time datetime="Fri Aug 29 2014 00:04:03 GMT-0300 (BRT)" class="alternative-text">Fri Aug 29 2014 00:04:03 GMT-0300 (BRT)</time>
+                        <time datetime="Tue Dec 02 2014 15:14:37 GMT-0200 (BRST)" class="alternative-text">Tue Dec 02 2014 15:14:37 GMT-0200 (BRST)</time>
 
-                        <h2>O que podemos esperar do novo JavaScript</h2>
+                        <h2>Using ES6 modules in the browser with gulp</h2>
 
                         <ul class="article-tags">
                             
                                 <li>
-                                    <a class="categoryTag talks" href="/categories/pt-br/talks">talks</a>
+                                    <a class="categoryTag modules" href="/categories/modules">modules</a>
                                 </li>
                             
                                 <li>
-                                    <a class="categoryTag  videos" href="/categories/pt-br/videos"> videos</a>
+                                    <a class="categoryTag  tutorial" href="/categories/tutorial"> tutorial</a>
                                 </li>
                             
                         </ul>
@@ -121,11 +121,40 @@
                     </div>
 
                     <div class="main-article wrapper">
-                        <article class="article-content"><p>Se você está interessado em ES6, você deve seguir o <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.<br>Ele mantêm o incrível blog <a href="http://www.2ality.com/">2ality</a> e escreve uma série de coisas legais sobre ES6.<br>Nessa sua talk ele fala sobre várias novas features da ES6 e mostra o que podemos esperar do futuro.  </p>
-<script async class="speakerdeck-embed" data-id="4126347010d6013231af66d414c0f9a8" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>  
+                        <article class="article-content"><p>
+There is a lot of information about <a href="http://gulpjs.com/">gulp</a>, not so much for ES6 and just a very few articles about how to implement ES6 modules (for the browser) properly. </p>
+<p>On my last project I was using <a href="http://gulpjs.com/">gulp</a> + ES6 and I had to spend some time figuring out how to get ES6 modules working properly. This is how I finally did it without using <a href="http://browserify.org/">Browserify</a> or any <a href="http://requirejs.org/">AMD loader</a>.</p>
+<p>My first attempt was to use <a href="https://www.npmjs.org/package/gulp-es6-transpiler">gulp-es6-transpiler</a> (that basically is a wrapper for <a href="https://www.npmjs.org/package/es6-transpiler">es6-transpiler</a>) but it doesn’t support modules, then I took a look to <a href="https://www.npmjs.org/package/gulp-es6-module-jstransform">gulp-es6-module-jstransform</a> but it only transpiles to CommonJS, meaning that we’ll need to use <a href="http://browserify.org/">Browserify</a>, then I tried <a href="https://github.com/google/traceur-compiler">Traceur</a> (from Google) and it has two options for browser modules, one is ‘AMD’ (meaning that we’ll need to use <a href="http://requirejs.org/">RequireJS</a> or similar) and ‘inline’ that, basically, generates one file with all the transpiled modules on it (which is the closest option to “native” ES6 modules).
+The thing is that the ‘inline’ option works perfect if you are using the command line, but if you use the Traceur’s node API (like <a href="https://www.npmjs.org/package/gulp-traceur">gulp-traceur</a>) it’ll throw an error. <strong>[UPDATE]</strong> I’ve put this issue on <a href="https://github.com/google/traceur-compiler/issues/1282">their Github</a> and finally got fixed, but then we realized that the transpile from the node API wasn’t generating the same output as the command line, so we finally decided to build a small <a href="http://gulpjs.com/">gulp</a> plugin wrapper for the command line Traceur (Thanks Edward!)</p>
+<p><a href="https://www.npmjs.org/package/gulp-traceur-cmdline">Here is the plugin</a> and this is how you can use it:</p>
+<p><strong>Install</strong></p>
+<p>Make sure you have installed Traceur globally:</p>
+<pre><code class="lang-bash">npm install traceur --global
+</code></pre>
+<p>Install gulp-traceur-cmdline to your project:</p>
+<pre><code class="lang-bash">npm install gulp-traceur-cmdline --save-dev
+</code></pre>
+<p><strong>Usage</strong></p>
+<pre><code class="lang-javascript">var gulpTraceurCmdline = require(&#39;gulp-traceur-cmdline&#39;);
 
-<p>[UPDATE October, 2014]<br>The video is already online! (Thanks <a href="https://github.com/cirocosta">Ciro Costa</a> for point this).  </p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/G21rdWfa_as" frameborder="0" allowfullscreen></iframe>
+gulp.task(&#39;gulpTraceurCmdline&#39;,function() {
+  gulp.src(&quot;./source/styleguide/js/main.js&quot;)
+    .pipe(gulpTraceurCmdline(&#39;/usr/local/bin/traceur&#39;, {
+      modules : &#39;inline&#39;,
+      out     : &#39;./dist/styleguide/js/main.js&#39;,
+      debug   : false
+    }))
+});
+</code></pre>
+<p><strong>Links</strong></p>
+<p>Github: <a href="https://github.com/juancabrera/gulp-traceur-cmdline">https://github.com/juancabrera/gulp-traceur-cmdline</a></p>
+<p>NPM: <a href="https://www.npmjs.org/package/gulp-traceur-cmdline">https://www.npmjs.org/package/gulp-traceur-cmdline</a></p>
+<p><strong>Without gulp</strong></p>
+<p>You can also run Traceur directly to get your ES6 modules without using this gulp wrapper, here is a basic example:</p>
+<pre><code class="lang-bash">traceur --modules inline --out mainTranspiled.js main.js
+</code></pre>
+<p>—</p>
+<p>This post was originally posted on <a href="http://code.juan.me/using-es6-modules-in-the-browser/">my blog</a>.</p>
 </article>
                     </div>
                 </div>
