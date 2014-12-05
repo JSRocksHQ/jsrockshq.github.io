@@ -4,3 +4,6 @@ public/
 *.sublime-*
 .project
 .idea/
+
+# misc
+.DS_Store
