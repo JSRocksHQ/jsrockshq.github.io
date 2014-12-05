@@ -1450,6 +1450,7 @@ var Harmonic = function() {
             "categories": ["modules", " tutorial"],
             "authorName": "Juan Cabrera",
             "authorLink": "http://juan.me",
+            "authorPicture": "http://juan.me/images/reacticabrera.jpg",
             "content": "",
             "file": "./src/posts/using-es6-modules-in-the-browser-with-gulp.md",
             "filename": "using-es6-modules-in-the-browser-with-gulp",
