@@ -7,57 +7,64 @@
 		BODY = D.getElementsByTagName('body')[0],
 		ARTICLE = D.querySelector('.article-content'),
 		scrolling = false,
-		scrollSlowlyTo;
+		scrollSlowlyTo,
+		btns = {
+			fontUp: D.querySelector('.font-up'),
+			fontDown: D.querySelector('.font-down'),
+			contrast: D.querySelector('.contrast'),
+			comments: D.querySelector('.comments'),
+			goToTop: D.querySelector('.btn-goToTop')
+		};
 
-	var dskComments = function() {
+	var dskComments = function(id) {
+		var container = D.querySelector(id);
+		
+		if(container != null) {
+			var disqus_shortname = 'es6rocks';
 
-		var disqus_shortname = 'es6rocks';
+			(function() {
+				var dsq = document.createElement('script');
 
-		(function() {
-			var dsq = document.createElement('script');
+				dsq.type = 'text/javascript';
+				dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
-			dsq.type = 'text/javascript';
-			dsq.async = true;
-			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		}
 	};
 
 	var controlIconsBtn = function(number) {
 		var btn,
 			btnClasses,
-			btns = {
-				fontUp: D.querySelector('.font-up'),
-				fontDown: D.querySelector('.font-down'),
-				contrast: D.querySelector('.contrast'),
-				comments: D.querySelector('.comments'),
-			},
 			defaultTypograph = {
 				fz: '16px',
 				lw: '26px'
 			};
 
 		for (btn in btns) {
-			btns[btn].addEventListener('click', function() {
-				btnClasses = this.className.split(' ')[1];
+			if(btns[btn] != null){				
+				btns[btn].addEventListener('click', function() {
+					btnClasses = this.className.split(' ')[1];
 
-				switch (btnClasses) {
-					case 'font-up':
-						fontUp(getBodyFontProperty().fz, getBodyFontProperty().lw);
-						break;
-					case 'font-down':
-						fontDown(getBodyFontProperty().fz, getBodyFontProperty().lw);
-						break;
-					case 'contrast':
-						fontContrast(ARTICLE);
-						break;
-					case 'comments':
-						scrollSlowlyTo(getCommentsPosition(), 1200);
-						break;
-				}
-			}, true);
+					switch (btnClasses) {
+						case 'font-up':
+							fontUp(getBodyFontProperty().fz, getBodyFontProperty().lw);
+							break;
+						case 'font-down':
+							fontDown(getBodyFontProperty().fz, getBodyFontProperty().lw);
+							break;
+						case 'contrast':
+							fontContrast(ARTICLE);
+							break;
+						case 'comments':
+							scrollSlowlyTo(getCommentsPosition(), 1200);
+							break;
+					}
+				}, true);
+			} else{
+				console.log('No Buttons');
+			}
 		}
 
 		var getBodyFontProperty = function() {
@@ -140,11 +147,14 @@
 	 **/
 	(function __init__() {
 		controlIconsBtn(2);
-		dskComments();
+		dskComments('#disqus_thread');
 
-		D.querySelector('.btn-goToTop').addEventListener('click', function() {
-			scrollSlowlyTo(0, 1200);
-		}, true);
+		if(btns.goToTop != null){
+			btns.goToTop.addEventListener('click', function() {
+				scrollSlowlyTo(0, 1200);
+			}, false);
+		}
+		
 	})();
 
 })();
