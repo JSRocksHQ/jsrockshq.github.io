@@ -33,8 +33,10 @@
 
 		if(btn[j] != null){
 			for(i = 0; i < shareContainers; i++){			
-				shareURL = shareContainer[i].dataset.postUrl;
-
+				shareURL = String(shareContainer[i].dataset.postUrl);
+				
+				shareContainer[i].removeAttribute('data-post-url');
+				
 				for (x in socialNetworks) {	
 					btn[j].setAttribute('href', socialNetworks[x] + 'http://' + host + shareURL);
 					j++;
