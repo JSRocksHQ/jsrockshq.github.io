@@ -14,7 +14,34 @@
 			contrast: D.querySelector('.contrast'),
 			comments: D.querySelector('.comments'),
 			goToTop: D.querySelector('.btn-goToTop')
+		},
+		socialNetworks = {
+			fb: 'https://www.facebook.com/sharer.php?u=',
+			tw: 'https://twitter.com/intent/tweet?url=',
+			gp: 'https://plus.google.com/share?url='
 		};
+
+	var shareURL = function(){
+		var shareContainer = D.querySelectorAll('.article-share') || D.querySelectorAll('.icon-group'),
+			shareContainers = shareContainer.length, 
+			btn = D.querySelectorAll('.btn-share'),
+			host = W.location.host,
+			shareURL,
+			j = 0,
+			i,			
+			x;	
+
+		if(btn[j] != null){
+			for(i = 0; i < shareContainers; i++){			
+				shareURL = shareContainer[i].dataset.postUrl;
+
+				for (x in socialNetworks) {	
+					btn[j].setAttribute('href', socialNetworks[x] + 'http://' + host + shareURL);
+					j++;
+				}
+			}
+		} 
+	};
 
 	var dskComments = function(id) {
 		var container = D.querySelector(id);
@@ -110,13 +137,9 @@
 		setTimeout(function() {
 			scrollStep(whereTo, steps, stepTime, stepSize, curStep);
 		}, stepTime);
-
-		console.log('## scrollStep');
 	};
 
 	scrollSlowlyTo = function(to, time) {
-		console.log('## scrollSlowlyTo');
-
 		var stepTime = 42,
 			stepsNumber;
 
@@ -145,6 +168,7 @@
 	 **/
 	(function __init__() {
 		controlIconsBtn(2);
+		shareURL();
 		dskComments('#disqus_thread');
 
 		if(btns.goToTop != null){

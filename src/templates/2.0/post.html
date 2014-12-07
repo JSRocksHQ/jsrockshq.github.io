@@ -51,7 +51,7 @@
 
                         <h2>{{ post.metadata.title }}</h2>
 
-                        <ul class="article-tags">
+                        <ul class="article-tags article-tags-internal">
                             {% for category in post.metadata.categories %}
                                 <li>
                                     <a class="categoryTag {{ category }}" href="/categories/{% if post.metadata.default_lang %}{{ post.metadata.lang }}/{% endif %}{{ category | lower | trim }}">{{ category }}</a>
@@ -72,10 +72,10 @@
                     </div>
                 </div>
 
-                <div class="icon-group">
-                    <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                    <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                    <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                <div class="icon-group" data-post-url="/{{post.metadata.link}}">
+                    <a class="icon fb-share btn-share" target="_blank">Share on Facebook</a>
+                    <a class="icon tt-share btn-share">Share on Twitter</a>
+                    <a class="icon gp-share btn-share" target="_blank">Share on Google Plus</a>              
                 </div>
 
                 <div class="comments wrapper">
@@ -92,10 +92,10 @@
 
                 <div class="other-articles-container">
                     <article>
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/{{post.metadata.link}}">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
@@ -130,10 +130,10 @@
 
                     <article>
 
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/{{post.metadata.link}}">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
@@ -170,10 +170,10 @@
 
                     <article>
 
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/{{post.metadata.link}}">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>

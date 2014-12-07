@@ -384,7 +384,7 @@ body[data-page-type="article"] .dl-7 {
 }
 .author-block .author-name {
   color: #e8ac0a;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   float: left;
   padding: 1.2rem 10px 0 0;
   font-weight: bold;
@@ -633,6 +633,8 @@ article {
   transition: background linear 0.2s;
   float: left;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 article.recent h2 {
   font-size: 3.2rem;
@@ -691,6 +693,9 @@ article abstract {
 }
 address {
   padding: 0.4rem;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
 }
 address .author-label {
   color: #87732b;
@@ -713,6 +718,8 @@ address .author-link {
   font-weight: bold;
   margin: 0.3rem 0;
   font-size: 0.7rem;
+  position: absolute;
+  bottom: 90px;
 }
 .article-tags li {
   float: left;
@@ -729,6 +736,10 @@ address .author-link {
 .article-tags li a {
   color: #000;
   text-decoration: none;
+}
+.article-tags.article-tags-internal {
+  bottom: 118px;
+  padding: 0;
 }
 .other-articles-container {
   margin-top: 2rem;
@@ -792,6 +803,8 @@ address .author-link {
   white-space: nowrap;
   min-width: 200px;
   text-align: left;
+  position: static;
+  bottom: auto;
 }
 .article-meta time {
   display: block;
@@ -849,6 +862,9 @@ address .author-link {
   height: 400px;
   position: relative;
 }
+.testimonials ul {
+  padding: 0px;
+}
 .testimonial {
   list-style: none;
   float: left;
@@ -872,11 +888,15 @@ address .author-link {
 @media only screen and (min-width: 1140px) {
   .testimonial {
     margin-top: 30px;
-    width: 328px;
+    width: 290px;
     height: 200px;
   }
   .testimonial blockquote {
-    width: 290px;
+    width: 100%;
+  }
+  .testimonial:nth-child(1n+1) {
+    margin-left: 26px;
+    margin-right: 26px;
   }
 }
 .footer-container {
