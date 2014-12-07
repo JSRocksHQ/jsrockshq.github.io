@@ -18,7 +18,7 @@
 
 	var dskComments = function(id) {
 		var container = D.querySelector(id);
-		
+
 		if(container != null) {
 			var disqus_shortname = 'es6rocks';
 
@@ -62,8 +62,6 @@
 							break;
 					}
 				}, true);
-			} else{
-				console.log('No Buttons');
 			}
 		}
 
