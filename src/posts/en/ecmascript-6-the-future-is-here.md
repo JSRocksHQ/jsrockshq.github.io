@@ -1,6 +1,6 @@
 <!--
 layout: post
-title: ECMAScript 6 - The future is here
+title: ES6 - The future is here
 date: 2014-05-27T05:18:47.847Z
 comments: true
 published: true
