@@ -1,4 +1,4 @@
-![es6rocks](https://raw.githubusercontent.com/es6rocks/es6rocks.github.io/master/images/es6rocks.png)
+![es6rocks](images/es6rocks-header-gh.png)
 
 # How to contribute
 [ES6Rocks.com](http://es6rocks.com/) is a collaborative website about the ECMAScript language's sixth edition, a.k.a. ES6.  
