@@ -1,6 +1,6 @@
 <!--
 layout: post
-title: ES6: Brincando com o novo Javascript
+title: ES6: Brincando com o novo JS
 date: 2014-11-13T23:30:23.830Z
 comments: true
 published: true

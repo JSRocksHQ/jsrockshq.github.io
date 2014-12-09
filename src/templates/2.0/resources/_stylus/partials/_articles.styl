@@ -42,6 +42,8 @@
         transition: background linear transitionTime;
         float: left;
         padding: 2rem;
+        position: relative;
+        overflow: hidden;
 
         &.recent {
             h2 {
@@ -118,6 +120,9 @@
 address {
 
     padding: .4rem;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
 
     .author-label {
         color: darkFullColor;
@@ -144,6 +149,8 @@ address {
     font-weight: bold;
     margin: .3rem 0;
     font-size: .7rem;
+    position: absolute;
+    bottom: 90px;
 
     li {
         float: left;
@@ -162,6 +169,12 @@ address {
             color: #000;
             text-decoration: none;
         }
+    }
+    
+
+    &.article-tags-internal{
+        bottom: 118px;
+        padding: 0;
     }
 }
 
@@ -245,6 +258,8 @@ address {
         white-space: nowrap;
         min-width: 200px;
         text-align: left;
+        position: static;
+        bottom: auto;
     }
 
     time {

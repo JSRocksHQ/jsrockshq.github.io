@@ -44,20 +44,20 @@
                     {% else %}
                     <article>
                     {% endif %}
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/{{post.link}}">
+                            <a class="icon fb-share btn-share" target="_blank">Share on Facebook</a>
+                            <a class="icon tt-share btn-share">Share on Twitter</a>
+                            <a class="icon gp-share btn-share" target="_blank">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="{{ post.date }}" class="alternative-text">{{ post.date }}</time>
 
                         <a href="/{{ post.link }}">
-                        {% if loop.index < 3 %}
-                            <h2>{{ post.title }}</h2>
-                        {% else %}
-                            <h3>{{ post.title }}</h3>
-                        {% endif %}
+                            {% if loop.index < 3 %}
+                                <h2>{{ post.title }}</h2>
+                            {% else %}
+                                <h3>{{ post.title }}</h3>
+                            {% endif %}
                         </a>
 
                         <abstract class="alternative-text">{{post.content }}</abstract>
