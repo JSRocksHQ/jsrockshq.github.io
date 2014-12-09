@@ -100,7 +100,7 @@
 
                         <h2>Uma nova sintaxe para módulos na ES6</h2>
 
-                        <ul class="article-tags">
+                        <ul class="article-tags article-tags-internal">
                             
                                 <li>
                                     <a class="categoryTag modules" href="/categories/pt-br/modules">modules</a>
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="main-article wrapper">
-                        <article class="article-content"><p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento. A partir de agora, poucas mudanças significativas devem surgir. Já é tempo de se aprofundar no estudo.</p>
+                        <article class="article-content"><p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript . A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento. A partir de agora, poucas mudanças significativas devem surgir. Já é tempo de se aprofundar no estudo.</p>
 <p>Este artigo não pretende abordar a importância da escrita de código modularizado. Já escrevi sobre o assunto no artigo <a href="http://tableless.com.br/modularizacao-em-javascript">Modularização em JavaScript</a>. Sites como <a href="http://jsmodules.io">JavaScript Modules</a> entre outros já são uma ótima referência sobre como escrever módulos ES6. A intenção aqui é esclarecer e justificar a necessidade de uma nova sintaxe para escrita de módulos.</p>
 <h2 id="formatos-atuais">Formatos atuais</h2>
 <p>Os mais famosos formatos de definição de módulos até então eram o AMD, padrão para bibliotecas <em>client-side</em> e CommonJS, adotado pelo Node.js e levado para  navegadores pelo Browserify. Cada um  possui características determinadas pelo ecossistema em que são utilizados. A exemplo, o AMD encapsula cada módulo no interior de uma função definindo escopo e permitindo carregamento assíncrono de suas dependências nos navegadores. Por outro lado, os módulos CommonJS implicitamente definem a criação de um escopo de módulo o que inviabiliza seu uso diretamente em navegadores.</p>
@@ -192,10 +192,10 @@ export function another() { return &#39;another&#39;; };
                     </div>
                 </div>
 
-                <div class="icon-group">
-                    <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                    <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                    <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                <div class="icon-group" data-post-url="/pt-br/2014/07/a-new-syntax-for-modules-in-es6">
+                    <a class="icon fb-share btn-share" target="_blank">Share on Facebook</a>
+                    <a class="icon tt-share btn-share">Share on Twitter</a>
+                    <a class="icon gp-share btn-share" target="_blank">Share on Google Plus</a>              
                 </div>
 
                 <div class="comments wrapper">
@@ -212,10 +212,10 @@ export function another() { return &#39;another&#39;; };
 
                 <div class="other-articles-container">
                     <article>
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/pt-br/2014/07/a-new-syntax-for-modules-in-es6">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
@@ -250,10 +250,10 @@ export function another() { return &#39;another&#39;; };
 
                     <article>
 
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/pt-br/2014/07/a-new-syntax-for-modules-in-es6">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
@@ -290,10 +290,10 @@ export function another() { return &#39;another&#39;; };
 
                     <article>
 
-                        <asside class="article-share">
-                            <a href="javascript: void(0);" class="icon fb-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share">Share on Google Plus</a>
+                        <asside class="article-share" data-post-url="/pt-br/2014/07/a-new-syntax-for-modules-in-es6">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
                         </asside>
 
                         <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>

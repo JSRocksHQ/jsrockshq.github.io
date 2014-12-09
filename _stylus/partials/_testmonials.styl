@@ -13,6 +13,10 @@
     color: white;  
     height: 400px;
     position: relative;
+    
+    ul{
+        padding: 0px;
+    }
 }
 
 .testimonial {
@@ -48,11 +52,18 @@
 @media large {
     .testimonial {
         margin-top: 30px;
-        width: 328px;
+        width: 290px;
         height: 200px;
+        
+        
 
         blockquote {
-            width: 290px;
+            width: 100%;
         }
+    }
+    
+    .testimonial:nth-child(1n+1){
+        margin-left: 26px;
+        margin-right: 26px;
     }
 }

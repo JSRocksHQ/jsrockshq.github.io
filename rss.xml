@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Thu, 04 Dec 2014 01:59:06 GMT</pubDate>
+        <pubDate>Tue, 09 Dec 2014 00:24:58 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -89,7 +89,7 @@
         </item>
         
         <item>
-            <title>ECMAScript 6 - A Better JavaScript for the Ambient Computing Era</title>
+            <title>ECMAScript 6 - A Better JS for the Ambient Computing Era</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
             <description><![CDATA[]]></description>
             <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
@@ -97,7 +97,7 @@
         </item>
         
         <item>
-            <title>ECMAScript 6 - The future is here</title>
+            <title>ES6 - The future is here</title>
             <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
             <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
 ]]></description>

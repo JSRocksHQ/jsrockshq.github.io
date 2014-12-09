@@ -6,12 +6,12 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Thu, 04 Dec 2014 01:59:06 GMT</pubDate>
+        <pubDate>Tue, 09 Dec 2014 00:24:58 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>ES6: Brincando com o novo Javascript</title>
+            <title>ES6: Brincando com o novo JS</title>
             <link>http://es6rocks.com/pt-br/2014/11/es6-playing-with-the-new-javascript</link>
             <description><![CDATA[<p>Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da <a href="http://tc39wiki.calculist.org/es6/">nova versão do JavaScript</a>, conhecida também como ECMAScript 6 ou apenas ES6.</p>
 ]]></description>
@@ -66,7 +66,7 @@
         <item>
             <title>Uma nova sintaxe para módulos na ES6</title>
             <link>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</link>
-            <description><![CDATA[<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript. A <a href="http://www.2ality.com/2014/06/es6-schedule.html">agenda do grupo</a> aponta o mês de junho do próximo ano como sendo a data de lançamento.</p>
+            <description><![CDATA[<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript </p>
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
