@@ -864,10 +864,12 @@ address .author-link {
 }
 .testimonials ul {
   padding: 0px;
+  text-align: center;
 }
 .testimonial {
   list-style: none;
-  float: left;
+  text-align: left;
+  display: inline-block;
 }
 .testimonial blockquote {
   margin: 0;
@@ -895,8 +897,8 @@ address .author-link {
     width: 100%;
   }
   .testimonial:nth-child(1n+1) {
-    margin-left: 26px;
-    margin-right: 26px;
+    margin-left: 24px;
+    margin-right: 24px;
   }
 }
 .footer-container {
