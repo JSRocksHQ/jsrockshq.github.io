@@ -627,6 +627,14 @@ body[data-page-type="article"] .dl-7 {
   float: none;
   margin-right: 5px;
 }
+body[data-page-type="home"] article a {
+  color: #000;
+  font-weight: bold;
+  transition: color linear 0.2s;
+}
+body[data-page-type="home"] article:hover a {
+  color: #e8ac0a;
+}
 article {
   position: relative;
   background: #e8ac0a;
@@ -635,11 +643,6 @@ article {
   padding: 2rem;
   position: relative;
   overflow: hidden;
-}
-article a {
-  color: #000;
-  font-weight: bold;
-  transition: color linear 0.2s;
 }
 article.recent h2 {
   font-size: 3.2rem;
@@ -662,9 +665,6 @@ article:hover {
 }
 article:hover .article-share {
   opacity: 1;
-}
-article:hover a {
-  color: #e8ac0a;
 }
 article .article-share {
   position: absolute;

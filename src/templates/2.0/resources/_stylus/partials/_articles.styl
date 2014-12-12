@@ -35,6 +35,22 @@
 }
 
 //body[data-page-type="home"] {
+body[data-page-type="home"]{
+    article{
+        a{
+            color: #000;
+            font-weight: bold;
+            transition: color linear transitionTime;
+        }
+
+        &:hover{
+            a{
+                color: fullColor;
+            }
+        }
+    }
+}
+
 
     article {
         position: relative;
@@ -44,12 +60,6 @@
         padding: 2rem;
         position: relative;
         overflow: hidden;
-       
-       a{
-         color: #000;
-         font-weight: bold;
-         transition: color linear transitionTime;
-       }
 
         &.recent {
             h2 {
@@ -78,10 +88,6 @@
 
             .article-share {
                 opacity: 1;
-            }
-
-            a{
-                color: fullColor;
             }
         }
 
