@@ -35,6 +35,22 @@
 }
 
 //body[data-page-type="home"] {
+body[data-page-type="home"]{
+    article{
+        a{
+            color: #000;
+            font-weight: bold;
+            transition: color linear transitionTime;
+        }
+
+        &:hover{
+            a{
+                color: fullColor;
+            }
+        }
+    }
+}
+
 
     article {
         position: relative;

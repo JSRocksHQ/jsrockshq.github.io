@@ -627,6 +627,14 @@ body[data-page-type="article"] .dl-7 {
   float: none;
   margin-right: 5px;
 }
+body[data-page-type="home"] article a {
+  color: #000;
+  font-weight: bold;
+  transition: color linear 0.2s;
+}
+body[data-page-type="home"] article:hover a {
+  color: #e8ac0a;
+}
 article {
   position: relative;
   background: #e8ac0a;
