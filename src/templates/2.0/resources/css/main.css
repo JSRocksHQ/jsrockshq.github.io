@@ -635,6 +635,9 @@ body[data-page-type="home"] article a {
 body[data-page-type="home"] article:hover a {
   color: #e8ac0a;
 }
+body[data-page-type="home"] article:hover .article-tags a {
+  color: #000;
+}
 article {
   position: relative;
   background: #e8ac0a;
@@ -737,6 +740,7 @@ address .author-link {
   margin: 2px;
   height: 24px;
   line-height: 20px;
+  transition: background-color linear 0.2s;
 }
 .article-tags li:hover {
   background-color: #e8ac0a;
