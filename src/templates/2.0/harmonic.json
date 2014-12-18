@@ -1,0 +1,89 @@
+{
+    "mycustomdata" : "wow",
+    "foo" : "bar",
+    "baz" : ["a","b"],
+    "videos": [{
+    	"title" : "Practical Workflows for ES6 Modules, Fluent 2014",
+    	"url": "//www.youtube.com/embed/0VUjM-jJf2U",
+        "date": "2014-12-18T17:14:37.232Z",
+        "categories": ["modules"]
+    },
+    {
+    	"title" : "Package Management for ES6 Modules [JSConf2014]",
+    	"url": "//www.youtube.com/embed/szJjsduHBQQ",
+        "date": "2014-12-18T17:14:37.232Z",
+        "categories": ["modules"]
+    },
+    {
+        "title" : "ECMAScript 6, A Better JavaScript for the Ambient Web Era",
+        "url": "//www.youtube.com/embed/ZGY8Cktn6W4",
+        "date": "2014-12-18T17:14:37.232Z",
+        "categories": ["overview"]
+    },
+    {
+        "title" : "ECMAScript 6: what's next for JavaScript",
+        "url": "//www.youtube.com/embed/G21rdWfa_as",
+        "date": "2014-12-18T17:14:37.232Z",
+        "categories": ["overview"]
+    },
+    {
+        "title" : "ES6 Uncensored",
+        "url": "//www.youtube.com/embed/9WJ8pQHhOm8",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]  
+    },
+    {
+        "title" : "ES6 Right Now",
+        "url": "//www.youtube.com/embed/rwm5JLqCpdk",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]  
+    },
+    {
+        "title" : "ES6: The future is now",
+        "url": "//www.youtube.com/embed/RPBnvQBkPPY",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]  
+    },
+    {
+        "title" : "The Lesser Known Features of ES6",
+        "url": "//www.youtube.com/embed/Nk5Hw2Jmz0Q",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]  
+    },
+    {
+        "title" : "Javascript Generators - THEY CHANGE EVERYTHING",
+        "url": "//www.youtube.com/embed/QO07THdLWQo",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["generators","tutorial"]
+    },
+    {
+        "title" : "Douglas Crockford: The Better Parts - JSConfUY 2014",
+        "url": "//www.youtube.com/embed/bo36MrBfTk4",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]
+    },
+    {
+        "title" : "Hanging Up On Callbacks: Using ECMAScript 6 Generators",
+        "url": "//www.youtube.com/embed/OYdP1tQ9Rnw",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["generators"]
+    },
+    {
+        "title" : "Understanding Javascript Generators",
+        "url": "//www.youtube.com/embed/YrZyAn0yCb8",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["generators","tutorial"]
+    },
+    {
+        "title" : "Jeremy Ashkenas - JS.Next and CoffeeScript (FutureJS 2014)",
+        "url": "//www.youtube.com/embed/TiLJKpzlOeY",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]
+    },
+    {
+        "title" : "Jeremy Ashkenas: CoffeeScript as a JS/Next",
+        "url": "//www.youtube.com/embed/QTj6Q_zV1yg",
+        "date": "2014-12-02T18:14:37.232Z",
+        "categories": ["overview"]
+    }]
+}
