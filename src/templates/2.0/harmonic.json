@@ -3,6 +3,12 @@
     "foo" : "bar",
     "baz" : ["a","b"],
     "videos": [{
+        "title" : "Jack Franklin: ES6: JavaScript, grown up - EpicFEL 2014",
+        "url": "//www.youtube.com/embed/mPq5S27qWW8",
+        "date": "2014-12-23T17:14:37.232Z",
+        "categories": ["overview"]
+    },
+    {
     	"title" : "Practical Workflows for ES6 Modules, Fluent 2014",
     	"url": "//www.youtube.com/embed/0VUjM-jJf2U",
         "date": "2014-12-18T17:14:37.232Z",
