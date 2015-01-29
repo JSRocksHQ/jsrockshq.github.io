@@ -37,7 +37,7 @@ console.log(x); // throws a ReferenceError
 let x = 'hey';
 ```
 
-As you can see, one of the main differences between the old `var` and the new `let`/`const` declarations (besides their [scope](/2014/08/what-you-need-to-know-about-block-scope-let/)) is that the latter are constrained by the Temporal Dead Zone semantics, meaning they will throw a `ReferenceError` when accessed (read/write) before they are initialized, instead of returning `undefined` as a `var`-declared variable would. This makes the code more predictable and easier to spot potential bugs. Simple, isn't it?
+As you can see, one of the main differences between the old `var` and the new `let`/`const` declarations (besides their [scope](/2014/08/what-you-need-to-know-about-block-scope-let/)) is that the latter are constrained by the Temporal Dead Zone semantics, meaning they will throw a `ReferenceError` when accessed (read/write) before being initialized, instead of returning `undefined` as a `var`-declared variable would. This makes the code more predictable and easier to spot potential bugs. Simple, isn't it?
 
 # Well, TDZ is not quite so simple
 
