@@ -4,7 +4,7 @@ title: Arrow Functions and their scope
 date: 2014-10-01T04:01:41.369Z
 comments: true
 published: true
-keywords: arrow functions, es6, escope
+keywords: arrow functions, es6, scope
 description: Read about arrow functions in ES6, and their scopes.
 categories: scope, articles, basics
 authorName: Felipe N. Moura
