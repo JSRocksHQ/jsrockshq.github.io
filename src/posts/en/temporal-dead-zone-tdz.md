@@ -159,8 +159,18 @@ As another example, subclasses (created with `class x extends y {}`)'s construct
 
 # TDZ is everywhere... Except in transpilers and engines
 
+Currently, transpilers such as 6to5 and Traceur do not enforce TDZ semantics whatsoever -- there are open issues in [Traceur](https://github.com/google/traceur-compiler/issues/1382) and [6to5](https://github.com/6to5/6to5/issues/563), and just to be pendantic, 6to5 attempted to ship a quick and dirty TDZ static checking feature but had to retract it immediately afterwards due to [various bugs in the algorithm](https://github.com/6to5/6to5/issues/527). There are quite a few reasons transpilers didn't give much priority to TDZ enforcing yet:
+
+- **Performance:** identifiers that are covered by the TDZ semantics must have every read/write access operation wrapped by a runtime check in order to fully cover the TDZ semantics (see the nested scope example in the "gory details" section above). This issue can be worked around by having optional TDZ checking transformers that are only enabled in a development environment -- this should work fine as long as your code doesn't expect TDZ `ReferenceError`s being thrown in order to work properly (which should be a rare enough use case).
+
+- **Cost/benefit:** Implementing proper TDZ checking takes some time and effort that could be spent writing transformers for new features or improving existing ones.
+
+- **It is impossible to catch all possible user errors**: most transpilers' goal is to transpile *valid* ES.next to valid ES.current, so they expect you to know what you're doing. It would take a nearly infinite amount of time to try to catch all kinds of errors, gibberish and marginal error edge cases that an user can input into a transpiler.
+
+And as of the time of this writing, no browser JavaScript engine has full `let` declaration spec. compliancy. ([reference](http://kangax.github.io/compat-table/es6/#let))
+
+This means you must be extra careful when making use of transpilers, as you may be writing code that seems okay right now but that may break any time you update the transpiler to a version which enforces proper TDZ semantics, or when you try to run the code without a transpiling step in an ES2015+ TDZ-compliant environment.
+
 # TODO
 
-future `var`, ECMAScript modes, refactoring hazards
-
-# References
+`var` in the future? Perhaps the article is too long already.
