@@ -132,7 +132,7 @@ So far I've only shown examples with `let`/`const` declarations, but the TDZ sem
 // Works fine.
 (function(a, b = a) {
 	a === 1;
-	b === 2;
+	b === 1;
 }(1, undefined));
 
 // Default parameters are evaluated from left to right,
