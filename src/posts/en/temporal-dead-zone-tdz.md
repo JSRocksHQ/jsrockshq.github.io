@@ -126,6 +126,37 @@ In the first line, the `f()` call makes control flow jump to and execute the `f`
 
 # TDZ is everywhere!
 
+So far I've only shown examples with `let`/`const` declarations, but the TDZ semantics actually apply to a wide area of the ES2015 spec. For instance, default parameters also have TDZ semantics:
+
+```javascript
+// Works fine.
+(function(a, b = a) {
+	a === 1;
+	b === 2;
+}(1, undefined));
+
+// Default parameters are evaluated from left to right,
+// so `b` is in the TDZ when `a`'s initializer tries to read it.
+(function(a = b, b) {}(undefined, 1)); // ReferenceError
+
+// `a` is still in the TDZ when its own initializer tries to read `a`.
+// See the "gory details" section above for more details.
+(function(a = a) {}()); // ReferenceError
+```
+
+One may wonder, then, what happens in this case:
+
+```javascript
+let b = 1;
+(function(a = b, b) {
+	console.log(a, b);
+}(undefined, 2));
+```
+
+The example above may look a bit confusing, but it is actually a TDZ violation too -- that is because [default parameters are evaluated in an intermediate scope](https://github.com/google/traceur-compiler/issues/1376) which exists between the parent and inner scope of the given function. The `a` and `b` parameters are bindings of this (intermediate) scope and are initialized from left to right, hence when `a`'s initializer tries to read `b`, the `b` identifier resolves to the `b` binding in the current scope (the intermediate scope) which is unitialized at that point and thus throws a ReferenceError due to the TDZ semantics.
+
+As another example, subclasses (created with `class x extends y {}`)'s constructors that try to access `this` before calling the `super` constructor will throw a TDZ `ReferenceError`. Reference: [ES6 super construct proposal](https://github.com/tc39/ecma262/blob/master/workingdocs/ES6-super-construct%3Dproposal.md). *(note, though, that this proposal is only two weeks old as of the time of this writing, so it may be changed or discarded altogether from the final ES2015 spec.)*
+
 # TDZ is everywhere... Except in transpilers and engines
 
 # TODO
