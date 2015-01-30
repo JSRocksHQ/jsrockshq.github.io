@@ -75,12 +75,12 @@ This means whenever control flow enters a new scope (e.g. module, function or bl
 This is the TDZ. A given `let`/`const`-declared binding can't be acessed in any way (read/write) until control flow has evaluated the declaration statement -- that does not refer to the hoisting, but rather to where the declaration actually is in the code. It is easier to explain with examples:
 
 ```javascript
-// acessing `x` here before control flow evaluates the `let x` statement
-// would throw a ReferenceError due to TDZ
+// Acessing `x` here before control flow evaluates the `let x` statement
+// would throw a ReferenceError due to TDZ.
 // console.log(x);
 
 let x = 42;
-// from here on, accessing `x` is perfectly fine!
+// From here on, accessing `x` is perfectly fine!
 console.log(x);
 ```
 
