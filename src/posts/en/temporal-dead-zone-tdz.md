@@ -57,17 +57,79 @@ Can you guess what `console.log(x)` will print now? Well, actually, the answer i
 
 # The gory details
 
-A true enthusiast wouldn't be satisfied with two bold half-assed statements, am I right? Let's dig a bit deeper into the TDZ scope then.
+Curious, are we? Let's travel a bit deeper into the TDZ then.
 
 The ECMAScript 2015 spec. clearly explains the `let`/`const` declarations hoisting and TDZ semantics in a [non-normative note](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations):
 
 > #### 13.2.1 Let and Const Declarations
 > NOTE `let` and `const` declarations define variables that are scoped to [the running execution context](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts)’s [LexicalEnvironment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts). The variables are created when their containing [Lexical Environment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments) is instantiated but may not be accessed in any way until the variable’s *LexicalBinding* is evaluated. A variable defined by a *LexicalBinding* with an *Initializer* is assigned the value of its *Initializer*’s *AssignmentExpression* when the *LexicalBinding* is evaluated, not when the variable is created. If a *LexicalBinding* in a `let` declaration does not have an *Initializer* the variable is assigned the value `undefined` when the *LexicalBinding* is evaluated.
 
-// TODO desiccate the quote above
+Just in case your ECMAScript-fu is not sharp enough, I'll ~~dumb down~~ translate the relevant spec. parts to English:
+
+> The variables are created when their containing [Lexical Environment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments) is instantiated [...]
+
+This means whenever control flow enters a new scope (e.g. module, function or block scope), all the `let`/`const` bindings belonging to the given scope are instatiated before any code inside of the given scope is executed -- in other words, `let`/`const` declarations hoist!
+
+> [...] but may not be accessed in any way until the variable’s *LexicalBinding* is evaluated.
+
+This is the TDZ. A given `let`/`const`-declared binding can't be acessed in any way (read/write) until control flow has evaluated the declaration statement -- that does not refer to the hoisting, but rather to where the declaration actually is in the code. It is easier to explain with examples:
+
+```javascript
+// acessing `x` here before control flow evaluates the `let x` statement
+// would throw a ReferenceError due to TDZ
+// console.log(x);
+
+let x = 42;
+// from here on, accessing `x` is perfectly fine!
+console.log(x);
+```
+
+> If a *LexicalBinding* in a `let` declaration does not have an *Initializer* the variable is assigned the value `undefined` when the *LexicalBinding* is evaluated.
+
+This simply means that:
+
+```javascript
+let x;
+```
+
+Is equivalent to:
+
+```javascript
+let x = undefined;
+```
+
+Likewise, trying to access `x` in any way before control flow evaluates the initializer (or the "implicit" `= undefined` initializer) will result in a `ReferenceError`, while accessing it after the control flow has evaluated the declaration will work fine -- reading the `x` variable after the `let x` declaration in both samples above would return `undefined`.
+
+Hopefully you should have a good idea of the TDZ semantics by now, so let's try out some slightly more advanced examples to exercise.
+
+Consider this code:
+
+```javascript
+let x = x;
+```
+
+Does the code execute? What is the value of `x` after the code executes?
+
+First off, remember that a `let`/`const` variable only counts as initialized after its initializer has been fully evaluated -- that is, after the assignment's right-hand side expression has been evaluated and its resulting value has been assigned to the declared variable.
+
+In this case, the right-hand side expression tries to read the `x` variable, but `x`'s initializer has not been fully evaluated yet -- in fact we are evaluating it at that point -- so `x` still counts as uninitialized at that point and thus trying to read it throws a TDZ `ReferenceError`.
+
+Alright, so here is another slightly advanced TDZ example -- [courtesy](https://github.com/google/traceur-compiler/issues/1382#issuecomment-57182072) of TC39er and Traceur maintainer Erik Arvindson:
+
+```javascript
+let a = f();
+const b = 2;
+function f() { return b; }
+```
+
+In the first line, the `f()` call makes control flow jump to and execute the `f` function, which in turn tries to read the `b` variable which, at this point in the runtime, is still unitialized (in TDZ) and thus throws a `ReferenceError`. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.
 
 # TDZ is everywhere!
 
 # TDZ is everywhere... Except in transpilers and engines
+
+# TODO
+
+future `var`, ECMAScript modes, refactoring hazards
 
 # References
