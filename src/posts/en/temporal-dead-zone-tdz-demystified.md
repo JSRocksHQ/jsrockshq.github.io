@@ -1,6 +1,6 @@
 <!--
 layout: post
-title: Temporal Dead Zone (TDZ)
+title: Temporal Dead Zone (TDZ) demystified
 date: 2015-01-29T01:18:37.630Z
 comments: true
 published: true
