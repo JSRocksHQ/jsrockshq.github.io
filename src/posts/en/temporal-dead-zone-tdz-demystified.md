@@ -171,6 +171,13 @@ And as of the time of this writing, no browser JavaScript engine has full `let` 
 
 This means you must be extra careful when making use of transpilers, as you may be writing code that seems okay right now but that may break any time you update the transpiler to a version which enforces proper TDZ semantics, or when you try to run the code without a transpiling step in an ES2015+ TDZ-compliant environment.
 
-# TODO
+# And what about `var`?
 
-`var` in the future? Perhaps the article is too long already.
+`var`-declared variables will still behave as they currently do in ES5 -- the ECMAScript spec. must always evolve in backwards-compatible ways in order for browser vendors to adopt the new spec. without breaking the web. Theoretically, it could be possible to apply TDZ semantics to `var` by introducing a new "execution mode" (similar to `'use strict'`), however that is very unlikely to happen seeing as:
+
+- The majority of TC39 opposes adding more execution modes/pragmas/flags.
+- Even if such new execution mode were to be implemented, enforcing TDZ semantics on `var`-declared variables would mean introducing an unnecessary entry barrier and refactoring hazards to those who want to port their existing code to the hypothetical new execution mode.
+
+# Closing words
+
+The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) when your code accidentally accesses unitialized bindings. Just beware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it. Or, just in case you're really afraid of TDZ -- which you shouldn't be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using `var` for the time being which does not have TDZ semantics. `;)`
