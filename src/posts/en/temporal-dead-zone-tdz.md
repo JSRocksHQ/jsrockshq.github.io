@@ -108,7 +108,7 @@ Consider this code:
 let x = x;
 ```
 
-Does the code execute? What is the value of `x` after the code executes?
+Does the code execute without errors? What is the value of `x` after the code executes?
 
 First off, remember that a `let`/`const` variable only counts as initialized after its initializer has been fully evaluated -- that is, after the assignment's right-hand side expression has been evaluated and its resulting value has been assigned to the declared variable.
 
