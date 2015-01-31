@@ -12,7 +12,8 @@ authorLink: https://twitter.com/UltCombo
 authorDescription: ECMAScript enthusiast, open source addict and Web Platform lover.
 authorPicture: https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png
 -->
-The Temporal Dead Zone refers to a new set of ECMAScript semantics regarding scope, introduced in ES2015 (aka ES6).<!--more-->
+<!--more-->
+The Temporal Dead Zone refers to a new set of ECMAScript semantics regarding scope, introduced in ES2015 (aka ES6).
 
 Although the name may sound a bit intimidating, the concept is not hard to grasp, actually. But first, let's take one step back and look at how scoping works in ES5:
 
