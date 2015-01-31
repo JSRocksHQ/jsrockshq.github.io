@@ -53,7 +53,9 @@ let x = 'outer scope';
 }());
 ```
 
-Can you guess what `console.log(x)` will print now? Well, actually, the answer is nothing -- the code above will throw a `ReferenceError` due to the TDZ semantics. That is because **`let`/`const` declarations do hoist**, but **they throw errors when accessed before being initialized** (instead of returning `undefined` as `var` would). And yes, I had already written the very same statement a couple of paragraphs above, but this is actually the main point of TDZ and it is worth repeating as much as necessary (in fact, go ahead and do some memory training -- repeat the bold parts in this paragraph until it digs deep into your brain `;)`). Of course, this is still a bit of an over-simplification, I've put a lot of effort in balancing accuracy with simplicity to make an easy to remember and understand overview. Now onto the details...
+Can you guess what `console.log(x)` will print now? Well, actually, the answer is nothing -- the code above will throw a `ReferenceError` due to the TDZ semantics. That is because **`let`/`const` declarations do hoist**, but **they throw errors when accessed before being initialized** (instead of returning `undefined` as `var` would). I know the previous statement has already been expressed in this article, but this is actually the main point of TDZ and it is worth repeating as much as necessary (in fact, go ahead and do some memory training -- repeat the bold parts in this paragraph until it digs deep into your brain `;)`).
+
+Of course, this is still a bit of an over-simplification, I've put a lot of effort in balancing accuracy with simplicity to make an easy to remember and understand overview. Now onto the details...
 
 # The gory details
 
@@ -114,7 +116,7 @@ First off, remember that a `let`/`const` variable only counts as initialized aft
 
 In this case, the right-hand side expression tries to read the `x` variable, but `x`'s initializer has not been fully evaluated yet -- in fact we are evaluating it at that point -- so `x` still counts as uninitialized at that point and thus trying to read it throws a TDZ `ReferenceError`.
 
-Alright, so here is another slightly advanced TDZ example -- [courtesy](https://github.com/google/traceur-compiler/issues/1382#issuecomment-57182072) of TC39er and Traceur maintainer Erik Arvindson:
+Alright, so here is another slightly advanced TDZ example -- [courtesy](https://github.com/google/traceur-compiler/issues/1382#issuecomment-57182072) of TC39 member and Traceur maintainer Erik Arvindson:
 
 ```javascript
 let a = f();
@@ -122,7 +124,7 @@ const b = 2;
 function f() { return b; }
 ```
 
-In the first line, the `f()` call makes control flow jump to and execute the `f` function, which in turn tries to read the `b` variable which, at this point in the runtime, is still unitialized (in TDZ) and thus throws a `ReferenceError`. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.
+In the first line, the `f()` call makes control flow jump to and execute the `f` function, which in turn tries to read the `b` variable which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a `ReferenceError`. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.
 
 # TDZ is everywhere!
 
@@ -153,9 +155,9 @@ let b = 1;
 }(undefined, 2));
 ```
 
-The example above may look a bit confusing, but it is actually a TDZ violation too -- that is because [default parameters are evaluated in an intermediate scope](https://github.com/google/traceur-compiler/issues/1376) which exists between the parent and inner scope of the given function. The `a` and `b` parameters are bindings of this (intermediate) scope and are initialized from left to right, hence when `a`'s initializer tries to read `b`, the `b` identifier resolves to the `b` binding in the current scope (the intermediate scope) which is unitialized at that point and thus throws a `ReferenceError` due to the TDZ semantics.
+The example above may look a bit confusing, but it is actually a TDZ violation too -- that is because [default parameters are evaluated in an intermediate scope](https://github.com/google/traceur-compiler/issues/1376) which exists between the parent and inner scope of the given function. The `a` and `b` parameters are bindings of this (intermediate) scope and are initialized from left to right, hence when `a`'s initializer tries to read `b`, the `b` identifier resolves to the `b` binding in the current scope (the intermediate scope) which is uninitialized at that point and thus throws a `ReferenceError` due to the TDZ semantics.
 
-As another example, subclasses (created with `class x extends y {}`)'s constructors that try to access `this` before calling the `super` constructor will throw a TDZ `ReferenceError`. Reference: [ES6 super construct proposal](https://github.com/tc39/ecma262/blob/master/workingdocs/ES6-super-construct%3Dproposal.md). *(note, though, that this proposal is only two weeks old as of the time of this writing, so it may be changed or discarded altogether from the final ES2015 spec.)*
+As another example, subclasses (created with `class x extends y {}`)'s constructors that try to access `this` before calling the `super` constructor will throw a TDZ `ReferenceError`. That is because as long as a subclass's constructor has not yet called `super()` its `this` binding is considered uninitialized. Likewise, if a subclass constructor execution reaches the end of the constructor code without calling `super()`, the constructor would (like any other constructor) implicitly try to `return this;`, which would then throw a TDZ `ReferenceError` as `this` is still uninitialized. Reference: [ES6 super construct proposal](https://github.com/tc39/ecma262/blob/master/workingdocs/ES6-super-construct%3Dproposal.md). *(note, though, that this proposal is only two weeks old at the time of writing, so it may be changed or discarded altogether from the final ES2015 spec.)*
 
 # TDZ is everywhere... Except in transpilers and engines
 
@@ -167,7 +169,12 @@ Currently, transpilers such as 6to5 and Traceur do not enforce TDZ semantics wha
 
 - **It is impossible to catch all possible user errors**: most transpilers' goal is to transpile *valid* ES.next to valid ES.current, so they expect you to know what you're doing. It would take a nearly infinite amount of time to try to catch all kinds of errors, gibberish and marginal error edge cases that an user can input into a transpiler.
 
-And as of the time of this writing, no browser JavaScript engine has full `let` declaration spec. compliancy. ([reference](http://kangax.github.io/compat-table/es6/#let))
+And as of the time of writing, no browser JavaScript engine has full `let` declaration spec. compliancy ([reference](http://kangax.github.io/compat-table/es6/#let)). Firefox Nightly (version 38.0a1 (2015-01-30) at the time of writing) ships with a nice, clean and objective TDZ error message though:
+
+```javascript
+{ x; let x; }
+// ReferenceError: can't access lexical declaration `x' before initialization
+```
 
 This means you must be extra careful when making use of transpilers, as you may be writing code that seems okay right now but that may break any time you update the transpiler to a version which enforces proper TDZ semantics, or when you try to run the code without a transpiling step in an ES2015+ TDZ-compliant environment.
 
@@ -176,8 +183,10 @@ This means you must be extra careful when making use of transpilers, as you may 
 `var`-declared variables will still behave as they currently do in ES5 -- the ECMAScript spec. must always evolve in backwards-compatible ways in order for browser vendors to adopt the new spec. without breaking the web. Theoretically, it could be possible to apply TDZ semantics to `var` by introducing a new "execution mode" (similar to `'use strict'`), however that is very unlikely to happen seeing as:
 
 - The majority of TC39 opposes adding more execution modes/pragmas/flags.
-- Even if such new execution mode were to be implemented, enforcing TDZ semantics on `var`-declared variables would mean introducing an unnecessary entry barrier and refactoring hazards to those who want to port their existing code to the hypothetical new execution mode.
+- Even if such new execution mode were to be implemented, enforcing TDZ semantics on `var`-declared variables would introduce an unnecessary entry barrier and refactoring hazards to those who want to port their existing code to the hypothetical new execution mode.
 
 # Closing words
 
-The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) when your code accidentally accesses unitialized bindings. Just beware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it. Or, just in case you're really afraid of TDZ -- which you shouldn't be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using `var` for the time being which does not have TDZ semantics. `;)`
+The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) in cases where your code may accidentally access uninitialized bindings. Just be aware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it.
+
+Or, just in case you're really afraid of TDZ -- which you shouldn't be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using `var` for the time being which does not have TDZ semantics. `;)`
