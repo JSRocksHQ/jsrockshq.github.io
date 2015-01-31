@@ -87,6 +87,8 @@ let x = 42;
 console.log(x);
 ```
 
+And the last part:
+
 > If a *LexicalBinding* in a `let` declaration does not have an *Initializer* the variable is assigned the value `undefined` when the *LexicalBinding* is evaluated.
 
 This simply means that:
@@ -125,7 +127,7 @@ const b = 2;
 function f() { return b; }
 ```
 
-In the first line, the `f()` call makes control flow jump to and execute the `f` function, which in turn tries to read the `b` variable which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a `ReferenceError`. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.
+In the first line, the `f()` call makes control flow jump to and execute the `f` function, which in turn tries to read the `b` constant which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a `ReferenceError`. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.
 
 # TDZ is everywhere!
 
