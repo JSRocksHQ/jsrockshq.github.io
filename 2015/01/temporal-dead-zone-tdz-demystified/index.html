@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
+        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Temporal Dead Zone (TDZ) demystified - ES6 Rocks</title>
+        <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+        
+
+        
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+         <script src="/js/vendor/prism.js"></script>
+        
+
+        
+        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
+        <meta property="og:title" content="ES6Rocks" />
+        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
+        
+        
+
+        
+        <link rel="stylesheet" href="/css/vendor/normalize.min.css" />
+        <link rel="stylesheet" href="/css/vendor/prism.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        
+
+    </head>
+    <body data-page-type="article">
+
+        <div class="header-container">
+    <div class="decorator-line dl-1"></div>
+    <div class="decorator-line dl-2"></div>
+    <header class="wrapper clearfix">
+
+        <div class="page-options">
+            <span class="alternative-text text"> A collaborative website about the ECMAScript sixth edition, a.k.a. ES6.</span>
+            <div class="languages">
+                <a class="icon portuguese" href="/pt-br" >Ler em Português</a>
+                <a class="icon english" href="/" >Read in English</a>
+            </div>
+            <div class="social">
+                
+                <a class="icon tt" href="http://twitter.com/es6rocks" >ES6Rocks on Twitter</a>
+                <a class="icon gh" href="http://github.com/es6rocks" >ES6Rocks on Github</a>
+            </div>
+        </div>
+
+        <div class="navigation-container">
+            <nav class='navigation' style="visibility: hidden;">
+                <a href="/posts">Posts</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <h1>
+                <a href="http://es6rocks.com" title="ES6 Rocks - News, tools, updates, tutorials and articles about ES6">
+                    ES6 Rocks - News, tools, updates, tutorials and articles about ES6
+                    <img class="es6-logo" src='/img/es6-logo.png' title="ES6Rocks Logo" alt="ES6 Rocks" />
+                </a>
+            </h1>
+
+            <nav class="navigation-search" style="visibility: hidden;">
+                <form>
+                    <input id="ipt-search" type="search" placeholder="Search anything?" />
+                    <span class="ipt-search-icon"></span>
+                    <input type="submit" value="OK" />
+                </form>
+                <em class="popular-searches alternative-text">
+                    Popular searches:
+                    <a href="/search/es6">es6</a>, <a href="/search/userMedia">userMedia</a>, <a href="search/foo">foo</a>
+                </em>
+            </nav>
+
+            <a href="https://github.com/es6rocks/es6rocks.github.io" class="send-a-post button">Send a post</a>
+
+        </div>
+
+    </header>
+</div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+
+                <div>
+                    <div class="article-meta">
+                        <address>
+                            <img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" class="author-avatar" alt="Fabrício S. Matté"/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="https://twitter.com/UltCombo" rel="author" class="author-link">
+                                Fabrício S. Matté
+                            </a>
+                        </address>
+
+                        <time datetime="Wed Jan 28 2015 23:18:37 GMT-0200 (BRST)" class="alternative-text">Wed Jan 28 2015 23:18:37 GMT-0200 (BRST)</time>
+
+                        <h2>Temporal Dead Zone (TDZ) demystified</h2>
+
+                        <ul class="article-tags article-tags-internal">
+                            
+                                <li>
+                                    <a class="categoryTag scope" href="/categories/scope">scope</a>
+                                </li>
+                            
+                                <li>
+                                    <a class="categoryTag  articles" href="/categories/articles"> articles</a>
+                                </li>
+                            
+                        </ul>
+
+                        <div class="icon-group">
+                            <a href="javascript: void(0);" class="icon font-up" title="Increase font size">Bigger font size</a>
+                            <a href="javascript: void(0);" class="icon font-down" title="Decrease font size">Smaller font size</a>
+                            <a href="javascript: void(0);" class="icon contrast" title="Switch contrast colors">Switch the color contrast</a>
+                            <a href="javascript: void(0);" class="icon comments" title="Comments">See comments and create new comment</a>
+                        </div>
+                    </div>
+
+                    <div class="main-article wrapper">
+                        <article class="article-content">
+<p>The Temporal Dead Zone refers to a new set of ECMAScript semantics regarding scope, introduced in ES2015 (aka ES6).</p>
+<p>Although the name may sound a bit intimidating, the concept is not hard to grasp, actually. But first, let&#39;s take one step back and look at how scoping works in ES5:</p>
+<pre><code class="lang-javascript">var x = &#39;outer scope&#39;;
+(function() {
+    console.log(x);
+    var x = &#39;inner scope&#39;;
+}());
+</code></pre>
+<p>Upon executing the code above, can you tell what the <code>console.log(x)</code> prints? If you guessed <code>undefined</code>, then keep reading. Otherwise, please take the time to read about declarations hoisting (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting">MDN</a>, <a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Adequately Good</a>) and <a href="http://en.wikipedia.org/wiki/Variable_shadowing">variable shadowing</a>, as these concepts are key to fully understanding TDZ.</p>
+<hr>
+<h1 id="enter-the-temporal-dead-zone">Enter the Temporal Dead Zone</h1>
+<p>Alright, now let&#39;s take a small step forward and begin with an extremely simple and contrived TDZ scoping example:</p>
+<pre><code class="lang-javascript">console.log(x); // throws a ReferenceError
+let x = &#39;hey&#39;;
+</code></pre>
+<p>As you can see, one of the main differences between the old <code>var</code> and the new <code>let</code>/<code>const</code> declarations (besides their <a href="/2014/08/what-you-need-to-know-about-block-scope-let/">scope</a>) is that the latter are constrained by the Temporal Dead Zone semantics, meaning they will throw a <code>ReferenceError</code> when accessed (read/write) before being initialized, instead of returning <code>undefined</code> as a <code>var</code>-declared variable would. This makes the code more predictable and easier to spot potential bugs. Simple, isn&#39;t it?</p>
+<h1 id="well-tdz-is-not-quite-so-simple">Well, TDZ is not quite so simple</h1>
+<p>Taking a second look at the previous example, one could deduce that <code>let</code>/<code>const</code> declarations simply do not hoist, and that would explain the <code>ReferenceError</code>, right? <strong>Nope</strong>, that&#39;s an incorrect over-simplification <em>(and beware of uninformed resources claiming that!)</em>.</p>
+<p>Let&#39;s go back to the very first example in this article, replacing <code>var</code> with <code>let</code> and see what happens:</p>
+<pre><code class="lang-javascript">let x = &#39;outer scope&#39;;
+(function() {
+    console.log(x);
+    let x = &#39;inner scope&#39;;
+}());
+</code></pre>
+<p>Can you guess what <code>console.log(x)</code> will print now? Well, actually, the answer is nothing -- the code above will throw a <code>ReferenceError</code> due to the TDZ semantics. That is because <strong><code>let</code>/<code>const</code> declarations do hoist</strong>, but <strong>they throw errors when accessed before being initialized</strong> (instead of returning <code>undefined</code> as <code>var</code> would). I know the previous statement has already been expressed in this article, but this is actually the main point of TDZ and it is worth repeating as much as necessary (in fact, go ahead and do some memory training -- repeat the bold parts in this paragraph until it digs deep into your brain <code>;)</code>).</p>
+<p>Of course, this is still a bit of an over-simplification, I&#39;ve put a lot of effort in balancing accuracy with simplicity to make an easy to remember and understand overview. Now onto the details...</p>
+<h1 id="the-gory-details">The gory details</h1>
+<p>Curious, are we? Let&#39;s travel a bit deeper into the TDZ then.</p>
+<p>The ECMAScript 2015 spec. clearly explains the <code>let</code>/<code>const</code> declarations hoisting and TDZ semantics in a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">non-normative note</a>:</p>
+<blockquote>
+<h4 id="13-2-1-let-and-const-declarations">13.2.1 Let and Const Declarations</h4>
+<p>NOTE <code>let</code> and <code>const</code> declarations define variables that are scoped to <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts">the running execution context</a>’s <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts">LexicalEnvironment</a>. The variables are created when their containing <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments">Lexical Environment</a> is instantiated but may not be accessed in any way until the variable’s <em>LexicalBinding</em> is evaluated. A variable defined by a <em>LexicalBinding</em> with an <em>Initializer</em> is assigned the value of its <em>Initializer</em>’s <em>AssignmentExpression</em> when the <em>LexicalBinding</em> is evaluated, not when the variable is created. If a <em>LexicalBinding</em> in a <code>let</code> declaration does not have an <em>Initializer</em> the variable is assigned the value <code>undefined</code> when the <em>LexicalBinding</em> is evaluated.</p>
+</blockquote>
+<p>Just in case your ECMAScript-fu is not sharp enough, I&#39;ll <del>dumb down</del> translate the relevant spec. parts to English:</p>
+<blockquote>
+<p>The variables are created when their containing <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments">Lexical Environment</a> is instantiated [...]</p>
+</blockquote>
+<p>This means whenever control flow enters a new scope (e.g. module, function or block scope), all the <code>let</code>/<code>const</code> bindings belonging to the given scope are instatiated before any code inside of the given scope is executed -- in other words, <code>let</code>/<code>const</code> declarations hoist!</p>
+<blockquote>
+<p>[...] but may not be accessed in any way until the variable’s <em>LexicalBinding</em> is evaluated.</p>
+</blockquote>
+<p>This is the TDZ. A given <code>let</code>/<code>const</code>-declared binding can&#39;t be acessed in any way (read/write) until control flow has evaluated the declaration statement -- that does not refer to the hoisting, but rather to where the declaration actually is in the code. It is easier to explain with examples:</p>
+<pre><code class="lang-javascript">// Acessing `x` here before control flow evaluates the `let x` statement
+// would throw a ReferenceError due to TDZ.
+// console.log(x);
+
+let x = 42;
+// From here on, accessing `x` is perfectly fine!
+console.log(x);
+</code></pre>
+<blockquote>
+<p>If a <em>LexicalBinding</em> in a <code>let</code> declaration does not have an <em>Initializer</em> the variable is assigned the value <code>undefined</code> when the <em>LexicalBinding</em> is evaluated.</p>
+</blockquote>
+<p>This simply means that:</p>
+<pre><code class="lang-javascript">let x;
+</code></pre>
+<p>Is equivalent to:</p>
+<pre><code class="lang-javascript">let x = undefined;
+</code></pre>
+<p>Likewise, trying to access <code>x</code> in any way before control flow evaluates the initializer (or the &quot;implicit&quot; <code>= undefined</code> initializer) will result in a <code>ReferenceError</code>, while accessing it after the control flow has evaluated the declaration will work fine -- reading the <code>x</code> variable after the <code>let x</code> declaration in both samples above would return <code>undefined</code>.</p>
+<p>Hopefully you should have a good idea of the TDZ semantics by now, so let&#39;s try out some slightly more advanced examples to exercise.</p>
+<p>Consider this code:</p>
+<pre><code class="lang-javascript">let x = x;
+</code></pre>
+<p>Does the code execute without errors? What is the value of <code>x</code> after the code executes?</p>
+<p>First off, remember that a <code>let</code>/<code>const</code> variable only counts as initialized after its initializer has been fully evaluated -- that is, after the assignment&#39;s right-hand side expression has been evaluated and its resulting value has been assigned to the declared variable.</p>
+<p>In this case, the right-hand side expression tries to read the <code>x</code> variable, but <code>x</code>&#39;s initializer has not been fully evaluated yet -- in fact we are evaluating it at that point -- so <code>x</code> still counts as uninitialized at that point and thus trying to read it throws a TDZ <code>ReferenceError</code>.</p>
+<p>Alright, so here is another slightly advanced TDZ example -- <a href="https://github.com/google/traceur-compiler/issues/1382#issuecomment-57182072">courtesy</a> of TC39 member and Traceur maintainer Erik Arvindson:</p>
+<pre><code class="lang-javascript">let a = f();
+const b = 2;
+function f() { return b; }
+</code></pre>
+<p>In the first line, the <code>f()</code> call makes control flow jump to and execute the <code>f</code> function, which in turn tries to read the <code>b</code> variable which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a <code>ReferenceError</code>. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.</p>
+<h1 id="tdz-is-everywhere-">TDZ is everywhere!</h1>
+<p>So far I&#39;ve only shown examples with <code>let</code>/<code>const</code> declarations, but the TDZ semantics actually apply to a wide area of the ES2015 spec. For instance, default parameters also have TDZ semantics:</p>
+<pre><code class="lang-javascript">// Works fine.
+(function(a, b = a) {
+    a === 1;
+    b === 1;
+}(1, undefined));
+
+// Default parameters are evaluated from left to right,
+// so `b` is in the TDZ when `a`&#39;s initializer tries to read it.
+(function(a = b, b) {}(undefined, 1)); // ReferenceError
+
+// `a` is still in the TDZ when its own initializer tries to read `a`.
+// See the &quot;gory details&quot; section above for more details.
+(function(a = a) {}()); // ReferenceError
+</code></pre>
+<p>One may wonder, then, what happens in this case:</p>
+<pre><code class="lang-javascript">let b = 1;
+(function(a = b, b) {
+    console.log(a, b);
+}(undefined, 2));
+</code></pre>
+<p>The example above may look a bit confusing, but it is actually a TDZ violation too -- that is because <a href="https://github.com/google/traceur-compiler/issues/1376">default parameters are evaluated in an intermediate scope</a> which exists between the parent and inner scope of the given function. The <code>a</code> and <code>b</code> parameters are bindings of this (intermediate) scope and are initialized from left to right, hence when <code>a</code>&#39;s initializer tries to read <code>b</code>, the <code>b</code> identifier resolves to the <code>b</code> binding in the current scope (the intermediate scope) which is uninitialized at that point and thus throws a <code>ReferenceError</code> due to the TDZ semantics.</p>
+<p>As another example, subclasses (created with <code>class x extends y {}</code>)&#39;s constructors that try to access <code>this</code> before calling the <code>super</code> constructor will throw a TDZ <code>ReferenceError</code>. That is because as long as a subclass&#39;s constructor has not yet called <code>super()</code> its <code>this</code> binding is considered uninitialized. Likewise, if a subclass constructor execution reaches the end of the constructor code without calling <code>super()</code>, the constructor would (like any other constructor) implicitly try to <code>return this;</code>, which would then throw a TDZ <code>ReferenceError</code> as <code>this</code> is still uninitialized. Reference: <a href="https://github.com/tc39/ecma262/blob/master/workingdocs/ES6-super-construct%3Dproposal.md">ES6 super construct proposal</a>. <em>(note, though, that this proposal is only two weeks old at the time of writing, so it may be changed or discarded altogether from the final ES2015 spec.)</em></p>
+<h1 id="tdz-is-everywhere-except-in-transpilers-and-engines">TDZ is everywhere... Except in transpilers and engines</h1>
+<p>Currently, transpilers such as 6to5 and Traceur do not enforce TDZ semantics whatsoever -- there are open issues in <a href="https://github.com/google/traceur-compiler/issues/1382">Traceur</a> and <a href="https://github.com/6to5/6to5/issues/563">6to5</a>, and just to be pendantic, 6to5 attempted to ship a quick and dirty TDZ static checking feature but had to retract it immediately afterwards due to <a href="https://github.com/6to5/6to5/issues/527">various bugs in the algorithm</a>. There are quite a few reasons transpilers didn&#39;t give much priority to TDZ enforcing yet:</p>
+<ul>
+<li><p><strong>Performance:</strong> identifiers that are covered by the TDZ semantics must have every read/write access operation wrapped by a runtime check in order to fully cover the TDZ semantics (see the nested scope example in the &quot;gory details&quot; section above). This issue can be worked around by having optional TDZ checking transformers that are only enabled in a development environment -- this should work fine as long as your code doesn&#39;t expect TDZ <code>ReferenceError</code>s being thrown in order to work properly (which should be a rare enough use case).</p>
+</li>
+<li><p><strong>Cost/benefit:</strong> Implementing proper TDZ checking takes some time and effort that could be spent writing transformers for new features or improving existing ones.</p>
+</li>
+<li><p><strong>It is impossible to catch all possible user errors</strong>: most transpilers&#39; goal is to transpile <em>valid</em> ES.next to valid ES.current, so they expect you to know what you&#39;re doing. It would take a nearly infinite amount of time to try to catch all kinds of errors, gibberish and marginal error edge cases that an user can input into a transpiler.</p>
+</li>
+</ul>
+<p>And as of the time of writing, no browser JavaScript engine has full <code>let</code> declaration spec. compliancy (<a href="http://kangax.github.io/compat-table/es6/#let">reference</a>). Firefox Nightly (version 38.0a1 (2015-01-30) at the time of writing) ships with a nice, clean and objective TDZ error message though:</p>
+<pre><code class="lang-javascript">{ x; let x; }
+// ReferenceError: can&#39;t access lexical declaration `x&#39; before initialization
+</code></pre>
+<p>This means you must be extra careful when making use of transpilers, as you may be writing code that seems okay right now but that may break any time you update the transpiler to a version which enforces proper TDZ semantics, or when you try to run the code without a transpiling step in an ES2015+ TDZ-compliant environment.</p>
+<h1 id="and-what-about-var-">And what about <code>var</code>?</h1>
+<p><code>var</code>-declared variables will still behave as they currently do in ES5 -- the ECMAScript spec. must always evolve in backwards-compatible ways in order for browser vendors to adopt the new spec. without breaking the web. Theoretically, it could be possible to apply TDZ semantics to <code>var</code> by introducing a new &quot;execution mode&quot; (similar to <code>&#39;use strict&#39;</code>), however that is very unlikely to happen seeing as:</p>
+<ul>
+<li>The majority of TC39 opposes adding more execution modes/pragmas/flags.</li>
+<li>Even if such new execution mode were to be implemented, enforcing TDZ semantics on <code>var</code>-declared variables would introduce an unnecessary entry barrier and refactoring hazards to those who want to port their existing code to the hypothetical new execution mode.</li>
+</ul>
+<h1 id="closing-words">Closing words</h1>
+<p>The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) in cases where your code may accidentally access uninitialized bindings. Just be aware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it.</p>
+<p>Or, just in case you&#39;re really afraid of TDZ -- which you shouldn&#39;t be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using <code>var</code> for the time being which does not have TDZ semantics. <code>;)</code></p>
+</article>
+                    </div>
+                </div>
+
+                <div class="icon-group" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified">
+                    <a class="icon fb-share btn-share" target="_blank">Share on Facebook</a>
+                    <a class="icon tt-share btn-share">Share on Twitter</a>
+                    <a class="icon gp-share btn-share" target="_blank">Share on Google Plus</a>              
+                </div>
+
+                <div class="comments wrapper">
+                    <h4 class="wrapper-label"><span class="icon comments-label"></span><span>Comments</span></h4>
+
+                    <div class="comments-container">
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </div>
+                </div>
+
+                <h3 class="wrapper-label" style="visibility: hidden;"><span class="icon bolt"></span><span>Other posts</span></h3>
+
+                <div class="other-articles-container">
+                    <article>
+                        <asside class="article-share" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle"><h3>Arrow Functions and their scope</h3></a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+
+                    <article>
+
+                        <asside class="article-share" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle">
+                            <h3>Arrow Functions and their scope</h3>
+                        </a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+
+                    <article>
+
+                        <asside class="article-share" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified">
+                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
+                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
+                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
+                        </asside>
+
+                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
+
+                        <a href="/articles/thisArticle">
+                            <h3>Arrow Functions and their scope</h3>
+                        </a>
+
+                        <abstract class="alternative-text">
+                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
+                        </abstract>
+
+                        <ul class="article-tags">
+                            <li>
+                                <a href="/tags/scope">scope</a>
+                            </li>
+                            <li>
+                                <a href="/tags/articles">articles</a>
+                            </li>
+                            <li>
+                                <a href="/tags/basics">basics</a>
+                            </li>
+                        </ul>
+
+                        <address>
+                            <img src="" class="author-avatar" alt=""/>
+                            <span class="alternative-text author-label">Posted by</span>
+                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
+                                Felipe N. Moura
+                            </a>
+                        </address>
+                    </article>
+                </div>
+            </div>
+
+            <div class="go-to-top-wrapper wrapper clearfix">
+                <div class="decorator-line dl-5"></div>
+                <input type="button" value="Go to Top" class="button btn btn-goToTop" />
+                <div class="decorator-line dl-6"></div>
+            </div>
+        </div>
+
+        <div class="footer-container">
+    <div class="credits">
+        Brought to you by <a href="http://jaydson.org/">Jaydson Gomes</a> and the <a href="https://github.com/es6rocks/es6rocks.github.io/graphs/contributors">awesome contributors</a>.
+        <span class="designed-by">Designed by <a href="http://italowaxman.com/">Ítalo Waxman</a></span>
+    </div>
+    <footer class="wrapper">
+        <div class="footer-content">
+            <asside class="logo-desc">
+                <img src="/img/footer-logo.jpg" class="footer-logo" />
+                <span class="footer-desc">
+                    Content licensed under <a href="https://creativecommons.org/" target="_blank">Creattive Commons</a>&nbsp;&nbsp;-&nbsp;&nbsp;Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a><br/>
+                    Static website proudly powered by <a href="https://github.com/es6rocks/harmonic" target="_blank">Harmonic</a>
+                </span>
+            </asside>
+            <asside class="social">
+                
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://es6rocks.com/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                
+                
+                <div class="fb-like" data-href="http://es6rocks.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                
+                
+                <div class="g-plusone" data-size="medium" data-href="http://es6rocks.com/"></div>
+                <script type="text/javascript">
+                  (function() {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/platform.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                  })();
+                </script>
+                
+                
+                <iframe src="http://ghbtns.com/github-btn.html?user=es6rocks&repo=es6rocks.github.io&type=watch&count=true"
+                        allowtransparency="true"
+                        frameborder="0"
+                        scrolling="0"
+                        width="110"
+                        height="20"></iframe>
+                
+            </asside>
+            <asside class="js-logo">
+                <img src="/img/js-logo.jpg" />
+            </asside>
+        </div>
+    </footer>
+    <div class="decorator-line dl-7"></div>
+</div>
+
+<script type="text/javascript" src="/js/main.js" charset="utf-8"></script>
+
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=742886022434997&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-51061271-1');ga('send','pageview');
+</script>
+
+    </body>
+</html>

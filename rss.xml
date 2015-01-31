@@ -6,9 +6,17 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Fri, 12 Dec 2014 22:42:01 GMT</pubDate>
+        <pubDate>Sat, 31 Jan 2015 18:07:32 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Temporal Dead Zone (TDZ) demystified</title>
+            <link>http://es6rocks.com/2015/01/temporal-dead-zone-tdz-demystified</link>
+            <description><![CDATA[]]></description>
+            <pubDate>Thu, 29 Jan 2015 01:18:37 GMT</pubDate>
+            <guid>http://es6rocks.com/2015/01/temporal-dead-zone-tdz-demystified</guid>
+        </item>
         
         <item>
             <title>Using ES6 modules in the browser with gulp</title>
