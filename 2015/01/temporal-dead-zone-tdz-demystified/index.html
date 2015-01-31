@@ -173,6 +173,7 @@ let x = 42;
 // From here on, accessing `x` is perfectly fine!
 console.log(x);
 </code></pre>
+<p>And the last part:</p>
 <blockquote>
 <p>If a <em>LexicalBinding</em> in a <code>let</code> declaration does not have an <em>Initializer</em> the variable is assigned the value <code>undefined</code> when the <em>LexicalBinding</em> is evaluated.</p>
 </blockquote>
@@ -195,7 +196,7 @@ console.log(x);
 const b = 2;
 function f() { return b; }
 </code></pre>
-<p>In the first line, the <code>f()</code> call makes control flow jump to and execute the <code>f</code> function, which in turn tries to read the <code>b</code> variable which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a <code>ReferenceError</code>. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.</p>
+<p>In the first line, the <code>f()</code> call makes control flow jump to and execute the <code>f</code> function, which in turn tries to read the <code>b</code> constant which, at this point in the runtime, is still uninitialized (in TDZ) and thus throws a <code>ReferenceError</code>. As you can see, TDZ semantics apply when trying to access variables from parent scopes as well.</p>
 <h1 id="tdz-is-everywhere-">TDZ is everywhere!</h1>
 <p>So far I&#39;ve only shown examples with <code>let</code>/<code>const</code> declarations, but the TDZ semantics actually apply to a wide area of the ES2015 spec. For instance, default parameters also have TDZ semantics:</p>
 <pre><code class="lang-javascript">// Works fine.
