@@ -67,7 +67,7 @@ The ECMAScript 2015 spec. clearly explains the `let`/`const` declarations hoisti
 > #### 13.2.1 Let and Const Declarations
 > NOTE `let` and `const` declarations define variables that are scoped to [the running execution context](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts)’s [LexicalEnvironment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts). The variables are created when their containing [Lexical Environment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments) is instantiated but may not be accessed in any way until the variable’s *LexicalBinding* is evaluated. A variable defined by a *LexicalBinding* with an *Initializer* is assigned the value of its *Initializer*’s *AssignmentExpression* when the *LexicalBinding* is evaluated, not when the variable is created. If a *LexicalBinding* in a `let` declaration does not have an *Initializer* the variable is assigned the value `undefined` when the *LexicalBinding* is evaluated.
 
-Just in case your ECMAScript-fu is not sharp enough, I'll ~~dumb down~~ translate the relevant spec. parts to English:
+Just in case your ECMAScript-fu is not sharp enough, I'll translate the relevant spec. parts to English:
 
 > The variables are created when their containing [Lexical Environment](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments) is instantiated [...]
 
@@ -78,7 +78,7 @@ This means whenever control flow enters a new scope (e.g. module, function or bl
 This is the TDZ. A given `let`/`const`-declared binding can't be acessed in any way (read/write) until control flow has evaluated the declaration statement -- that does not refer to the hoisting, but rather to where the declaration actually is in the code. It is easier to explain with examples:
 
 ```javascript
-// Acessing `x` here before control flow evaluates the `let x` statement
+// Accessing `x` here before control flow evaluates the `let x` statement
 // would throw a ReferenceError due to TDZ.
 // console.log(x);
 
@@ -193,3 +193,9 @@ This means you must be extra careful when making use of transpilers, as you may 
 The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) in cases where your code may accidentally access uninitialized bindings. Just be aware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it.
 
 Or, just in case you're really afraid of TDZ -- which you shouldn't be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using `var` for the time being which does not have TDZ semantics. `;)`
+
+# Further reading
+
+- [Temporal Dead Zone explanations](https://gist.github.com/rwaldron/f0807a758aa03bcdd58a) by TC39 members Rick Waldron and Allen Wirfs-Brock.
+- [let - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let).
+- [ES6 Notes: Default values of parameters](http://dmitrysoshnikov.com/ecmascript/es6-notes-default-values-of-parameters/) by Dmitry Soshnikov.
