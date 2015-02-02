@@ -156,7 +156,7 @@ let x = &#39;hey&#39;;
 <h4 id="13-2-1-let-and-const-declarations">13.2.1 Let and Const Declarations</h4>
 <p>NOTE <code>let</code> and <code>const</code> declarations define variables that are scoped to <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts">the running execution context</a>’s <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-execution-contexts">LexicalEnvironment</a>. The variables are created when their containing <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments">Lexical Environment</a> is instantiated but may not be accessed in any way until the variable’s <em>LexicalBinding</em> is evaluated. A variable defined by a <em>LexicalBinding</em> with an <em>Initializer</em> is assigned the value of its <em>Initializer</em>’s <em>AssignmentExpression</em> when the <em>LexicalBinding</em> is evaluated, not when the variable is created. If a <em>LexicalBinding</em> in a <code>let</code> declaration does not have an <em>Initializer</em> the variable is assigned the value <code>undefined</code> when the <em>LexicalBinding</em> is evaluated.</p>
 </blockquote>
-<p>Just in case your ECMAScript-fu is not sharp enough, I&#39;ll <del>dumb down</del> translate the relevant spec. parts to English:</p>
+<p>Just in case your ECMAScript-fu is not sharp enough, I&#39;ll translate the relevant spec. parts to English:</p>
 <blockquote>
 <p>The variables are created when their containing <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-lexical-environments">Lexical Environment</a> is instantiated [...]</p>
 </blockquote>
@@ -165,7 +165,7 @@ let x = &#39;hey&#39;;
 <p>[...] but may not be accessed in any way until the variable’s <em>LexicalBinding</em> is evaluated.</p>
 </blockquote>
 <p>This is the TDZ. A given <code>let</code>/<code>const</code>-declared binding can&#39;t be acessed in any way (read/write) until control flow has evaluated the declaration statement -- that does not refer to the hoisting, but rather to where the declaration actually is in the code. It is easier to explain with examples:</p>
-<pre><code class="lang-javascript">// Acessing `x` here before control flow evaluates the `let x` statement
+<pre><code class="lang-javascript">// Accessing `x` here before control flow evaluates the `let x` statement
 // would throw a ReferenceError due to TDZ.
 // console.log(x);
 
@@ -245,6 +245,12 @@ function f() { return b; }
 <h1 id="closing-words">Closing words</h1>
 <p>The Temporal Dead Zone semantics can be very useful by providing error feedback to the developer instead of yielding unexpected results (as ES5 code may currently do) in cases where your code may accidentally access uninitialized bindings. Just be aware of these semantics when using a transpiler that does not enforce TDZ, as you may be writing broken code without knowing it.</p>
 <p>Or, just in case you&#39;re really afraid of TDZ -- which you shouldn&#39;t be, seeing as most of the time the errors will be clear and easy to fix once transpilers/engines implement the TDZ semantics --, you may as well keep using <code>var</code> for the time being which does not have TDZ semantics. <code>;)</code></p>
+<h1 id="further-reading">Further reading</h1>
+<ul>
+<li><a href="https://gist.github.com/rwaldron/f0807a758aa03bcdd58a">Temporal Dead Zone explanations</a> by TC39 members Rick Waldron and Allen Wirfs-Brock.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let - JavaScript | MDN</a>.</li>
+<li><a href="http://dmitrysoshnikov.com/ecmascript/es6-notes-default-values-of-parameters/">ES6 Notes: Default values of parameters</a> by Dmitry Soshnikov.</li>
+</ul>
 </article>
                     </div>
                 </div>
