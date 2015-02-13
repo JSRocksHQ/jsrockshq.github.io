@@ -11,7 +11,7 @@ The ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmon
 ```javascript
 npm install harmonic -g
 ```
-You'll need Node.js >= 0.11.13 and npm already installed.  
+You'll need Node.js >= 0.10 (or io.js) and npm already installed.  
 Check out the main [Harmonic documentation](https://github.com/es6rocks/harmonic/) if you're in trouble.  
 
 - Fork and clone the es6rocks.github.io repository
