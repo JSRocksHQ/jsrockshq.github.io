@@ -197,5 +197,6 @@ Or, just in case you're really afraid of TDZ -- which you shouldn't be, seeing a
 # Further reading
 
 - [Temporal Dead Zone explanations](https://gist.github.com/rwaldron/f0807a758aa03bcdd58a) by TC39 members Rick Waldron and Allen Wirfs-Brock.
-- [let - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let).
+- [let - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) at Mozilla Developer Network.
+- [Block-Scoped Declarations - You Don't Know JS: ES6 & Beyond](https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/ch2.md#block-scoped-declarations) by Kyle Simpson.
 - [ES6 Notes: Default values of parameters](http://dmitrysoshnikov.com/ecmascript/es6-notes-default-values-of-parameters/) by Dmitry Soshnikov.
