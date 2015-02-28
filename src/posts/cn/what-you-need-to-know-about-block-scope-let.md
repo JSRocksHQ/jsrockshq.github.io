@@ -18,6 +18,8 @@ authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_
 
 在大多数语言中，如`Python`，他有两个作用域:局部 和 全局。如下，变量定义在代码开头部分则为全局变量，在函数里面声明变量则为局部变量。
 
+<!--more-->
+
 JavaScript也很相似，看以下例子：
 
 ```Python
