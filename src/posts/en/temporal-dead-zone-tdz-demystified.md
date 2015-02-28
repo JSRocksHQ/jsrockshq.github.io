@@ -8,7 +8,7 @@ keywords: scope, tdz, es6
 description: Get a deeper understanding of scopes and future-proof your code!
 categories: scope, articles
 authorName: Fabrício S. Matté
-authorLink: https://twitter.com/UltCombo
+authorLink: https://twitter.com/Ult_Combo
 authorDescription: ECMAScript enthusiast, open source addict and Web Platform lover.
 authorPicture: https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png
 -->
