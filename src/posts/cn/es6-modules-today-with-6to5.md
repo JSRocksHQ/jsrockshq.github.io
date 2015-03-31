@@ -13,8 +13,6 @@ authorLink: http://twitter.com/jaydson
 
 我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。
 
-<!--more-->
-
 ![使用6to5让今天就可以练手ES6的模块化](/img/modules-today-6to5.png)
 
 # 第一步
