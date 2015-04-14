@@ -6,7 +6,7 @@
     "author": "ES6 Rocks",
     "description": "A website dedicated to teach all about ES6",
     "bio": "Thats me",
-    "template": "2.0",
+    "theme": "harmonic-theme-jsrocks",
     "preprocessor": "stylus",
     "posts_permalink" : ":language/:year/:month/:title",
     "pages_permalink": "pages/:title",
