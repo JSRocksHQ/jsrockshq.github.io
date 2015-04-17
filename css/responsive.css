@@ -1,0 +1,127 @@
+/* Large desktop */
+@media (max-width: 1200px) {
+    .post-big .container-post{
+        height: 600px !important;
+    }
+    .post-big .title-post{
+        font-size: 4.6em !important;
+    }
+    .post-normal .container-post{
+        height: 450px !important;
+    }
+    .input-search{
+        width: 75% !important;
+    }
+    .input-search:focus{
+        width: 80% !important;
+    }
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .post-big .title-post {
+        font-size: 3.6em !important;
+    }
+    .main-menu,
+    .search{
+        display: none;
+    }
+    .logo::before{
+        left: 50% !important;
+    }
+    .item-testemonial {
+        width: 50% !important;
+    }
+    .item-testemonial:last-child{
+        display: none;
+    }
+    .item-main-menu{
+        margin-right: 25px !important;
+    }
+    .social,
+    .list-other-posts .item-post:last-child{
+        display: none;
+    }
+}
+
+@media (max-width: 767px) { 
+    .wrapper{
+        overflow: hidden;
+    }
+    .right{
+        float: none !important;
+        display: table;
+        margin: 0 auto;
+    }
+    .logo::before{
+        left: 50% !important;
+    }
+    .flags-list div{
+        display: table;
+        margin: 0 auto 18px;
+    }
+    .social-list .right{
+        margin: 25px auto 0;
+    }
+    header .item-social{
+        margin-right: 32px !important;
+    }
+    .item-social:last-child{
+        margin-right: 0 !important;
+    }
+    .logo{
+        margin-top: -5px !important;
+    }
+    .content{
+        margin-top: -120px !important;
+        margin-bottom: 50px !important;
+    }
+    .button-more-posts{
+        margin-bottom: 0 !important;
+    }
+    .title-testemonials h2{
+        font-size: 2.8em !important;
+        margin: 10px 0 40px !important;
+    }
+    .item-testemonial{
+        display: none;
+    }
+    .item-testemonial:first-child{
+        display: block;
+    }
+    .info-author .social-list{
+        display: none;
+    }
+    .post-big .title-post{
+        font-size: 2.4em !important;
+        margin:12px auto !important;
+    }
+    .footer-post{
+        position: inherit !important;
+        padding: 0 !important;
+        margin-top: 50px;
+    }
+    .post-big  .container-post,
+    .post-normal .container-post{
+        height: auto !important;
+    }
+    .item-post{
+        margin-bottom: 15px !important;
+    }
+    .info-footer{
+        text-align: center;
+    }
+    .info-copyright{
+        font-size:1.1em;
+        line-height: 0;
+    }
+    .header-article .title-post{
+        font-size: 4em !important;
+    }
+    .info-footer svg,
+    .social,
+    .js-footer,
+    .credits{
+        display: none;
+    }
+}

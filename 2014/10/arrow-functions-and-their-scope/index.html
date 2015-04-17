@@ -1,131 +1,286 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Articles, updates, tools, News and tutorials about ECMA6: Harmony">
-        <meta name="keywords" content="News, tools, updates, tutorials, articles, ES6, JavaScript, harmony, ecma6, ecma">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Arrow Functions and their scope - ES6 Rocks</title>
-        <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
-        
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        
-        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-         <script src="/js/vendor/prism.js"></script>
-        
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
 
-        
-        <meta property="og:image" content="http://es6rocks.com/images/es6rocks.jpg" />
-        <meta property="og:title" content="ES6Rocks" />
-        <meta property="og:description" content="Articles and News about ECMA6: Harmony" />
-        
-        
+    
+    <meta name="author" content="@italowaxman, @robsongajunior, @jaydson">
+    <meta name="description" content="A collaborative website about the Javascript, ECMAScript sixth edition, a.k.a. ES6, Harmonic and others.">
+    <meta name="keywords" content="javascript, JS, ECMAScript, ES6, Harmonic, front-end">
 
-        
-        <link rel="stylesheet" href="/css/vendor/normalize.min.css" />
-        <link rel="stylesheet" href="/css/vendor/prism.css" />
-        <link rel="stylesheet" href="/css/main.css" />
-        
+    
+    <meta property="og:description" content="A collaborative website about the Javascript, ECMAScript sixth edition, a.k.a. ES6, Harmonic and others.">
+    <meta property="og:image" content="/images/thumb.png">
+    <meta property="og:site_name" content="JS Rocks">
+    <meta property="og:title" content="JS Rocks">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://jsrocks.com">
 
-    </head>
-    <body data-page-type="article">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://jsrocks.com">
+    <meta name="twitter:creator" content="Usuário do Twitter">
+    <meta name="twitter:title" content="JS Rocks">
+    <meta name="twitter:description" content="A collaborative website about the Javascript, ECMAScript sixth edition, a.k.a. ES6, Harmonic and others.">
+    <meta name="twitter:image" content="/images/thumb.png">
 
-        <div class="header-container">
-    <div class="decorator-line dl-1"></div>
-    <div class="decorator-line dl-2"></div>
-    <header class="wrapper clearfix">
+    
+    <link rel="author" href="/AUTHORS" />
 
-        <div class="page-options">
-            <span class="alternative-text text"> A collaborative website about the ECMAScript sixth edition, a.k.a. ES6.</span>
-            <div class="languages">
-                <a class="icon portuguese" href="/pt-br" >Ler em Português</a>
-                <a class="icon english" href="/" >Read in English</a>
-            </div>
-            <div class="social">
-                
-                <a class="icon tt" href="http://twitter.com/es6rocks" >ES6Rocks on Twitter</a>
-                <a class="icon gh" href="http://github.com/es6rocks" >ES6Rocks on Github</a>
-            </div>
-        </div>
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-        <div class="navigation-container">
-            <nav class='navigation' style="visibility: hidden;">
-                <a href="/posts">Posts</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </nav>
 
-            <h1>
-                <a href="http://es6rocks.com" title="ES6 Rocks - News, tools, updates, tutorials and articles about ES6">
-                    ES6 Rocks - News, tools, updates, tutorials and articles about ES6
-                    <img class="es6-logo" src='/img/es6-logo.png' title="ES6Rocks Logo" alt="ES6 Rocks" />
-                </a>
-            </h1>
+    <link rel="stylesheet" href="/css/vendor/prism.css"/>
+    <link rel="stylesheet" href="/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/animations.css">
 
-            <nav class="navigation-search" style="visibility: hidden;">
-                <form>
-                    <input id="ipt-search" type="search" placeholder="Search anything?" />
-                    <span class="ipt-search-icon"></span>
-                    <input type="submit" value="OK" />
-                </form>
-                <em class="popular-searches alternative-text">
-                    Popular searches:
-                    <a href="/search/es6">es6</a>, <a href="/search/userMedia">userMedia</a>, <a href="search/foo">foo</a>
-                </em>
-            </nav>
-
-            <a href="https://github.com/es6rocks/es6rocks.github.io" class="send-a-post button">Send a post</a>
-
-        </div>
-
-    </header>
-</div>
-
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-
+    <title>Arrow Functions and their scope - ES6 Rocks</title>
+</head>
+<body data-page="article">
+    <div class="wrapper">
+        <header>
+    <div class="container">
+        <div class="row row-down">
+            <div class="col-sm-2 col-xs-12 flags-list">
                 <div>
-                    <div class="article-meta">
-                        <address>
-                            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62" class="author-avatar" alt="Felipe N. Moura"/>
-                            <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://twitter.com/felipenmoura" rel="author" class="author-link">
-                                Felipe N. Moura
-                            </a>
-                        </address>
+                    <a href="/pt-br" class="item-flag"><img src="/images/flag-ptbr-header.png" alt="flag ptbr" title="PtBR"></a>
+                    <a href="/" class="item-flag"><img src="/images/flag-english-header.png" alt="flag english" title="English"></a>
+                </div>
+            </div>
+            <div class="col-sm-8 col-xs-12 txt-header">
+                <span>A collaborative site about the Javascript, ES6, Harmonic and others.</span>
+            </div>
+            <div class="col-sm-2 col-xs-12 social-list">
+                <div class="right">
+                    <a href="https://twitter.com/es6rocks" target="_blank" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
+                    <a href="https://github.com/es6rocks" target="_blank" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 hidden-xs main-menu">
+                <nav>
+                    <ul class="right">
+                        <li class="item-main-menu">
+                            <div class="thunder">
+                                <svg version="1.1" class="" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                                <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535 
+                                    17.166,12.907 11.773,12.661 "/>
+                                </svg>
+                            </div>
+                            <a href="/">Posts</a>
+                        </li>
+                        <li class="item-main-menu">
+                            <div class="thunder">
+                                <svg version="1.1" class="" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                                <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535 
+                                    17.166,12.907 11.773,12.661 "/>
+                                </svg>
+                            </div>
+                            <a href="https://github.com/es6rocks/es6rocks.github.io/issues">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12 logo">
+                <a href="/" title="Return to posts">
+                    <svg version="1.1" class="logo-svg" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="142.177px" height="155.783px" viewBox="0 0 142.177 155.783" enable-background="new 0 0 142.177 155.783"
+                         xml:space="preserve">
+                        <path fill="#FECF0A" d="M69.089,14.633c-26.213-0.08-48.162,10.428-55.916,26.771C6.558,55.34,12.782,82.197,28.31,106.716
+                            c13.359,21.099,29.479,34.229,42.066,34.267l-0.012,3.786l0.021-3.786c13.998,0.037,33.537-16.743,47.514-40.807
+                            c13.439-23.144,17.551-45.979,10.469-58.175C118.763,25.457,95.493,14.714,69.089,14.633z"/>
+                        <path fill="#010101" d="M69.108,7.062C39.517,6.971,15.446,18.891,6.298,38.168c-8.992,18.947,1.346,50.111,15.578,72.59
+                            c14.959,23.62,33.076,37.75,48.471,37.797h0.012c19.461,0.051,41.201-22.357,54.113-44.588c11.76-20.251,20.688-48.16,10.469-65.76
+                            C123.841,19.087,98.614,7.152,69.108,7.062z M117.894,100.176C103.919,124.24,84.38,141.02,70.38,140.983l-0.021,3.786l0.014-3.786
+                            c-12.588-0.038-28.707-13.168-42.068-34.267C12.778,82.197,6.554,55.34,13.167,41.404c7.756-16.342,29.705-26.851,55.916-26.771
+                            c26.406,0.081,49.674,10.823,59.279,27.368C135.444,54.198,131.335,77.033,117.894,100.176z"/>
+                        <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#010101" points="80.015,23.006 64.261,38.463 69.188,38.473 62.823,52.542 
+                            79.989,35.913 74.597,35.667 "/>
+                        <line fill="none" stroke="#010101" stroke-width="0.25" stroke-miterlimit="10" x1="43.396" y1="60.623" x2="99.444" y2="60.623"/>
+                        <g>
+                            <g>
+                                <path fill="#010101" d="M48.709,110.585c0-0.101,0.026-0.179,0.074-0.236c0.051-0.06,0.125-0.089,0.224-0.09h4.399
+                                    c0.468,0,0.902,0.092,1.311,0.272c0.412,0.181,0.764,0.427,1.072,0.736c0.302,0.311,0.541,0.673,0.716,1.089
+                                    c0.175,0.416,0.263,0.859,0.263,1.329c0,0.32-0.043,0.624-0.123,0.914c-0.088,0.287-0.207,0.559-0.356,0.81
+                                    c-0.147,0.251-0.327,0.48-0.533,0.684c-0.207,0.205-0.431,0.38-0.677,0.525l1.749,3.411c0.034,0.065,0.075,0.144,0.123,0.232
+                                    c0.048,0.09,0.077,0.167,0.077,0.234c0,0.074-0.026,0.132-0.073,0.171c-0.049,0.04-0.112,0.06-0.194,0.06h-2.336
+                                    c-0.077,0-0.144-0.022-0.207-0.07c-0.062-0.047-0.103-0.11-0.118-0.189l-1.655-3.222h-1.102v3.18c0,0.201-0.104,0.302-0.313,0.302
+                                    h-2.022c-0.09,0-0.164-0.023-0.218-0.072c-0.054-0.051-0.08-0.126-0.08-0.229V110.585z M54.039,113.714
+                                    c0-0.14-0.026-0.282-0.074-0.423c-0.05-0.143-0.122-0.271-0.213-0.389c-0.089-0.116-0.199-0.216-0.326-0.296
+                                    c-0.126-0.08-0.27-0.131-0.423-0.155c-0.125-0.009-0.244-0.017-0.358-0.023c-0.11-0.008-0.231-0.012-0.365-0.012h-0.936v2.588
+                                    h1.255c0.078,0,0.151-0.002,0.216-0.008c0.063-0.004,0.132-0.011,0.21-0.021c0.157-0.019,0.302-0.067,0.427-0.146
+                                    c0.126-0.076,0.237-0.173,0.32-0.289c0.088-0.114,0.153-0.244,0.198-0.387C54.015,114.01,54.039,113.864,54.039,113.714z"/>
+                                <path fill="#010101" d="M56.984,115.505c0-0.499,0.062-0.977,0.183-1.436c0.125-0.458,0.296-0.888,0.525-1.29
+                                    c0.228-0.401,0.498-0.766,0.815-1.096c0.315-0.328,0.667-0.609,1.053-0.843c0.386-0.232,0.798-0.412,1.244-0.542
+                                    c0.442-0.129,0.902-0.194,1.385-0.194c0.476,0,0.94,0.065,1.381,0.194c0.446,0.13,0.86,0.31,1.248,0.542
+                                    c0.386,0.233,0.738,0.515,1.053,0.843c0.321,0.33,0.593,0.694,0.816,1.096c0.224,0.402,0.399,0.832,0.524,1.29
+                                    c0.125,0.459,0.19,0.937,0.19,1.436c0,0.498-0.065,0.976-0.19,1.434s-0.3,0.886-0.524,1.283c-0.224,0.396-0.496,0.76-0.816,1.086
+                                    c-0.315,0.325-0.667,0.606-1.053,0.842c-0.388,0.236-0.802,0.415-1.248,0.542c-0.441,0.128-0.906,0.191-1.381,0.191
+                                    c-0.482,0-0.943-0.063-1.385-0.191c-0.446-0.127-0.858-0.306-1.244-0.542c-0.386-0.235-0.738-0.517-1.053-0.842
+                                    c-0.317-0.326-0.587-0.689-0.815-1.086c-0.229-0.397-0.4-0.825-0.525-1.283C57.046,116.481,56.984,116.003,56.984,115.505z
+                                     M59.618,115.499c0,0.39,0.065,0.753,0.192,1.092c0.126,0.338,0.304,0.633,0.533,0.884c0.227,0.252,0.5,0.45,0.811,0.593
+                                    c0.313,0.144,0.66,0.215,1.035,0.215c0.375,0,0.724-0.071,1.037-0.215c0.313-0.143,0.587-0.341,0.815-0.593
+                                    c0.229-0.251,0.408-0.546,0.533-0.884c0.126-0.339,0.19-0.702,0.19-1.092c0-0.386-0.063-0.75-0.19-1.09
+                                    c-0.125-0.341-0.304-0.639-0.533-0.892c-0.228-0.252-0.501-0.453-0.815-0.599c-0.313-0.146-0.662-0.221-1.037-0.221
+                                    c-0.375,0-0.721,0.075-1.035,0.221c-0.311,0.146-0.583,0.347-0.811,0.599c-0.229,0.253-0.407,0.551-0.533,0.892
+                                    C59.684,114.749,59.618,115.113,59.618,115.499z"/>
+                                <path fill="#010101" d="M75.955,111.022c0.074,0.047,0.134,0.108,0.169,0.183c0.037,0.076,0.028,0.165-0.021,0.268l-1.148,1.692
+                                    c-0.05,0.08-0.104,0.126-0.162,0.138c-0.056,0.011-0.125-0.008-0.207-0.06c-0.222-0.174-0.466-0.309-0.736-0.403
+                                    c-0.265-0.093-0.548-0.14-0.85-0.14c-0.373,0-0.714,0.073-1.025,0.219c-0.315,0.146-0.587,0.347-0.811,0.599
+                                    c-0.228,0.253-0.404,0.55-0.531,0.889c-0.127,0.338-0.19,0.699-0.19,1.085c0,0.385,0.063,0.746,0.19,1.081
+                                    c0.127,0.338,0.304,0.63,0.531,0.882c0.224,0.252,0.496,0.451,0.811,0.597c0.312,0.146,0.652,0.218,1.025,0.218
+                                    c0.302,0,0.587-0.048,0.857-0.145c0.274-0.096,0.519-0.231,0.746-0.405c0.078-0.052,0.148-0.072,0.201-0.064
+                                    c0.052,0.011,0.107,0.054,0.164,0.128l1.161,1.733c0.051,0.104,0.058,0.19,0.022,0.262c-0.035,0.07-0.093,0.128-0.17,0.177
+                                    c-0.427,0.295-0.887,0.524-1.379,0.687s-1.013,0.243-1.557,0.243c-0.481,0-0.941-0.063-1.386-0.19
+                                    c-0.44-0.128-0.852-0.307-1.239-0.543c-0.39-0.235-0.738-0.517-1.052-0.842c-0.317-0.326-0.589-0.689-0.816-1.086
+                                    c-0.226-0.397-0.401-0.825-0.522-1.283c-0.123-0.458-0.185-0.936-0.185-1.434c0-0.499,0.062-0.977,0.185-1.436
+                                    c0.121-0.458,0.296-0.888,0.522-1.29c0.228-0.401,0.5-0.766,0.816-1.096c0.313-0.328,0.662-0.609,1.052-0.843
+                                    c0.388-0.231,0.799-0.412,1.239-0.542c0.444-0.129,0.904-0.194,1.386-0.194c0.544,0,1.061,0.078,1.543,0.236
+                                    C75.071,110.499,75.527,110.726,75.955,111.022z"/>
+                                <path fill="#010101" d="M77.002,110.57c0-0.085,0.026-0.157,0.079-0.217c0.054-0.062,0.125-0.094,0.222-0.094h2.008
+                                    c0.066,0,0.14,0.029,0.216,0.085c0.073,0.058,0.112,0.133,0.112,0.226v3.842c0.492-0.656,0.979-1.306,1.456-1.944
+                                    c0.477-0.64,0.96-1.288,1.45-1.945c0.048-0.081,0.113-0.145,0.191-0.195c0.079-0.048,0.159-0.074,0.233-0.074h2.588
+                                    c0.109,0,0.166,0.036,0.166,0.107c0,0.046-0.026,0.103-0.077,0.168l-3.204,4.378l3.544,5.527c0.052,0.079,0.078,0.142,0.078,0.188
+                                    c0,0.071-0.054,0.106-0.153,0.106h-2.57c-0.076,0-0.154-0.023-0.228-0.071c-0.078-0.045-0.138-0.11-0.188-0.189
+                                    c-0.24-0.338-0.458-0.663-0.656-0.972c-0.199-0.312-0.392-0.62-0.576-0.929c-0.186-0.306-0.374-0.618-0.564-0.934
+                                    c-0.19-0.313-0.398-0.646-0.625-0.994l-0.864,1.03v2.748c0,0.207-0.112,0.311-0.328,0.311h-2.003
+                                    c-0.203,0-0.306-0.104-0.306-0.311V110.57z"/>
+                                <path fill="#010101" d="M87.878,117.344c0.079,0.066,0.178,0.154,0.297,0.265c0.121,0.111,0.257,0.22,0.412,0.328
+                                    c0.229,0.16,0.462,0.285,0.688,0.373c0.228,0.089,0.465,0.134,0.714,0.134c0.233,0,0.428-0.026,0.582-0.08
+                                    c0.158-0.055,0.283-0.126,0.373-0.215c0.089-0.091,0.154-0.192,0.191-0.312c0.038-0.116,0.06-0.24,0.06-0.372
+                                    c0-0.146-0.056-0.275-0.158-0.391c-0.109-0.115-0.238-0.218-0.394-0.307c-0.154-0.09-0.314-0.166-0.484-0.229
+                                    c-0.168-0.064-0.313-0.116-0.435-0.157c-0.546-0.199-1.021-0.411-1.43-0.638c-0.408-0.229-0.749-0.483-1.02-0.763
+                                    c-0.272-0.279-0.478-0.586-0.615-0.921c-0.136-0.338-0.203-0.71-0.203-1.124c0-0.437,0.086-0.834,0.257-1.19
+                                    c0.17-0.357,0.41-0.663,0.729-0.916c0.312-0.253,0.695-0.449,1.139-0.588c0.443-0.138,0.941-0.209,1.491-0.209
+                                    c0.412,0,0.808,0.049,1.186,0.146c0.381,0.097,0.752,0.25,1.119,0.463c0.154,0.093,0.3,0.19,0.439,0.291
+                                    c0.14,0.103,0.258,0.199,0.365,0.293c0.104,0.095,0.185,0.184,0.246,0.268c0.063,0.085,0.094,0.158,0.094,0.219
+                                    c0,0.062-0.013,0.119-0.043,0.169c-0.03,0.053-0.076,0.11-0.133,0.178l-1.042,1.147c-0.078,0.081-0.154,0.12-0.232,0.12
+                                    c-0.063,0-0.121-0.019-0.176-0.057c-0.05-0.037-0.107-0.084-0.171-0.141l-0.063-0.057c-0.088-0.08-0.19-0.162-0.301-0.246
+                                    c-0.107-0.085-0.229-0.162-0.354-0.229c-0.131-0.067-0.265-0.125-0.405-0.169c-0.14-0.045-0.283-0.067-0.431-0.067
+                                    c-0.15,0-0.287,0.013-0.423,0.039c-0.127,0.026-0.244,0.067-0.341,0.123c-0.103,0.057-0.183,0.131-0.24,0.222
+                                    c-0.061,0.094-0.09,0.203-0.09,0.336c0,0.132,0.031,0.245,0.095,0.341c0.063,0.097,0.159,0.187,0.287,0.269
+                                    c0.127,0.082,0.283,0.16,0.47,0.231c0.19,0.074,0.408,0.152,0.66,0.237c0.482,0.165,0.925,0.338,1.331,0.519
+                                    c0.404,0.18,0.755,0.395,1.052,0.641c0.292,0.245,0.523,0.542,0.689,0.885c0.166,0.344,0.248,0.759,0.248,1.247
+                                    c0,0.517-0.101,0.986-0.306,1.408c-0.203,0.419-0.483,0.777-0.841,1.073c-0.358,0.297-0.773,0.526-1.255,0.688
+                                    c-0.482,0.161-0.997,0.242-1.553,0.242c-0.522,0-1.034-0.097-1.538-0.29c-0.505-0.193-0.971-0.452-1.409-0.777
+                                    c-0.181-0.137-0.336-0.271-0.459-0.402c-0.125-0.132-0.224-0.238-0.296-0.318l-0.021-0.022c-0.006-0.008-0.01-0.015-0.014-0.017
+                                    c-0.003-0.002-0.009-0.006-0.015-0.011c-0.004-0.01-0.009-0.016-0.013-0.018c-0.004-0.003-0.01-0.005-0.015-0.011
+                                    c-0.104-0.117-0.155-0.213-0.155-0.283c0-0.079,0.051-0.169,0.155-0.269l1.18-1.163c0.093-0.071,0.172-0.104,0.228-0.104
+                                    c0.045,0,0.086,0.014,0.132,0.042C87.763,117.246,87.816,117.288,87.878,117.344z"/>
+                            </g>
+                            <g>
+                                <path fill="#010101" d="M67.083,70.823h-6.708c-0.306,0.025-0.41,0.135-0.41,0.466v24.097c0,0.435-0.093,0.848-0.274,1.231
+                                    c-0.173,0.37-0.412,0.701-0.705,0.979c-0.292,0.273-0.634,0.494-1.018,0.659c-0.934,0.391-1.936,0.303-2.642-0.062
+                                    c-0.371-0.192-0.696-0.407-0.968-0.639l-0.684-0.577c-0.159-0.135-0.267-0.222-0.503-0.096c-0.104,0.053-0.2,0.118-0.296,0.206
+                                    l-3.952,3.832c-0.08,0.067-0.214,0.173-0.214,0.555c0,0.056,0,0.1,0.002,0.138c0.473,0.723,1.027,1.371,1.648,1.927
+                                    c0.628,0.559,1.316,1.037,2.045,1.421c0.727,0.38,1.508,0.671,2.321,0.867c2.172,0.521,4.51,0.34,6.54-0.541
+                                    c1.281-0.556,2.419-1.328,3.389-2.297c0.969-0.971,1.752-2.121,2.321-3.418c0.569-1.296,0.857-2.706,0.857-4.186V71.573
+                                    C67.832,71.019,67.636,70.823,67.083,70.823z"/>
+                                <path fill="#010101" d="M93.346,91.202c-0.518-1.077-1.256-2.021-2.19-2.805c-0.948-0.793-2.095-1.492-3.409-2.078
+                                    c-1.343-0.597-2.828-1.176-4.413-1.72c-0.843-0.284-1.584-0.55-2.22-0.797c-0.656-0.253-1.22-0.53-1.671-0.823
+                                    c-0.475-0.306-0.846-0.654-1.096-1.035c-0.265-0.402-0.397-0.876-0.397-1.406c0-0.531,0.125-0.996,0.371-1.38
+                                    c0.24-0.372,0.565-0.674,0.966-0.9c0.375-0.213,0.812-0.369,1.301-0.466c0.94-0.185,2.062-0.219,3.088,0.106
+                                    c0.494,0.157,0.975,0.359,1.426,0.601c0.449,0.24,0.872,0.513,1.26,0.809c0.383,0.292,0.731,0.573,1.043,0.849l0.212,0.196
+                                    c0.194,0.169,0.371,0.316,0.535,0.435c0.095,0.066,0.192,0.099,0.304,0.099c0.153,0,0.319-0.139,0.433-0.256l3.477-3.835
+                                    c0.174-0.195,0.305-0.368,0.387-0.51c0.056-0.098,0.083-0.207,0.083-0.327c0-0.036-0.017-0.174-0.218-0.451
+                                    c-0.185-0.255-0.443-0.532-0.766-0.822c-0.336-0.304-0.733-0.623-1.181-0.95c-0.458-0.334-0.941-0.656-1.438-0.958
+                                    c-1.174-0.676-2.396-1.18-3.618-1.492c-1.227-0.311-2.526-0.469-3.86-0.469c-1.777,0-3.408,0.227-4.85,0.675
+                                    c-1.422,0.443-2.656,1.078-3.663,1.886c-0.991,0.799-1.767,1.775-2.304,2.899c-0.537,1.123-0.807,2.394-0.807,3.781
+                                    c0,1.312,0.218,2.519,0.649,3.583c0.429,1.06,1.084,2.047,1.95,2.935c0.874,0.897,1.987,1.727,3.31,2.465
+                                    c1.338,0.745,2.925,1.454,4.716,2.102c0.406,0.14,0.897,0.317,1.468,0.532c0.589,0.224,1.155,0.493,1.687,0.802
+                                    c0.554,0.318,1.031,0.694,1.421,1.114c0.439,0.471,0.665,1.021,0.665,1.633c0,0.474-0.072,0.942-0.216,1.394
+                                    c-0.156,0.472-0.416,0.885-0.773,1.234c-0.351,0.346-0.828,0.626-1.419,0.829c-1.191,0.411-3.113,0.431-4.674-0.184
+                                    c-0.784-0.309-1.592-0.747-2.399-1.303c-0.534-0.375-1.016-0.759-1.43-1.139c-0.398-0.365-0.725-0.657-0.979-0.875
+                                    c-0.192-0.17-0.353-0.298-0.486-0.38c-0.075-0.046-0.14-0.07-0.183-0.07c-0.006,0-0.144,0.002-0.488,0.259l-3.893,3.852
+                                    c-0.358,0.338-0.384,0.515-0.384,0.561c0,0.002,0.003,0.172,0.384,0.605c0.047,0.034,0.086,0.074,0.119,0.118
+                                    c0.04,0.035,0.075,0.073,0.104,0.118l0.028,0.027c0.257,0.283,0.585,0.636,1.001,1.074c0.399,0.425,0.896,0.861,1.476,1.297
+                                    c1.417,1.058,2.965,1.912,4.604,2.539c3.352,1.287,7.009,1.167,10.021,0.151c1.553-0.523,2.916-1.27,4.055-2.217
+                                    c1.136-0.945,2.042-2.104,2.69-3.441c0.648-1.334,0.979-2.85,0.979-4.501C94.131,93.612,93.866,92.277,93.346,91.202z"/>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-md-5 hidden-xs search">
+                <form id="s" method="GET" action="http://www.google.com/search">
+                    <div class="icon-search">
+                        <img class="icon-search-white" src="/images/icon-search-header-hover.png" alt="icon search">
+                    </div>
+                    <input type="text" class="input-search" placeholder="Search" name="q">
+                    <input type="submit" class="button-search" value="OK">
+                </form>
+                
+                <div class="popular-tags">
+                    <span>Popular Searches:</span>
+                    <ul class="list-tags"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="row row-button">
+            <a href="https://github.com/es6rocks/es6rocks.github.io" target="_blank" class="button-post">
+                <svg version="1.1" class="thunder-hover" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535 
+                    17.166,12.907 11.773,12.661 "/>
+                </svg>
+                <span>Send a Post</span>
+            </a>
+            <p class="info-button-post">*using github</p>
+        </div>
+    </div>  
+</header>
 
-                        <time datetime="Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)</time>
+        <div class="content">
+            <div class="container">
 
-                        <h2>Arrow Functions and their scope</h2>
-
-                        <ul class="article-tags article-tags-internal">
-                            
-                                <li>
-                                    <a class="categoryTag scope" href="/categories/scope">scope</a>
-                                </li>
-                            
-                                <li>
-                                    <a class="categoryTag  articles" href="/categories/articles"> articles</a>
-                                </li>
-                            
-                                <li>
-                                    <a class="categoryTag  basics" href="/categories/basics"> basics</a>
-                                </li>
-                            
-                        </ul>
-
-                        <div class="icon-group">
-                            <a href="javascript: void(0);" class="icon font-up" title="Increase font size">Bigger font size</a>
-                            <a href="javascript: void(0);" class="icon font-down" title="Decrease font size">Smaller font size</a>
-                            <a href="javascript: void(0);" class="icon contrast" title="Switch contrast colors">Switch the color contrast</a>
-                            <a href="javascript: void(0);" class="icon comments" title="Comments">See comments and create new comment</a>
+                <div class="row">
+                    <div class="col-xs-12 header-article">
+                        <div class="author-post">
+                            <div class="avatar-author"><img src="/avatars/felipenmoura.png" alt="Felipe N. Moura"></div>
+                            <div class="info-author">
+                                <span>Posted by</span>
+                                <a href="http://twitter.com/felipenmoura" rel="author" class="author">Felipe N. Moura</a>
+                            </div>
+                        </div>
+                        <div class="date-post">Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)</div>
+                        <h1 class="title-post">Arrow Functions and their scope</h1>
+                        <div class="centering">
+                            <ul class="tags-post">
+                                
+                                    <li class="item-tag-post" data-post-category="scope"></li>
+                                
+                                    <li class="item-tag-post" data-post-category=" articles"></li>
+                                
+                                    <li class="item-tag-post" data-post-category=" basics"></li>
+                                
+                            </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="main-article wrapper">
-                        <article class="article-content"><p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="article-content">
+                            <aside class="share-post">
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/10/arrow-functions-and-their-scope" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/2014/10/arrow-functions-and-their-scope" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                            </aside>
+                            <p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!
 It is not just awesome, it&#39;s also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
 But it may be a little harder to read if you are not used to the way it works.
 So, let&#39;s take a look at it, right now!</p>
@@ -393,227 +548,251 @@ arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
 <p>Although arrow functions may make your source code a little bit less readable (and you can get used to it pretty fast), it is, indeed, a great solution to capture the outer scope&#39;s <code>this</code> value, a quick way to get things working and, in association with the <code>let</code> keyword, will definitely take our JavaScript to the next level!
 Try and use it, create some tests, run it in your browsers and leave comments with interesting solutions and uses you&#39;ve found to arrow functions!
 I hope you have enjoyed this article, as much as you are going to enjoy arrow functions in a very close future.</p>
-</article>
+
+                        </div>
                     </div>
                 </div>
 
-                <div class="icon-group" data-post-url="/2014/10/arrow-functions-and-their-scope">
-                    <a class="icon fb-share btn-share" target="_blank">Share on Facebook</a>
-                    <a class="icon tt-share btn-share">Share on Twitter</a>
-                    <a class="icon gp-share btn-share" target="_blank">Share on Google Plus</a>              
-                </div>
-
-                <div class="comments wrapper">
-                    <h4 class="wrapper-label"><span class="icon comments-label"></span><span>Comments</span></h4>
-
-                    <div class="comments-container">
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                <div class="row row-comments">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <img class="icon-comments floating" src="/images/icon-content-comments.png" alt="icon comments">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="comments-container">
+                            <div id="disqus_thread"></div>
+                            <noscript>
+                                Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                            </noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
                     </div>
                 </div>
 
-                <h3 class="wrapper-label" style="visibility: hidden;"><span class="icon bolt"></span><span>Other posts</span></h3>
-
-                <div class="other-articles-container">
-                    <article>
-                        <asside class="article-share" data-post-url="/2014/10/arrow-functions-and-their-scope">
-                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
-                        </asside>
-
-                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
-
-                        <a href="/articles/thisArticle"><h3>Arrow Functions and their scope</h3></a>
-
-                        <abstract class="alternative-text">
-                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
-                        </abstract>
-
-                        <ul class="article-tags">
-                            <li>
-                                <a href="/tags/scope">scope</a>
-                            </li>
-                            <li>
-                                <a href="/tags/articles">articles</a>
-                            </li>
-                            <li>
-                                <a href="/tags/basics">basics</a>
-                            </li>
-                        </ul>
-
-                        <address>
-
-                            <img src="" class="author-avatar" alt=""/>
-                            <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
-                                Felipe N. Moura
-                            </a>
-                        </address>
-                    </article>
-
-                    <article>
-
-                        <asside class="article-share" data-post-url="/2014/10/arrow-functions-and-their-scope">
-                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
-                        </asside>
-
-                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
-
-                        <a href="/articles/thisArticle">
-                            <h3>Arrow Functions and their scope</h3>
-                        </a>
-
-                        <abstract class="alternative-text">
-                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
-                        </abstract>
-
-                        <ul class="article-tags">
-                            <li>
-                                <a href="/tags/scope">scope</a>
-                            </li>
-                            <li>
-                                <a href="/tags/articles">articles</a>
-                            </li>
-                            <li>
-                                <a href="/tags/basics">basics</a>
-                            </li>
-                        </ul>
-
-                        <address>
-
-                            <img src="" class="author-avatar" alt=""/>
-                            <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
-                                Felipe N. Moura
-                            </a>
-                        </address>
-                    </article>
-
-                    <article>
-
-                        <asside class="article-share" data-post-url="/2014/10/arrow-functions-and-their-scope">
-                            <a href="javascript: void(0);" class="icon fb-share btn-share">Share on Facebook</a>
-                            <a href="javascript: void(0);" class="icon tt-share btn-share">Share on Twitter</a>
-                            <a href="javascript: void(0);" class="icon gp-share btn-share">Share on Google Plus</a>
-                        </asside>
-
-                        <time datetime="Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)" class="alternative-text">Tue Sep 23 2014 01:01:41 GMT-0300 (BRT)</time>
-
-                        <a href="/articles/thisArticle">
-                            <h3>Arrow Functions and their scope</h3>
-                        </a>
-
-                        <abstract class="alternative-text">
-                            Among so many great new features in ES6, Arrow Functions(or Fat Arrow Functions) is one that desirves attention! It is not just awesome...
-                        </abstract>
-
-                        <ul class="article-tags">
-                            <li>
-                                <a href="/tags/scope">scope</a>
-                            </li>
-                            <li>
-                                <a href="/tags/articles">articles</a>
-                            </li>
-                            <li>
-                                <a href="/tags/basics">basics</a>
-                            </li>
-                        </ul>
-
-                        <address>
-                            <img src="" class="author-avatar" alt=""/>
-                            <span class="alternative-text author-label">Posted by</span>
-                            <a href="http://felipenmoura.org/home" rel="author" class="author-link">
-                                Felipe N. Moura
-                            </a>
-                        </address>
-                    </article>
+                <div class="row row-other-posts">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <svg version="1.1" class="thunder" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535 
+                                17.166,12.907 11.773,12.661 "/>
+                            </svg>
+                            <h2>Other Posts</h2>
+                        </div>
+                    </div>
+                    <div id="otherPosts" class="list-other-posts">
+                        
+                    </div>
                 </div>
-            </div>
 
-            <div class="go-to-top-wrapper wrapper clearfix">
-                <div class="decorator-line dl-5"></div>
-                <input type="button" value="Go to Top" class="button btn btn-goToTop" />
-                <div class="decorator-line dl-6"></div>
+                <div class="row row-button">
+                    <button id="goToTop" class="button-post button-top">
+                        <img src="/images/icon-button-top.png" alt="icon scroll to top">
+                        <span>Scroll to Top</span>
+                    </button>
+                </div>
+
             </div>
         </div>
 
-        <div class="footer-container">
-    <div class="credits">
-        Brought to you by <a href="http://jaydson.org/">Jaydson Gomes</a> and the <a href="https://github.com/es6rocks/es6rocks.github.io/graphs/contributors">awesome contributors</a>.
-        <span class="designed-by">Designed by <a href="http://italowaxman.com/">Ítalo Waxman</a></span>
+        <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 credits">
+                <div class="right">
+                    <span class="created">Brought to you by <a href="http://jaydson.org/" target="_blank">Jaydson Gomes</a> and the <a href="https://github.com/es6rocks/es6rocks.github.io/graphs/contributors" targer="_blank">awesome contributors</a>.</span>
+                    <span class="designed">Designed by <a href="https://www.linkedin.com/in/italowaxman" target="_blank">Ítalo Waxman</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-content">
+                <div class="info-footer">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="136.478px" height="149.494px" viewBox="0 0 136.478 149.494" enable-background="new 0 0 136.478 149.494"
+                         xml:space="preserve">
+                        <path fill="#010101" d="M66.176,0C36.584-0.095,12.514,12.499,3.365,32.866c-8.992,20.019,1.346,52.944,15.578,76.694
+                            c14.959,24.955,33.076,39.884,48.471,39.934h0.012c19.461,0.054,41.201-23.621,54.113-47.108
+                            c11.76-21.396,20.688-50.884,10.469-69.479C120.908,12.706,95.682,0.096,66.176,0z M114.961,98.38
+                            c-13.975,25.424-33.514,43.153-47.514,43.114l-0.021,4l0.014-4c-12.588-0.04-28.707-13.913-42.068-36.204
+                            C9.846,79.384,3.621,51.008,10.234,36.285C17.99,19.018,39.939,7.916,66.15,8c26.406,0.085,49.674,11.435,59.279,28.915
+                            C132.512,49.802,128.402,73.928,114.961,98.38z"/>
+                        <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FECF0A" points="77.082,19.945 61.328,35.402 66.256,35.412 59.891,49.48 
+                            77.057,32.852 71.664,32.606 "/>
+                        <line fill="none" stroke="#010101" stroke-width="0.25" stroke-miterlimit="10" x1="40.463" y1="57.562" x2="96.512" y2="57.562"/>
+                        <g>
+                            <g>
+                                <path fill="#010101" d="M44.693,108.227c0-0.104,0.027-0.187,0.078-0.247c0.053-0.062,0.131-0.093,0.234-0.094h4.609
+                                    c0.49,0,0.945,0.096,1.373,0.285c0.432,0.189,0.801,0.447,1.123,0.771c0.316,0.325,0.566,0.705,0.75,1.141s0.275,0.9,0.275,1.393
+                                    c0,0.335-0.045,0.653-0.129,0.957c-0.092,0.302-0.217,0.586-0.373,0.849c-0.154,0.263-0.342,0.503-0.559,0.716
+                                    c-0.217,0.215-0.451,0.398-0.709,0.551l1.832,3.574c0.035,0.068,0.078,0.15,0.129,0.243c0.051,0.094,0.08,0.175,0.08,0.245
+                                    c0,0.078-0.027,0.139-0.076,0.18c-0.051,0.042-0.117,0.062-0.203,0.062h-2.447c-0.08,0-0.15-0.023-0.217-0.074
+                                    c-0.064-0.049-0.107-0.115-0.123-0.198l-1.734-3.375h-1.154v3.331c0,0.211-0.109,0.316-0.328,0.316h-2.119
+                                    c-0.094,0-0.172-0.025-0.229-0.076c-0.057-0.053-0.084-0.132-0.084-0.24V108.227z M50.277,111.505
+                                    c0-0.146-0.027-0.296-0.078-0.442c-0.053-0.149-0.127-0.284-0.223-0.407c-0.094-0.122-0.209-0.227-0.342-0.311
+                                    s-0.283-0.137-0.443-0.162c-0.131-0.01-0.256-0.018-0.375-0.025c-0.115-0.008-0.242-0.012-0.383-0.012h-0.98v2.711h1.314
+                                    c0.082,0,0.158-0.002,0.227-0.008c0.066-0.004,0.139-0.012,0.221-0.021c0.164-0.02,0.316-0.07,0.447-0.152
+                                    c0.133-0.08,0.248-0.182,0.336-0.303c0.092-0.12,0.16-0.256,0.207-0.405C50.252,111.815,50.277,111.662,50.277,111.505z"/>
+                                <path fill="#010101" d="M53.363,113.382c0-0.523,0.064-1.023,0.191-1.504c0.131-0.48,0.311-0.931,0.551-1.352
+                                    c0.238-0.421,0.521-0.803,0.854-1.148c0.33-0.344,0.699-0.639,1.104-0.883c0.404-0.243,0.836-0.432,1.303-0.568
+                                    c0.463-0.135,0.945-0.203,1.451-0.203c0.498,0,0.984,0.068,1.447,0.203c0.467,0.137,0.9,0.325,1.307,0.568
+                                    c0.404,0.244,0.773,0.539,1.104,0.883c0.336,0.346,0.621,0.728,0.855,1.148s0.418,0.871,0.549,1.352s0.199,0.98,0.199,1.504
+                                    c0,0.521-0.068,1.021-0.199,1.502c-0.131,0.479-0.314,0.928-0.549,1.344s-0.52,0.796-0.855,1.138
+                                    c-0.33,0.341-0.699,0.636-1.104,0.883c-0.406,0.247-0.84,0.435-1.307,0.567c-0.463,0.134-0.949,0.2-1.447,0.2
+                                    c-0.506,0-0.988-0.066-1.451-0.2c-0.467-0.133-0.898-0.32-1.303-0.567s-0.773-0.542-1.104-0.883
+                                    c-0.332-0.342-0.615-0.722-0.854-1.138c-0.24-0.416-0.42-0.864-0.551-1.344C53.428,114.403,53.363,113.903,53.363,113.382z
+                                     M56.123,113.374c0,0.408,0.068,0.789,0.201,1.145c0.133,0.354,0.318,0.663,0.559,0.926c0.238,0.264,0.523,0.472,0.85,0.621
+                                    c0.328,0.15,0.691,0.225,1.084,0.225s0.758-0.074,1.086-0.225c0.328-0.149,0.615-0.357,0.854-0.621
+                                    c0.24-0.263,0.428-0.572,0.559-0.926c0.133-0.355,0.199-0.736,0.199-1.145c0-0.404-0.066-0.785-0.199-1.142
+                                    c-0.131-0.356-0.318-0.669-0.559-0.934c-0.238-0.265-0.525-0.476-0.854-0.628s-0.693-0.23-1.086-0.23s-0.756,0.078-1.084,0.23
+                                    c-0.326,0.152-0.611,0.363-0.85,0.628c-0.24,0.265-0.426,0.577-0.559,0.934S56.123,112.97,56.123,113.374z"/>
+                                <path fill="#010101" d="M73.238,108.685c0.078,0.049,0.141,0.113,0.178,0.191c0.039,0.079,0.029,0.173-0.021,0.28l-1.203,1.772
+                                    c-0.053,0.084-0.109,0.133-0.17,0.145c-0.059,0.012-0.131-0.008-0.217-0.062c-0.232-0.182-0.488-0.323-0.771-0.422
+                                    c-0.277-0.098-0.574-0.146-0.891-0.146c-0.391,0-0.748,0.076-1.074,0.229c-0.33,0.152-0.615,0.363-0.85,0.628
+                                    c-0.238,0.265-0.424,0.575-0.557,0.931c-0.133,0.354-0.199,0.732-0.199,1.137c0,0.403,0.066,0.781,0.199,1.133
+                                    c0.133,0.354,0.318,0.66,0.557,0.924c0.234,0.264,0.52,0.473,0.85,0.625c0.326,0.152,0.684,0.229,1.074,0.229
+                                    c0.316,0,0.615-0.051,0.898-0.151c0.287-0.101,0.543-0.243,0.781-0.425c0.082-0.055,0.156-0.076,0.211-0.067
+                                    c0.055,0.011,0.113,0.056,0.172,0.134l1.217,1.816c0.053,0.108,0.061,0.199,0.023,0.273s-0.098,0.135-0.178,0.186
+                                    c-0.447,0.309-0.93,0.549-1.445,0.719s-1.061,0.255-1.631,0.255c-0.504,0-0.986-0.066-1.451-0.199
+                                    c-0.461-0.134-0.893-0.321-1.299-0.568c-0.408-0.247-0.773-0.542-1.102-0.883c-0.332-0.342-0.617-0.722-0.855-1.138
+                                    c-0.236-0.416-0.42-0.864-0.547-1.344c-0.129-0.48-0.193-0.98-0.193-1.502c0-0.523,0.064-1.023,0.193-1.504
+                                    c0.127-0.48,0.311-0.931,0.547-1.352c0.238-0.421,0.523-0.803,0.855-1.148c0.328-0.344,0.693-0.639,1.102-0.883
+                                    c0.406-0.242,0.838-0.432,1.299-0.567c0.465-0.136,0.947-0.204,1.451-0.204c0.57,0,1.111,0.082,1.617,0.248
+                                    C72.312,108.136,72.791,108.374,73.238,108.685z"/>
+                                <path fill="#010101" d="M74.336,108.211c0-0.089,0.027-0.165,0.082-0.228c0.057-0.064,0.131-0.098,0.232-0.098h2.104
+                                    c0.07,0,0.146,0.03,0.227,0.089c0.076,0.06,0.117,0.139,0.117,0.236v4.024c0.516-0.688,1.025-1.367,1.525-2.037
+                                    s1.006-1.35,1.52-2.038c0.051-0.085,0.119-0.151,0.201-0.204c0.082-0.051,0.166-0.078,0.244-0.078h2.711
+                                    c0.115,0,0.174,0.038,0.174,0.112c0,0.049-0.027,0.108-0.08,0.177l-3.357,4.586l3.713,5.791c0.055,0.083,0.082,0.148,0.082,0.198
+                                    c0,0.074-0.057,0.111-0.16,0.111h-2.693c-0.08,0-0.162-0.024-0.238-0.075c-0.082-0.047-0.145-0.115-0.197-0.198
+                                    c-0.252-0.354-0.48-0.694-0.688-1.019c-0.209-0.326-0.41-0.649-0.604-0.973c-0.195-0.32-0.393-0.647-0.592-0.978
+                                    c-0.199-0.329-0.418-0.677-0.654-1.042l-0.906,1.079v2.88c0,0.217-0.117,0.325-0.344,0.325h-2.098c-0.213,0-0.32-0.108-0.32-0.325
+                                    V108.211z"/>
+                                <path fill="#010101" d="M85.73,115.308c0.082,0.07,0.186,0.162,0.311,0.277c0.127,0.117,0.27,0.23,0.432,0.344
+                                    c0.24,0.168,0.484,0.299,0.721,0.392c0.238,0.093,0.486,0.14,0.748,0.14c0.244,0,0.447-0.027,0.609-0.084
+                                    c0.166-0.057,0.297-0.132,0.391-0.225c0.094-0.096,0.162-0.202,0.201-0.326c0.039-0.122,0.062-0.252,0.062-0.391
+                                    c0-0.152-0.059-0.288-0.166-0.409c-0.115-0.12-0.25-0.228-0.412-0.321s-0.33-0.174-0.508-0.239
+                                    c-0.176-0.067-0.328-0.122-0.455-0.165c-0.572-0.208-1.07-0.431-1.498-0.668c-0.428-0.239-0.785-0.506-1.068-0.799
+                                    c-0.285-0.293-0.5-0.614-0.645-0.965c-0.143-0.354-0.213-0.744-0.213-1.178c0-0.457,0.09-0.873,0.27-1.247
+                                    c0.178-0.374,0.43-0.694,0.764-0.96c0.328-0.265,0.729-0.471,1.193-0.615s0.986-0.219,1.562-0.219
+                                    c0.432,0,0.846,0.051,1.242,0.152c0.398,0.101,0.787,0.262,1.172,0.484c0.162,0.098,0.314,0.2,0.461,0.305
+                                    c0.146,0.107,0.27,0.209,0.383,0.308c0.109,0.099,0.193,0.192,0.258,0.28c0.066,0.089,0.098,0.166,0.098,0.229
+                                    c0,0.064-0.014,0.125-0.045,0.178c-0.031,0.055-0.08,0.115-0.139,0.186l-1.092,1.202c-0.082,0.085-0.162,0.126-0.244,0.126
+                                    c-0.066,0-0.127-0.02-0.184-0.059c-0.053-0.039-0.113-0.089-0.18-0.147l-0.066-0.06c-0.092-0.084-0.199-0.17-0.314-0.258
+                                    c-0.113-0.089-0.24-0.17-0.371-0.24c-0.137-0.071-0.277-0.131-0.424-0.178s-0.297-0.07-0.451-0.07
+                                    c-0.158,0-0.301,0.014-0.443,0.041c-0.133,0.027-0.256,0.07-0.357,0.129c-0.107,0.06-0.191,0.137-0.252,0.232
+                                    c-0.062,0.098-0.094,0.213-0.094,0.352s0.033,0.257,0.1,0.357c0.066,0.102,0.166,0.195,0.301,0.281
+                                    c0.133,0.086,0.297,0.168,0.492,0.242c0.199,0.078,0.428,0.16,0.691,0.249c0.506,0.173,0.969,0.354,1.395,0.543
+                                    c0.424,0.188,0.791,0.413,1.102,0.672c0.307,0.257,0.549,0.567,0.723,0.927s0.26,0.795,0.26,1.307c0,0.541-0.105,1.033-0.32,1.475
+                                    c-0.213,0.439-0.506,0.814-0.881,1.125s-0.811,0.551-1.314,0.721c-0.506,0.169-1.045,0.254-1.627,0.254
+                                    c-0.547,0-1.084-0.101-1.611-0.304c-0.529-0.202-1.018-0.474-1.477-0.814c-0.189-0.144-0.352-0.284-0.48-0.421
+                                    c-0.131-0.139-0.234-0.25-0.311-0.334l-0.021-0.023c-0.006-0.009-0.01-0.016-0.014-0.018s-0.01-0.006-0.016-0.012
+                                    c-0.004-0.01-0.01-0.016-0.014-0.018c-0.004-0.003-0.01-0.006-0.016-0.012c-0.109-0.123-0.162-0.223-0.162-0.297
+                                    c0-0.083,0.053-0.177,0.162-0.281l1.236-1.219c0.098-0.074,0.18-0.109,0.238-0.109c0.047,0,0.09,0.015,0.139,0.044
+                                    S85.666,115.249,85.73,115.308z"/>
+                            </g>
+                            <g>
+                                <path fill="#010101" d="M63.943,66.568h-7.027c-0.32,0.027-0.43,0.142-0.43,0.488v25.245c0,0.455-0.098,0.889-0.287,1.29
+                                    c-0.182,0.389-0.432,0.735-0.738,1.026c-0.307,0.287-0.664,0.518-1.066,0.69c-0.979,0.409-2.027,0.317-2.768-0.065
+                                    c-0.389-0.201-0.729-0.426-1.014-0.669l-0.717-0.604c-0.166-0.142-0.279-0.232-0.527-0.101c-0.109,0.056-0.209,0.124-0.311,0.216
+                                    l-4.141,4.016c-0.084,0.07-0.225,0.181-0.225,0.581c0,0.058,0,0.104,0.002,0.144c0.496,0.758,1.076,1.437,1.727,2.019
+                                    c0.658,0.586,1.379,1.087,2.143,1.489c0.762,0.397,1.58,0.703,2.432,0.908c2.275,0.546,4.725,0.356,6.852-0.566
+                                    c1.342-0.582,2.535-1.392,3.551-2.406c1.016-1.018,1.836-2.223,2.432-3.581s0.898-2.835,0.898-4.386V67.354
+                                    C64.729,66.774,64.523,66.568,63.943,66.568z"/>
+                                <path fill="#010101" d="M91.459,87.919c-0.543-1.129-1.316-2.118-2.295-2.938c-0.994-0.831-2.195-1.563-3.572-2.177
+                                    c-1.406-0.626-2.963-1.232-4.623-1.802c-0.883-0.298-1.66-0.576-2.326-0.835c-0.688-0.266-1.277-0.556-1.75-0.862
+                                    c-0.498-0.32-0.887-0.686-1.148-1.085c-0.277-0.422-0.416-0.918-0.416-1.474c0-0.557,0.131-1.043,0.389-1.445
+                                    c0.252-0.39,0.592-0.706,1.012-0.944c0.393-0.223,0.852-0.387,1.363-0.488c0.984-0.193,2.16-0.229,3.234,0.112
+                                    c0.518,0.165,1.021,0.376,1.494,0.629c0.471,0.252,0.914,0.537,1.32,0.847c0.4,0.306,0.766,0.601,1.092,0.89l0.223,0.205
+                                    c0.203,0.178,0.389,0.332,0.561,0.455c0.1,0.07,0.201,0.104,0.318,0.104c0.16,0,0.334-0.145,0.453-0.268l3.643-4.018
+                                    c0.182-0.204,0.318-0.385,0.404-0.534c0.059-0.102,0.088-0.216,0.088-0.343c0-0.038-0.018-0.182-0.229-0.473
+                                    c-0.193-0.267-0.465-0.557-0.803-0.861c-0.352-0.318-0.768-0.653-1.236-0.995c-0.48-0.35-0.986-0.687-1.506-1.003
+                                    c-1.23-0.708-2.51-1.236-3.791-1.563c-1.285-0.326-2.646-0.491-4.045-0.491c-1.861,0-3.57,0.238-5.08,0.707
+                                    c-1.49,0.464-2.783,1.129-3.838,1.976c-1.039,0.837-1.852,1.86-2.414,3.037c-0.562,1.176-0.846,2.508-0.846,3.961
+                                    c0,1.375,0.229,2.639,0.68,3.754c0.449,1.11,1.137,2.145,2.043,3.074c0.916,0.94,2.082,1.809,3.467,2.582
+                                    c1.402,0.781,3.064,1.523,4.941,2.202c0.426,0.146,0.939,0.333,1.537,0.558c0.617,0.234,1.211,0.517,1.768,0.84
+                                    c0.58,0.334,1.08,0.728,1.488,1.168c0.461,0.493,0.697,1.069,0.697,1.71c0,0.496-0.076,0.987-0.227,1.46
+                                    c-0.164,0.494-0.436,0.928-0.811,1.294c-0.367,0.362-0.867,0.655-1.486,0.868c-1.248,0.431-3.262,0.451-4.896-0.192
+                                    c-0.822-0.323-1.668-0.782-2.514-1.364c-0.561-0.394-1.064-0.795-1.498-1.193c-0.418-0.383-0.76-0.688-1.025-0.917
+                                    c-0.201-0.178-0.369-0.312-0.51-0.397c-0.078-0.049-0.146-0.074-0.191-0.074c-0.006,0-0.15,0.002-0.512,0.271l-4.078,4.035
+                                    c-0.375,0.354-0.402,0.539-0.402,0.587c0,0.002,0.004,0.181,0.402,0.635c0.049,0.036,0.09,0.077,0.125,0.124
+                                    c0.041,0.036,0.078,0.076,0.109,0.123l0.029,0.029c0.27,0.297,0.613,0.666,1.049,1.125c0.418,0.445,0.939,0.902,1.547,1.358
+                                    c1.484,1.108,3.105,2.004,4.822,2.661c3.512,1.348,7.344,1.222,10.5,0.158c1.627-0.549,3.055-1.33,4.248-2.322
+                                    c1.189-0.991,2.139-2.205,2.818-3.605c0.68-1.398,1.025-2.985,1.025-4.716C92.281,90.444,92.004,89.046,91.459,87.919z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="info-copyright">Content licensed under <a href="https://creativecommons.org/" targer="_blank">Creattive Commons</a>  -  Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a> Static website proudly powered by <a href="https://github.com/es6rocks/harmonic" target="_blank">Harmonic</a></span>
+                </div>
+                <aside class="social">
+                    <div class="twitter item-social-footer">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://es6rocks.com/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
+                        <script>
+                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                        </script>
+                    </div>
+                    <div class="facebook item-social-footer">
+                        <div class="fb-like" data-href="http://es6rocks.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false">
+                            <div id="fb-root"></div>
+                            <script>
+                                (function(d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) return;
+                                    js = d.createElement(s); js.id = id;
+                                    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="gplus item-social-footer">
+                        <div class="g-plusone" data-size="medium" data-href="http://es6rocks.com/"></div>
+                        <script type="text/javascript">
+                          (function() {
+                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                            po.src = 'https://apis.google.com/js/platform.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                          })();
+                        </script>
+                    </div>
+                    <div class="github item-social-footer">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=es6rocks&repo=es6rocks.github.io&type=watch&count=true"
+                            allowtransparency="true"
+                            frameborder="0"
+                            scrolling="0"
+                            width="110"
+                            height="20">
+                     </iframe>
+                    </div>
+                </aside>
+                <div class="js-footer">
+                    <a href="#"><img src="/images/icon-logo-js.png" alt="icon JS" title="Javascript"></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <footer class="wrapper">
-        <div class="footer-content">
-            <asside class="logo-desc">
-                <img src="/img/footer-logo.jpg" class="footer-logo" />
-                <span class="footer-desc">
-                    Content licensed under <a href="https://creativecommons.org/" target="_blank">Creattive Commons</a>&nbsp;&nbsp;-&nbsp;&nbsp;Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a><br/>
-                    Static website proudly powered by <a href="https://github.com/es6rocks/harmonic" target="_blank">Harmonic</a>
-                </span>
-            </asside>
-            <asside class="social">
-                
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://es6rocks.com/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                
-                
-                <div class="fb-like" data-href="http://es6rocks.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                
-                
-                <div class="g-plusone" data-size="medium" data-href="http://es6rocks.com/"></div>
-                <script type="text/javascript">
-                  (function() {
-                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                    po.src = 'https://apis.google.com/js/platform.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                  })();
-                </script>
-                
-                
-                <iframe src="http://ghbtns.com/github-btn.html?user=es6rocks&repo=es6rocks.github.io&type=watch&count=true"
-                        allowtransparency="true"
-                        frameborder="0"
-                        scrolling="0"
-                        width="110"
-                        height="20"></iframe>
-                
-            </asside>
-            <asside class="js-logo">
-                <img src="/img/js-logo.jpg" />
-            </asside>
-        </div>
-    </footer>
-    <div class="decorator-line dl-7"></div>
-</div>
+</footer>        
+    </div>
 
-<script type="text/javascript" src="/js/main.js" charset="utf-8"></script>
-
-
-<div id="fb-root"></div>
-<script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=742886022434997&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-
+    <script src="/harmonic.js"></script>
+<script src="/js/vendor/jquery.min.js"></script>
+<script src="/js/vendor/prism.js"></script>
+<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="/js/vendor/prefixfree.min.js"></script>
+<script src="/js/vendor/respond.min.js"></script>
+<script src="/js/vendor/scripts-bootstrap.js"></script>
+<script src="/js/main.js"></script>
 
 
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-51061271-1');ga('send','pageview');
 </script>
-
-    </body>
+</body>
 </html>
