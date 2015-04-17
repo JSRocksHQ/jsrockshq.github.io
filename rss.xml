@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Fri, 17 Apr 2015 04:33:34 GMT</pubDate>
+        <pubDate>Fri, 17 Apr 2015 05:45:49 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -77,49 +77,6 @@
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6</guid>
-        </item>
-        
-        <item>
-            <title>ES6 interview with David Herman</title>
-            <link>http://es6rocks.com/2014/07/es6-interview-with-david-herman</link>
-            <description><![CDATA[<p>We did a nice interview with <a href="https://twitter.com/littlecalculist">David Herman</a> about his thoughts about ES6.</p>
-]]></description>
-            <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/07/es6-interview-with-david-herman</guid>
-        </item>
-        
-        <item>
-            <title>Practical Workflows for ES6 Modules, Fluent 2014</title>
-            <link>http://es6rocks.com/2014/05/practical-workflows-es6-modules</link>
-            <description><![CDATA[]]></description>
-            <pubDate>Tue, 27 May 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/05/practical-workflows-es6-modules</guid>
-        </item>
-        
-        <item>
-            <title>ECMAScript 6 - A Better JS for the Ambient Computing Era</title>
-            <link>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</link>
-            <description><![CDATA[]]></description>
-            <pubDate>Tue, 27 May 2014 06:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/05/ecmascript-6-a-better-javascript-for-the-ambient-computing-era</guid>
-        </item>
-        
-        <item>
-            <title>ES6 - The future is here</title>
-            <link>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</link>
-            <description><![CDATA[<p>A talk by <a href="https://twitter.com/sebarmeli">Sebastiano Armeli</a> showing some of the ES6 features like scoping, generators, collections, modules and proxies.</p>
-]]></description>
-            <pubDate>Tue, 27 May 2014 05:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/05/ecmascript-6-the-future-is-here</guid>
-        </item>
-        
-        <item>
-            <title>Hello World</title>
-            <link>http://es6rocks.com/2014/05/hello-world</link>
-            <description><![CDATA[<p>Hello everybody, welcome to ES6Rocks!<br>The mission here is to discuss about <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">JavaScript&#39;s next version</a> , aka Harmony or ES.next.</p>
-]]></description>
-            <pubDate>Sat, 17 May 2014 08:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/05/hello-world</guid>
         </item>
         
     </channel>

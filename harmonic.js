@@ -18,7 +18,7 @@ class Harmonic {
     }
 
     getConfig() {
-        return {"name":"ES6 Rocks","title":"ES6 Rocks","domain":"http://es6rocks.com","subtitle":"Powered by Harmonic","author":"ES6 Rocks","description":"A website dedicated to teach all about ES6","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"index_posts":20,"i18n":{"default":"en","languages":["en","pt-br"]}};
+        return {"name":"ES6 Rocks","title":"ES6 Rocks","domain":"http://es6rocks.com","subtitle":"Powered by Harmonic","author":"ES6 Rocks","description":"A website dedicated to teach all about ES6","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"index_posts":8,"i18n":{"default":"en","languages":["en","pt-br"]}};
     }
 
     getPosts() {
@@ -45,7 +45,7 @@ var Harmonic = (function () {
     _prototypeProperties(Harmonic, null, {
         getConfig: {
             value: function getConfig() {
-                return {"name":"ES6 Rocks","title":"ES6 Rocks","domain":"http://es6rocks.com","subtitle":"Powered by Harmonic","author":"ES6 Rocks","description":"A website dedicated to teach all about ES6","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"index_posts":20,"i18n":{"default":"en","languages":["en","pt-br"]}};
+                return {"name":"ES6 Rocks","title":"ES6 Rocks","domain":"http://es6rocks.com","subtitle":"Powered by Harmonic","author":"ES6 Rocks","description":"A website dedicated to teach all about ES6","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"index_posts":8,"i18n":{"default":"en","languages":["en","pt-br"]}};
             },
             writable: true,
             configurable: true
