@@ -10,7 +10,7 @@ categories: scope, articles, basics
 authorName: Felipe N. Moura
 authorLink: http://twitter.com/felipenmoura
 authorDescription: FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.0.160.160/p160x160/10556538_10203722375715942_6849892741161969592_n.jpg?oh=a3044d62663f3d0f4fe74f480b61c9d1&oe=54C6A6B1&__gda__=1422509575_e6364eefdf2fc0e5c96899467d229f62
+authorPicture: /avatars/felipenmoura.png
 -->
 Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!<!--more-->
 It is not just awesome, it's also great to work with scopes, shortcuts some techniques we are used to use nowadays, shrinks the number of lines of code...
