@@ -384,7 +384,7 @@ var JsRocks = function() {
 		PRIVATE.atrCategory(jsrocks.categoryPath);
 		PRIVATE.otherPosts();
 		PRIVATE.morePosts();
-		PRIVATE.disqus('#disqus_thread');
+		PRIVATE.disqus('disqus_thread');
 		PRIVATE.shareSocialnetwork();
 
 		PUBLIC.scrollTop('goToTop', 'click', 0, 1000);

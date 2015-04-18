@@ -6,7 +6,7 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Fri, 12 Dec 2014 22:42:01 GMT</pubDate>
+        <pubDate>Sat, 18 Apr 2015 05:15:34 GMT</pubDate>
         <language>cn</language>
         <atom:link href="http://es6rocks.com/cn/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -14,121 +14,6 @@
             <title>使用6to5，让今天就来写ES6的模块化开发!</title>
             <link>http://es6rocks.com/cn/2014/11/es6-modules-today-with-6to5</link>
             <description><![CDATA[<p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>
-<p><img src="/img/modules-today-6to5.png" alt="使用6to5让今天就可以练手ES6的模块化"></p>
-<h1 id="-">第一步</h1>
-<p>如果你现在还不了解ES6的模块化开发，请在<a href="http://JSModules.io">JSModules.io</a>上了解一下。我也推荐大家读一下@jcemer的文章<a href="http://es6rocks.com/2014/07/a-new-syntax-for-modules-in-es6/">A new syntax for modules in ES6</a>，它涉及到了很多非常酷的关于JS模块化的东西。他可以指导我们使用6to5。总的来说，6to5能在支持ES5d的环境下提前尝试ES6 模块化开发的快感。
-6to5比其他降级工具有一下几个优势：</p>
-<ul>
-<li>可读性：你的格式化的代码尽可能的保留。</li>
-<li>可扩展性：有非常庞大的插件库和浏览器的支持。</li>
-<li>可调式性：因为支持source map，你可以方便的调试已经编译过后的代码</li>
-<li>高效率：直接转化为与ES相当的代码，不会增加额外的运行十几</li>
-</ul>
-<h1 id="-">一起来写模块</h1>
-<p>让我们来尝试着写模块吧！
-我们的应用除了输出日志不会做其他事情，其主要的目的就是让你了解模块化如何工作和如何让你现有的环境使用ES6的模块化开发。
-基本的目录结构：</p>
-<pre><code>├── Gruntfile.js
-├── package.json
-└── src
-    ├── app.js
-    ├── modules
-    │   ├── bar.js
-    │   ├── baz.js
-    │   └── foo.js
-    └── sample
-        └── index.html
-</code></pre><p>app.js是主程序，包含了我们将要存储的模块化的目录
-下面是app.js的代码：</p>
-<pre><code class="lang-javascript">import foo from &quot;./modules/foo&quot;;
-import bar from &quot;./modules/bar&quot;;
-
-console.log(&#39;From module foo &gt;&gt;&gt; &#39;, foo);
-console.log(&#39;From module bar &gt;&gt;&gt; &#39;, bar);
-</code></pre>
-<p>以上代码非常简单，我们导入了foo模块和bar模块，然后分别打印出他们</p>
-<pre><code class="lang-javascript">// foo.js
-let foo = &#39;foo&#39;;
-
-export default foo;
-
-
-// bar.js
-let bar = &#39;bar&#39;;
-
-export default bar;
-</code></pre>
-<p>在这些模块一面我们只是导出了两个字符串&#39;foo&#39;和&#39;bar&#39;，当我们导入这些模块，我们的变量其实已经有数据。
-当然，我们何以导出对象，类，函数，等等
-现在，你可以开始模仿这个例子写出你自己的模块</p>
-<h1 id="-">构建</h1>
-<p>就像你已经知道的，<a href="http://kangax.github.io/compat-table/es6/">ES6不支持你现在的浏览器和Node</a>.js，只有一条路，那就是使用降级转换器来编写ES6的模块化代码。
-正如我之前提到的那个，我使用6to5，他可以精确的达到我们想要的效果。
-这个任务是运行在Grunt上的,我们使用 @sindresorhus的 <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a></p>
-<pre><code class="lang-shell">npm install grunt-cli -g
-npm install grunt --save-dev
-npm install grunt-6to5 --save-dev
-</code></pre>
-<p>我们的Gruntfile类似于一下：</p>
-<pre><code class="lang-javascript">grunt.initConfig({
-    &#39;6to5&#39;: {
-        options: {
-            modules: &#39;common&#39;
-        },
-
-        build: {
-            files: [{
-                expand: true,
-                cwd: &#39;src/&#39;,
-                src: [&#39;**/*.js&#39;],
-                dest: &#39;dist/&#39;,
-            }],
-        }
-    }
-});
-</code></pre>
-<p>这是个简单又给力的配置，我们也几乎完成了。
-当你指定好源文件和输出文件后，这个任务就可以来运行了。
-&#39;common&#39;选项的目的在于告诉6to5我们将输出ES5CommonJS模块化风格。
-当然，6to5也支持AMD，我写了sample/index.html，让他在浏览器环境下测试一下，这个HTML的代码如下：</p>
-<pre><code class="lang-html">&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;ES6 modules 6to5&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;script src=&quot;//[cdnjs URL]/require.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        require([&#39;app.js&#39;]);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>观察上面的代码，我们使用AMD的RequireJS框架来加载这个JS，对于这个例子，你需要将上面的配置文件改为 modules: &#39;amd&#39;</p>
-<h1 id="-">运行</h1>
-<p>万事俱备东风只欠，我们的代码已经放在<a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>，你可以克隆下来自己玩玩。使用npm install安装6to5</p>
-<p>记住一点，Grunt任务会生成一个目标文件夹来存放转化后的代码
-所以，如果你想测试使用CommonJS规范的转化后的ES6的代码，你可以执行一下命令</p>
-<pre><code class="lang-shell">node dist/app.js
-</code></pre>
-<figure>
-    <a href="http://es6rocks.com/img/running-node.png">
-        <img src="http://es6rocks.com/img/running-node.png" alt="home" />
-    </a>
-    <figcaption>Node.js上的运行效果</figcaption>
-</figure>
-
-<p>如果你使用AMD规范的，请在浏览器访问index.html(<strong>吐槽一下，老外竟然不知道中国的<a href="https://github.com/seajs/seajs">sea.js</a></strong>)</p>
-<figure>
-    <a href="http://es6rocks.com/img/amd-es6.png">
-        <img src="http://es6rocks.com/img/amd-es6.png" alt="home" />
-    </a>
-    <figcaption>在浏览器执行的效果</figcaption>
-</figure>
-
-<h1 id="-">结论</h1>
-<p>通过这个简单的实例你学会了如果简单的使用ES6模块化风格来编写代码。6to5是胃肠棒的工具让你穿越到未来提前体验ES6模块化带来的快感。资源下载<a href="https://github.com/es6rocks/es6-modules-today-with-6to5">es6-modules-today-with-6to5</a>，欢迎提交一些问题的反馈</p>
 ]]></description>
             <pubDate>Wed, 05 Nov 2014 15:19:50 GMT</pubDate>
             <guid>http://es6rocks.com/cn/2014/11/es6-modules-today-with-6to5</guid>
@@ -140,7 +25,7 @@ npm install grunt-6to5 --save-dev
             <description><![CDATA[<p>Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.
 他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.
 实际上，即使你没在字符串和javascript花了很多时间，这些由Mathias提出的编码技巧也是很有用的。</p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/zi0w7J7MCrk" frameborder="0" allowfullscreen></iframe>]]></description>
+]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
             <guid>http://es6rocks.com/cn/2014/10/javascript-unicode</guid>
         </item>
@@ -149,265 +34,22 @@ npm install grunt-6to5 --save-dev
             <title>ES6箭头函数和它的作用域</title>
             <link>http://es6rocks.com/cn/2014/10/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>
-<h2 id="-">执行环境</h2>
-<p>你可以自己去学习和尝试下, 你可以简单的把示例程序代码复制到你的浏览器控制台下. 现在, 推荐使用Firefox(22+)开发者工具, Firefox(22+)开发者工具现在支持箭头函数,你也可以使用谷歌浏览器. 如果你使用谷歌浏览器, 你必须要做下列两件事:</p>
-<ul>
-<li>- 在谷歌浏览器中地址栏中输入：&quot;about:flags&quot;, 找到 &quot;使用体验性Javascript&quot;选项，开启使用。</li>
-<li>- 在函数的开头加上&quot;use strict&quot;,然后再在你的谷歌浏览中测试箭头函数吧(提示：请用谷歌浏览器v38,我当时就是被浏览器版本坑了):</li>
-</ul>
-<pre><code class="lang-javascript">(function(){
-    &quot;use strict&quot;;
-    // use arrow functions here
-}());
-</code></pre>
-<p>幸运的是后面会有越来越多的浏览器支持ES6特性. 现在你完成了所有准备工作, 让我们继续深入它吧!</p>
-<h2 id="-">一个新话题</h2>
-<p>最近大家在讨论关于ES6的一个话题：关于箭头函数, 像这样:</p>
-<pre><code class="lang-javascript">=&gt;
-</code></pre>
-<h2 id="-">新的语法</h2>
-<p>随着讨论产生了一个新的语法：</p>
-<pre><code class="lang-javascript">param =&gt; expression
-</code></pre>
-<p>新增的语法是作用在变量上, 可以在表达式中申明多个变量, 下面是箭头函数的使用模式:</p>
-<pre><code class="lang-javascript">//  一个参数对应一个表达式
-param =&gt; expression;// 例如 x =&gt; x+2;
-
-// 多个参数对应一个表达式
-(param [, param]) =&gt; expression; //例如 (x,y) =&gt; (x + y);
-
-// 一个参数对应多个表示式
-param =&gt; {statements;} //例如 x = &gt; { x++; return x;};
-
-//  多个参数对应多个表达式
-([param] [, param]) =&gt; {statements} // 例如 (x,y) =&gt; { x++;y++;return x*y;};
-
-//表达式里没有参数
-() =&gt; expression; //例如var flag = (() =&gt; 2)(); flag等于2
-
-() =&gt; {statements;} //例如 var flag = (() =&gt; {return 1;})(); flag就等于1
-
- //传入一个表达式，返回一个对象
-([param]) =&gt; ({ key: value });
-//例如  var fuc = (x) =&gt; ({key:x})
-        var object = fuc(1);
-        alert(object);//{key:1}
-</code></pre>
-<h2 id="-">箭头函数是怎么实现的</h2>
-<p>我们可以把一个普通函数转换成用箭头函数来实现：</p>
-<pre><code class="lang-javascript">// 当前函数
-var func = function (param) {
-    return param.split(&quot; &quot;);
-}
-// 利用箭头函数实现
-var func = param =&gt; param.split(&quot; &quot;);
-</code></pre>
-<p>从上面的例子中我们可以看出箭头函数的语法实际上是返回了一个新的函数, 这个函数有函数体和参数</p>
-<p>因此, 我们可以这样调用刚才我们创建的函数:</p>
-<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]
-</code></pre>
-<h2 id="-iife-">立即执行函数(IIFE)</h2>
-<p>你能在立即执行函数里使用箭头函数，例如:</p>
-<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
-</code></pre>
-<p>这行代码产生了一个临时函数，这个函数有一个形参<code>x</code>，函数的返回值为<code>x*2</code>,之后系统会马上执行这个临时函数, 将<code>3</code>赋值给形参<code>x</code>.</p>
-<p>下面的例子描述了临时函数体里有多行代码的情况：</p>
-<pre><code class="lang-javascript">( (x, y) =&gt; {
-    x = x * 2;
-    return x + y;
-})( 3, &quot;A&quot; ); // &quot;6A&quot;
-</code></pre>
-<h2 id="-">相关思考</h2>
-<p>思考下面的函数：</p>
-<pre><code class="lang-javascript">var func = x =&gt; {
-    return x++;
-};
-</code></pre>
-<p>我们列出了一些常见的问题：</p>
-<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>是我们预料的那样工作</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
-</code></pre>
-<p><strong>- <code>typeof</code>和<code>instanceof</code>函数也能正常检查临时函数</strong></p>
-<pre><code class="lang-javascript">func instanceof Function; // true
-typeof func; // function
-func.constructor == Function; // true
-</code></pre>
-<p><strong>- 把箭头函数放在括号内是无效的</strong></p>
-<pre><code class="lang-javascript">//  有效的常规语法
-(function (x, y){
-    x= x * 2;
-    return x + y;
-} (3, &quot;B&quot;) );
-
-// 无效的箭头函数语法
-( (x, y) =&gt; {
-    x= x * 2;
-    return x + y;
-} ( 3, &quot;A&quot; ) );
-
-// 但是可以这样写就是有效的了：
-( (x,y) =&gt; {
-    x= x * 2;return x + y;
-} )( 3,&quot;A&quot; );//立即执行函数
-</code></pre>
-<p><strong>- 尽管箭头函数会产生一个临时函数，但是这个临时函数不是一个构造函数</strong></p>
-<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
-</code></pre>
-<p><strong>- 同样也没有原型对象</strong></p>
-<pre><code class="lang-javascript">func.prototype; // undefined
-</code></pre>
-<h2 id="-">作用域</h2>
-<p>这个箭头函数的作用域和其他函数有一些不同,如果不是严格模式，<code>this</code>关键字就是指向<code>window</code>，严格模式就是<code>undefined</code>，在构造函数里的<code>this</code>指向的是当前对象实例,如果this在一个对象的函数内则<code>this</code>指向的是这个对象，<code>this</code>有可能指向的是一个<code>dom元素</code>，例如当我们添加事件监听函数时,可能这个<code>this</code>的指向不是很直接，其实<code>this</code>（不止是<code>this</code>变量）变量的指向是根据一个规则来判断的：作用域流。下面我将演示<code>this</code>在事件监听函数和在对象函数内出现的情况： </p>
-<p>在事件监听函数中：</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
-    console.log(this); // the HTMLBodyElement itself
-});
-</code></pre>
-<p>在构造函数里：</p>
-<pre><code class="lang-javascript">function Person () {
-
-    let fullName = null;
-
-    this.getName = function () {
-        return fullName;
-    };
-
-    this.setName = function (name) {
-        fullName = name;
-        return this;
-    };
-}
-
-let jon = new Person();
-jon.setName(&quot;Jon Doe&quot;);
-console.log(jon.getName()); // &quot;Jon Doe&quot;
-//注：this关键字这里就不解释了，大家自己google,baidu吧。
-</code></pre>
-<p>在这个例子中，如果我们让Person.setName函数返回Person对象本身，我们就可以这样用：</p>
-<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
-   .getName(); // &quot;Jon Doe&quot;
-</code></pre>
-<p>在一个对象里:</p>
-<pre><code class="lang-javascript">let obj = {
-    foo: &quot;bar&quot;,
-    getIt: function () {
-        return this.foo;
-    }
-};
-
-console.log( obj.getIt() ); // &quot;bar&quot;
-</code></pre>
-<p>但是当执行流(比如使用了setTimeout)和作用域变了的时候，this也会变。</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( function () {
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// window
-</code></pre>
-<p>当<code>setTimeout</code>函数改变了执行流的情况时，<code>this</code>的指向会变成全局对象,或者是在严格模式下就是<code>undefine</code>,这样在<code>setTimeout</code>函数里面我们使用其他的变量去指向<code>this</code>对象，比如<code>self</code>，<code>that</code>,当然不管你用什么变量，你首先应该在setTimeout访问之前，给<code>self</code>，<code>that</code>赋值，或者使用<code>bind</code>方法不然这些变量就是undefined。</p>
-<p>这是后就是箭头函数登场的时候了，它可以保持作用域，this的指向就不会变了。</p>
-<p>让我们看下上文<strong>起先</strong>的例子，在这里我们使用箭头函数：</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( ()=&gt;{
-            // the only difference is here
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
-</code></pre>
-<blockquote>
-<p>分析：在sayHi函数中，我们使用了箭头函数，当前作用域是在student对象的一个方法中，箭头函数生成的临时函数的作用域也就是student对象的sayHi函数的作用域。所以即使我们在setTimeout调用了箭头函数生成的临时函数，这个临时函数中的this也是正确的指向。</p>
-</blockquote>
-<h2 id="-">有趣和有用的使用</h2>
-<p>创建一个函数很容易，我们可以利用它可以保持作用域的特征：</p>
-<p>例如我们可以这么使用：Array.forEach()</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.forEach(vowel =&gt; {
-    console.log(vowel);
-});
-</code></pre>
-<blockquote>
-<p>分析：在forEach里箭头函数会创建并返回一个临时函数 tempFun,这个tempFun你可以想象成这样的：function(vowel){ console.log(vowel);}但是Array.forEach函数会怎么去处理传入的tempFunc呢？在forEach函数里会这样调用它：tempFunc.call(this,value);所有我们看到函数的正确执行效果。</p>
-</blockquote>
-<p>//在Array.map里使用箭头函数，这里我就不分析函数执行过程了。。。。</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.map(vowel =&gt; {
-    return vowel.toUpperCase();
-});
-// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
-</code></pre>
-<p>费布拉奇数列</p>
-<pre><code class="lang-javascript">var factorial = (n) =&gt; {
-    if(n==0) {
-        return 1;
-    }
-    return (n * factorial (n-1) );
-}
-
-factorial(6); // 720
-</code></pre>
-<p>我们也可以用在Array.sort方法里：</p>
-<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
-</code></pre>
-<p>也可以在事件监听函数里使用：</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
-</code></pre>
-<h2 id="-">推荐的链接</h2>
-<p>下面列出了一系列有用的链接，大家可以去看一看</p>
-<ul>
-<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions in MDN Documentation</a></li>
-<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki about Arrow Function</a></li>
-<li>- <a href="https://github.com/esnext">ESNext</a></li>
-<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
-<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
-<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
-<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
-</ul>
-<h2 id="-">总结</h2>
-<p>尽管大家可能会认为使用箭头函数会降低你代码的可读性，但是由于它对作用域的特殊处理，它能让我们能很好的处理this的指向问题。箭头函数加上let关键字的使用，将会让我们javascript代码上一个层次！尽量多使用箭头函数，你可以再你的浏览器测试你写的箭头函数代码，大家可以再评论区留下你对箭头函数的想法和使用方案！我希望大家能享受这篇文章，就像你会不就的将来享受箭头函数带给你的快乐.</p>
 ]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
             <guid>http://es6rocks.com/cn/2014/10/arrow-functions-and-their-scope</guid>
+        </item>
+        
+        <item>
+            <title>你需要知道的块级作用域 - let</title>
+            <link>http://es6rocks.com/cn/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <description><![CDATA[<ul>
+<li>译<a href="https://github.com/hacke2">@hacke2</a></li>
+</ul>
+<p>变量声明在任何语言中都是非常基础的东西，理解变量在作用域下如何工作是非常重要的事情。</p>
+<p>在大多数语言中，如<code>Python</code>，他有两个作用域:局部 和 全局。如下，变量定义在代码开头部分则为全局变量，在函数里面声明变量则为局部变量。</p>
+]]></description>
+            <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
+            <guid>http://es6rocks.com/cn/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
     </channel>

@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>ES6箭头函数和它的作用域 - ES6 Rocks</title>
+    <title>你需要知道的块级作用域 - let - ES6 Rocks</title>
 </head>
 <body data-page="article">
     <div class="wrapper">
@@ -250,22 +250,22 @@
                 <div class="row">
                     <div class="col-xs-12 header-article">
                         <div class="author-post">
-                            <div class="avatar-author"><img src="/avatars/felipenmoura.png" alt="Felipe N. Moura"></div>
+                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson"></div>
                             <div class="info-author">
                                 <span>Posted by</span>
-                                <a href="http://twitter.com/felipenmoura" rel="author" class="author">Felipe N. Moura</a>
+                                <a href="http://twitter.com/jaydson" rel="author" class="author">Jaydson</a>
                             </div>
                         </div>
-                        <div class="date-post">Wed Oct 01 2014 01:01:41 GMT-0300 (BRT)</div>
-                        <h1 class="title-post">ES6箭头函数和它的作用域</h1>
+                        <div class="date-post">Wed Aug 27 2014 22:58:23 GMT-0300 (BRT)</div>
+                        <h1 class="title-post">你需要知道的块级作用域 - let</h1>
                         <div class="centering">
                             <ul class="tags-post">
                                 
-                                    <li class="item-tag-post" data-post-category="作于域"></li>
+                                    <li class="item-tag-post" data-post-category="scope"></li>
                                 
-                                    <li class="item-tag-post" data-post-category=" 文章"></li>
+                                    <li class="item-tag-post" data-post-category=" articles"></li>
                                 
-                                    <li class="item-tag-post" data-post-category=" 基本原理"></li>
+                                    <li class="item-tag-post" data-post-category=" basics"></li>
                                 
                             </ul>
                         </div>
@@ -276,267 +276,70 @@
                     <div class="col-xs-12">
                         <div class="article-content">
                             <aside class="share-post">
-                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/10/arrow-functions-and-their-scope" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                <a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/cn/2014/10/arrow-functions-and-their-scope" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/08/what-you-need-to-know-about-block-scope-let" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/cn/2014/08/what-you-need-to-know-about-block-scope-let" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
                             </aside>
-                            <p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>
-
-<h2 id="-">执行环境</h2>
-<p>你可以自己去学习和尝试下, 你可以简单的把示例程序代码复制到你的浏览器控制台下. 现在, 推荐使用Firefox(22+)开发者工具, Firefox(22+)开发者工具现在支持箭头函数,你也可以使用谷歌浏览器. 如果你使用谷歌浏览器, 你必须要做下列两件事:</p>
-<ul>
-<li>- 在谷歌浏览器中地址栏中输入：&quot;about:flags&quot;, 找到 &quot;使用体验性Javascript&quot;选项，开启使用。</li>
-<li>- 在函数的开头加上&quot;use strict&quot;,然后再在你的谷歌浏览中测试箭头函数吧(提示：请用谷歌浏览器v38,我当时就是被浏览器版本坑了):</li>
+                            <ul>
+<li>译<a href="https://github.com/hacke2">@hacke2</a></li>
 </ul>
-<pre><code class="lang-javascript">(function(){
-    &quot;use strict&quot;;
-    // use arrow functions here
-}());
+<p>变量声明在任何语言中都是非常基础的东西，理解变量在作用域下如何工作是非常重要的事情。</p>
+<p>在大多数语言中，如<code>Python</code>，他有两个作用域:局部 和 全局。如下，变量定义在代码开头部分则为全局变量，在函数里面声明变量则为局部变量。</p>
+
+<p>JavaScript也很相似，看以下例子：</p>
+<pre><code class="lang-Python"># Python
+x = 1 # 全局变量
+y = 3
+
+def sum(a, b):
+    s = a + b # 局部变量
+    return s
 </code></pre>
-<p>幸运的是后面会有越来越多的浏览器支持ES6特性. 现在你完成了所有准备工作, 让我们继续深入它吧!</p>
-<h2 id="-">一个新话题</h2>
-<p>最近大家在讨论关于ES6的一个话题：关于箭头函数, 像这样:</p>
-<pre><code class="lang-javascript">=&gt;
-</code></pre>
-<h2 id="-">新的语法</h2>
-<p>随着讨论产生了一个新的语法：</p>
-<pre><code class="lang-javascript">param =&gt; expression
-</code></pre>
-<p>新增的语法是作用在变量上, 可以在表达式中申明多个变量, 下面是箭头函数的使用模式:</p>
-<pre><code class="lang-javascript">//  一个参数对应一个表达式
-param =&gt; expression;// 例如 x =&gt; x+2;
+<pre><code class="lang-JavaScript">// JavaScript
+var x = 1;  // 全局变量
+var y = 3;
 
-// 多个参数对应一个表达式
-(param [, param]) =&gt; expression; //例如 (x,y) =&gt; (x + y);
-
-// 一个参数对应多个表示式
-param =&gt; {statements;} //例如 x = &gt; { x++; return x;};
-
-//  多个参数对应多个表达式
-([param] [, param]) =&gt; {statements} // 例如 (x,y) =&gt; { x++;y++;return x*y;};
-
-//表达式里没有参数
-() =&gt; expression; //例如var flag = (() =&gt; 2)(); flag等于2
-
-() =&gt; {statements;} //例如 var flag = (() =&gt; {return 1;})(); flag就等于1
-
- //传入一个表达式，返回一个对象
-([param]) =&gt; ({ key: value });
-//例如  var fuc = (x) =&gt; ({key:x})
-        var object = fuc(1);
-        alert(object);//{key:1}
-</code></pre>
-<h2 id="-">箭头函数是怎么实现的</h2>
-<p>我们可以把一个普通函数转换成用箭头函数来实现：</p>
-<pre><code class="lang-javascript">// 当前函数
-var func = function (param) {
-    return param.split(&quot; &quot;);
+function sum(a, b) {
+    var s = a + b;  // 局部变量
+    return s;
 }
-// 利用箭头函数实现
-var func = param =&gt; param.split(&quot; &quot;);
 </code></pre>
-<p>从上面的例子中我们可以看出箭头函数的语法实际上是返回了一个新的函数, 这个函数有函数体和参数</p>
-<p>因此, 我们可以这样调用刚才我们创建的函数:</p>
-<pre><code class="lang-javascript">func(&quot;Felipe Moura&quot;); // returns [&quot;Felipe&quot;, &quot;Moura&quot;]
+<p>以C语言为基础而衍生出来的语言(JavaScript, PHP)一般是块级作用域，但JavaScript却不是，当你在一个函数体内声明一个变量，他会在父级或者全局来寻找这个变量，这种行为叫做<code>变量提升</code>，与其他语言不同，JavaScript会在<code>for循环</code>外面使用这些变量。</p>
+<p>看下面这个例子</p>
+<pre><code class="lang-JavaScript">// JavaScript
+for (var i = 0; i &lt;= 2; i += 1) {
+    console.log(i); // 当前 i
+}
+console.log(i); // 最后一个 i，也就是3
 </code></pre>
-<h2 id="-iife-">立即执行函数(IIFE)</h2>
-<p>你能在立即执行函数里使用箭头函数，例如:</p>
-<pre><code class="lang-javascript">( x =&gt; x * 2 )( 3 ); // 6
-</code></pre>
-<p>这行代码产生了一个临时函数，这个函数有一个形参<code>x</code>，函数的返回值为<code>x*2</code>,之后系统会马上执行这个临时函数, 将<code>3</code>赋值给形参<code>x</code>.</p>
-<p>下面的例子描述了临时函数体里有多行代码的情况：</p>
-<pre><code class="lang-javascript">( (x, y) =&gt; {
-    x = x * 2;
-    return x + y;
-})( 3, &quot;A&quot; ); // &quot;6A&quot;
-</code></pre>
-<h2 id="-">相关思考</h2>
-<p>思考下面的函数：</p>
-<pre><code class="lang-javascript">var func = x =&gt; {
-    return x++;
-};
-</code></pre>
-<p>我们列出了一些常见的问题：</p>
-<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>是我们预料的那样工作</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
-</code></pre>
-<p><strong>- <code>typeof</code>和<code>instanceof</code>函数也能正常检查临时函数</strong></p>
-<pre><code class="lang-javascript">func instanceof Function; // true
-typeof func; // function
-func.constructor == Function; // true
-</code></pre>
-<p><strong>- 把箭头函数放在括号内是无效的</strong></p>
-<pre><code class="lang-javascript">//  有效的常规语法
-(function (x, y){
-    x= x * 2;
-    return x + y;
-} (3, &quot;B&quot;) );
-
-// 无效的箭头函数语法
-( (x, y) =&gt; {
-    x= x * 2;
-    return x + y;
-} ( 3, &quot;A&quot; ) );
-
-// 但是可以这样写就是有效的了：
-( (x,y) =&gt; {
-    x= x * 2;return x + y;
-} )( 3,&quot;A&quot; );//立即执行函数
-</code></pre>
-<p><strong>- 尽管箭头函数会产生一个临时函数，但是这个临时函数不是一个构造函数</strong></p>
-<pre><code class="lang-javascript">var instance= new func(); // TypeError: func is not a constructor
-</code></pre>
-<p><strong>- 同样也没有原型对象</strong></p>
-<pre><code class="lang-javascript">func.prototype; // undefined
-</code></pre>
-<h2 id="-">作用域</h2>
-<p>这个箭头函数的作用域和其他函数有一些不同,如果不是严格模式，<code>this</code>关键字就是指向<code>window</code>，严格模式就是<code>undefined</code>，在构造函数里的<code>this</code>指向的是当前对象实例,如果this在一个对象的函数内则<code>this</code>指向的是这个对象，<code>this</code>有可能指向的是一个<code>dom元素</code>，例如当我们添加事件监听函数时,可能这个<code>this</code>的指向不是很直接，其实<code>this</code>（不止是<code>this</code>变量）变量的指向是根据一个规则来判断的：作用域流。下面我将演示<code>this</code>在事件监听函数和在对象函数内出现的情况： </p>
-<p>在事件监听函数中：</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, function(evt){
-    console.log(this); // the HTMLBodyElement itself
-});
-</code></pre>
-<p>在构造函数里：</p>
-<pre><code class="lang-javascript">function Person () {
-
-    let fullName = null;
-
-    this.getName = function () {
-        return fullName;
-    };
-
-    this.setName = function (name) {
-        fullName = name;
-        return this;
-    };
+<p>在这个例子中，i竟然可以在循环外面被访问到！这在其他语言是不可思议的！这是很常见的问题，但JS程序员不见得都会关注它。</p>
+<h2 id="let-">let 声明</h2>
+<p>let在ES6中出现是为了<code>代替</code>var。是的，我们的想法是在未来停用<code>var</code>，现在就停止时不切实际的，因为有很多网站都还在用它。</p>
+<p>使用<code>let</code>会像和其他语言大道预期的效果</p>
+<p>例子：</p>
+<pre><code class="lang-JavaScript">let foo = true;
+if  (foo) {
+    let bar = &#39;baz&#39;;
+    console.log(bar); // 输出 &#39;baz&#39;
 }
 
-let jon = new Person();
-jon.setName(&quot;Jon Doe&quot;);
-console.log(jon.getName()); // &quot;Jon Doe&quot;
-//注：this关键字这里就不解释了，大家自己google,baidu吧。
-</code></pre>
-<p>在这个例子中，如果我们让Person.setName函数返回Person对象本身，我们就可以这样用：</p>
-<pre><code class="lang-javascript">jon.setName(&quot;Jon Doe&quot;)
-   .getName(); // &quot;Jon Doe&quot;
-</code></pre>
-<p>在一个对象里:</p>
-<pre><code class="lang-javascript">let obj = {
-    foo: &quot;bar&quot;,
-    getIt: function () {
-        return this.foo;
-    }
-};
-
-console.log( obj.getIt() ); // &quot;bar&quot;
-</code></pre>
-<p>但是当执行流(比如使用了setTimeout)和作用域变了的时候，this也会变。</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( function () {
-            console.log( this );
-        }, 100 );
-    }
-
+try {
+    console.log(bar);
+} catch (e) {
+    console.log(&quot;bar doesn&#39;t exist&quot;);
 }
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// window
 </code></pre>
-<p>当<code>setTimeout</code>函数改变了执行流的情况时，<code>this</code>的指向会变成全局对象,或者是在严格模式下就是<code>undefine</code>,这样在<code>setTimeout</code>函数里面我们使用其他的变量去指向<code>this</code>对象，比如<code>self</code>，<code>that</code>,当然不管你用什么变量，你首先应该在setTimeout访问之前，给<code>self</code>，<code>that</code>赋值，或者使用<code>bind</code>方法不然这些变量就是undefined。</p>
-<p>这是后就是箭头函数登场的时候了，它可以保持作用域，this的指向就不会变了。</p>
-<p>让我们看下上文<strong>起先</strong>的例子，在这里我们使用箭头函数：</p>
-<pre><code class="lang-javascript">function Student(data){
-
-    this.name = data.name || &quot;Jon Doe&quot;;
-    this.age = data.age&gt;=0 ? data.age : -1;
-
-    this.getInfo = function () {
-        return this.name + &quot;, &quot; + this.age;
-    };
-
-    this.sayHi = function () {
-        window.setTimeout( ()=&gt;{
-            // the only difference is here
-            console.log( this );
-        }, 100 );
-    }
-
-}
-
-let mary = new Student({
-    name: &quot;Mary Lou&quot;,
-    age: 13
-});
-
-console.log( mary.getInfo() ); // &quot;Mary Lou, 13&quot;
-mary.sayHi();
-// Object { name: &quot;Mary Lou&quot;, age: 13, ... }
-</code></pre>
-<blockquote>
-<p>分析：在sayHi函数中，我们使用了箭头函数，当前作用域是在student对象的一个方法中，箭头函数生成的临时函数的作用域也就是student对象的sayHi函数的作用域。所以即使我们在setTimeout调用了箭头函数生成的临时函数，这个临时函数中的this也是正确的指向。</p>
-</blockquote>
-<h2 id="-">有趣和有用的使用</h2>
-<p>创建一个函数很容易，我们可以利用它可以保持作用域的特征：</p>
-<p>例如我们可以这么使用：Array.forEach()</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.forEach(vowel =&gt; {
-    console.log(vowel);
-});
-</code></pre>
-<blockquote>
-<p>分析：在forEach里箭头函数会创建并返回一个临时函数 tempFun,这个tempFun你可以想象成这样的：function(vowel){ console.log(vowel);}但是Array.forEach函数会怎么去处理传入的tempFunc呢？在forEach函数里会这样调用它：tempFunc.call(this,value);所有我们看到函数的正确执行效果。</p>
-</blockquote>
-<p>//在Array.map里使用箭头函数，这里我就不分析函数执行过程了。。。。</p>
-<pre><code class="lang-javascript">var arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.map(vowel =&gt; {
-    return vowel.toUpperCase();
-});
-// [ &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot; ]
-</code></pre>
-<p>费布拉奇数列</p>
-<pre><code class="lang-javascript">var factorial = (n) =&gt; {
-    if(n==0) {
-        return 1;
-    }
-    return (n * factorial (n-1) );
-}
-
-factorial(6); // 720
-</code></pre>
-<p>我们也可以用在Array.sort方法里：</p>
-<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;];
-arr.sort( (a, b)=&gt; a &lt; b? 1: -1 );
-</code></pre>
-<p>也可以在事件监听函数里使用：</p>
-<pre><code class="lang-javascript">document.body.addEventListener(&#39;click&#39;, event=&gt;console.log(event, this)); // EventObject, BodyElement
-</code></pre>
-<h2 id="-">推荐的链接</h2>
-<p>下面列出了一系列有用的链接，大家可以去看一看</p>
-<ul>
-<li>- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions in MDN Documentation</a></li>
-<li>- <a href="http://tc39wiki.calculist.org/es6/arrow-functions/">TC39 Wiki about Arrow Function</a></li>
-<li>- <a href="https://github.com/esnext">ESNext</a></li>
-<li>- <a href="https://github.com/addyosmani/es6-tools">ES6 Tools</a></li>
-<li>- <a href="https://www.npmjs.org/package/grunt-es6-transpiler">Grunt ES6 Transpiler</a></li>
-<li>- <a href="http://www.es6fiddle.net/">ES6 Fiddle</a></li>
-<li>- <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
-</ul>
-<h2 id="-">总结</h2>
-<p>尽管大家可能会认为使用箭头函数会降低你代码的可读性，但是由于它对作用域的特殊处理，它能让我们能很好的处理this的指向问题。箭头函数加上let关键字的使用，将会让我们javascript代码上一个层次！尽量多使用箭头函数，你可以再你的浏览器测试你写的箭头函数代码，大家可以再评论区留下你对箭头函数的想法和使用方案！我希望大家能享受这篇文章，就像你会不就的将来享受箭头函数带给你的快乐.</p>
+<p>正如你想看到的,<code>let</code>会解决在for循环变量的问题。</p>
+<h2 id="-">现在的支持</h2>
+<p>你现在就可以使用let</p>
+<p>查看 Kangax 的ES6 支持表格 &gt; <a href="http://kangax.github.io/compat-table/es6/#">http://kangax.github.io/compat-table/es6/#</a>.
+let已经在z最新的现代浏览器有所支持( &gt;= IE 11)和<a href="https://github.com/google/traceur-compiler">Traceur</a>编译器</p>
+<p>你可以在火狐开发者工具中试试</p>
+<p><img src="http://es6rocks.com/img/let.gif" alt="es6 let"></p>
+<p>注： Michał Gołębiowski 指出在各个浏览器的规范不一样，使用时可能会出现bug。在当前还未正式流行开，这种情况可能会持续到2015年中旬。</p>
+<h2 id="-">结论</h2>
+<p>声明变量虽然简单,但在JavaScript语言中会让初学者头痛的。
+<code>let</code>声明变量更直观,符合基于c的语言.</p>
+<p>var应该停止使用,只有这样，没有变量提示的<code>let</code>才能正在运用到未来。</p>
 
                         </div>
                     </div>
