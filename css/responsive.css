@@ -15,8 +15,15 @@
     .input-search:focus{
         width: 80% !important;
     }
+    .info-copyright,
+    .info-copyright a {
+        font-size: 1.13em;
+    }
+    .info-footer{
+        max-width: 440px;
+    }
 }
- 
+
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
     .post-big .title-post {

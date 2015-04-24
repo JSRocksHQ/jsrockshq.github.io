@@ -54,9 +54,19 @@
         <div class="row row-down">
             <div class="col-sm-2 col-xs-12 flags-list">
                 <div>
-                    <a href="/pt-br" class="item-flag"><img src="/images/flag-ptbr-header.png" alt="Brazil flag" title="Brazilian Portuguese"></a>
-                    <a href="/" class="item-flag"><img src="/images/flag-english-header.png" alt="U.K. flag" title="English"></a>
-                    <a href="/cn" class="item-flag"><img src="/images/flag-chinese-header.png" alt="Chinese flag" title="Chinese"></a>
+
+                        <a  class="item-flag" href="/">
+                            <img src="/images/flag-en.png">
+                        </a>
+
+                        <a  class="item-flag" href="/pt-br">
+                            <img src="/images/flag-pt-br.png">
+                        </a>
+
+                        <a  class="item-flag" href="/cn">
+                            <img src="/images/flag-cn.png">
+                        </a>
+
                 </div>
             </div>
             <div class="col-sm-8 col-xs-12 txt-header">
@@ -232,7 +242,7 @@
             </div>
         </div>
         <div class="row row-button">
-            <a href="https://github.com/JSRocksHQ/jsrockshq.github.io" target="_blank" class="button-post">
+            <a href="https://github.com/JSRocksHQ/jsrockshq.github.io#writing-an-article" target="_blank" class="button-post">
                 <svg version="1.1" class="thunder-hover" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
                 <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535
@@ -263,9 +273,13 @@
                         <div class="centering">
                             <ul class="tags-post">
 
-                                    <li class="item-tag-post" data-post-category="JavaScript"></li>
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag JavaScript" href="/categories/pt-br/javascript">JavaScript</a>
+                                    </li>
 
-                                    <li class="item-tag-post" data-post-category=" ES6"></li>
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  ES6" href="/categories/pt-br/es6"> ES6</a>
+                                    </li>
 
                             </ul>
                         </div>
@@ -466,46 +480,19 @@ Você pode escrever um artigo, iniciar uma nova dicussão, etc.</p>
                     </svg>
                     <span class="info-copyright">Content licensed under <a href="https://creativecommons.org/" targer="_blank">Creative Commons</a> - Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a> Static website proudly powered by <a href="https://github.com/JSRocksHQ/harmonic" target="_blank">Harmonic</a></span>
                 </div>
+
                 <aside class="social">
                     <div class="twitter item-social-footer">
                         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jsrocks.org/" data-text="Articles, news, tools and tutorials about #ES6" data-via="es6rocks">Tweet</a>
-                        <script>
-                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-                        </script>
                     </div>
                     <div class="facebook item-social-footer">
-                        <div class="fb-like" data-href="http://jsrocks.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false">
-                            <div id="fb-root"></div>
-                            <script>
-                                (function(d, s, id) {
-                                    var js, fjs = d.getElementsByTagName(s)[0];
-                                    if (d.getElementById(id)) return;
-                                    js = d.createElement(s); js.id = id;
-                                    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-                                    fjs.parentNode.insertBefore(js, fjs);
-                                }(document, 'script', 'facebook-jssdk'));
-                            </script>
-
-                        </div>
+                        <div class="fb-like" data-href="http://jsrocks.org/" data-width="auto" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     </div>
                     <div class="gplus item-social-footer">
                         <div class="g-plusone" data-size="medium" data-href="http://jsrocks.org/"></div>
-                        <script type="text/javascript">
-                          (function() {
-                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                            po.src = 'https://apis.google.com/js/platform.js';
-                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                          })();
-                        </script>
                     </div>
                     <div class="github item-social-footer">
-                    <iframe src="http://ghbtns.com/github-btn.html?user=JSRocksHQ&amp;repo=jsrockshq.github.io&amp;type=watch&amp;count=true"
-                            allowtransparency="true"
-                            frameborder="0"
-                            scrolling="0"
-                            width="110"
-                            height="20">
-                     </iframe>
+                        <iframe src="http://ghbtns.com/github-btn.html?user=JSRocksHQ&amp;repo=jsrockshq.github.io&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
                     </div>
                 </aside>
                 <div class="js-footer">
@@ -525,6 +512,7 @@ Você pode escrever um artigo, iniciar uma nova dicussão, etc.</p>
 <script src="/js/vendor/prefixfree.min.js"></script>
 <script src="/js/vendor/respond.min.js"></script>
 <script src="/js/vendor/scripts-bootstrap.js"></script>
+<script src="/js/socialnetwork.js"></script>
 <script src="/js/main.js"></script>
 
 
