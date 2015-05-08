@@ -71,7 +71,7 @@ const config = {
 export default config;
 ```
 
-Look at the tree we have with this specific AMD module:  
+Look at the tree we have for this specific AMD module:  
 ```
 src/
 ├── _js
