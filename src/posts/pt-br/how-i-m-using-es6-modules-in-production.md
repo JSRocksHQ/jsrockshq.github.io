@@ -12,7 +12,7 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-Estou usando [módulos ES6](/categories/modules/) já faz um tempo no me trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.  
+Estou usando [módulos ES6](/categories/modules/) já faz um tempo no meu trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.  
 Em primeiro lugar, o [Babel](https://babeljs.io/) é a ferramenta consolidada para fazer transpile. É um projeto bem ativo e cobre praticamente todas as novas features do JavaScript moderno.  
 O Babel funciona muito bem para módulos também, então basta que você decida o sabor, quero dizer, AMD, Common, UMD e até mesmo módulos customizados.  
 <!--more-->
@@ -98,7 +98,6 @@ Possivelmente teremos que reescrever a lógica do sistema de módulos que temos.
 
 ## Conclusão
 A especificação para módulos já está fechada, e em minha opinião está bem madura e eficiente.  
-Porém, ainda não temos uma API no browser para tratar do carregamente destes módulos, então uma solução como AMD ou CommonJS ainda se faz necessária.  
+Porém, ainda não temos uma API no browser para tratar do carregamento destes módulos, então uma solução como AMD ou CommonJS ainda se faz necessária.  
 Já podemos nos beneficiar da sintaxe ES6 para módulos agora mesmo, tornando o nosso código mais legível e mais conciso.  
-As ferramentas existentes como Babel e Browserify nos proporcionam um desenvolvimento indolor, e em um futuro próximo poderemos simplesmente desativa-las, pois teremos suporte total.  
-
+As ferramentas existentes como Babel e Browserify nos proporcionam um desenvolvimento indolor, e em um futuro próximo poderemos simplesmente desativá-las, pois teremos suporte total.  

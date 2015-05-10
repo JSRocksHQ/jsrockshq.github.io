@@ -1,31 +1,31 @@
 <!--
 layout: post
-title: how i'm using es6 modules in production
+title: how I'm using es6 modules in production
 date: 2015-05-08T04:51:30.117Z
 comments: true
 published: true
 keywords: modules
-description: Post about how i'm using es6 modules in production
+description: Post about how I'm using es6 modules in production
 categories: modules
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-I've been using [ES6 modules](/categories/modules/) for a while in my daily work and I want to share with you guys how i'm doing it.  
+I've been using [ES6 modules](/categories/modules/) for a while in my daily work and I want to share with you guys how I'm doing it.  
 First of all, [Babel](https://babeljs.io/) is the consolidated tool for transpilation. It's a very active project, and it covers almost all of modern JavaScript features.  
 Babel works great for modules too, so you'll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.  
 <!--more-->
 
-In my company we're building applications using a home-made Framework (not open-source yet) based on AMD modules.  
+In my company we're building applications using a homemade framework (not open-source yet) based on AMD modules.  
 We have A LOT of legacy AMD modules.  
 Believe me, for large applications AMD still one of the best solutions. We can't simply bundle everything in a single file. That's not how things work.  
 Nowadays we have solutions like [Webpack](http://webpack.github.io/), but we already have a huge installed base applications, so it's not so easy to migrate, and our home-made solution for delivering modules (not open-source yet) is working just fine.  
 
 ## Micro-modules strategy
 This strategy is working quite well for me.  
-As I said before, our final module must be a AMD module, but sometimes the AMD module itself needs modules, and i'm calling them micro-modules.  
-This micro-modules i'm using does not necessarily need to be shared across applications, but they help me a lot with code organization.  
+As I said before, our final module must be a AMD module, but sometimes the AMD module itself needs modules, and I'm calling them micro-modules.  
+These micro-modules I'm using do not necessarily need to be shared across applications, but they help me a lot with code organization.  
 Here's a piece of code we have in production:  
 ```javascript
 import config from './config';
@@ -92,7 +92,7 @@ Boom! The final code remains a AMD module, but my source code is using CommonJS 
 
 
 ## Next step
-Sourcemaps doesn't work well with this workflow as i'm using Browserify to bundle.  
+Sourcemaps don't work well with this workflow as I'm using Browserify to bundle.  
 Perhaps it should be easy to implement.  
 We're starting to rewrite our framework using some ES6 features and of course we'll use modules.  
 It may be possible to build a custom module formatter for our current structure, but I think it wouldn't be a good approach.  
