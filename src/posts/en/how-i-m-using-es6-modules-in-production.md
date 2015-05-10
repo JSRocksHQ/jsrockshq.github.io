@@ -11,6 +11,7 @@ categories: modules
 I've been using [ES6 modules](/categories/modules/) for a while in my daily work and i want to share with you guys how i'm doing it.  
 First of all, [Babel](https://babeljs.io/) is the consolidated tool for transpilation. It's a very active project, and it covers almost all of modern JavaScript features.  
 Babel works great for modules too, so you'll just need to decide the flavour, i mean AMD, Common, UMD and even customized modules.  
+<!--more-->
 
 In my company we're building applications using a home-made Framework (not open-source yet) based on AMD modules.  
 We have A LOT of legacy AMD modules.  
@@ -31,7 +32,6 @@ zaz.use((pkg) => {
 
     "use strict";
 
-    // Like a "global" pkg in Stalker scope
     config.dynamic.globalpkg = pkg;
 
     pkg.require(['modFactory'], (modFactory) => {
@@ -40,7 +40,7 @@ zaz.use((pkg) => {
 
 });
 ```
-We're importing some modules above and using it in our AMD module.  
+We're importing some modules above and using them in our AMD module.  
 Those ES6 modules aren't useful for any other application, but the final code looks much more readable using micro-modules.  
 The `config` we're importing above look like this:  
 ```javascript
@@ -89,7 +89,7 @@ Boom! The final code remains a AMD module, but my source code is using CommonJS 
 
 ## Next step
 Sourcemaps doesn't work well with this workflow as i'm using Browserify to bundle.  
-Perhaps it must be easy to implement.  
+Perhaps it should be easy to implement.  
 We're starting to rewrite our framework using some ES6 features and of course we'll use modules.  
 With our current structure it will be just possible if we build a custom module for Babel, but i don't think it is a good approach.  
 Maybe we'll need to rewrite the whole module system we already have.  
