@@ -8,20 +8,20 @@ keywords: modules
 description: Post about how i'm using es6 modules in production
 categories: modules
 -->
-I've been using [ES6 modules](/categories/modules/) for a while in my daily work and i want to share with you guys how i'm doing it.  
+I've been using [ES6 modules](/categories/modules/) for a while in my daily work and I want to share with you guys how i'm doing it.  
 First of all, [Babel](https://babeljs.io/) is the consolidated tool for transpilation. It's a very active project, and it covers almost all of modern JavaScript features.  
-Babel works great for modules too, so you'll just need to decide the flavour, i mean AMD, Common, UMD and even customized modules.  
+Babel works great for modules too, so you'll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.  
 <!--more-->
 
 In my company we're building applications using a home-made Framework (not open-source yet) based on AMD modules.  
 We have A LOT of legacy AMD modules.  
-Believe in me, for large applications AMD still one of the best solutions. We can't simply bundle everything in a single file. That's not how things work.  
+Believe me, for large applications AMD still one of the best solutions. We can't simply bundle everything in a single file. That's not how things work.  
 Nowadays we have solutions like [Webpack](http://webpack.github.io/), but we already have a huge installed base applications, so it's not so easy to migrate, and our home-made solution for delivering modules (not open-source yet) is working just fine.  
 
 ## Micro-modules strategy
 This strategy is working quite well for me.  
-As i said before, our final module must be a AMD module, but sometimes the AMD module itself need modules, and i'm calling them micro-modules.  
-This micro-modules i'm using not necessarily need to be shared across applications, but they help me a lot with code organization.  
+As I said before, our final module must be a AMD module, but sometimes the AMD module itself needs modules, and i'm calling them micro-modules.  
+This micro-modules i'm using does not necessarily need to be shared across applications, but they help me a lot with code organization.  
 Here's a piece of code we have in production:  
 ```javascript
 import config from './config';
@@ -56,7 +56,7 @@ let globalpkg = null;
 
 // default export 
 const config = {
-	_static : {
+	_static: {
 		name,
 	    version,
 	    state,
@@ -83,7 +83,7 @@ src/
 │   └── mod-stalker.js
 ```
 I've just split the logic inside my AMD module into tiny ES6 modules.  
-The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then [Browserify](http://browserify.org/) bundle everything.  
+The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then [Browserify](http://browserify.org/) bundles everything.  
 Boom! The final code remains a AMD module, but my source code is using CommonJS for micro-modules.  
 
 
@@ -91,5 +91,11 @@ Boom! The final code remains a AMD module, but my source code is using CommonJS 
 Sourcemaps doesn't work well with this workflow as i'm using Browserify to bundle.  
 Perhaps it should be easy to implement.  
 We're starting to rewrite our framework using some ES6 features and of course we'll use modules.  
-With our current structure it will be just possible if we build a custom module for Babel, but i don't think it is a good approach.  
+It may be possible to build a custom module formatter for our current structure, but I think it wouldn't be a good approach.  
 Maybe we'll need to rewrite the whole module system we already have.  
+
+## Conclusion
+The modules specification is already done, and in my opinion it's very mature and efficient.  
+However, we didn't have a browser API yet for dealing with modules loading, so a solution like AMD or CommonJS remains necessary.  
+We can have benefit of ES6 modules syntax right now, making our code more readable and concise.  
+Existing tools such as Babel and Browserify give us a painless development, and in the near future we can simply deactivate them because we'll have full support.  
