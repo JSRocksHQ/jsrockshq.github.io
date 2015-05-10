@@ -1,4 +1,4 @@
-$(document).ready(function() {	
+$(document).ready(function() {
 	//Animations Timing
 	setTimeout(function() { $(".logo").addClass("fadeIn")}, 100);
 
@@ -58,8 +58,8 @@ var JsRocks = function() {
 		JSROCKS = {},
 		PRIVATE = {},
 		PUBLIC = this,
-		jsrocks = {},
 		pageElements = {};
+
 
 	/**
 	*
@@ -75,12 +75,15 @@ var JsRocks = function() {
 	*
 	**/
 	INFORMATIONS.lang = function () {
-		var re = /\/pt-br\//.exec(PATHNAME),
+		var re = /\/pt-br\/|\/cn\//.exec(PATHNAME),
 			lang;
 
 		switch (re && re[0]) {
 			case '/pt-br/':
 				lang = 'pt-br';
+				break;
+			case '/cn/':
+				lang = 'cn';
 				break;
 			default:
 				lang = 'en';
@@ -96,6 +99,9 @@ var JsRocks = function() {
 		switch (lang) {
 			case 'pt-br':
 				pathCategory  = '/categories/pt-br/';
+				break;
+			case 'cn':
+				pathCategory  = '/categories/cn/';
 				break;
 			default:
 				pathCategory  = '/categories/';
@@ -143,23 +149,13 @@ var JsRocks = function() {
 		var tpl = '';
 
 		tpl += '<li class="item-list-tag">';
-		tpl +=     '<a href="' + jsrocks.categoryPath + tag + '">' + tag + '</a>';
+		tpl +=     '<a href="' + JSROCKS.categoryPath + tag + '">' + tag + '</a>';
 		tpl += '</li>';
 
 		return tpl;
 	};
 
-	TEMPLATE.category = function (categoryPath, dataCategory) {
-		var tpl = '';
 
-		tpl += '<li class="item-tag-post">';
-		tpl +=     '<a href="' + categoryPath + dataCategory + '">' + dataCategory + '</a>';
-		tpl += '</li>';
-
-		return tpl;
-	};
-
-	
 	/**
 	*
 	* PRIVATE
@@ -171,24 +167,8 @@ var JsRocks = function() {
 		if (form) {
 			form.addEventListener('submit', function(e) {
 			    form.q.value = form.q.value + ' site:' + HOSTNAME.replace(/www./g, '');
-			});			
+			});
 		}
-	};
-
-	PRIVATE.disqus = function (id) {
-	   if (document.getElementById(id)) {
-	        var disqus_shortname = 'es6rocks';
-
-	        (function() {
-	            var dsq = document.createElement('script');
-
-	            dsq.type = 'text/javascript';
-	            dsq.async = true;
-	            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-	            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	        })();
-	    }
 	};
 
 	PRIVATE.shareSocialnetwork = function () {
@@ -196,7 +176,7 @@ var JsRocks = function() {
 			btnLen = btnList.length,
 			btn,
 			postUrl,
-			providerUrl;		
+			providerUrl;
 
 		if (!!btnLen) {
 			for (var i = 0; i < btnLen; i++) {
@@ -220,12 +200,12 @@ var JsRocks = function() {
 		if (postsContainer) {
 			for (var i = 0; i < 3; i++) {
 				articleCat    = '';
-				post 		  = jsrocks.posts[i];
+				post 		  = JSROCKS.posts[i];
 				categoriesLen = post.categories.length;
 
 				for (var j = 0; j < categoriesLen; j++) {
 				 	category = post.categories[j].toLowerCase().trim();
-				 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + jsrocks.categoryPath + category +'">' + category + '</a></li>\n';
+				 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + JSROCKS.categoryPath + category +'">' + category + '</a></li>\n';
 				}
 
 				article += TEMPLATE.article(post.link, post.date, ORIGIN, post.title, post.content, articleCat, post.authorPicture, post.authorLink, post.authorName);
@@ -237,7 +217,7 @@ var JsRocks = function() {
 
 	PRIVATE.morePosts = function () {
 		var postsContainer = D.getElementById('containerMorePosts'),
-			posts = jsrocks.posts,
+			posts = JSROCKS.posts,
 			post,
 			article,
 			articleCat,
@@ -259,7 +239,7 @@ var JsRocks = function() {
 
 						for (var j = 0; j < categoriesLen; j++) {
 						 	category = post.categories[j].toLowerCase().trim();
-						 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + jsrocks.categoryPath + category +'">' + category + '</a></li>\n';
+						 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + JSROCKS.categoryPath + category +'">' + category + '</a></li>\n';
 						}
 
 						article += TEMPLATE.article(post.link, post.date, ORIGIN, post.title, post.content, articleCat, post.authorPicture, post.authorLink, post.authorName);
@@ -276,7 +256,7 @@ var JsRocks = function() {
 
 						for (var j = 0; j < categoriesLen; j++) {
 						 	category = post.categories[j].toLowerCase().trim();
-						 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + jsrocks.categoryPath + category +'">' + category + '</a></li>\n';
+						 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + JSROCKS.categoryPath + category +'">' + category + '</a></li>\n';
 						}
 
 						article += TEMPLATE.article(post.link, post.date, ORIGIN, post.title, post.content, articleCat, post.authorPicture, post.authorLink, post.authorName);
@@ -296,41 +276,8 @@ var JsRocks = function() {
 		}
 	}
 
-	PRIVATE.atrCategory = function (categoryPath) {
-		var containerList = D.querySelectorAll('.tags-post'),
-			containerListLen = containerList.length,
-			container,
-			
-			// category
-			categoryList,
-			categoryListLen,
-			category,
-			dataCategory,
-
-			// str to write
-			str;
-
-		if (!!containerListLen) {
-			for (var i = 0; i < containerListLen ; i++) {
-				str = '';
-				container = containerList[i];
-				categoryList = container.querySelectorAll('.item-tag-post');
-				categoryListLen = categoryList.length;
-
-				for (var j = 0; j < categoryListLen; j++) {
-					category = categoryList[j];
-					dataCategory = category.getAttribute('data-post-category').trim().toLowerCase();
-
-					str += TEMPLATE.category(categoryPath, dataCategory);
-				}
-
-				container.innerHTML = str;
-			}
-		}
-	};
-
 	PRIVATE.popularTag = function () {
-		var arr = ['modules' ,'scope', 'es6'],
+		var arr = ['modules' ,'scope', 'tutorial'],
 			arrLen = arr.length,
 			str = '',
 			container = D.querySelectorAll('.list-tags');
@@ -345,17 +292,18 @@ var JsRocks = function() {
 	};
 
 
+
 	/**
 	*
 	* PUBLIC
 	*
 	**/
 	PUBLIC.scrollTop = function (btn, event, posTop, time) {
-		var btn = document.getElementById(btn);
+		var btn = D.getElementById(btn);
 
 		if (btn) {
-			btn.addEventListener(event, function(){
-			    $('html, body').animate({scrollTop : posTop}, time);
+			btn.addEventListener(event, function () {
+			    $('html, body').animate({scrollTop: posTop}, time);
 			});
 		}
 	};
@@ -366,9 +314,10 @@ var JsRocks = function() {
 		* HARMONIC INFO SET
 		*
 		**/
-		jsrocks.lang = INFORMATIONS.lang();
-		jsrocks.posts = HARMONIC.getPosts()[jsrocks.lang];
-		jsrocks.categoryPath = INFORMATIONS.categoryPath(jsrocks.lang);
+		JSROCKS.lang = INFORMATIONS.lang();
+		JSROCKS.posts = HARMONIC.getPosts()[JSROCKS.lang];
+		JSROCKS.categoryPath = INFORMATIONS.categoryPath(JSROCKS.lang);
+
 
 		/**
 		*
@@ -381,10 +330,8 @@ var JsRocks = function() {
 
 		PRIVATE.popularTag();
 		PRIVATE.googleSearch();
-		PRIVATE.atrCategory(jsrocks.categoryPath);
 		PRIVATE.otherPosts();
 		PRIVATE.morePosts();
-		PRIVATE.disqus('disqus_thread');
 		PRIVATE.shareSocialnetwork();
 
 		PUBLIC.scrollTop('goToTop', 'click', 0, 1000);
