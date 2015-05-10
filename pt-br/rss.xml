@@ -6,9 +6,18 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Fri, 24 Apr 2015 23:10:27 GMT</pubDate>
+        <pubDate>Sun, 10 May 2015 03:40:17 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>how i'm using es6 modules in production</title>
+            <link>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</link>
+            <description><![CDATA[<h1 id="how-i-m-using-es6-modules-in-production">how i&#39;m using es6 modules in production</h1>
+]]></description>
+            <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
+            <guid>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</guid>
+        </item>
         
         <item>
             <title>ES6: Brincando com o novo JS</title>
@@ -70,15 +79,6 @@
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
-        </item>
-        
-        <item>
-            <title>Entrevista sobre ES6 com o David Herman</title>
-            <link>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</link>
-            <description><![CDATA[<p>Fizemos uma entrevista bem legal com o <a href="https://twitter.com/littlecalculist">David Herman</a> sobre ES6.</p>
-]]></description>
-            <pubDate>Fri, 04 Jul 2014 01:08:30 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/07/es6-interview-with-david-herman</guid>
         </item>
         
     </channel>
