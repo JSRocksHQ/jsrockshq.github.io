@@ -6,14 +6,14 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sun, 10 May 2015 03:40:17 GMT</pubDate>
+        <pubDate>Sun, 10 May 2015 23:14:55 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>how i'm using es6 modules in production</title>
+            <title>Como estou usando módulos es6 em produção</title>
             <link>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</link>
-            <description><![CDATA[<h1 id="how-i-m-using-es6-modules-in-production">how i&#39;m using es6 modules in production</h1>
+            <description><![CDATA[<p>Estou usando <a href="/categories/modules/">módulos ES6</a> já faz um tempo no me trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.<br>Em primeiro lugar, o <a href="https://babeljs.io/">Babel</a> é a ferramenta consolidada para fazer transpile. É um projeto bem ativo e cobre praticamente todas as novas features do JavaScript moderno.<br>O Babel funciona muito bem para módulos também, então basta que você decida o sabor, quero dizer, AMD, Common, UMD e até mesmo módulos customizados.  </p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
             <guid>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</guid>

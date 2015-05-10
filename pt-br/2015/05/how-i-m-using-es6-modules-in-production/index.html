@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>how i'm using es6 modules in production - ES6 Rocks</title>
+    <title>Como estou usando módulos es6 em produção - ES6 Rocks</title>
 </head>
 <body data-page="article">
     <div class="wrapper">
@@ -250,18 +250,18 @@
                 <div class="row">
                     <div class="col-xs-12 header-article">
                         <div class="author-post">
-                            <div class="avatar-author"><img src="" alt=""></div>
+                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
                             <div class="info-author">
                                 <span>Posted by</span>
-                                <a href="" rel="author" class="author"></a>
+                                <a href="http://twitter.com/jaydson" rel="author" class="author">Jaydson Gomes</a>
                             </div>
                         </div>
                         <div class="date-post">Fri May 08 2015 01:51:30 GMT-0300 (BRT)</div>
-                        <h1 class="title-post">how i'm using es6 modules in production</h1>
+                        <h1 class="title-post">Como estou usando módulos es6 em produção</h1>
                         <div class="centering">
                             <ul class="tags-post">
                                 
-                                    <li class="item-tag-post" data-post-category=""></li>
+                                    <li class="item-tag-post" data-post-category="modules"></li>
                                 
                             </ul>
                         </div>
@@ -275,7 +275,68 @@
                                 <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/pt-br/2015/05/how-i-m-using-es6-modules-in-production" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
                                 <a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/pt-br/2015/05/how-i-m-using-es6-modules-in-production" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
                             </aside>
-                            <h1 id="how-i-m-using-es6-modules-in-production">how i&#39;m using es6 modules in production</h1>
+                            <p>Estou usando <a href="/categories/modules/">módulos ES6</a> já faz um tempo no me trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.<br>Em primeiro lugar, o <a href="https://babeljs.io/">Babel</a> é a ferramenta consolidada para fazer transpile. É um projeto bem ativo e cobre praticamente todas as novas features do JavaScript moderno.<br>O Babel funciona muito bem para módulos também, então basta que você decida o sabor, quero dizer, AMD, Common, UMD e até mesmo módulos customizados.<br>
+Na empresa onde trabalho estamos construindo aplicações usando um framework desenvolvido em casa (ainda não é open-source) que é baseado em módulos AMD.<br>Acreditem quando eu digo, módulos AMD continuam sendo uma das melhores soluções para grandes aplicações. Não podemos simplesmente concatenar tudo em um arquivo. Não é assim que as coisas funcionam.<br>Atualmente temos soluções como o <a href="http://webpack.github.io/">Webpack</a>, mas nós já temos uma grande base instalada, então não é tão simples fazer uma migração, além do que nossa solução caseira para entrega de módulos (ainda não é open-source) está funcionando muito bem.  </p>
+<h2 id="estrat-gia-de-micro-m-dulos">Estratégia de micro-módulos</h2>
+<p>Esta estratégia está funcionando muito bem para mim.<br>Como disse antes, nosso módulo final precisa ser um módulo AMD, mas as vezes o próprio módulo AMD precisa de módulos, e eu estou chamando estes módulos de micro-módulos.<br>Estes micro-módulos que estou usando não necessariamente precisam ser compartilhados entre aplicações, mas estão me ajudando bastante com a organização de código.<br>Aqui está um pedaço de código que temos em produção:  </p>
+<pre><code class="lang-javascript">import config from &#39;./config&#39;;
+import { globalpkg } from &#39;./config&#39;;
+import factory from &#39;./factory&#39;;
+
+zaz.use((pkg) =&gt; {
+
+    &quot;use strict&quot;;
+
+    config.dynamic.globalpkg = pkg;
+
+    pkg.require([&#39;modFactory&#39;], (modFactory) =&gt; {
+        modFactory.create(pkg.utils.deepMerge(config._static, factory));
+    });
+
+});
+</code></pre>
+<p>Estamos importando alguns módulos no topo do arquivo e então usando-os em nosso módulo AMD.<br>Estes módulos ES6 não são úteis para nenhuma outra aplicação, mas o código final fica muito mais legível usando micro-módulos.  </p>
+<p>O módulo <code>config</code> que estamos importando é mais ou menos assim:  </p>
+<pre><code class="lang-javascript">const githubURL = &quot;OUR GITHUB URL HERE&quot;;
+const staticServer = &quot;http://s1.trrsf.com&quot;;
+const testsPath = `zaz-${type}-${name}/tests/index.htm?zaz[env]=tests`;
+const name = &quot;stalker&quot;;
+const type = &quot;mod&quot;;
+const version = &quot;0.0.1&quot;;
+const state = &quot;ok&quot;;
+const description = &quot;JavaScript API to deal with user data&quot;;
+let globalpkg = null;
+
+// default export 
+const config = {
+    _static: {
+        name,
+        version,
+        state,
+        description,
+        docs: `${githubURL}/pages/terra/zaz-${type}-${name}`,
+        source: `${githubURL}/Terra/zaz-${type}-${name}`,
+        tests: `${staticServer}/fe/${testsPath}`,
+        dependencies: [&#39;mod.wilson&#39;]
+    }
+};
+
+export default config;
+</code></pre>
+<p>Veja a árvore para este módulo AMD:  </p>
+<pre><code>src/
+├── _js
+│   ├── config.js
+│   ├── environment.js
+│   ├── factory.js
+│   ├── helpers.js
+│   ├── methods.js
+│   └── mod-stalker.js
+</code></pre><p>O que fiz foi apenas dividir a lógica dentro do meu módulo AMD em pequenos módulos ES6.<br>O processo de build é bem simples: O Babel transpila o código para ES5 usando módulos CommonJS para micro-módulos e então o <a href="http://browserify.org/">Browserify</a> monta tudo.<br>Boom! O código final continua sendo um módulo AMD, mas o meu código-fonte está usando CommonJS para micro-módulos.    </p>
+<h2 id="p-oximos-passos">Pŕoximos passos</h2>
+<p>Sourcemaps não estão funcionando muito bem com este processo pois estou usando o Browserify para fazer o bundle.<br>Porém, deve ser fácil de implementar o suporte a sourcemaps para micro-módulos.<br>Estamos começando a reescrever o nosso framework usando features de ES6 e claro, vamos usar módulos.<br>Talvez seja necessário construir um módulo customizado para a nossa estrutura atual, mas não acho que isso seja uma boa abordagem.<br>Possivelmente teremos que reescrever a lógica do sistema de módulos que temos.  </p>
+<h2 id="conclus-o">Conclusão</h2>
+<p>A especificação para módulos já está fechada, e em minha opinião está bem madura e eficiente.<br>Porém, ainda não temos uma API no browser para tratar do carregamente destes módulos, então uma solução como AMD ou CommonJS ainda se faz necessária.<br>Já podemos nos beneficiar da sintaxe ES6 para módulos agora mesmo, tornando o nosso código mais legível e mais conciso.<br>As ferramentas existentes como Babel e Browserify nos proporcionam um desenvolvimento indolor, e em um futuro próximo poderemos simplesmente desativa-las, pois teremos suporte total.  </p>
 
                         </div>
                     </div>

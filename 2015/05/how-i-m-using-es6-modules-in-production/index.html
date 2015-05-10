@@ -250,10 +250,10 @@
                 <div class="row">
                     <div class="col-xs-12 header-article">
                         <div class="author-post">
-                            <div class="avatar-author"><img src="" alt=""></div>
+                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
                             <div class="info-author">
                                 <span>Posted by</span>
-                                <a href="" rel="author" class="author"></a>
+                                <a href="http://twitter.com/jaydson" rel="author" class="author">Jaydson Gomes</a>
                             </div>
                         </div>
                         <div class="date-post">Fri May 08 2015 01:51:30 GMT-0300 (BRT)</div>
@@ -275,10 +275,10 @@
                                 <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2015/05/how-i-m-using-es6-modules-in-production" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
                                 <a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/2015/05/how-i-m-using-es6-modules-in-production" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
                             </aside>
-                            <p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and i want to share with you guys how i&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, i mean AMD, Common, UMD and even customized modules.<br></p>
-<p>In my company we&#39;re building applications using a home-made Framework (not open-source yet) based on AMD modules.<br>We have A LOT of legacy AMD modules.<br>Believe in me, for large applications AMD still one of the best solutions. We can&#39;t simply bundle everything in a single file. That&#39;s not how things work.<br>Nowadays we have solutions like <a href="http://webpack.github.io/">Webpack</a>, but we already have a huge installed base applications, so it&#39;s not so easy to migrate, and our home-made solution for delivering modules (not open-source yet) is working just fine.  </p>
+                            <p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and I want to share with you guys how i&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.<br></p>
+<p>In my company we&#39;re building applications using a home-made Framework (not open-source yet) based on AMD modules.<br>We have A LOT of legacy AMD modules.<br>Believe me, for large applications AMD still one of the best solutions. We can&#39;t simply bundle everything in a single file. That&#39;s not how things work.<br>Nowadays we have solutions like <a href="http://webpack.github.io/">Webpack</a>, but we already have a huge installed base applications, so it&#39;s not so easy to migrate, and our home-made solution for delivering modules (not open-source yet) is working just fine.  </p>
 <h2 id="micro-modules-strategy">Micro-modules strategy</h2>
-<p>This strategy is working quite well for me.<br>As i said before, our final module must be a AMD module, but sometimes the AMD module itself need modules, and i&#39;m calling them micro-modules.<br>This micro-modules i&#39;m using not necessarily need to be shared across applications, but they help me a lot with code organization.<br>Here&#39;s a piece of code we have in production:  </p>
+<p>This strategy is working quite well for me.<br>As I said before, our final module must be a AMD module, but sometimes the AMD module itself needs modules, and i&#39;m calling them micro-modules.<br>This micro-modules i&#39;m using does not necessarily need to be shared across applications, but they help me a lot with code organization.<br>Here&#39;s a piece of code we have in production:  </p>
 <pre><code class="lang-javascript">import config from &#39;./config&#39;;
 import { globalpkg } from &#39;./config&#39;;
 import factory from &#39;./factory&#39;;
@@ -308,7 +308,7 @@ let globalpkg = null;
 
 // default export 
 const config = {
-    _static : {
+    _static: {
         name,
         version,
         state,
@@ -331,9 +331,11 @@ export default config;
 │   ├── helpers.js
 │   ├── methods.js
 │   └── mod-stalker.js
-</code></pre><p>I&#39;ve just split the logic inside my AMD module into tiny ES6 modules.<br>The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then <a href="http://browserify.org/">Browserify</a> bundle everything.<br>Boom! The final code remains a AMD module, but my source code is using CommonJS for micro-modules.  </p>
+</code></pre><p>I&#39;ve just split the logic inside my AMD module into tiny ES6 modules.<br>The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then <a href="http://browserify.org/">Browserify</a> bundles everything.<br>Boom! The final code remains a AMD module, but my source code is using CommonJS for micro-modules.  </p>
 <h2 id="next-step">Next step</h2>
-<p>Sourcemaps doesn&#39;t work well with this workflow as i&#39;m using Browserify to bundle.<br>Perhaps it should be easy to implement.<br>We&#39;re starting to rewrite our framework using some ES6 features and of course we&#39;ll use modules.<br>With our current structure it will be just possible if we build a custom module for Babel, but i don&#39;t think it is a good approach.<br>Maybe we&#39;ll need to rewrite the whole module system we already have.  </p>
+<p>Sourcemaps doesn&#39;t work well with this workflow as i&#39;m using Browserify to bundle.<br>Perhaps it should be easy to implement.<br>We&#39;re starting to rewrite our framework using some ES6 features and of course we&#39;ll use modules.<br>It may be possible to build a custom module formatter for our current structure, but I think it wouldn&#39;t be a good approach.<br>Maybe we&#39;ll need to rewrite the whole module system we already have.  </p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The modules specification is already done, and in my opinion it&#39;s very mature and efficient.<br>However, we didn&#39;t have a browser API yet for dealing with modules loading, so a solution like AMD or CommonJS remains necessary.<br>We can have benefit of ES6 modules syntax right now, making our code more readable and concise.<br>Existing tools such as Babel and Browserify give us a painless development, and in the near future we can simply deactivate them because we&#39;ll have full support.  </p>
 
                         </div>
                     </div>

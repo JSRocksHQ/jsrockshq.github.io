@@ -6,14 +6,14 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sun, 10 May 2015 03:40:17 GMT</pubDate>
+        <pubDate>Sun, 10 May 2015 23:14:55 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>how i'm using es6 modules in production</title>
             <link>http://es6rocks.com/2015/05/how-i-m-using-es6-modules-in-production</link>
-            <description><![CDATA[<p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and i want to share with you guys how i&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, i mean AMD, Common, UMD and even customized modules.  </p>
+            <description><![CDATA[<p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and I want to share with you guys how i&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.  </p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
             <guid>http://es6rocks.com/2015/05/how-i-m-using-es6-modules-in-production</guid>
