@@ -7,6 +7,10 @@ published: true
 keywords: modules
 description: Post about how i'm using es6 modules in production
 categories: modules
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
+authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
+authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 I've been using [ES6 modules](/categories/modules/) for a while in my daily work and I want to share with you guys how i'm doing it.  
 First of all, [Babel](https://babeljs.io/) is the consolidated tool for transpilation. It's a very active project, and it covers almost all of modern JavaScript features.  
