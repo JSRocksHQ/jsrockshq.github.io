@@ -12,7 +12,9 @@ script: >
   cp public/* -r /tmp/deploy &&
   cd /tmp/deploy &&
   git add . &&
-  git fetch origin src &&
+  git config user.name "Travis CI" &&
+  git config user.email "" &&
+  git fetch --depth=1 origin src &&
   git commit -C $TRAVIS_COMMIT &&
   git push origin HEAD
 env:
