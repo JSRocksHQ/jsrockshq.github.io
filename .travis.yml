@@ -11,7 +11,7 @@ script: >
   cp public/ -r /tmp/jsrocks-website &&
   git remote set-url origin "https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git" &&
   git fetch --unshallow origin master &&
-  git checkout master &&
+  git checkout -b master origin/master &&
   cp /tmp/jsrocks-website/* -r . &&
   git add . &&
   git commit -C $(TRAVIS_COMMIT) &&
