@@ -10,7 +10,7 @@ script: >
   harmonic build &&
   cp public/ -r /tmp/jsrocks-website &&
   git fetch &&
-  git checkout master &&
+  git checkout -b master origin/master &&
   cp /tmp/jsrocks-website/* -r . &&
   git add . &&
   git commit -C $(TRAVIS_COMMIT) &&
