@@ -6,11 +6,11 @@ branches:
   only:
   - src
 script: >
-  npm install -g --production harmonic &&
+  npm install -g harmonic &&
   harmonic build &&
   cp public/ -r /tmp/jsrocks-website &&
   git remote set-url origin "https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git" &&
-  git fetch origin master &&
+  git fetch --update-shallow origin master &&
   git checkout master &&
   cp /tmp/jsrocks-website/* -r . &&
   git add . &&
