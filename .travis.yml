@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+- iojs
+branches:
+  only:
+  - src
+script:
+- npm install -g harmonic
+- harmonic build
+- cp public/ -r /tmp/jsrocks-website
+- git checkout master
+- cp /tmp/jsrocks-website/* -r .
+- git commit -am "Update $(date +"%F %T")"
+- git push https://$GITHUB_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git
+env:
+  global:
+    secure: GVJQfEJF0JFK/ON6iW+WJ5d3Miq6Ru9ubYUFTFNdnlSLScGOPgWLOe2oaPZWsK1FSisNl9RI7tDSGYP6fSNrWhoGYTbQw/la0sgZMKuFC0Kx8mWq9ubuOK6PT5zMXxWfl2DKzudylnZLaaZ9NdpF/S8BbwAwGvylRzOF6l1TQKE=
