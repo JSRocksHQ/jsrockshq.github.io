@@ -345,7 +345,7 @@ export default config;
 │   ├── helpers.js
 │   ├── methods.js
 │   └── mod-stalker.js
-</code></pre><p>I&#39;ve just split the logic inside my AMD module into tiny ES6 modules.<br>The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then <a href="http://browserify.org/">Browserify</a> bundles everything.<br>Boom! The final code remains a AMD module, but my source code is using CommonJS for micro-modules.  </p>
+</code></pre><p>I&#39;ve just split the logic inside my AMD module into tiny ES6 modules.<br>The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then <a href="http://browserify.org/">Browserify</a> bundles everything.<br>Boom! The final code remains being an AMD module, but my source code is using CommonJS for micro-modules.  </p>
 <h2 id="next-step">Next step</h2>
 <p>Sourcemaps don&#39;t work well with this workflow as I&#39;m using Browserify to bundle.<br>Perhaps it should be easy to implement.<br>We&#39;re starting to rewrite our framework using some ES6 features and of course we&#39;ll use modules.<br>It may be possible to build a custom module formatter for our current structure, but I think it wouldn&#39;t be a good approach.<br>Maybe we&#39;ll need to rewrite the whole module system we already have.  </p>
 <h2 id="conclusion">Conclusion</h2>
