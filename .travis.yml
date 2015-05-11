@@ -8,11 +8,10 @@ branches:
 script: >
   npm install -g harmonic &&
   harmonic build &&
-  cp public/ -r /tmp/jsrocks-website &&
-  git remote set-url origin "https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git" &&
-  git fetch --unshallow origin master &&
-  git checkout -b master origin/master &&
-  cp /tmp/jsrocks-website/* -r . &&
+  echo git --version &&
+  git clone --depth=1 --branch=master https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git /tmp/deploy &&
+  cp public/* -r /tmp/deploy &&
+  cd /tmp/deploy &&
   git add . &&
   git commit -C $(TRAVIS_COMMIT) &&
   git push origin HEAD
