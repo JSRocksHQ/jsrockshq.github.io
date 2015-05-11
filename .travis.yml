@@ -10,7 +10,7 @@ script: >
   harmonic build &&
   cp public/ -r /tmp/jsrocks-website &&
   git remote set-url origin "https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git" &&
-  git fetch --update-shallow origin master &&
+  git fetch --unshallow origin master &&
   git checkout master &&
   cp /tmp/jsrocks-website/* -r . &&
   git add . &&
