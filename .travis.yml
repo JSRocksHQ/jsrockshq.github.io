@@ -9,12 +9,13 @@ script: >
   npm install -g harmonic &&
   harmonic build &&
   cp public/ -r /tmp/jsrocks-website &&
+  git remote set-url origin "https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git" &&
   git fetch &&
   git checkout -b master origin/master &&
   cp /tmp/jsrocks-website/* -r . &&
   git add . &&
   git commit -C $(TRAVIS_COMMIT) &&
-  git push https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git HEAD
+  git push origin HEAD
 env:
   global:
     secure: GVJQfEJF0JFK/ON6iW+WJ5d3Miq6Ru9ubYUFTFNdnlSLScGOPgWLOe2oaPZWsK1FSisNl9RI7tDSGYP6fSNrWhoGYTbQw/la0sgZMKuFC0Kx8mWq9ubuOK6PT5zMXxWfl2DKzudylnZLaaZ9NdpF/S8BbwAwGvylRzOF6l1TQKE=
