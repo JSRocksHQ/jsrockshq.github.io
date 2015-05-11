@@ -5,14 +5,16 @@ node_js:
 branches:
   only:
   - src
-script:
-- npm install -g harmonic
-- harmonic build
-- cp public/ -r /tmp/jsrocks-website
-- git checkout master
-- cp /tmp/jsrocks-website/* -r .
-- git commit -am "Update $(date +"%F %T")"
-- git push https://$GITHUB_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git
+script: >
+  npm install -g harmonic &&
+  harmonic build &&
+  cp public/ -r /tmp/jsrocks-website &&
+  git fetch &&
+  git checkout master &&
+  cp /tmp/jsrocks-website/* -r . &&
+  git add . &&
+  git commit -C $(TRAVIS_COMMIT) &&
+  git push https://$GH_TOKEN@github.com/JSRocksHQ/jsrockshq.github.io.git HEAD
 env:
   global:
     secure: GVJQfEJF0JFK/ON6iW+WJ5d3Miq6Ru9ubYUFTFNdnlSLScGOPgWLOe2oaPZWsK1FSisNl9RI7tDSGYP6fSNrWhoGYTbQw/la0sgZMKuFC0Kx8mWq9ubuOK6PT5zMXxWfl2DKzudylnZLaaZ9NdpF/S8BbwAwGvylRzOF6l1TQKE=
