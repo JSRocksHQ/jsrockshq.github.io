@@ -12,7 +12,7 @@ script: >
   cp public/* -r /tmp/deploy &&
   cd /tmp/deploy &&
   git add . &&
-  git fetch origin $TRAVIS_COMMIT:tmp &&
+  git fetch origin src &&
   git commit -C $TRAVIS_COMMIT &&
   git push origin HEAD
 env:
