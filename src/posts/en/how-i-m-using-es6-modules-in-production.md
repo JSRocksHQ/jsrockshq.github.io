@@ -88,7 +88,7 @@ src/
 ```
 I've just split the logic inside my AMD module into tiny ES6 modules.  
 The build process is very simple: Babel transpiles the code to ES5 using CommonJS modules for micro-modules and then [Browserify](http://browserify.org/) bundles everything.  
-Boom! The final code remains a AMD module, but my source code is using CommonJS for micro-modules.  
+Boom! The final code remains being an AMD module, but my source code is using CommonJS for micro-modules.  
 
 
 ## Next step
