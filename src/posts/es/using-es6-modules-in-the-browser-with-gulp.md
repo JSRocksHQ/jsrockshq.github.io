@@ -28,10 +28,10 @@ Luego, estuve probando [`gulp-es6-module-jstransform`](https://www.npmjs.org/pac
 Por último, probé [Traceur](https://github.com/google/traceur-compiler) (de Google) que tiene dos opciones para utilizar módulos en el navegador. Por un lado, `AMD` (pero tendríamos que usar [RequireJS](http://requirejs.org/) o algo similar); y por otro `inline`. La opción `inline`, basicamente, genera un archivo con todos los módulos transpilados (que es lo más parecido a como funcionan los módulos de ES6).
 
 
-El problema, es que la opción `inline` funciona perfectamente si usamos la línea de comando. Pero, si queremos utiilziar una API de Traceur para Node (por ejemplo [`gulp-traceur`](https://www.npmjs.org/package/gulp-traceur)) nos muestra un error.
+El problema, es que la opción `inline` funciona perfectamente si usamos la línea de comando. Pero, si queremos utilizar una API de Traceur para Node (por ejemplo [`gulp-traceur`](https://www.npmjs.org/package/gulp-traceur)) nos muestra un error.
 
 
-**[UPDATE]** He publicado este issue en [Github](https://github.com/google/traceur-compiler/issues/1282) y finanmente lo solucionaron. Pero nos dimos cuenta que el código generado utilizando la API para Node, es diferente al código que genera la línea de comando.
+**[Actualización]** He publicado este issue en [Github](https://github.com/google/traceur-compiler/issues/1282) y finalmente lo solucionaron. Pero nos dimos cuenta que el código generado utilizando la API para Node, es diferente al código que genera la línea de comando.
 
 
 Es por este motivo, que finalmente decidimos crear un plugin para [gulp](http://gulpjs.com/) que nos permitiera utilizar la línea de comando de Traceur en Node (Gracias Edward!).

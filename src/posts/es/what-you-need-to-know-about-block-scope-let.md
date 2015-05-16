@@ -13,7 +13,7 @@ authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks -
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
 <!--more-->
-La declaración de variables es algo bastante básico en cualquier lenguaje de programción.  
+La declaración de variables es algo bastante básico en cualquier lenguaje de programación.  
 Independientemente del lenguaje de programación, entender cómo funciona el ámbito (scope) de las variables es fundamental para escribir cualquier tipo de programa.
 
 
@@ -50,7 +50,7 @@ Sin embargo, en JavaScript es diferente y puede llegar a ser complicado.
 
 En JavaScript, cuando se declara una variable en el cuerpo de una función (sin usar la palabra `var`), la variable se "mueve hacia arriba" o se declara en el scope global. Este comportamiento se conoce como [_hoisting_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).  
 
-A diferencia de Python y otro lenguajes, en JavaScript, una varibale declarada en un bucle `for` pierde su valor.  
+A diferencia de Python y otro lenguajes, en JavaScript, una variable declarada en un bucle `for` pierde su valor.  
 
 Veamos el siguiente ejemplo:  
 ```javascript
@@ -101,16 +101,16 @@ try {
 ```
 
 ## Soporte
-Podés empezar a usar `let` hoy mismo*. Actualmente, `let` está siendo soportado en las últimas versiones de los navegadores modernos (incluso IE11) y en [Traceur](https://github.com/google/traceur-compiler).
+Puedes empezar a usar `let` hoy mismo*. Actualmente, `let` está siendo soportado en las últimas versiones de los navegadores modernos (incluso IE11) y en [Traceur](https://github.com/google/traceur-compiler).
 
 
 Te recomiendo que revises la tabla de compatibilidad de ES6 que armó [@Kangax](https://twitter.com/kangax) > [http://kangax.github.io/compat-table/es6/](http://kangax.github.io/compat-table/es6/).  
 
-Podés probarlo en el devtools de Firefox:
+Puedes probarlo en el devtools de Firefox:
 
 ![let en firefox nightly](/img/let.gif)  
 
-* __NOTA__: Como bien lo indicó Michał Gołębiowski en los comentarios, las implementaciones de los navegadores nos son tolamente compatibles con la especificación, por lo tanto pueden llegar a haber algunos bugs.  
+* __NOTA__: Como bien lo indicó Michał Gołębiowski en los comentarios, las implementaciones de los navegadores nos son totalmente compatibles con la especificación, por lo tanto pueden llegar a haber algunos bugs.  
 Para aplicaciones reales en producción, vas a necesitar un transpiler (por lo menos, hasta mediados del 2015).  
 
 ## Conclusión

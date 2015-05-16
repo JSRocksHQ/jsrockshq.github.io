@@ -12,7 +12,7 @@ authorLink: http://twitter.com/jaydson
 authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
 authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
 -->
-Si estás interesado en ES6, tenés que seguir al [Dr. Axel Rauschmayer](https://twitter.com/rauschma).<!--more-->  
+Si estás interesado en ES6, tienes que seguir al [Dr. Axel Rauschmayer](https://twitter.com/rauschma).<!--more-->  
 Axel mantiene el blog [2ality](http://www.2ality.com/) y escribe un motón de cosas interesantes sobre ES6.
 
 En esta presentación, nos cuenta sobre las nuevas características de ES6 y nos muestra que podemos esperar del futuro.
