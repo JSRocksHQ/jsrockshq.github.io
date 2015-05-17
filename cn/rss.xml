@@ -6,14 +6,14 @@
         <description>A website dedicated to teach all about ES6</description>
         <managingEditor>ES6 Rocks</managingEditor>
         <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Mon, 11 May 2015 07:30:09 GMT</pubDate>
+        <pubDate>Sun, 17 May 2015 21:14:10 GMT</pubDate>
         <language>cn</language>
         <atom:link href="http://es6rocks.com/cn/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>how i'm using es6 modules in production</title>
+            <title>我是怎么在项目中使用ES6 模块化的</title>
             <link>http://es6rocks.com/cn/2015/05/how-i-m-using-es6-modules-in-production</link>
-            <description><![CDATA[<h1 id="how-i-m-using-es6-modules-in-production">how i&#39;m using es6 modules in production</h1>
+            <description><![CDATA[<p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。</p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
             <guid>http://es6rocks.com/cn/2015/05/how-i-m-using-es6-modules-in-production</guid>
