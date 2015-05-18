@@ -347,7 +347,7 @@ export default config;
 │   ├── methods.js
 │   └── mod-stalker.js
 </code></pre><p>O que fiz foi apenas dividir a lógica dentro do meu módulo AMD em pequenos módulos ES6.<br>O processo de build é bem simples: O Babel transpila o código para ES5 usando módulos CommonJS para micro-módulos e então o <a href="http://browserify.org/">Browserify</a> monta tudo.<br>Boom! O código final continua sendo um módulo AMD, mas o meu código-fonte está usando CommonJS para micro-módulos.    </p>
-<h2 id="p-oximos-passos">Pŕoximos passos</h2>
+<h2 id="pr-ximos-passos">Próximos passos</h2>
 <p>Sourcemaps não estão funcionando muito bem com este processo pois estou usando o Browserify para fazer o bundle.<br>Porém, deve ser fácil de implementar o suporte a sourcemaps para micro-módulos.<br>Estamos começando a reescrever o nosso framework usando features de ES6 e claro, vamos usar módulos.<br>Talvez seja necessário construir um módulo customizado para a nossa estrutura atual, mas não acho que isso seja uma boa abordagem.<br>Possivelmente teremos que reescrever a lógica do sistema de módulos que temos.  </p>
 <h2 id="conclus-o">Conclusão</h2>
 <p>A especificação para módulos já está fechada, e em minha opinião está bem madura e eficiente.<br>Porém, ainda não temos uma API no browser para tratar do carregamento destes módulos, então uma solução como AMD ou CommonJS ainda se faz necessária.<br>Já podemos nos beneficiar da sintaxe ES6 para módulos agora mesmo, tornando o nosso código mais legível e mais conciso.<br>As ferramentas existentes como Babel e Browserify nos proporcionam um desenvolvimento indolor, e em um futuro próximo poderemos simplesmente desativá-las, pois teremos suporte total.  </p>
