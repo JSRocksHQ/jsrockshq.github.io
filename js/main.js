@@ -124,7 +124,7 @@ var JsRocks = function() {
 		tpl += '<div class="container-post">';
 		tpl +=     '<aside class="share-post">';
 		tpl +=         '<a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/' + postLink + '" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>';
-		tpl +=         '<a href="#" data-provider="https://twitter.com/intent/tweet?url=" data-post-url="/' + postLink + '" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>';
+		tpl +=         '<a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/' + postLink + '" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>';
 		tpl +=     '</aside>';
 		tpl +=     '<div class="date-post">' + date + '</div>';
 		tpl +=     '<h1 class="title-post"><a href="'+ origin + '/' + postLink + '">' + title + '</a></h1>';
@@ -246,7 +246,7 @@ var JsRocks = function() {
 					}
 
 					postsContainer.innerHTML = article;
-					posts.splice(0, 6);	
+					posts.splice(0, 6);
 				} else {
 
 					for (var i = 0; i < posts.length; i++) {
@@ -263,7 +263,7 @@ var JsRocks = function() {
 					}
 
 					postsContainer.innerHTML = article;
-					posts.splice(0, posts.length);	
+					posts.splice(0, posts.length);
 				}
 
 				if (posts.length === 0) {
