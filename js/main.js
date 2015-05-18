@@ -49,6 +49,7 @@ var JsRocks = function() {
 	var	HARMONIC = new Harmonic(),
 		W = window,
 		D = document,
+		PROTOCOL = W.location.protocol,
 		HOST = W.location.host,
 		HOSTNAME = W.location.hostname,
 		PATHNAME = W.location.pathname,
@@ -184,7 +185,7 @@ var JsRocks = function() {
 			    postUrl = btn.getAttribute('data-post-url');
 			    providerUrl = btn.getAttribute('data-provider');
 
-			    btn.setAttribute('href', providerUrl + HOST + postUrl);
+			    btn.setAttribute('href', providerUrl + PROTOCOL + '//' + HOST + postUrl);
 			}
 		}
 	};
