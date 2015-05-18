@@ -89,7 +89,7 @@ O que fiz foi apenas dividir a lógica dentro do meu módulo AMD em pequenos mó
 O processo de build é bem simples: O Babel transpila o código para ES5 usando módulos CommonJS para micro-módulos e então o [Browserify](http://browserify.org/) monta tudo.  
 Boom! O código final continua sendo um módulo AMD, mas o meu código-fonte está usando CommonJS para micro-módulos.    
 
-## Pŕoximos passos
+## Próximos passos
 Sourcemaps não estão funcionando muito bem com este processo pois estou usando o Browserify para fazer o bundle.  
 Porém, deve ser fácil de implementar o suporte a sourcemaps para micro-módulos.  
 Estamos começando a reescrever o nosso framework usando features de ES6 e claro, vamos usar módulos.  
