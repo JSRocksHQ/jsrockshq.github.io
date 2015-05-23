@@ -1,0 +1,31 @@
+/* TEAM */
+
+	Maintainer: Jaydson Gomes
+	Contact: jayalemao@gmail.com
+	Website: http://jaydson.org
+	Twitter: @jaydson
+	From: Porto Alegre
+
+	Maintainer: Fabrício Matté
+	Twitter: @Ult_Combo
+	Website: http://ultcombo.js.org
+	From: Pelotas
+
+	Web designer: Ítalo Waxman
+	Contact: http://br.linkedin.com/in/italowaxman/
+	Twitter: @italowaxman
+	From: Aracajú
+
+	Theme developer: Robson Júnior
+	Contact: robson.ga.junior@gmail.com
+	Website: http://robsonjunior.cc
+	Twitter: @robsongajunior
+	From: Porto Alegre
+
+
+/* SITE */
+	Last update: 2015/21/05
+	Language: Portuguese / English / Chinese
+	Doctype: HTML5
+	IDE: Sublime Text, Photoshop
+
