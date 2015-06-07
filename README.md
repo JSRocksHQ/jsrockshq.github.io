@@ -1,25 +1,25 @@
-![es6rocks](images/es6rocks-header-gh.png)
+![JS Rocks](images/jsrocks-header-gh.png)
 
 # How to contribute
-[ES6Rocks.com](http://es6rocks.com/) is a collaborative website about the ECMAScript language's sixth edition, a.k.a. ES6.  
+[JSRocks.org](http://jsrocks.org/) is a collaborative website about the latest JavaScript features and tools.  
 Anyone can contribute by writing an article, making a layout change, suggesting new sections, reporting issues, etc.  
-Contributing to ES6Rocks is super easy, choose the type of contribution you want.  
+Contributing to JS Rocks is super easy, choose the type of contribution you want.  
 
 ## Writing an article
-The ES6Rocks website is built with [Harmonic](https://github.com/es6rocks/harmonic/), our static site generator.
+The JS Rocks website is built with [Harmonic](https://github.com/JSRocksHQ/harmonic/), our static site generator.
 - First thing you need to do is to install Harmonic.
 ```javascript
 npm install harmonic -g
 ```
 You'll need Node.js >= 0.10 (or io.js) and npm already installed.  
-Check out the main [Harmonic documentation](https://github.com/es6rocks/harmonic/) if you're in trouble.  
+Check out the main [Harmonic documentation](https://github.com/JSRocksHQ/harmonic/) if you're in trouble.  
 
-- Fork and clone the es6rocks.github.io repository
+- Fork and clone the jsrockshq.github.io repository
 ```shell
 # replace YOUR_USERNAME with your GitHub username below
-git clone https://github.com/YOUR_USERNAME/es6rocks.github.io.git
-cd es6rocks.github.io
-git remote add upstream https://github.com/es6rocks/es6rocks.github.io.git
+git clone https://github.com/YOUR_USERNAME/jsrockshq.github.io.git
+cd jsrockshq.github.io
+git remote add upstream https://github.com/JSRocksHQ/jsrockshq.github.io.git
 ```
 
 - Create a new branch using `upstream/src` as base and checkout to it
@@ -38,7 +38,7 @@ This command will create a new markdown file in `/src/posts/[LANG]`.
 ```shell
 harmonic run
 ```
-This command will build and run the ES6Rocks website in the default port 9356.
+This command will build and run the JS Rocks website in the default port 9356.
 
 - Commit your changes
 ```shell
@@ -53,5 +53,5 @@ git push origin HEAD
 Go to your forked repository's page on Github.com and create a pull request for the `src` branch.
 
 ## Issues
-You can help ES6Rocks by finding a bug in the website, a typo in an article or even an incorrect sentence.  
-File an [issue](https://github.com/es6rocks/es6rocks.github.io/issues), and we will solve it ASAP.
+You can help JS Rocks by finding a bug in the website, a typo in an article or even an incorrect sentence.  
+File an [issue](https://github.com/JSRocksHQ/jsrockshq.github.io/issues), and we will solve it ASAP.
