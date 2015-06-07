@@ -1,56 +1,56 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ES6 Rocks</title>
-        <link>http://es6rocks.com</link>
-        <description>A website dedicated to teach all about ES6</description>
-        <managingEditor>ES6 Rocks</managingEditor>
-        <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sat, 23 May 2015 02:11:25 GMT</pubDate>
+        <title>JS Rocks</title>
+        <link>http://jsrocks.org</link>
+        <description>A collaborative website about the latest JavaScript features and tools.</description>
+        <managingEditor>JS Rocks</managingEditor>
+        <webMaster>JS Rocks</webMaster>
+        <pubDate>Sun, 07 Jun 2015 08:51:58 GMT</pubDate>
         <language>cn</language>
-        <atom:link href="http://es6rocks.com/cn/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://jsrocks.org/cn/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>我是怎么在项目中使用ES6 模块化的</title>
-            <link>http://es6rocks.com/cn/2015/05/how-i-m-using-es6-modules-in-production</link>
+            <link>http://jsrocks.org/cn/2015/05/how-i-m-using-es6-modules-in-production</link>
             <description><![CDATA[<p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。</p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
-            <guid>http://es6rocks.com/cn/2015/05/how-i-m-using-es6-modules-in-production</guid>
+            <guid>http://jsrocks.org/cn/2015/05/how-i-m-using-es6-modules-in-production</guid>
         </item>
         
         <item>
             <title>使用6to5，让今天就来写ES6的模块化开发!</title>
-            <link>http://es6rocks.com/cn/2014/11/es6-modules-today-with-6to5</link>
+            <link>http://jsrocks.org/cn/2014/11/es6-modules-today-with-6to5</link>
             <description><![CDATA[<p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>
 ]]></description>
             <pubDate>Wed, 05 Nov 2014 15:19:50 GMT</pubDate>
-            <guid>http://es6rocks.com/cn/2014/11/es6-modules-today-with-6to5</guid>
+            <guid>http://jsrocks.org/cn/2014/11/es6-modules-today-with-6to5</guid>
         </item>
         
         <item>
             <title>JavaScript ♥ 统一编码</title>
-            <link>http://es6rocks.com/cn/2014/10/javascript-unicode</link>
+            <link>http://jsrocks.org/cn/2014/10/javascript-unicode</link>
             <description><![CDATA[<p>Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.
 他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.
 实际上，即使你没在字符串和javascript花了很多时间，这些由Mathias提出的编码技巧也是很有用的。</p>
 ]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
-            <guid>http://es6rocks.com/cn/2014/10/javascript-unicode</guid>
+            <guid>http://jsrocks.org/cn/2014/10/javascript-unicode</guid>
         </item>
         
         <item>
             <title>ES6箭头函数和它的作用域</title>
-            <link>http://es6rocks.com/cn/2014/10/arrow-functions-and-their-scope</link>
+            <link>http://jsrocks.org/cn/2014/10/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>
 ]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
-            <guid>http://es6rocks.com/cn/2014/10/arrow-functions-and-their-scope</guid>
+            <guid>http://jsrocks.org/cn/2014/10/arrow-functions-and-their-scope</guid>
         </item>
         
         <item>
             <title>你需要知道的块级作用域 - let</title>
-            <link>http://es6rocks.com/cn/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <link>http://jsrocks.org/cn/2014/08/what-you-need-to-know-about-block-scope-let</link>
             <description><![CDATA[<ul>
 <li>译<a href="https://github.com/hacke2">@hacke2</a></li>
 </ul>
@@ -58,7 +58,7 @@
 <p>在大多数语言中，如<code>Python</code>，他有两个作用域:局部 和 全局。如下，变量定义在代码开头部分则为全局变量，在函数里面声明变量则为局部变量。</p>
 ]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://es6rocks.com/cn/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+            <guid>http://jsrocks.org/cn/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
     </channel>

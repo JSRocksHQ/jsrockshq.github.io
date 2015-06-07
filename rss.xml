@@ -1,82 +1,82 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ES6 Rocks</title>
-        <link>http://es6rocks.com</link>
-        <description>A website dedicated to teach all about ES6</description>
-        <managingEditor>ES6 Rocks</managingEditor>
-        <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sat, 23 May 2015 02:11:25 GMT</pubDate>
+        <title>JS Rocks</title>
+        <link>http://jsrocks.org</link>
+        <description>A collaborative website about the latest JavaScript features and tools.</description>
+        <managingEditor>JS Rocks</managingEditor>
+        <webMaster>JS Rocks</webMaster>
+        <pubDate>Sun, 07 Jun 2015 08:51:58 GMT</pubDate>
         <language>en</language>
-        <atom:link href="http://es6rocks.com/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://jsrocks.org/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>how I'm using es6 modules in production</title>
-            <link>http://es6rocks.com/2015/05/how-i-m-using-es6-modules-in-production</link>
+            <link>http://jsrocks.org/2015/05/how-i-m-using-es6-modules-in-production</link>
             <description><![CDATA[<p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and I want to share with you guys how I&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.  </p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
-            <guid>http://es6rocks.com/2015/05/how-i-m-using-es6-modules-in-production</guid>
+            <guid>http://jsrocks.org/2015/05/how-i-m-using-es6-modules-in-production</guid>
         </item>
         
         <item>
             <title>Temporal Dead Zone (TDZ) demystified</title>
-            <link>http://es6rocks.com/2015/01/temporal-dead-zone-tdz-demystified</link>
+            <link>http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified</link>
             <description><![CDATA[]]></description>
             <pubDate>Sat, 31 Jan 2015 18:19:51 GMT</pubDate>
-            <guid>http://es6rocks.com/2015/01/temporal-dead-zone-tdz-demystified</guid>
+            <guid>http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified</guid>
         </item>
         
         <item>
             <title>Using ES6 modules in the browser with gulp</title>
-            <link>http://es6rocks.com/2014/12/using-es6-modules-in-the-browser-with-gulp</link>
+            <link>http://jsrocks.org/2014/12/using-es6-modules-in-the-browser-with-gulp</link>
             <description><![CDATA[]]></description>
             <pubDate>Tue, 02 Dec 2014 17:14:37 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/12/using-es6-modules-in-the-browser-with-gulp</guid>
+            <guid>http://jsrocks.org/2014/12/using-es6-modules-in-the-browser-with-gulp</guid>
         </item>
         
         <item>
             <title>ES6 modules today with 6to5</title>
-            <link>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</link>
+            <link>http://jsrocks.org/2014/10/es6-modules-today-with-6to5</link>
             <description><![CDATA[<p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.</p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/es6-modules-today-with-6to5</guid>
+            <guid>http://jsrocks.org/2014/10/es6-modules-today-with-6to5</guid>
         </item>
         
         <item>
             <title>JavaScript ♥  Unicode</title>
-            <link>http://es6rocks.com/2014/10/javascript-unicode</link>
+            <link>http://jsrocks.org/2014/10/javascript-unicode</link>
             <description><![CDATA[<p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.</p>
 ]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/javascript-unicode</guid>
+            <guid>http://jsrocks.org/2014/10/javascript-unicode</guid>
         </item>
         
         <item>
             <title>Arrow Functions and their scope</title>
-            <link>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</link>
+            <link>http://jsrocks.org/2014/10/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!</p>
 ]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/10/arrow-functions-and-their-scope</guid>
+            <guid>http://jsrocks.org/2014/10/arrow-functions-and-their-scope</guid>
         </item>
         
         <item>
             <title>What's next for JavaScript</title>
-            <link>http://es6rocks.com/2014/08/what-is-next-for-javascript</link>
+            <link>http://jsrocks.org/2014/08/what-is-next-for-javascript</link>
             <description><![CDATA[<p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.</p>
 ]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/08/what-is-next-for-javascript</guid>
+            <guid>http://jsrocks.org/2014/08/what-is-next-for-javascript</guid>
         </item>
         
         <item>
             <title>What you need to know about block scope - let</title>
-            <link>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <link>http://jsrocks.org/2014/08/what-you-need-to-know-about-block-scope-let</link>
             <description><![CDATA[]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+            <guid>http://jsrocks.org/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
     </channel>

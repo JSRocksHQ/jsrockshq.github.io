@@ -1,84 +1,84 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ES6 Rocks</title>
-        <link>http://es6rocks.com</link>
-        <description>A website dedicated to teach all about ES6</description>
-        <managingEditor>ES6 Rocks</managingEditor>
-        <webMaster>ES6 Rocks</webMaster>
-        <pubDate>Sat, 23 May 2015 02:11:25 GMT</pubDate>
+        <title>JS Rocks</title>
+        <link>http://jsrocks.org</link>
+        <description>A collaborative website about the latest JavaScript features and tools.</description>
+        <managingEditor>JS Rocks</managingEditor>
+        <webMaster>JS Rocks</webMaster>
+        <pubDate>Sun, 07 Jun 2015 08:51:58 GMT</pubDate>
         <language>pt-br</language>
-        <atom:link href="http://es6rocks.com/pt-br/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://jsrocks.org/pt-br/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Como estou usando módulos es6 em produção</title>
-            <link>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</link>
+            <link>http://jsrocks.org/pt-br/2015/05/how-i-m-using-es6-modules-in-production</link>
             <description><![CDATA[<p>Estou usando <a href="/categories/modules/">módulos ES6</a> já faz um tempo no meu trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.<br>Em primeiro lugar, o <a href="https://babeljs.io/">Babel</a> é a ferramenta consolidada para fazer transpile. É um projeto bem ativo e cobre praticamente todas as novas features do JavaScript moderno.<br>O Babel funciona muito bem para módulos também, então basta que você decida o sabor, quero dizer, AMD, Common, UMD e até mesmo módulos customizados.  </p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2015/05/how-i-m-using-es6-modules-in-production</guid>
+            <guid>http://jsrocks.org/pt-br/2015/05/how-i-m-using-es6-modules-in-production</guid>
         </item>
         
         <item>
             <title>ES6: Brincando com o novo JS</title>
-            <link>http://es6rocks.com/pt-br/2014/11/es6-playing-with-the-new-javascript</link>
+            <link>http://jsrocks.org/pt-br/2014/11/es6-playing-with-the-new-javascript</link>
             <description><![CDATA[<p>Acredito que boa parte dos desenvolvedores que tem convívio com JavaScript, já estão ouvindo falar da <a href="http://tc39wiki.calculist.org/es6/">nova versão do JavaScript</a>, conhecida também como ECMAScript 6 ou apenas ES6.</p>
 ]]></description>
             <pubDate>Thu, 13 Nov 2014 23:30:23 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/11/es6-playing-with-the-new-javascript</guid>
+            <guid>http://jsrocks.org/pt-br/2014/11/es6-playing-with-the-new-javascript</guid>
         </item>
         
         <item>
             <title>Módulos ES6 hoje com o 6to5</title>
-            <link>http://es6rocks.com/pt-br/2014/10/es6-modules-today-with-6to5</link>
+            <link>http://jsrocks.org/pt-br/2014/10/es6-modules-today-with-6to5</link>
             <description><![CDATA[<p>Eu postei a imagem abaixo no <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a>, mostrando o quanto feliz eu estava.</p>
 ]]></description>
             <pubDate>Tue, 28 Oct 2014 12:49:54 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/10/es6-modules-today-with-6to5</guid>
+            <guid>http://jsrocks.org/pt-br/2014/10/es6-modules-today-with-6to5</guid>
         </item>
         
         <item>
             <title>JavaScript ♥  Unicode</title>
-            <link>http://es6rocks.com/pt-br/2014/10/javascript-unicode</link>
+            <link>http://jsrocks.org/pt-br/2014/10/javascript-unicode</link>
             <description><![CDATA[<p>O Mathias Bynens deu uma palestra incrível na última edição da <a href="http://2014.jsconf.eu">JSConfEU</a>.</p>
 ]]></description>
             <pubDate>Mon, 13 Oct 2014 19:22:32 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/10/javascript-unicode</guid>
+            <guid>http://jsrocks.org/pt-br/2014/10/javascript-unicode</guid>
         </item>
         
         <item>
             <title>Arrow Functions and their scope</title>
-            <link>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</link>
+            <link>http://jsrocks.org/pt-br/2014/10/arrow-functions-and-their-scope</link>
             <description><![CDATA[<p>Entre as tantas novas features presentes no ES6, Arrow Functions (ou Fat Arrow Functions), é uma que merece boa atenção!</p>
 ]]></description>
             <pubDate>Wed, 01 Oct 2014 04:01:41 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/10/arrow-functions-and-their-scope</guid>
+            <guid>http://jsrocks.org/pt-br/2014/10/arrow-functions-and-their-scope</guid>
         </item>
         
         <item>
             <title>O que podemos esperar do novo JavaScript</title>
-            <link>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</link>
+            <link>http://jsrocks.org/pt-br/2014/08/what-is-next-for-javascript</link>
             <description><![CDATA[<p>Se você está interessado em ES6, você deve seguir o <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.</p>
 ]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/08/what-is-next-for-javascript</guid>
+            <guid>http://jsrocks.org/pt-br/2014/08/what-is-next-for-javascript</guid>
         </item>
         
         <item>
             <title>O que você precisa saber sobre block scope - let</title>
-            <link>http://es6rocks.com/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</link>
+            <link>http://jsrocks.org/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</link>
             <description><![CDATA[]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+            <guid>http://jsrocks.org/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
         <item>
             <title>Uma nova sintaxe para módulos na ES6</title>
-            <link>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</link>
+            <link>http://jsrocks.org/pt-br/2014/07/a-new-syntax-for-modules-in-es6</link>
             <description><![CDATA[<p>O grupo TC39 - ECMAScript já está finalizando a sexta versão da especificação do ECMAScript </p>
 ]]></description>
             <pubDate>Fri, 11 Jul 2014 07:18:47 GMT</pubDate>
-            <guid>http://es6rocks.com/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
+            <guid>http://jsrocks.org/pt-br/2014/07/a-new-syntax-for-modules-in-es6</guid>
         </item>
         
     </channel>

@@ -1,9 +1,3 @@
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /* exported Harmonic */
 /* global __HARMONIC */
 
@@ -12,6 +6,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 // The substitution patterns look like a property access so that
 // we can just whitelist `__HARMONIC` as a global identifier
 // instead of having to whitelist every single substitution.
+
+"use strict";
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Harmonic = (function () {
     function Harmonic(name) {
@@ -23,7 +23,7 @@ var Harmonic = (function () {
     _createClass(Harmonic, [{
         key: "getConfig",
         value: function getConfig() {
-            return {"name":"ES6 Rocks","title":"ES6 Rocks","domain":"http://es6rocks.com","subtitle":"Powered by Harmonic","author":"ES6 Rocks","description":"A website dedicated to teach all about ES6","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"index_posts":8,"i18n":{"default":"en","languages":["en","pt-br","cn"]}};
+            return {"index_posts":8,"name":"JS Rocks","title":"JS Rocks","domain":"http://jsrocks.org","subtitle":"Powered by Harmonic","author":"JS Rocks","description":"A collaborative website about the latest JavaScript features and tools.","bio":"Thats me","theme":"harmonic-theme-jsrocks","preprocessor":false,"posts_permalink":":language/:year/:month/:title","pages_permalink":"pages/:title","header_tokens":["<!--","-->"],"i18n":{"default":"en","languages":["en","pt-br","cn"]}};
         }
     }, {
         key: "getPosts",
