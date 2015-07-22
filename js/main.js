@@ -68,6 +68,7 @@ var JsRocks = function() {
 	*
 	**/
 	pageElements.btnMorePosts = D.getElementById('morePosts');
+    pageElements.logo = D.querySelectorAll('.logo-jsrocks');
 
 
 	/**
@@ -293,7 +294,6 @@ var JsRocks = function() {
 	};
 
 
-
 	/**
 	*
 	* PUBLIC
@@ -320,7 +320,7 @@ var JsRocks = function() {
 		JSROCKS.categoryPath = INFORMATIONS.categoryPath(JSROCKS.lang);
 
 
-		/**
+        /**
 		*
 		* INIT
 		*
@@ -328,6 +328,14 @@ var JsRocks = function() {
 		if (pageElements.btnMorePosts && PATHNAME.match(/categories/gi)) {
 			pageElements.btnMorePosts.style.display = 'none';
 		}
+
+        if (!!pageElements.logo.length) {
+            for (var i = 0, els = pageElements.logo.length; i < els; i++) {
+                if (JSROCKS.lang !== 'en') {
+                    pageElements.logo[i].setAttribute('href', ORIGIN + '/' + JSROCKS.lang);
+                }
+            }
+        }
 
 		PRIVATE.popularTag();
 		PRIVATE.googleSearch();

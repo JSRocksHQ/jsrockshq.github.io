@@ -7,6 +7,10 @@
 // we can just whitelist `__HARMONIC` as a global identifier
 // instead of having to whitelist every single substitution.
 
+// TODO ESLint's `exported` directive seems to not be working correctly
+// with the current version.
+// We should probably `export` Harmonic using ES2015 module syntax and
+// trash the `exported` directive.
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -14,6 +18,8 @@ var _createClass = (function () { function defineProperties(target, props) { for
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Harmonic = (function () {
+    // eslint-disable-line no-unused-vars
+
     function Harmonic(name) {
         _classCallCheck(this, Harmonic);
 
@@ -33,7 +39,7 @@ var Harmonic = (function () {
     }, {
         key: "getPages",
         value: function getPages() {
-            return [];
+            return {};
         }
     }]);
 
