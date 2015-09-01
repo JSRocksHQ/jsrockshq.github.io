@@ -328,8 +328,8 @@ let bar = &#39;bar&#39;;
 export default bar;
 </code></pre>
 <p>Em ambos os módulos, nós estamos apenas exportando as strings &#39;foo&#39; e &#39;bar&#39;.<br>Quando importamos o módulo, nossa variável passa a ter o valor que exportamos.<br>Então <code>foo</code> em <code>import foo from &quot;foo&quot;</code> possui o valor <code>&quot;foo&quot;</code> que exportamos em <code>export default foo</code>.<br>Você também pode exportar objetos, classes, funções, etc.<br>Agora, você pode começar a hackear este simples exemplo e escrever seus próprios módulos.  </p>
-<p>#Build
-Como você deve saber, <a href="http://kangax.github.io/compat-table/es6/">módulos ES6 ainda não são suportados</a> por nenhum browser e nem no node.<br>A única maneira de escrever módulos ES6 hoje é usando um transpiler.<br>Como mencionei antes, estamos usando o 6to5, que faz exatamente o que queremos.<br>O task runner escolhido foi o <a href="http://gruntjs.com/">Grunt</a>, e vamos utilizar o <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a>, projeto do <a href="https://twitter.com/sindresorhus">@sindresorhus</a>.  </p>
+<h1 id="build">Build</h1>
+<p>Como você deve saber, <a href="http://kangax.github.io/compat-table/es6/">módulos ES6 ainda não são suportados</a> por nenhum browser e nem no node.<br>A única maneira de escrever módulos ES6 hoje é usando um transpiler.<br>Como mencionei antes, estamos usando o 6to5, que faz exatamente o que queremos.<br>O task runner escolhido foi o <a href="http://gruntjs.com/">Grunt</a>, e vamos utilizar o <a href="https://github.com/sindresorhus/grunt-6to5">grunt-6to5</a>, projeto do <a href="https://twitter.com/sindresorhus">@sindresorhus</a>.  </p>
 <pre><code class="lang-shell">npm install grunt-cli -g
 npm install grunt --save-dev
 npm install grunt-6to5 --save-dev
