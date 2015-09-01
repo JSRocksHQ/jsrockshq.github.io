@@ -75,7 +75,7 @@ Então `foo` em `import foo from "foo"` possui o valor `"foo"` que exportamos em
 Você também pode exportar objetos, classes, funções, etc.  
 Agora, você pode começar a hackear este simples exemplo e escrever seus próprios módulos.  
 
-#Build
+# Build
 Como você deve saber, [módulos ES6 ainda não são suportados](http://kangax.github.io/compat-table/es6/) por nenhum browser e nem no node.  
 A única maneira de escrever módulos ES6 hoje é usando um transpiler.  
 Como mencionei antes, estamos usando o 6to5, que faz exatamente o que queremos.  

@@ -75,7 +75,7 @@ Then, `foo` in `import foo from "foo"` has the data `'foo'` we exported in `expo
 You can also export objects, classes, functions, etc.  
 Now, you can start to hack this simple example and write your own modules.  
 
-#Build
+# Build
 As you may know, [ES6 modules are not supported yet](http://kangax.github.io/compat-table/es6/) by any browser nor Node.js.  
 The only way to write ES6 modules today is using a transpiler.  
 As I mentioned before, I'm using 6to5, that does exactly what we want.  
