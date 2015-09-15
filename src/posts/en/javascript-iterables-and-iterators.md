@@ -18,7 +18,7 @@ Now you will truly learn how important these concepts are and how to make good u
 
 ## Iterables
 
-As the name implies, iterable objects are objects that implement the [Iterable interface](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterable-interface). That is, iterable objects expose a default iteration method, allowing them to define or customize their iteration behavior.
+Iterable objects are objects that implement the [Iterable interface](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterable-interface). That is, iterable objects expose a default iteration method, allowing them to define or customize their iteration behavior.
 
 Let's see some examples:
 
@@ -39,15 +39,15 @@ for (let item of iterable3) {
 }
 ```
 
-As you can see, the [for-of](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of) statement accepts any iterable object, thus providing an uniform iteration syntax to completely distinct data structures by making use of the Iterable interface they implement.
+The [for-of](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of) statement accepts any iterable object, thus providing an uniform iteration syntax to completely distinct data structures by making use of the Iterable interface they implement.
 
 ### So what exactly is this Iterable interface you speak of?
 
-It is simple, really. Any object that contains a `[Symbol.iterator]` method is an iterable object.<br>
-In case you are unfamilar with symbols, they are, basically, objects that can be used as property keys.<br>
-`Symbol.iterator` is a *well-known* (baked in the language) Symbol, whose primary usage is defining and consuming iterable objects.
+Any object that contains a `[Symbol.iterator]` method is an iterable object.<br>
+In case you are unfamiliar with [symbols](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol), they are objects that can be used as property keys.<br>
+`Symbol.iterator` is a [*well-known*](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols) (baked in the language) Symbol, whose primary usage is defining and consuming iterable objects.
 
-In the previous examples, we were implicitly making use of the `[Symbol.iterator]` method inherited from the given objects' prototypes. Several built-ins such as Array, Set, String and Map define a default iteration behavior, while others such as Object do not.
+In the previous examples, we were implicitly making use of the `[Symbol.iterator]` method inherited from the given objects' prototypes. Several built-ins such as [Array](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array), [Set](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set), [String](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String) and [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) define a default iteration behavior, while others such as [Object](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object) do not.
 
 As previously mentioned, the Iterable interface allows defining and customizing objects' iteration order. For a quick example, we can borrow arrays' default iteration behavior (`Array.prototype[Symbol.iterator]`) to make array-like objects iterable:
 
@@ -78,7 +78,7 @@ Note that several built-in functions and language constructs that expect a seque
 
 ## Iterators
 
-Iterator objects are objects that implement the [Iterator interface](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterator-interface). That is, iterator objects must have a `next` method that returns a result object in the `{ value: Any, done: Boolean }` format. The first call to `.next()` returns the result of the first iteration (e.g. the 0th item in an array). The `done` property signals when the iterator has been exhausted and no more values are available.
+Iterator objects are objects that implement the [Iterator interface](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterator-interface). That is, iterator objects must have a `next` method that returns a result object in the `{ value: Any, done: Boolean }` format. The first call to the `next` method returns the result of the first iteration (e.g. the item at 0th index in an array). The `done` property signals when the iterator has been exhausted and no more values are available.
 
 Here is some code to illustrate iterators:
 
@@ -103,33 +103,40 @@ for (let _iterator = iterable[Symbol.iterator](), _result, item; _result = _iter
 }
 ```
 
-Now that we have understanding of iterables and iterators, we can create our own iterable objects and customize their default iteration behavior. Let's implement an iterable object whose iteration behavior provides ten random values:
+Now that we have understanding of iterables and iterators, we can create our own iterable objects and customize their default iteration behavior. Let's implement the iteration behavior for an array-like object from the ground up:
 
 ```javascript
 let iterable = {
+	0: 'a',
+	1: 'b',
+	2: 'c',
+	length: 3,
 	[Symbol.iterator]() {
 		let index = 0;
 		return {
-			next() {
-				let done = index++ === 10;
-				let value = done ? undefined : Math.random();
+			next: () => {
+				let value = this[index];
+				let done = index === this.length;
+				index++;
 				return { value, done };
 			}
 		};
 	}
 };
 for (let item of iterable) {
-	console.log(item); // ten random values
+	console.log(item); // 'a', 'b', 'c'
 }
 ```
 
 I know, at first this may look very complex and messy, but don't panic. Let's walk through it.
 
-First, we create a plain object using the object literal syntax. It contains a `[Symbol.iterator]` method, defined using a combination of the [computed properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) and [shorthand methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_6) ES2015 object literal extensions. This object has a `[Symbol.iterator]` method, thus it is considered an iterable object.
+We start by creating a plain object using the object literal syntax. It contains a `[Symbol.iterator]` method, defined using a combination of the [computed properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) and [shorthand methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) ES2015 object literal extensions. This object has a `[Symbol.iterator]` method, thus it is considered an iterable object.
 
-The `[Symbol.iterator]` method implements the default iteration logic for the object, that is, it returns an iterator object and holds the state of the given iterator. The object returned by the `[Symbol.iterator]` method contains a `next` method, hence it is considered an iterator object.
+The `[Symbol.iterator]` method implements the default iteration logic for the object, that is, it returns an iterator object and holds the state of the given iterator. The object returned by the `[Symbol.iterator]` method contains a `next` method, therefore it is considered an iterator object.
 
-The return value of the iterator's `next` method contains the `value` of the iteration and whether the iterator is `done` (exhausted).
+The iterator's `next` method is implemented using an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), so the `this` inside of it references the same object as the `this` used for the `[Symbol.iterator]` method invocation (i.e. the iterable data source).
+
+The return value of the iterator's `next` method contains the `value` of the iteration and whether the iterator is `done` (exhausted). The example above defines those using the [shorthand properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Property_definitions) syntax, by the way.
 
 From here, you should be able to figure out how everything ties together. The `for-of` will call the `[Symbol.iterator]` method on the iterable passed in and iterate over the returned iterator, by calling its `next` method on every iteration and passing the result's `value` property to the loop body until the `next` method's result's `done` property is `true`.
 
@@ -139,7 +146,7 @@ In short, yes. I'll address the most common doubts and misconceptions in QA form
 
 #### Q. Why is `[Symbol.iterator]` a method that returns an iterator? Couldn't it be an iterator?
 
-It is a method that returns an iterator because you may want to iterate over the same object multiple times, even concurrently:
+It is a method that returns an iterator because you may want to iterate over the same data source multiple times, even concurrently:
 
 ```javascript
 let iterable = [1, 2, 3, 4];
@@ -155,13 +162,13 @@ iterator2.next(); // { value: 3, done: false }
 iterator1.next(); // { value: 2, done: false }
 ```
 
-This is a rather contrived example, but in practice it is not uncommon to iterate over the same data source concurrently, applying asynchronous processing to each value between iterations. [co](https://github.com/tj/co) and [koa](http://koajs.com/) are good examples of this, although they use generators which return iterators by being called directly (instead of having a `[Symbol.iterator]` method).
+This is a very contrived example, but in practice it is not uncommon to iterate over the same data source concurrently, applying asynchronous processing to each value between iterations. [Koa](http://koajs.com/) and [co](https://github.com/tj/co) are good examples of this, although they use generators which return iterators by being called directly (instead of having a `[Symbol.iterator]` method).
 
 #### Q. Why iterators' `next` method returns a data structure? Couldn't it return just the value?
 
 In the initial iterators design, the `next` method indeed did only return the value. But then, how would you know when the iterator has been exhausted? It was nothing pretty: the `next` method would have to throw an error to signal completion. That means all calls to `next` would have to be wrapped in a `try/catch` block, which was plainly terrible.
 
-Hence, to avoid littering iterator consumption code with `try/catch` everywhere and to avoid a bizarre iterator completion signaling mechanism, we settled with the `next` method returning an object with `value` and `done` properties.
+In order to avoid littering iterator consumption code with `try/catch` everywhere, as well as to avoid a bizarre iterator completion signaling mechanism, we settled with the `next` method returning an object with `value` and `done` properties.
 
 #### Q. Why does it seem that the last iterator result value is ignored?
 
@@ -194,7 +201,7 @@ Yes, you can manually advance them by explicitly calling their `next` method whe
 Iterators may also implement optional `return` and `throw` methods, which are designed for more advanced use cases.
 
 The `return` method can be used to dispose of resources that the iterator may be holding when closed early. For instance, if the body of the `for-of` reaches a `break` or `return` statement or throws an uncaught error, the `for-of` would implicitly call the iterator's `return` method (if it has such method).<br>
-Note that my crude `for-of` reimplementation earlier in this post is incomplete and only illustrates the basic iteration functionality, you can see the [complexity of a precise for-of reimplementation on Babel](http://babeljs.io/repl/#?experimental=false&evaluate=false&loose=false&spec=false&playground=true&code=for%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20'a'%2C%20'b'%2C%20'c'%0D%0A%7D&runtime=true).
+Note that my crude `for-of` reimplementation earlier in this post is incomplete and only illustrates the basic iteration functionality, you can see the [complexity of a precise for-of reimplementation on Babel](http://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&playground=true&code=let%20iterable%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20'a'%2C%20'b'%2C%20'c'%0D%0A%7D%0D%0A&runtime=true).
 
 The `throw` method can be used to notify the iterator of an error condition.
 
@@ -205,7 +212,7 @@ Let's do a quick recap:
 - The Iterable interface requires the implementation of a `[Symbol.iterator]` method;
 - The Iterator interface requires the implementation of a `next` method.
 
-If you are paying attention, you have probably noticed that nothing prevents an object from implementing both Iterable and Iterator interfaces. That's what I call Iterable iterators (you may prefer Iterable Iterator objects, but I find that too verbose).
+You may have noticed that nothing prevents an object from implementing both Iterable and Iterator interfaces. That's what I call Iterable iterators (you may prefer Iterable Iterator objects, but I find that too verbose).
 
 In fact, most iterators implement the Iterable interface. That is, most of them have a `[Symbol.iterator]` method, but note that iterators' `[Symbol.iterator]` method usually returns the iterator itself instead of a new iterator:
 
@@ -281,7 +288,7 @@ Let's do a quick recap:
 - Iterators often implement the Iterable interface, which enables them to be fed to iterable consumers;
 - The iterator completion `value` (when `done: true`) is usually ignored by iterable consumers;
 - Several built-ins that you usually feed arrays to actually accept any iterable object (`for-of`, `Array.from`, `yield*`, `[a, b, ...rest] = iterable`);
-- If you maintain an API that accepts arrays as argument, please consider adding supporting iterables: it is as simple as calling `Array.from(arg)` to turn any iterable argument into a true array.
+- If you maintain an API that accepts arrays as argument, please consider supporting iterables: it is as simple as calling `Array.from(arg)` to turn any iterable argument into a true array.
 
 So, I guess that's finally it. We reached the end of the line. You may be wondering what you will do with your life now, but I'm not sure whether I can answer this question. Perhaps you want to read about [Generators](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-generatorfunction-objects) now? :)
 
@@ -292,3 +299,7 @@ And as always, if you can improve this article, please visit the [JS Rocks repos
 - [ECMAScript® 2015 Language Specification - Ecma International](http://www.ecma-international.org/ecma-262/6.0/index.html)
 - [for...of - MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of)
 - [Iteration protocols - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
+- [for-of reimplementation - Babel](http://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&playground=true&code=let%20iterable%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20'a'%2C%20'b'%2C%20'c'%0D%0A%7D%0D%0A&runtime=true)
+- [Object initializer - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+- [Method definitions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions)
+- [Arrow functions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
