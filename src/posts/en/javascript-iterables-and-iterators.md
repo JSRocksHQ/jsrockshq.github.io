@@ -300,6 +300,7 @@ And as always, if you can improve this article, please visit the [JS Rocks repos
 - [for...of - MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of)
 - [Iteration protocols - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 - [for-of reimplementation - Babel](http://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&playground=true&code=let%20iterable%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20'a'%2C%20'b'%2C%20'c'%0D%0A%7D%0D%0A&runtime=true)
+- [Symbol - MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 - [Object initializer - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 - [Method definitions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions)
 - [Arrow functions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
