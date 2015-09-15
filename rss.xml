@@ -6,7 +6,7 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Tue, 15 Sep 2015 04:06:46 GMT</pubDate>
+        <pubDate>Tue, 15 Sep 2015 04:21:43 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://jsrocks.org/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -16,7 +16,7 @@
             <description><![CDATA[<p>ECMAScript 2015 (ES6) introduces two new distinct, yet closely related, concepts: <strong>iterables</strong> and <strong>iterators</strong>.<br>
 Now you will truly learn how important these concepts are and how to make good use of them.</p>
 ]]></description>
-            <pubDate>Sun, 13 Sep 2015 01:41:02 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2015 04:06:02 GMT</pubDate>
             <guid>http://jsrocks.org/2015/09/javascript-iterables-and-iterators</guid>
         </item>
         
