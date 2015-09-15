@@ -1,7 +1,7 @@
 <!--
 layout: post
 title: JavaScript iterables and iterators
-date: 2015-09-13T01:41:02.428Z
+date: 2015-09-15T04:06:02.428Z
 comments: true
 published: true
 keywords: iterables, iterators, ES2015
