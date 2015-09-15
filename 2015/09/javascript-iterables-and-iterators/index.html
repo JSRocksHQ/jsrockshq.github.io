@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <!-- Responsive Meta Data -->
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Core Meta Data -->
+    
     <meta name="author" content="@italowaxman, @robsongajunior, @jaydson">
     <meta name="description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="keywords" content="javascript, JS, ECMAScript, ES6, Harmonic, front-end">
 
-    <!-- Facebook Tags -->
+    
     <meta property="og:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta property="og:image" content="http://jsrocks.org/images/thumb.png">
     <meta property="og:site_name" content="JS Rocks">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://jsrocks.org">
 
-    <!-- Twitter tags -->
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="http://jsrocks.org">
     <meta name="twitter:creator" content="@es6rocks">
@@ -29,10 +29,10 @@
     <meta name="twitter:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="twitter:image" content="http://jsrocks.org/images/thumb.png">
 
-    <!-- Humans -->
+    
     <link rel="author" href="/humans.txt" />
 
-    <!-- Favicon -->
+    
     <link rel="shortcut icon" href="http://jsrocks.org/favicon.ico">
     <link rel="apple-touch-icon image_src" href="http://jsrocks.org/favicon.png">
 
@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>JS Rocks</title>
+    <title>JavaScript iterables and iterators - JS Rocks</title>
 </head>
 <body>
     <div class="wrapper">
@@ -259,394 +259,313 @@
         <div class="content">
             <div class="container">
                 
-                <section class="posts-list">
-                    <div class="row">
-
-                        
-                            
-                                <article class="col-sm-6 col-xs-12 post-big item-post post-fade-1">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2015/09/javascript-iterables-and-iterators" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2015/09/javascript-iterables-and-iterators" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Sun Sep 13 2015 01:41:02 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2015/09/javascript-iterables-and-iterators" alt="JavaScript iterables and iterators">JavaScript iterables and iterators</a></h1>
-
-                                    <div class="intro-post"> <p>ECMAScript 2015 (ES6) introduces two new distinct, yet closely related, concepts: <strong>iterables</strong> and <strong>iterators</strong>.<br>
-Now you will truly learn how important these concepts are and how to make good use of them.</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="iterables">
-                                                    <a href="/categories/iterables">iterables</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" iterators">
-                                                    <a href="/categories/iterators"> iterators</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" ES2015">
-                                                    <a href="/categories/es2015"> ES2015</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" articles">
-                                                    <a href="/categories/articles"> articles</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" alt="Fabrício S. Matté"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="https://twitter.com/Ult_Combo" class="author" alt="Author: Fabrício S. Matté">Fabrício S. Matté</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-sm-6 col-xs-12 post-big item-post post-fade-2">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2015/05/how-i-m-using-es6-modules-in-production" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2015/05/how-i-m-using-es6-modules-in-production" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Fri May 08 2015 04:51:30 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2015/05/how-i-m-using-es6-modules-in-production" alt="how I'm using es6 modules in production">how I'm using es6 modules in production</a></h1>
-
-                                    <div class="intro-post"> <p>I&#39;ve been using <a href="/categories/modules/">ES6 modules</a> for a while in my daily work and I want to share with you guys how I&#39;m doing it.<br>First of all, <a href="https://babeljs.io/">Babel</a> is the consolidated tool for transpilation. It&#39;s a very active project, and it covers almost all of modern JavaScript features.<br>Babel works great for modules too, so you&#39;ll just need to decide the flavour, I mean AMD, Common, UMD and even customized modules.  </p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="modules">
-                                                    <a href="/categories/modules">modules</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-3">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2015/01/temporal-dead-zone-tdz-demystified" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Sat Jan 31 2015 18:19:51 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2015/01/temporal-dead-zone-tdz-demystified" alt="Temporal Dead Zone (TDZ) demystified">Temporal Dead Zone (TDZ) demystified</a></h1>
-
-                                    <div class="intro-post">  </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="scope">
-                                                    <a href="/categories/scope">scope</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" articles">
-                                                    <a href="/categories/articles"> articles</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" alt="Fabrício S. Matté"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="https://twitter.com/Ult_Combo" class="author" alt="Author: Fabrício S. Matté">Fabrício S. Matté</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-4">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/12/using-es6-modules-in-the-browser-with-gulp" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2014/12/using-es6-modules-in-the-browser-with-gulp" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Tue Dec 02 2014 17:14:37 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2014/12/using-es6-modules-in-the-browser-with-gulp" alt="Using ES6 modules in the browser with gulp">Using ES6 modules in the browser with gulp</a></h1>
-
-                                    <div class="intro-post">  </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="modules">
-                                                    <a href="/categories/modules">modules</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" tutorial">
-                                                    <a href="/categories/tutorial"> tutorial</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="http://juan.me/images/reacticabrera.jpg" alt="Juan Cabrera"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://juan.me" class="author" alt="Author: Juan Cabrera">Juan Cabrera</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-5">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/10/es6-modules-today-with-6to5" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2014/10/es6-modules-today-with-6to5" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Tue Oct 28 2014 12:49:54 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2014/10/es6-modules-today-with-6to5" alt="ES6 modules today with 6to5">ES6 modules today with 6to5</a></h1>
-
-                                    <div class="intro-post"> <p>I&#39;ve posted the image below on <a href="https://twitter.com/jaydson/status/526882798263881730">Twitter</a> showing how happy I was.</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="Modules">
-                                                    <a href="/categories/modules">Modules</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" Tutorial">
-                                                    <a href="/categories/tutorial"> Tutorial</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-6">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/10/javascript-unicode" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2014/10/javascript-unicode" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Mon Oct 13 2014 19:22:32 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2014/10/javascript-unicode" alt="JavaScript ♥  Unicode">JavaScript ♥  Unicode</a></h1>
-
-                                    <div class="intro-post"> <p>Mathias Bynens gave an awesome talk in the last <a href="http://2014.jsconf.eu">JSConfEU</a> edition.</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="Unicode">
-                                                    <a href="/categories/unicode">Unicode</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" Videos">
-                                                    <a href="/categories/videos"> Videos</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-7">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/10/arrow-functions-and-their-scope" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2014/10/arrow-functions-and-their-scope" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Wed Oct 01 2014 04:01:41 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2014/10/arrow-functions-and-their-scope" alt="Arrow Functions and their scope">Arrow Functions and their scope</a></h1>
-
-                                    <div class="intro-post"> <p>Among so many great new features in ES6, Arrow Functions (or Fat Arrow Functions) is one that deserves attention!</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="scope">
-                                                    <a href="/categories/scope">scope</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" articles">
-                                                    <a href="/categories/articles"> articles</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" basics">
-                                                    <a href="/categories/basics"> basics</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="/avatars/felipenmoura.png" alt="Felipe N. Moura"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/felipenmoura" class="author" alt="Author: Felipe N. Moura">Felipe N. Moura</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-8">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2014/08/what-is-next-for-javascript" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2014/08/what-is-next-for-javascript" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Fri Aug 29 2014 03:04:03 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/2014/08/what-is-next-for-javascript" alt="What's next for JavaScript">What's next for JavaScript</a></h1>
-
-                                    <div class="intro-post"> <p>If you&#39;re interested in ES6 you must follow <a href="https://twitter.com/rauschma">Dr. Axel Rauschmayer</a>.</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="talks">
-                                                    <a href="/categories/talks">talks</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" videos">
-                                                    <a href="/categories/videos"> videos</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-
-                        <div id="containerMorePosts"> <!-- More posts --> </div>
-
-                    </div>
-                    <div class="row row-more-posts">
-                        <div class="col-md-12 more-posts">
-                            <button id="morePosts" class="button-post button-more-posts">
-                                <img class="icon-more" src="/images/icon-button-more.png" alt="icon more posts">
-                                <span>More Posts</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                <section class="testemonials">
-                    <div class="row">
-                        <div class="col-md-12 title-testemonials">
-                            <div class="centering">
-                                <img class="icon-testemonials" src="/images/icon-title-testemonials.png" alt="icon testemonials">
-                                <h2>TESTIMONIALS</h2>
+                <div class="row">
+                    <div class="col-xs-12 header-article">
+                        <div class="author-post">
+                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" alt="Fabrício S. Matté"></div>
+                            <div class="info-author">
+                                <span>Posted by</span>
+                                <a href="https://twitter.com/Ult_Combo" rel="author" class="author">Fabrício S. Matté</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="list-testemonials">
-                            <div class="centering">
-
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"ES6 improves developer ergonomics massively and jsrocks.org will help you grok the benefit you can reap and how to get it today. Love it."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/paulirish.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Paul Irish</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/paul_irish" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/paulirish" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Google</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"JS Rocks is a brilliant initiative, if you're looking for relevant content about what's coming next for the JavaScript language, here's the place to find."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/zenorocha.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Zeno Rocha</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/zenorocha" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/zenorocha" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Liferay</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="date-post">Sun Sep 13 2015 01:41:02 GMT+0000 (UTC)</div>
+                        <h1 class="title-post">JavaScript iterables and iterators</h1>
+                        <div class="centering">
+                            <ul class="tags-post">
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag iterables" href="/categories/iterables">iterables</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  iterators" href="/categories/iterators"> iterators</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  ES2015" href="/categories/es2015"> ES2015</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  articles" href="/categories/articles"> articles</a>
+                                    </li>
+                                
+                            </ul>
                         </div>
                     </div>
-                </section>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="article-content">
+                            <aside class="share-post">
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2015/09/javascript-iterables-and-iterators" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2015/09/javascript-iterables-and-iterators" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                            </aside>
+                            <p>ECMAScript 2015 (ES6) introduces two new distinct, yet closely related, concepts: <strong>iterables</strong> and <strong>iterators</strong>.<br>
+Now you will truly learn how important these concepts are and how to make good use of them.
+</p>
+<h2 id="iterables">Iterables</h2>
+<p>Iterable objects are objects that implement the <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterable-interface">Iterable interface</a>. That is, iterable objects expose a default iteration method, allowing them to define or customize their iteration behavior.</p>
+<p>Let&#39;s see some examples:</p>
+<pre><code class="lang-javascript">let iterable = [1, 2, 3];
+for (let item of iterable) {
+    console.log(item); // 1, 2, 3
+}
+
+let iterable2 = new Set([4, 5, 6]);
+for (let item of iterable2) {
+    console.log(item); // 4, 5, 6
+}
+
+let iterable3 = &#39;789&#39;;
+for (let item of iterable3) {
+    console.log(item); // &#39;7&#39;, &#39;8&#39;, &#39;9&#39;
+}
+</code></pre>
+<p>The <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of">for-of</a> statement accepts any iterable object, thus providing an uniform iteration syntax to completely distinct data structures by making use of the Iterable interface they implement.</p>
+<h3 id="so-what-exactly-is-this-iterable-interface-you-speak-of-">So what exactly is this Iterable interface you speak of?</h3>
+<p>Any object that contains a <code>[Symbol.iterator]</code> method is an iterable object.<br>
+In case you are unfamiliar with <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbols</a>, they are objects that can be used as property keys.<br>
+<code>Symbol.iterator</code> is a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols"><em>well-known</em></a> (baked in the language) Symbol, whose primary usage is defining and consuming iterable objects.</p>
+<p>In the previous examples, we were implicitly making use of the <code>[Symbol.iterator]</code> method inherited from the given objects&#39; prototypes. Several built-ins such as <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>, <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> and <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> define a default iteration behavior, while others such as <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> do not.</p>
+<p>As previously mentioned, the Iterable interface allows defining and customizing objects&#39; iteration order. For a quick example, we can borrow arrays&#39; default iteration behavior (<code>Array.prototype[Symbol.iterator]</code>) to make array-like objects iterable:</p>
+<pre><code class="lang-javascript">let iterable = {
+    0: &#39;a&#39;,
+    1: &#39;b&#39;,
+    2: &#39;c&#39;,
+    length: 3,
+    [Symbol.iterator]: Array.prototype[Symbol.iterator]
+};
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+</code></pre>
+<p>Now you may be wondering: <strong>&quot;How do I implement custom iteration behavior?&quot;</strong><br>
+As you already know, adding a <code>[Symbol.iterator]</code> method to a given object makes it iterable, but here is the catch: the <code>[Symbol.iterator]</code> method must return an <em>iterator object</em>, which is actually responsible for the iteration logic. We will cover this in the next section.</p>
+<p>Before we move on to iterators, let&#39;s recap what the Iterable interface is about:</p>
+<ul>
+<li>It signals that a given object is iterable to consumers (iterable object: &quot;Hey! I have a <code>[Symbol.iterator]</code> method.&quot;);</li>
+<li>It provides a standardized way to iterate any iterable object (iterable object: &quot;Call my <code>[Symbol.iterator]</code> method if you want an iterator that implements my default iteration logic&quot;).</li>
+</ul>
+<p>The points above may seem slightly redundant if you are familiar with interfaces (Java, C#), but it is worth being clear as this is a new addition to the JavaScript language.</p>
+<p>Note that several built-in functions and language constructs that expect a sequence of values accept iterable objects. For instance, <code>Promise.all()</code> accepts any iterable object as argument, not just plain arrays. The same holds true for destructuring assignments (<code>[a, b] = iterable</code>) and <code>yield* iterable</code>.</p>
+<h2 id="iterators">Iterators</h2>
+<p>Iterator objects are objects that implement the <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterator-interface">Iterator interface</a>. That is, iterator objects must have a <code>next</code> method that returns a result object in the <code>{ value: Any, done: Boolean }</code> format. The first call to the <code>next</code> method returns the result of the first iteration (e.g. the item at 0th index in an array). The <code>done</code> property signals when the iterator has been exhausted and no more values are available.</p>
+<p>Here is some code to illustrate iterators:</p>
+<pre><code class="lang-javascript">let iterable = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+// Explicit &quot;low-level&quot; iterator consumption:
+let iterator = iterable[Symbol.iterator]();
+iterator.next(); // { value: &#39;a&#39;, done: false }
+iterator.next(); // { value: &#39;b&#39;, done: false }
+iterator.next(); // { value: &#39;c&#39;, done: false }
+iterator.next(); // { value: undefined, done: true }
+
+// for-of abstracts away iterator instantiation and consumption:
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+
+// A crude illustration of for-of&#39;s inner workings:
+for (let _iterator = iterable[Symbol.iterator](), _result, item; _result = _iterator.next(), item = _result.value, !_result.done;) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+</code></pre>
+<p>Now that we have understanding of iterables and iterators, we can create our own iterable objects and customize their default iteration behavior. Let&#39;s implement the iteration behavior for an array-like object from the ground up:</p>
+<pre><code class="lang-javascript">let iterable = {
+    0: &#39;a&#39;,
+    1: &#39;b&#39;,
+    2: &#39;c&#39;,
+    length: 3,
+    [Symbol.iterator]() {
+        let index = 0;
+        return {
+            next: () =&gt; {
+                let value = this[index];
+                let done = index === this.length;
+                index++;
+                return { value, done };
+            }
+        };
+    }
+};
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+</code></pre>
+<p>I know, at first this may look very complex and messy, but don&#39;t panic. Let&#39;s walk through it.</p>
+<p>We start by creating a plain object using the object literal syntax. It contains a <code>[Symbol.iterator]</code> method, defined using a combination of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names">computed properties</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions">shorthand methods</a> ES2015 object literal extensions. This object has a <code>[Symbol.iterator]</code> method, thus it is considered an iterable object.</p>
+<p>The <code>[Symbol.iterator]</code> method implements the default iteration logic for the object, that is, it returns an iterator object and holds the state of the given iterator. The object returned by the <code>[Symbol.iterator]</code> method contains a <code>next</code> method, therefore it is considered an iterator object.</p>
+<p>The iterator&#39;s <code>next</code> method is implemented using an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>, so the <code>this</code> inside of it references the same object as the <code>this</code> used for the <code>[Symbol.iterator]</code> method invocation (i.e. the iterable data source).</p>
+<p>The return value of the iterator&#39;s <code>next</code> method contains the <code>value</code> of the iteration and whether the iterator is <code>done</code> (exhausted). The example above defines those using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Property_definitions">shorthand properties</a> syntax, by the way.</p>
+<p>From here, you should be able to figure out how everything ties together. The <code>for-of</code> will call the <code>[Symbol.iterator]</code> method on the iterable passed in and iterate over the returned iterator, by calling its <code>next</code> method on every iteration and passing the result&#39;s <code>value</code> property to the loop body until the <code>next</code> method&#39;s result&#39;s <code>done</code> property is <code>true</code>.</p>
+<h3 id="is-all-this-complexity-necessary-">Is all this complexity necessary?</h3>
+<p>In short, yes. I&#39;ll address the most common doubts and misconceptions in QA format below.</p>
+<h4 id="q-why-is-symbol-iterator-a-method-that-returns-an-iterator-couldn-t-it-be-an-iterator-">Q. Why is <code>[Symbol.iterator]</code> a method that returns an iterator? Couldn&#39;t it be an iterator?</h4>
+<p>It is a method that returns an iterator because you may want to iterate over the same data source multiple times, even concurrently:</p>
+<pre><code class="lang-javascript">let iterable = [1, 2, 3, 4];
+let iterator1 = iterable[Symbol.iterator]();
+let iterator2 = iterable[Symbol.iterator]();
+
+iterator1.next(); // { value: 1, done: false }
+
+iterator2.next(); // { value: 1, done: false }
+iterator2.next(); // { value: 2, done: false }
+iterator2.next(); // { value: 3, done: false }
+
+iterator1.next(); // { value: 2, done: false }
+</code></pre>
+<p>This is a very contrived example, but in practice it is not uncommon to iterate over the same data source concurrently, applying asynchronous processing to each value between iterations. <a href="http://koajs.com/">Koa</a> and <a href="https://github.com/tj/co">co</a> are good examples of this, although they use generators which return iterators by being called directly (instead of having a <code>[Symbol.iterator]</code> method).</p>
+<h4 id="q-why-iterators-next-method-returns-a-data-structure-couldn-t-it-return-just-the-value-">Q. Why iterators&#39; <code>next</code> method returns a data structure? Couldn&#39;t it return just the value?</h4>
+<p>In the initial iterators design, the <code>next</code> method indeed did only return the value. But then, how would you know when the iterator has been exhausted? It was nothing pretty: the <code>next</code> method would have to throw an error to signal completion. That means all calls to <code>next</code> would have to be wrapped in a <code>try/catch</code> block, which was plainly terrible.</p>
+<p>In order to avoid littering iterator consumption code with <code>try/catch</code> everywhere, as well as to avoid a bizarre iterator completion signaling mechanism, we settled with the <code>next</code> method returning an object with <code>value</code> and <code>done</code> properties.</p>
+<h4 id="q-why-does-it-seem-that-the-last-iterator-result-value-is-ignored-">Q. Why does it seem that the last iterator result value is ignored?</h4>
+<p>When the <code>next</code> method&#39;s result has the <code>done</code> property set to <code>true</code>, it means the iterator has been exhausted and can not provide an iteration value. An iterator implementation may set a <code>value</code> property alongside <code>done: true</code> in the iterator result object, but this <code>value</code> then has special meaning: it is treated as a <em>completion</em> value, not an iteration value, and as such is ignored by built-ins that consume iterables such as <code>for-of</code>, <code>Array.from</code>, destructuring and <code>yield*</code>.</p>
+<p>Iterators spawned from generators are a clear example of this. The generator&#39;s return value is set as the completion <code>value</code> of the iterator result alongside <code>done: true</code>. This completion value is ignored by iterable-consuming built-ins, which only iterate over iteration values (provided via <code>yield</code> inside generators).</p>
+<h4 id="q-can-an-iterator-implementation-s-next-method-take-arguments-">Q. Can an iterator implementation&#39;s <code>next</code> method take arguments?</h4>
+<p>Yes, it can! A prime example of this is passing values to inside generators, but we can make use of this in a vanilla iterator implementation as well:</p>
+<pre><code class="lang-javascript">let echoIterator = {
+    next(value) {
+        return { value, done: false };
+    }
+};
+
+echoIterator.next(42); // { value: 42, done: false }
+</code></pre>
+<p>As you can see, there&#39;s nothing really special about iterators. But be aware that, so far, there is no way to pass arguments to the <code>next</code> method of an iterator implicitly spawned by iterable-consuming built-ins. That is, <code>for-of</code>, <code>Array.from</code> and such do not provide a way to pass arguments to the <code>next</code> method.</p>
+<h4 id="q-are-infinite-iterators-valid-">Q. Are infinite iterators valid?</h4>
+<p>Yes, you can manually advance them by explicitly calling their <code>next</code> method when appropriate. However, you will get an infinite loop if you try to exhaust them, obviously.</p>
+<h3 id="optional-iterator-methods">Optional iterator methods</h3>
+<p>Iterators may also implement optional <code>return</code> and <code>throw</code> methods, which are designed for more advanced use cases.</p>
+<p>The <code>return</code> method can be used to dispose of resources that the iterator may be holding when closed early. For instance, if the body of the <code>for-of</code> reaches a <code>break</code> or <code>return</code> statement or throws an uncaught error, the <code>for-of</code> would implicitly call the iterator&#39;s <code>return</code> method (if it has such method).<br>
+Note that my crude <code>for-of</code> reimplementation earlier in this post is incomplete and only illustrates the basic iteration functionality, you can see the <a href="http://babeljs.io/repl/#?experimental=false&amp;evaluate=true&amp;loose=false&amp;spec=false&amp;playground=true&amp;code=let%20iterable%20%3D%20%5B&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%0D%0A%7D%0D%0A&amp;runtime=true">complexity of a precise for-of reimplementation on Babel</a>.</p>
+<p>The <code>throw</code> method can be used to notify the iterator of an error condition.</p>
+<h2 id="iterable-iterators">Iterable iterators</h2>
+<p>Let&#39;s do a quick recap:</p>
+<ul>
+<li>The Iterable interface requires the implementation of a <code>[Symbol.iterator]</code> method;</li>
+<li>The Iterator interface requires the implementation of a <code>next</code> method.</li>
+</ul>
+<p>You may have noticed that nothing prevents an object from implementing both Iterable and Iterator interfaces. That&#39;s what I call Iterable iterators (you may prefer Iterable Iterator objects, but I find that too verbose).</p>
+<p>In fact, most iterators implement the Iterable interface. That is, most of them have a <code>[Symbol.iterator]</code> method, but note that iterators&#39; <code>[Symbol.iterator]</code> method usually returns the iterator itself instead of a new iterator:</p>
+<pre><code class="lang-javascript">let iterable = [1, 2];
+let iterator = iterable[Symbol.iterator]();
+iterator[Symbol.iterator]() === iterator; // true
+</code></pre>
+<p>It is trivial to make an Iterable iterator:</p>
+<pre><code class="lang-javascript">let iterableIterator = {
+    next() {/*...*/},
+    [Symbol.iterator]() {
+        return this;
+    }
+};
+</code></pre>
+<p>And now you may ask, <strong>&quot;How is this useful?&quot;</strong></p>
+<p>Well, first consider that <strong>a single data source may have multiple iteration behaviors.</strong><br>
+Then, consider that iterables can only expose a single default iteration behavior.<br>
+Finally, remember that <code>for-of</code> and other iterable consumers take an iterable object and implicitly call its default iteration behavior (the <code>[Symbol.iterator]</code> method) to get an iterator.</p>
+<p>Telling an iterable consumer (e.g. <code>for-of</code>) to use a non-default iterator (an iterator other than the one returned by the <code>[Symbol.iterator]</code> method) for a given data source seems like a complex problem at first, right? Well, if you do the math correctly, Iterable iterators are the solution.</p>
+<p>By adding a <code>[Symbol.iterator]</code> method to an iterator that simply returns the iterator itself, you are able to pass the iterator directly to an iterable consumer. When the consumer calls the <code>[Symbol.iterator]</code> method, the iterator itself will be returned and the consumer will iterate over it. Simpler than it seems, right?</p>
+<pre><code class="lang-javascript">let arr = [&#39;a&#39;, &#39;b&#39;];
+let keysIterator = arr.keys(); // an alternative iterator for the data source
+keysIterator[Symbol.iterator]() === keysIterator; // `keysIterator` is an Iterable iterator
+
+// The for-of will implicitly call `keysIterator[Symbol.iterator]()` and get back the `keysIterator`,
+// and then iterate over it.
+for (let key of keysIterator) {
+    console.log(key); // 0, 1 (the array indexes)
+}
+
+// Another example using the entries iterator, which returns `[key, value]` iteration values.
+// We can destructure the entries iterator&#39;s iteration values for commodity.
+for (let [key, value] of arr.entries()) {
+    console.log(`${key}: ${value}`); // &#39;0: a&#39;, &#39;1: b&#39;
+}
+</code></pre>
+<h2 id="trivia">Trivia</h2>
+<ul>
+<li><p>You&#39;ve seen the <code>Array.prototype.keys</code> and <code>Array.prototype.entries</code> methods which return iterators, so you may wondering whether there is an <code>Array.prototype.values</code> method. The ECMAScript 2015 spec. does define an <code>Array.prototype.values</code> method, but browsers are wary of shipping it to the open Web due to potential breakage (<a href="https://code.google.com/p/chromium/issues/detail?id=409858">[1]</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=875433#c8">[2]</a>). Either way, <code>Array.prototype.values</code> would simply be a reference to <code>Array.prototype[Symbol.iterator]</code>, both would point to the same method so <code>Array.prototype.values</code> is not very important at all.</p>
+</li>
+<li><p>It is possible to pass a partially consumed Iterable iterator to an iterable consumer to have it finish exhausting it:</p>
+<pre><code class="lang-javascript">let iterator = [1, 2, 3, 4][Symbol.iterator]();
+iterator.next();
+iterator.next();
+for (let item of iterator) {
+  console.log(item); // 3, 4
+}
+</code></pre>
+<p>This happens because the Iterable iterator&#39;s <code>[Symbol.iterator]</code> method returns itself instead of a new iterator, as previously mentioned.</p>
+</li>
+</ul>
+<h2 id="rounding-it-up">Rounding it up</h2>
+<p>Woah! You&#39;ve managed to make it this far, congratulations! Now, hopefully you have a better understanding of iterables and iterators.</p>
+<p>Let&#39;s do a quick recap:</p>
+<ul>
+<li>The Iterable interface provides a standardized way to iterate any iterable object (a <code>[Symbol.iterator]</code> method that returns an iterator);</li>
+<li>The Iterator interface allows objects to implement custom iteration logic (a <code>next</code> method that returns a <code>{ value, done }</code> object, and optional <code>return</code> and <code>throw</code> methods);</li>
+<li>Any object can implement the Iterable and/or Iterator interfaces;</li>
+<li>Iterators often implement the Iterable interface, which enables them to be fed to iterable consumers;</li>
+<li>The iterator completion <code>value</code> (when <code>done: true</code>) is usually ignored by iterable consumers;</li>
+<li>Several built-ins that you usually feed arrays to actually accept any iterable object (<code>for-of</code>, <code>Array.from</code>, <code>yield*</code>, <code>[a, b, ...rest] = iterable</code>);</li>
+<li>If you maintain an API that accepts arrays as argument, please consider supporting iterables: it is as simple as calling <code>Array.from(arg)</code> to turn any iterable argument into a true array.</li>
+</ul>
+<p>So, I guess that&#39;s finally it. We reached the end of the line. You may be wondering what you will do with your life now, but I&#39;m not sure whether I can answer this question. Perhaps you want to read about <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-generatorfunction-objects">Generators</a> now? :)</p>
+<p>And as always, if you can improve this article, please visit the <a href="https://github.com/JSRocksHQ/jsrockshq.github.io">JS Rocks repository</a> and do so. I&#39;ll be glad to discuss and review improvements!</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://www.ecma-international.org/ecma-262/6.0/index.html">ECMAScript® 2015 Language Specification - Ecma International</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of">for...of - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iteration protocols - MDN</a></li>
+<li><a href="http://babeljs.io/repl/#?experimental=false&amp;evaluate=true&amp;loose=false&amp;spec=false&amp;playground=true&amp;code=let%20iterable%20%3D%20%5B&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%0D%0A%7D%0D%0A&amp;runtime=true">for-of reimplementation - Babel</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">Object initializer - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions">Method definitions - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions - MDN</a></li>
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-comments">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <img class="icon-comments floating" src="/images/icon-content-comments.png" alt="icon comments">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="comments-container">
+                            <div id="disqus_thread"></div>
+                            <noscript>
+                                Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                            </noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-other-posts">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <svg version="1.1" class="thunder" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535
+                                17.166,12.907 11.773,12.661 "/>
+                            </svg>
+                            <h2>Other Posts</h2>
+                        </div>
+                    </div>
+                    <div id="otherPosts" class="list-other-posts">
+                        
+                    </div>
+                </div>
+
+                <div class="row row-button">
+                    <button id="goToTop" class="button-post button-top">
+                        <img src="/images/icon-button-top.png" alt="icon scroll to top">
+                        <span>Scroll to Top</span>
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -815,7 +734,7 @@ Now you will truly learn how important these concepts are and how to make good u
 <script src="/js/socialnetwork.js"></script>
 <script src="/js/main.js"></script>
 
-<!-- Google Analytics: Altere UA-XXXXX-X pelo ID do seu site. -->
+
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

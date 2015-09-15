@@ -6,9 +6,19 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Tue, 01 Sep 2015 03:52:14 GMT</pubDate>
+        <pubDate>Tue, 15 Sep 2015 04:06:46 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://jsrocks.org/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>JavaScript iterables and iterators</title>
+            <link>http://jsrocks.org/2015/09/javascript-iterables-and-iterators</link>
+            <description><![CDATA[<p>ECMAScript 2015 (ES6) introduces two new distinct, yet closely related, concepts: <strong>iterables</strong> and <strong>iterators</strong>.<br>
+Now you will truly learn how important these concepts are and how to make good use of them.</p>
+]]></description>
+            <pubDate>Sun, 13 Sep 2015 01:41:02 GMT</pubDate>
+            <guid>http://jsrocks.org/2015/09/javascript-iterables-and-iterators</guid>
+        </item>
         
         <item>
             <title>how I'm using es6 modules in production</title>
@@ -69,14 +79,6 @@
 ]]></description>
             <pubDate>Fri, 29 Aug 2014 03:04:03 GMT</pubDate>
             <guid>http://jsrocks.org/2014/08/what-is-next-for-javascript</guid>
-        </item>
-        
-        <item>
-            <title>What you need to know about block scope - let</title>
-            <link>http://jsrocks.org/2014/08/what-you-need-to-know-about-block-scope-let</link>
-            <description><![CDATA[]]></description>
-            <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
-            <guid>http://jsrocks.org/2014/08/what-you-need-to-know-about-block-scope-let</guid>
         </item>
         
     </channel>
