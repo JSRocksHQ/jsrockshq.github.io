@@ -6,9 +6,19 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Tue, 15 Sep 2015 13:24:17 GMT</pubDate>
+        <pubDate>Fri, 09 Oct 2015 03:03:00 GMT</pubDate>
         <language>cn</language>
         <atom:link href="http://jsrocks.org/cn/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>JavaScript中的 iterables and iterators</title>
+            <link>http://jsrocks.org/cn/2015/09/javascript-iterables-and-iterators</link>
+            <description><![CDATA[<p>ECMAScript 2015 (ES6) 介绍了两个新的概念，它们密切相关: <strong>iterables</strong> and <strong>iterators</strong>.<br>
+希望你在阅读了这篇文章后，会了解到这两个概念的重要性，并且能在日常开发中使用它们。</p>
+]]></description>
+            <pubDate>Tue, 15 Sep 2015 04:06:02 GMT</pubDate>
+            <guid>http://jsrocks.org/cn/2015/09/javascript-iterables-and-iterators</guid>
+        </item>
         
         <item>
             <title>我是怎么在项目中使用ES6 模块化的</title>

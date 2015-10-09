@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <!-- Responsive Meta Data -->
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Core Meta Data -->
+    
     <meta name="author" content="@italowaxman, @robsongajunior, @jaydson">
     <meta name="description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="keywords" content="javascript, JS, ECMAScript, ES6, Harmonic, front-end">
 
-    <!-- Facebook Tags -->
+    
     <meta property="og:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta property="og:image" content="http://jsrocks.org/images/thumb.png">
     <meta property="og:site_name" content="JS Rocks">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://jsrocks.org">
 
-    <!-- Twitter tags -->
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="http://jsrocks.org">
     <meta name="twitter:creator" content="@es6rocks">
@@ -29,10 +29,10 @@
     <meta name="twitter:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="twitter:image" content="http://jsrocks.org/images/thumb.png">
 
-    <!-- Humans -->
+    
     <link rel="author" href="/humans.txt" />
 
-    <!-- Favicon -->
+    
     <link rel="shortcut icon" href="http://jsrocks.org/favicon.ico">
     <link rel="apple-touch-icon image_src" href="http://jsrocks.org/favicon.png">
 
@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>JS Rocks</title>
+    <title>JavaScript中的 iterables and iterators - JS Rocks</title>
 </head>
 <body>
     <div class="wrapper">
@@ -259,328 +259,331 @@
         <div class="content">
             <div class="container">
                 
-                <section class="posts-list">
-                    <div class="row">
+                <div class="row">
+                    <div class="col-xs-12 header-article">
+                        <div class="author-post">
+                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" alt="Fabrício S. Matté"></div>
+                            <div class="info-author">
+                                <span>Posted by</span>
+                                <a href="https://twitter.com/Ult_Combo" rel="author" class="author">Fabrício S. Matté</a>
+                            </div>
+                        </div>
+                        <div class="date-post">Tue Sep 15 2015 04:06:02 GMT+0000 (UTC)</div>
+                        <h1 class="title-post">JavaScript中的 iterables and iterators</h1>
+                        <div class="centering">
+                            <ul class="tags-post">
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag iterables" href="/categories/cn/iterables">iterables</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  iterators" href="/categories/cn/iterators"> iterators</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  ES2015" href="/categories/cn/es2015"> ES2015</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  articles" href="/categories/cn/articles"> articles</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                        
-                            
-                                <article class="col-sm-6 col-xs-12 post-big item-post post-fade-1">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2015/09/javascript-iterables-and-iterators" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2015/09/javascript-iterables-and-iterators" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Tue Sep 15 2015 04:06:02 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2015/09/javascript-iterables-and-iterators" alt="JavaScript中的 iterables and iterators">JavaScript中的 iterables and iterators</a></h1>
-
-                                    <div class="intro-post"> <p>ECMAScript 2015 (ES6) 介绍了两个新的概念，它们密切相关: <strong>iterables</strong> and <strong>iterators</strong>.<br>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="article-content">
+                            <aside class="share-post">
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2015/09/javascript-iterables-and-iterators" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2015/09/javascript-iterables-and-iterators" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                            </aside>
+                            <p>ECMAScript 2015 (ES6) 介绍了两个新的概念，它们密切相关: <strong>iterables</strong> and <strong>iterators</strong>.<br>
 希望你在阅读了这篇文章后，会了解到这两个概念的重要性，并且能在日常开发中使用它们。</p>
- </div>
 
+<h2 id="iterables">Iterables</h2>
+<p>可遍历对象：是指实现了<a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterable-interface">Iterable interface</a>接口的对象. 可遍历对象会暴露一个遍历方法，我们可以通过这个暴露的方法去自定义遍历行为。</p>
+<p>请看下面的demo：</p>
+<pre><code>//推荐google浏览器，执行报错的话，说明你的浏览器不支持这两个新的特征，我用的是google chrome v45.0,顺利执行
+let iterable = [1, 2, 3];
+for (let item of iterable) {
+    console.log(item); // 1, 2, 3
+}
 
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="iterables">
-                                                    <a href="/categories/cn/iterables">iterables</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" iterators">
-                                                    <a href="/categories/cn/iterators"> iterators</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" ES2015">
-                                                    <a href="/categories/cn/es2015"> ES2015</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" articles">
-                                                    <a href="/categories/cn/articles"> articles</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png" alt="Fabrício S. Matté"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="https://twitter.com/Ult_Combo" class="author" alt="Author: Fabrício S. Matté">Fabrício S. Matté</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-sm-6 col-xs-12 post-big item-post post-fade-2">
-                            
+let iterable2 = new Set([4, 5, 6]);
+for (let item of iterable2) {
+    console.log(item); // 4, 5, 6
+}
 
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2015/05/how-i-m-using-es6-modules-in-production" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2015/05/how-i-m-using-es6-modules-in-production" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Fri May 08 2015 04:51:30 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2015/05/how-i-m-using-es6-modules-in-production" alt="我是怎么在项目中使用ES6 模块化的">我是怎么在项目中使用ES6 模块化的</a></h1>
+let iterable3 = &#39;789&#39;;
+for (let item of iterable3) {
+    console.log(item); // &#39;7&#39;, &#39;8&#39;, &#39;9&#39;
+}
 
-                                    <div class="intro-post"> <p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="">
-                                                    <a href="/categories/cn/"></a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-3">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/11/es6-modules-today-with-6to5" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2014/11/es6-modules-today-with-6to5" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Wed Nov 05 2014 15:19:50 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2014/11/es6-modules-today-with-6to5" alt="使用6to5，让今天就来写ES6的模块化开发!">使用6to5，让今天就来写ES6的模块化开发!</a></h1>
-
-                                    <div class="intro-post"> <p>我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="Modules">
-                                                    <a href="/categories/cn/modules">Modules</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" Tutorial">
-                                                    <a href="/categories/cn/tutorial"> Tutorial</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="" alt="Jaydson Gomes"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson Gomes">Jaydson Gomes</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-4">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/10/javascript-unicode" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2014/10/javascript-unicode" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Mon Oct 13 2014 19:22:32 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2014/10/javascript-unicode" alt="JavaScript ♥ 统一编码">JavaScript ♥ 统一编码</a></h1>
-
-                                    <div class="intro-post"> <p>Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.
-他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.
-实际上，即使你没在字符串和javascript花了很多时间，这些由Mathias提出的编码技巧也是很有用的。</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="Unicode">
-                                                    <a href="/categories/cn/unicode">Unicode</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" Videos">
-                                                    <a href="/categories/cn/videos"> Videos</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="" alt=""></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="" class="author" alt="Author: "></a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-5">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/10/arrow-functions-and-their-scope" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2014/10/arrow-functions-and-their-scope" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Wed Oct 01 2014 04:01:41 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2014/10/arrow-functions-and-their-scope" alt="ES6箭头函数和它的作用域">ES6箭头函数和它的作用域</a></h1>
-
-                                    <div class="intro-post"> <p>在ES6很多很棒的新特性中, 箭头函数 (或者大箭头函数)就是其中值得关注的一个! 它不仅仅是很棒很酷, 它很好的利用了作用域, 快捷方便的在现在使用以前我们用的技术, 减少了很多代码......但是如果你不了解箭头函数原理的话可能就有点难以理解. 所以,让我们来看下箭头函数, 就是现在!</p>
- </div>
-
-
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="作于域">
-                                                    <a href="/categories/cn/作于域">作于域</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" 文章">
-                                                    <a href="/categories/cn/文章"> 文章</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" 基本原理">
-                                                    <a href="/categories/cn/基本原理"> 基本原理</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="/avatars/felipenmoura.png" alt="Felipe N. Moura"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/felipenmoura" class="author" alt="Author: Felipe N. Moura">Felipe N. Moura</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
-                        
-                            
-                                <article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-6">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2014/08/what-you-need-to-know-about-block-scope-let" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2014/08/what-you-need-to-know-about-block-scope-let" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Thu Aug 28 2014 01:58:23 GMT+0000 (UTC)</div>
-                                    <h1 class="title-post"><a href="/cn/2014/08/what-you-need-to-know-about-block-scope-let" alt="你需要知道的块级作用域 - let">你需要知道的块级作用域 - let</a></h1>
-
-                                    <div class="intro-post"> <ul>
-<li>译<a href="https://github.com/hacke2">@hacke2</a></li>
+let notIterable = {name:&#39;alibaba&#39;};
+for(let item of notIterable){
+    console.log(item) // 执行报错！原因很简单，普通Oject并不是可遍历对象
+}
+</code></pre><p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of">for-of</a> 语法支持可遍历对象, 因此我们可以这种规范的遍历语法去遍历实现了Iterable接口的对象。</p>
+<h3 id="-iterable-">那Iterable接口到底是个什么东东?</h3>
+<p>这里的Iterable其实是指一个<code>[Symbol.iterator]</code>方法，任何对象只要包含了这个<code>[Symbol.iterator]</code>方法，它就是可遍历对象。<br>
+如果你不太了解这个ES6新特征Symbol你可以看下这篇文章：<a href="http://es6.ruanyifeng.com/#docs/symbol">阮一峰：es6 symbols</a>（你也可以看英文文章：<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbols</a>）。<br>
+<code>Symbol.iterator</code> 是个一个 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols"><em>well-known</em></a> (内置于语言内部) Symbol, 他主要用于定义可遍历对象。</p>
+<p>在刚才的例子中，我们其实隐式的使用了<code>[Symbol.iterator]</code>方法，在Array,Set,String的原型prototype里都包含了<code>[Symbol.iterator]</code>方法。比如 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>, <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> and <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 它们都定义了默认的遍历行为, 然而<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> 并没这个方法。</p>
+<p>Iterable接口允许自定义遍历行为，请看下面的例子，我们讲对象的遍历行为设置为数组的遍历行为，让对象能像数组那样遍历：</p>
+<pre><code>let iterable = {
+    0: &#39;a&#39;,
+    1: &#39;b&#39;,
+    2: &#39;c&#39;,
+    length: 3,
+    [Symbol.iterator]: Array.prototype[Symbol.iterator]
+};
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+//这个还是比较实用的，毕竟在es5中Oject遍历用for in不是很简洁。
+</code></pre><p>现在你可能会问：<strong>&quot;怎样才能自定义遍历行为？&quot;</strong><br>
+我们已经知道：添加一个<code>[Symbol.iterator]</code>可以让一个对象变为可遍历的，但是需要注意一点的是：<code>[Symbol.iterator]</code>方法必须返回一个 <em>iterator object</em> ，就是这个iterator object负责完成遍历逻辑。不要急，在下一个部分我们介绍它的。</p>
+<p>在介绍iterators(迭代器)之前，让我们先来回顾下Iterable interface的概念：</p>
+<ul>
+<li>它意味着可以给使用者一个可遍历的对象(iterable object: &quot;嗨，我有一个<code>[Symbol.iterator]</code> 方法.&quot;);</li>
+<li>它会提供一个标准的方法去遍历任何可遍历的对象(iterable object: &quot;亲，你可以调用<code>[Symbol.iterator]</code>方法去完成遍历过程&quot;).</li>
 </ul>
-<p>变量声明在任何语言中都是非常基础的东西，理解变量在作用域下如何工作是非常重要的事情。</p>
-<p>在大多数语言中，如<code>Python</code>，他有两个作用域:局部 和 全局。如下，变量定义在代码开头部分则为全局变量，在函数里面声明变量则为局部变量。</p>
- </div>
+<h2 id="iterators">Iterators</h2>
+<p>迭代器对象是指实现了<a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-iterator-interface">Iterator interface</a>的对象，迭代器对象必须拥有一个<code>next</code>方法，并且这个方法的返回值必须要是 <code>{ value: Any, done: Boolean }</code>这种格式的对象，当我们第一次调用next方法时，next方法会返回第一个遍历结果元素。这个<code>done</code>属性是指当前遍历的元素是否是最后一个元素，如果done:true意味着所有遍历完成。</p>
+<p>下面例子介绍如何使用遍历器去遍历数组：</p>
+<pre><code>let iterable = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
 
 
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="scope">
-                                                    <a href="/categories/cn/scope">scope</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" articles">
-                                                    <a href="/categories/cn/articles"> articles</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" basics">
-                                                    <a href="/categories/cn/basics"> basics</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg" alt="Jaydson"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="http://twitter.com/jaydson" class="author" alt="Author: Jaydson">Jaydson</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
+// 获取遍历器
+let iterator = iterable[Symbol.iterator]();
+
+//使用next方法遍历元素(好像java遍历器)
+iterator.next(); // { value: &#39;a&#39;, done: false }
+iterator.next(); // { value: &#39;b&#39;, done: false }
+iterator.next(); // { value: &#39;c&#39;, done: false }
+iterator.next(); // { value: undefined, done: true }
+</code></pre><p>最开始的例子我们不是使用for-of的语法么！现在我们来看一下for-of语法的内部实现方式：</p>
+<pre><code>let iterable = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+
+// 简便语法，利用for-of
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+
+// for-of的内部实现方式，是不是感觉很简单！真的好像java遍历器
+for (let _iterator = iterable[Symbol.iterator](), _result, item; _result = _iterator.next(), item = _result.value, !_result.done;) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+</code></pre><p>现在我们知道了iterables和iterators后，现在我们可以创建自定义遍历行为的可遍历对象了。首先，我们先来自己实现一个类似数组遍历行为的遍历器：</p>
+<pre><code>let iterable = {
+    0: &#39;a&#39;,
+    1: &#39;b&#39;,
+    2: &#39;c&#39;,
+    length: 3,
+    [Symbol.iterator]() {
+        let index = 0;
+        return {
+            next: () =&gt; {
+                let value = this[index];
+                let done = index === this.length;
+                index++;
+                return { value, done };
+            }
+        };
+    }
+};
+
+//使用for-of语法完成遍历
+for (let item of iterable) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+</code></pre><p>额，这个看起来是有点复杂，不清晰，但是不要慌，让我们仔细的分析下它。</p>
+<p>我们一开始用JavaScript本文化特征语法创建了一个对象。并且用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names">computed properties</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions">shorthand methods</a> ES2015 本文化扩展语法给这个对象定义了一个<code>[Symbol.iterator]</code>方法，这个对象有了<code>[Symbol.iterator]</code>方法，因此他也成了一个可遍历对象。</p>
+<p>这个<code>[Symbol.iterator]</code>方法实现了默认的遍历行为，这个方法返回了一个遍历器对象，这个遍历器对象包含了上文我们说的next方法，所以我们才能把<code>[Symbol.iterator]</code>方法返回的对象视为遍历器对象。</p>
+<p>其中<code>next</code>方法里面用到了<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>，所以next方法里的this才会指向iterable对象。（个人来说，我认为ES6 中箭头函数是最强大，最实用，最能简化现有js开发的新特征之一，个人看法，不喜勿喷）。</p>
+<p>next方法返回了一个由value和done属性组成的对象，语法很简洁，很实用，用的是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Property_definitions">shorthand properties</a>语法，简单来说{value,done}就等于{&#39;value&#39;:value,&#39;done&#39;:done}。</p>
+<p>看到这里，相信你已经完全上面例子里每行代码是怎么工作的了。<code>for-of</code>语法会调用 <code>[Symbol.iterator]</code>方法来获取遍历器对象，遍历对象里有一个next方法，通过调用next方法遍历元素。</p>
+<h3 id="-">有必要把一个遍历接口设计得这么复杂?</h3>
+<p>恩，总之是需要的。下面我讲列出最常见的问题和疑惑，并以QA的方式展现给大家。</p>
+<h4 id="q-symbol-iterator-">Q. 为什么是<code>[Symbol.iterator]</code>属性是一个方法，这个方法会返回一个遍历器，而不是这个属性直接就是一个遍历器？</h4>
+<p>原因是：如果直接是一个遍历器，当你同时想多次遍历时，就不能实现了，同时多次遍历这个可能有点难理解，请看下面的代码：</p>
+<pre><code>let iterable = [1, 2, 3, 4];
+let iterator1 = iterable[Symbol.iterator]();
+let iterator2 = iterable[Symbol.iterator]();
+
+iterator1.next(); // { value: 1, done: false }
+
+iterator2.next(); // { value: 1, done: false }
+iterator2.next(); // { value: 2, done: false }
+iterator2.next(); // { value: 3, done: false }
+
+iterator1.next(); // { value: 2, done: false }
+
+//可以看到iterator1和iterator2是互不影响的
+</code></pre><p>这个例子很勉强，重复遍历相同的数据事时上不太常见。但是异步处理迭代之间的每个值，这在<a href="http://koajs.com/">Koa</a>和<a href="https://github.com/tj/co">co</a>中就很好地表现了这一点。尽管它们是利用生成器函数返回的遍历器。</p>
+<h4 id="q-next-">Q. 为什么遍历器的<code>next</code>方法返回一个新的数据结构，而不是直接返回遍历的元素值呢？</h4>
+<p>在最初的遍历器设计中，这个<code>next</code>方法只会返回元素值。那么问题就来了：我怎么知道遍历器已经完成所有的遍历行为呢? 如果让<code>next</code>函数抛出一个错误来标明遍历已完成这样又太土了！因为这样你在调用<code>next</code>函数时，就必须给它包一层<code>try/catch</code>。所以才会让<code>next</code>函数返回的数据里有一个<code>done</code>属性。</p>
+<h4 id="q-">Q. 为什么遍历器最后一个遍历结果让人感觉有点冗余?</h4>
+<p>请看下面的代码：</p>
+<pre><code>let iterable = [1, 2];
+
+let it = iterable[Symbol.iterator]();
+
+
+it.next() // { value: &quot;a&quot;, done: false }
+it.next() // { value: &quot;b&quot;, done: false }
+
+//明明只有2个元素，为毛非要遍历三次，才算遍历完成，蛋疼？？？？！！！！
+it.next() // { value: undefined, done: true }
+</code></pre><p>当<code>next</code>方法返回的结果<code>done</code>属性为<code>true</code>时，遍历才算完成，并且<code>value</code>属性的值为<code>undefined</code>。遍历器让value和<code>down:true</code>的对象为返回值，是为了让这个<code>down:true</code>的对象作为一个遍历完成的标志，并不是一个遍历的元素。例如在<code>for-of</code>,<code>Array.from</code>的内部实现里，它们都会忽略掉这个返回值。</p>
+<h4 id="q-next-">Q. 我能让遍历器的<code>next</code>方法接收参数么?</h4>
+<p>是的，这样是可以的。请看下面的例子：</p>
+<pre><code>let echoIterator = {
+    next(value) {
+        return { value, done: false };
+    }
+};
+
+echoIterator.next(42); // { value: 42, done: false }
+</code></pre><p>正如上面的例子一样，你在自定义的遍历器里，是可以给next方法配置参数的！但是这种遍历器如果使用<code>for-of</code>或<code>Array.from</code>这些语法时，就会发生异常，因为<code>for-of</code>在调用你的next方法时并不会传递参数给next方法。所以请慎用这种方式。</p>
+<h4 id="q-">Q. 是否可以无限的调用遍历器的遍历方法？</h4>
+<p>是的，你可以无限的调用遍历器的<code>next</code>方法，即使遍历行为已经完成。只是返回的结果都是value=undefined,down=true的对象。</p>
+<h2 id="-iterable-iterators-">可遍历的遍历器（Iterable iterators）</h2>
+<p>先来一个快速的知识回顾：</p>
+<ul>
+<li>可变遍历接口要求实现一个<code>[Symbol.iterator]</code>方法;</li>
+<li>遍历器接口需要实现一个<code>next</code>方法;</li>
+</ul>
+<p>请打开你的脑洞：要是我们让一个对象既有<code>[Symbol.iterator]</code>方法，既有<code>next</code>方法，那这个对象岂不是成了一个可遍历的遍历器了。</p>
+<p>实际上，大多数遍历器都实现了可遍历接口，都有<code>[Symbol.iterator]</code>方法，但是请记住：遍历器的<code>[Symbol.iterator]</code>方法通常会返回遍历器本身，而不是一个新的遍历器对象。</p>
+<p>请看下面的例子：</p>
+<pre><code>let iterable = [1, 2];
+let iterator = iterable[Symbol.iterator]();
+
+
+var iterator1 = iterable[Symbol.iterator]();
+var iterator2 = iterable[Symbol.iterator]();
+iterator1 == iterator2 // false
+//为毛iterator1又不等于iterator2了？ 亲，iterator1和iterator2是分别由Iterable Oject的`[Symbol.iterator]`方法生成的对象，它们当然不相等了。
+
+var iterator3 = iterator[Symbol.iterator]();
+var iterator4 = iterator[Symbol.iterator]();
+iterator == iterator3 == iterator4 // true
+//iterator3和iterator4都是指向的是iterator,iterator和iterator3和iterator4其实是一个对象所以它们是相等的。
+</code></pre><p>这是一个简单的可遍历的遍历器：</p>
+<pre><code>let iterableIterator = {
+
+    next() {/*...*/},
+
+    [Symbol.iterator]() {
+        return this;
+    }
+};
+</code></pre><p>现在你可能会问：<strong>这样有什么用啊? 然并卵？</strong></p>
+<p>好的，现在请思考一个问题： <strong>一个数据源可能需要有多次遍历行为.</strong><br>
+请记住：<code>for-of</code>语法的内部实现里，它会重复调用iterable对象的<code>[Symbol.iterator]</code>方法来获取iterator.（我这这里其实有一个疑问：为毛for-of的内部实现里，会一直不断的获取iterator,既然iterator的<code>[Symbol.iterator]</code>方法方法会返回iterator自身，那还需调用这个方法来获取iterator嘛！这个疑问估计得看真正的for-of的内部实现源码才能明白了）</p>
+<p>通过给iterator对象添加<code>[Symbol.iterator]</code>方法来返回iterator对象本自身，这样设计很重要的一点就是：<code>通用</code>。</p>
+<p>怎么解释这个通用呢？</p>
+<p>假设现在有一个方法A,方法A接收的参数是一个Iterable Object(方法A是干啥的你先不要关心),但是你现在传递了一个iterator对象给方法A,试想一下如果iterotor对象里没有<code>[Symbol.iterator]</code>方法，那方法A肯定不能顺利执行了。所以当给iterator对象添加<code>[Symbol.iterator]</code>方法后，任何需要参数为Iterable object的函数，你传给这个函数一个iterator对象，这个函数还是能正常work。希望我这样解释<code>通用</code>大家能明白。</p>
+<pre><code>let arr = [&#39;a&#39;, &#39;b&#39;];
+let keysIterator = arr.keys(); // 获取遍历器
+
+keysIterator[Symbol.iterator]() === keysIterator; // `keysIterator` 就是一个 Iterable iterator
+
+//for-of会重复的调用`keysIterator[Symbol.iterator]()`，来获取`keysIterator`
+//之后遍历它
+for (let key of keysIterator) {
+    console.log(key); // 0, 1 (the array indexes)
+}
+</code></pre><h2 id="-">可能会中枪的小细节</h2>
+<p>因为iterator的<code>[Symbol.iterator]</code>方法会返回iterator自身，所以我们在用的时候一定要小心这个问题，不然代码执行出错了就坑爹了。</p>
+<p>请看下面的例子：</p>
+<pre><code>let iterable = [1, 2, 3, 4];
+
+let iterator = iterable[Symbol.iterator]();
+
+//先手动的遍历2次
+iterator.next();
+iterator.next();
+
+//再调用for-of去遍历
+for (let item of iterator) {
+    console.log(item); // 3, 4
+    //注意了这里只遍历了2次，并不会从头开始遍历
+}
+
+//如果你想从头开始遍历，你可以这样写
+for (let item of iterable[Symbol.iterator]()) {
+    console.log(item); // 1, 2, 3, 4
+}
+</code></pre><p>原因就不在多说了，相信大家都懂的。</p>
+<h2 id="-">总结</h2>
+<p>啊啊啊啊啊！谢谢你看完了这篇文章！希望我的介绍没问题，让你理解了iterables和iterators。</p>
+<p>恩，文章差不多结束了，可能你有想继续学习ES6的内容，你可以看下，下一篇文章：<a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-generatorfunction-objects">Generators</a>。</p>
+<p>最后如果你想改善一下这篇文章，请点击这里：<a href="https://github.com/JSRocksHQ/jsrockshq.github.io">JS Rocks repository</a>(额，这是英文原文)，我们将会很高兴地与你讨论并接纳你的意见。</p>
+<p>至于文章知识点总结就省略了，希望大家不要打我...</p>
+<p>英文原文：<a href="http://jsrocks.org/2015/09/javascript-iterables-and-iterators/">http://jsrocks.org/2015/09/javascript-iterables-and-iterators/</a></p>
+<h2 id="-">参考</h2>
+<ul>
+<li><a href="http://www.ecma-international.org/ecma-262/6.0/index.html">ECMAScript® 2015 Language Specification - Ecma International</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of">for...of - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iteration protocols - MDN</a></li>
+<li><a href="http://babeljs.io/repl/#?experimental=false&amp;evaluate=true&amp;loose=false&amp;spec=false&amp;playground=true&amp;code=let%20iterable%20%3D%20%5B&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%5D%3B%0D%0Afor%20%28let%20item%20of%20iterable%29%20%7B%0D%0A%09console.log%28item%29%3B%20%2F%2F%20&#39;a&#39;%2C%20&#39;b&#39;%2C%20&#39;c&#39;%0D%0A%7D%0D%0A&amp;runtime=true">for-of reimplementation - Babel</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">Object initializer - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions">Method definitions - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions - MDN</a></li>
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-comments">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <img class="icon-comments floating" src="/images/icon-content-comments.png" alt="icon comments">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="comments-container">
+                            <div id="disqus_thread"></div>
+                            <noscript>
+                                Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                            </noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-other-posts">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <svg version="1.1" class="thunder" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535
+                                17.166,12.907 11.773,12.661 "/>
+                            </svg>
+                            <h2>Other Posts</h2>
+                        </div>
+                    </div>
+                    <div id="otherPosts" class="list-other-posts">
                         
-
-                        <div id="containerMorePosts"> <!-- More posts --> </div>
-
                     </div>
-                    <div class="row row-more-posts">
-                        <div class="col-md-12 more-posts">
-                            <button id="morePosts" class="button-post button-more-posts">
-                                <img class="icon-more" src="/images/icon-button-more.png" alt="icon more posts">
-                                <span>More Posts</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                <section class="testemonials">
-                    <div class="row">
-                        <div class="col-md-12 title-testemonials">
-                            <div class="centering">
-                                <img class="icon-testemonials" src="/images/icon-title-testemonials.png" alt="icon testemonials">
-                                <h2>TESTIMONIALS</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="list-testemonials">
-                            <div class="centering">
+                </div>
 
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"ES6 improves developer ergonomics massively and jsrocks.org will help you grok the benefit you can reap and how to get it today. Love it."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/paulirish.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Paul Irish</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/paul_irish" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/paulirish" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Google</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"JS Rocks is a brilliant initiative, if you're looking for relevant content about what's coming next for the JavaScript language, here's the place to find."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/zenorocha.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Zeno Rocha</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/zenorocha" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/zenorocha" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Liferay</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div class="row row-button">
+                    <button id="goToTop" class="button-post button-top">
+                        <img src="/images/icon-button-top.png" alt="icon scroll to top">
+                        <span>Scroll to Top</span>
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -749,7 +752,7 @@
 <script src="/js/socialnetwork.js"></script>
 <script src="/js/main.js"></script>
 
-<!-- Google Analytics: Altere UA-XXXXX-X pelo ID do seu site. -->
+
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
