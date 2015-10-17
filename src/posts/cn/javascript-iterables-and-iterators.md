@@ -131,7 +131,7 @@ let iterable = {
 		return {
 			next: () => {
 				let value = this[index];
-				let done = index === this.length;
+				let done = index >= this.length;
 				index++;
 				return { value, done };
 			}
@@ -254,7 +254,7 @@ iterator == iterator3 == iterator4 // true
 let iterableIterator = {
 
 	next() {/*...*/},
-	
+
 	[Symbol.iterator]() {
 		return this;
 	}
