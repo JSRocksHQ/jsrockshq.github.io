@@ -390,7 +390,7 @@ for (let _iterator = iterable[Symbol.iterator](), _result, item; _result = _iter
         return {
             next: () =&gt; {
                 let value = this[index];
-                let done = index === this.length;
+                let done = index &gt;= this.length;
                 index++;
                 return { value, done };
             }
