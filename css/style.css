@@ -414,6 +414,9 @@ code[class*="language-"], pre[class*="language-"] {
 }
 .intro-post{
     line-height: 16px;
+    overflow: hidden;
+    position: relative;
+    max-height: 66px;
 }
 .intro-post a {
     color: #000;
@@ -425,6 +428,9 @@ code[class*="language-"], pre[class*="language-"] {
 .post-big .title-post {
     font-size: 4.8em;
     margin: 20px auto 15px;
+}
+.post-big .intro-post {
+    max-height: none;
 }
 .post-big .title-post a{
     font-size: 100%;
@@ -453,13 +459,12 @@ code[class*="language-"], pre[class*="language-"] {
     width: 100%;
     border-bottom: solid 1px rgba(0,0,0,0.15);
     float: left;
-    margin-bottom: 22px;
-    padding-bottom: 22px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
 }
 .item-tag-post{
     float: left;
-    margin-right: 8px;
-    margin-top: -8px;
+    margin: 0 8px 8px 0px;
 }
 .item-tag-post a{
     color: #000;

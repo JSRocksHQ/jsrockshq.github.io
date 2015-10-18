@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 });
 
-var JsRocks = function() {
+(function JSRocks() {
 	'use strict';
 
 	/**
@@ -46,39 +46,33 @@ var JsRocks = function() {
 	* DEFINE
 	*
 	**/
-	var	HARMONIC = new Harmonic(),
-		W = window,
-		D = document,
-		PROTOCOL = W.location.protocol,
-		HOST = W.location.host,
-		HOSTNAME = W.location.hostname,
-		PATHNAME = W.location.pathname,
-		ORIGIN = W.location.origin,
-		INFORMATIONS = {},
-		TEMPLATE = {},
-		JSROCKS = {},
-		PRIVATE = {},
-		PUBLIC = this,
-		pageElements = {};
+    var PROTOCOL      = window.location.protocol;
+    var HOST          = window.location.host;
+    var HOSTNAME      = window.location.hostname;
+    var PATHNAME      = window.location.pathname;
+    var ORIGIN        = window.location.origin;
+    var HARMONIC      = new Harmonic();
+    var INFORMATIONS  = {};
+    var TEMPLATE      = {};
+    var JSROCKS       = {};
+    var PAGEELEMENTS  = {};
 
-
-	/**
+    /**
 	*
 	* DEFINE ELEMENTS
 	*
 	**/
-	pageElements.btnMorePosts = D.getElementById('morePosts');
-    pageElements.logo = D.querySelectorAll('.logo-jsrocks');
+	PAGEELEMENTS.btnMorePosts = document.getElementById('morePosts');
+    PAGEELEMENTS.logo = document.querySelectorAll('.logo-jsrocks');
 
-
-	/**
-	*
-	* GET INFORMATIONS
-	*
-	**/
-	INFORMATIONS.lang = function () {
-		var re = /\/pt-br\/|\/cn\//.exec(PATHNAME),
-			lang;
+    /**
+    *
+    * INFORMATIONS METHODS
+    *
+    **/
+	INFORMATIONS.lang = function() {
+		var re = /\/pt-br\/|\/cn\//.exec(PATHNAME);
+		var	lang;
 
 		switch (re && re[0]) {
 			case '/pt-br/':
@@ -95,7 +89,7 @@ var JsRocks = function() {
 		return lang;
 	};
 
-	INFORMATIONS.categoryPath = function (lang) {
+	INFORMATIONS.categoryPath = function(lang) {
 		var pathCategory;
 
 		switch (lang) {
@@ -113,13 +107,12 @@ var JsRocks = function() {
 		return pathCategory;
 	};
 
-
-	/**
+    /**
 	*
 	* TEMPLATE
 	*
 	**/
-	TEMPLATE.article = function (postLink, date, origin, title, content, category, authorPicture, authorLink, authorName) {
+	TEMPLATE.article = function(postLink, date, origin, title, content, category, authorPicture, authorLink, authorName) {
 		var tpl = '';
 
 		tpl += '<article class="col-md-4 col-sm-6 col-xs-12 post-normal item-post post-fade-6">';
@@ -147,7 +140,7 @@ var JsRocks = function() {
 		return tpl;
 	};
 
-	TEMPLATE.popularTag = function (tag) {
+	TEMPLATE.popularTag = function(tag) {
 		var tpl = '';
 
 		tpl += '<li class="item-list-tag">';
@@ -157,14 +150,13 @@ var JsRocks = function() {
 		return tpl;
 	};
 
-
-	/**
+    /**
 	*
-	* PRIVATE
+	* FUNCTIONS
 	*
 	**/
-	PRIVATE.googleSearch = function () {
-		var form = D.getElementById('s');
+	function googleSearch() {
+		var form = document.getElementById('s');
 
 		if (form) {
 			form.addEventListener('submit', function(e) {
@@ -173,12 +165,12 @@ var JsRocks = function() {
 		}
 	};
 
-	PRIVATE.shareSocialnetwork = function () {
-		var btnList = D.querySelectorAll('.share-item'),
-			btnLen = btnList.length,
-			btn,
-			postUrl,
-			providerUrl;
+	function shareSocialnetwork() {
+		var btnList = document.querySelectorAll('.share-item');
+		var	btnLen = btnList.length;
+		var	btn;
+		var	postUrl;
+		var	providerUrl;
 
 		if (!!btnLen) {
 			for (var i = 0; i < btnLen; i++) {
@@ -191,13 +183,13 @@ var JsRocks = function() {
 		}
 	};
 
-	PRIVATE.otherPosts = function () {
-		var postsContainer = D.getElementById('otherPosts'),
-			article = '',
-			articleCat,
-			post,
-			categoriesLen,
-			category;
+	function otherPosts() {
+		var postsContainer = document.getElementById('otherPosts');
+		var	article = '';
+		var	articleCat;
+		var	post;
+		var	categoriesLen;
+		var	category;
 
 		if (postsContainer) {
 			for (var i = 0; i < 3; i++) {
@@ -210,6 +202,10 @@ var JsRocks = function() {
 				 	articleCat += '<li class="item-tag-post"><a href="'+ ORIGIN + JSROCKS.categoryPath + category +'">' + category + '</a></li>\n';
 				}
 
+                console.log('POST');
+                console.log(post);
+                console.log(' ');
+
 				article += TEMPLATE.article(post.link, post.date, ORIGIN, post.title, post.content, articleCat, post.authorPicture, post.authorLink, post.authorName);
 			}
 
@@ -217,20 +213,20 @@ var JsRocks = function() {
 		}
 	};
 
-	PRIVATE.morePosts = function () {
-		var postsContainer = D.getElementById('containerMorePosts'),
-			posts = JSROCKS.posts,
-			post,
-			article,
-			articleCat,
-			categoriesLen,
-			category;
+	function morePosts() {
+		var postsContainer = document.getElementById('containerMorePosts');
+		var	posts = JSROCKS.posts;
+		var	post;
+		var	article;
+		var	articleCat;
+		var	categoriesLen;
+		var	category;
 
 		posts.splice(0, 8);
 
-		if (postsContainer && pageElements.btnMorePosts) {
+		if (postsContainer && PAGEELEMENTS.btnMorePosts) {
 
-			pageElements.btnMorePosts.addEventListener('click', function(){
+			PAGEELEMENTS.btnMorePosts.addEventListener('click', function(){
 				article = '';
 
 				if (posts.length >= 6) {
@@ -269,7 +265,7 @@ var JsRocks = function() {
 				}
 
 				if (posts.length === 0) {
-					pageElements.btnMorePosts.style.display = 'none';
+					PAGEELEMENTS.btnMorePosts.style.display = 'none';
 				}
 
 				$('.item-post').addClass('fadeInBox');
@@ -278,11 +274,11 @@ var JsRocks = function() {
 		}
 	}
 
-	PRIVATE.popularTag = function () {
-		var arr = ['modules' ,'scope', 'tutorial'],
-			arrLen = arr.length,
-			str = '',
-			container = D.querySelectorAll('.list-tags');
+	function popularTag() {
+		var arr = ['modules' ,'scope', 'tutorial'];
+		var	arrLen = arr.length;
+		var	str = '';
+		var	container = document.querySelectorAll('.list-tags');
 
 		if (!!container.length) {
 			for (var i = 0; i < arrLen ; i++) {
@@ -293,14 +289,8 @@ var JsRocks = function() {
 		}
 	};
 
-
-	/**
-	*
-	* PUBLIC
-	*
-	**/
-	PUBLIC.scrollTop = function (btn, event, posTop, time) {
-		var btn = D.getElementById(btn);
+	function scrollTop(btn, event, posTop, time) {
+		var btn = document.getElementById(btn);
 
 		if (btn) {
 			btn.addEventListener(event, function () {
@@ -309,47 +299,34 @@ var JsRocks = function() {
 		}
 	};
 
-	PUBLIC.init = function () {
-		/**
-		*
-		* HARMONIC INFO SET
-		*
-		**/
-		JSROCKS.lang = INFORMATIONS.lang();
-		JSROCKS.posts = HARMONIC.getPosts()[JSROCKS.lang];
-		JSROCKS.categoryPath = INFORMATIONS.categoryPath(JSROCKS.lang);
+    /**
+    *
+    * INIT
+    *
+    **/
 
+    // HARMONIC INFO SET
+	JSROCKS.lang = INFORMATIONS.lang();
+	JSROCKS.posts = HARMONIC.getPosts()[JSROCKS.lang];
+	JSROCKS.categoryPath = INFORMATIONS.categoryPath(JSROCKS.lang);
 
-        /**
-		*
-		* INIT
-		*
-		**/
-		if (pageElements.btnMorePosts && PATHNAME.match(/categories/gi)) {
-			pageElements.btnMorePosts.style.display = 'none';
-		}
+    if (PAGEELEMENTS.btnMorePosts && PATHNAME.match(/categories/gi)) {
+		PAGEELEMENTS.btnMorePosts.style.display = 'none';
+	}
 
-        if (!!pageElements.logo.length) {
-            for (var i = 0, els = pageElements.logo.length; i < els; i++) {
-                if (JSROCKS.lang !== 'en') {
-                    pageElements.logo[i].setAttribute('href', ORIGIN + '/' + JSROCKS.lang);
-                }
+    if (!!PAGEELEMENTS.logo.length) {
+        for (var i = 0, els = PAGEELEMENTS.logo.length; i < els; i++) {
+            if (JSROCKS.lang !== 'en') {
+                PAGEELEMENTS.logo[i].setAttribute('href', ORIGIN + '/' + JSROCKS.lang);
             }
         }
+    }
 
-		PRIVATE.popularTag();
-		PRIVATE.googleSearch();
-		PRIVATE.otherPosts();
-		PRIVATE.morePosts();
-		PRIVATE.shareSocialnetwork();
+	popularTag();
+	googleSearch();
+	otherPosts();
+	morePosts();
+	shareSocialnetwork();
 
-		PUBLIC.scrollTop('goToTop', 'click', 0, 1000);
-
-	};
-
-	return PUBLIC;
-};
-
-
-var jsRocks = new JsRocks();
-jsRocks.init();
+	scrollTop('goToTop', 'click', 0, 1000);
+})();
