@@ -15,10 +15,10 @@ Hi! If you are like me, you are tired of writing the same old ES5 JS Code in you
 
 If yes, you can use the newer features of JavaScript ES6 and ES7 standards in your node applications today. ES6 and ES7 make the JavaScript development a cool breeze. But hey, not every ES6 feature is supported in our beloved [Node.js](https://nodejs.org).
 
-This is where [BabelJS](https://babeljs.io) comes to the rescue. BabelJS is a transpiler for JavaScript which transpiles your ES6 and ES7 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
+This is where [Babel](https://babeljs.io) comes to the rescue. Babel is a transpiler for JavaScript which transpiles your ES6 and ES7 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
 <!--more-->
 
-**Little Notice:** If you just want ES6 features and don't want to babelify stuff. You can use `--harmony flag` before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` . But there aren't even all the features present in Node. So you may continue if you can access ES6 but also need to access **ES7** features.
+**Little Notice:** If you just want ES6 features and don't want to babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` . But there aren't even all the features present in Node. So you may continue if you can access ES6 but also need to access **ES7** features.
 
 ### Some assumptions made
 There are some assumptions I am making about you! YES YOU!
@@ -32,8 +32,8 @@ There are some assumptions I am making about you! YES YOU!
 ### Following along the code
 Type of person who follows code instead of just reading? Code is available here in this [repo](https://github.com/abdulhannanali/babel-configuration-tutorial)
 
-### Installing and getting started with babeljs
-There's not a single way you will be able to setup Babel. Here we will be discussing enough to get up and running with it.
+### Installing and getting started with Babel
+There are many ways you can set up Babel. Here we will be discussing enough to get up and running using babel-cli.
 
 Let's create a simple `index.js` in `code` **directory**  which will contain the following ES6 code
 ```js
@@ -149,11 +149,11 @@ and get all the ES6/ES7 goodness instantly today. :)
 
 
 #### Learn more about Babel
-This is a basic tutorial on babel but the Babel world just starts here. It's surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as [GruntJS](https://www.npmjs.com/package/grunt-babel) and [GulpJS](https://npmjs.org/package/gulp-babel/). You can check them all out here on [BabelJS Website](https://babeljs.io/docs/setup/)
+This is a basic tutorial on babel but the Babel world just starts here. It's surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as [GruntJS](https://www.npmjs.com/package/grunt-babel) and [GulpJS](https://npmjs.org/package/gulp-babel/). You can check them all out here on [Babel Website](https://babeljs.io/docs/setup/)
 
 These are some of the resources that can even up your game further in the babel world
 - [Learn ES6 and Babel using this detailed tutorial](http://ccoenraets.github.io/es6-tutorial/index.html)
-- [Read the BabelJS docs on setting up Babel (They're helpful)](https://babeljs.io/docs/setup/)
+- [Read the Babel docs on setting up Babel (They're helpful)](https://babeljs.io/docs/setup/)
 
 
 ##### Source code and Contributions and Thank yous
