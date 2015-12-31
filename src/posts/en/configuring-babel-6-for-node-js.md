@@ -161,4 +161,4 @@ Source code for this tutorial is available in this [repo](https://github.com/abd
 
 If you find some typo or would like to make some update. Please do so using the power of issues and PR in our [Github Repo](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
-I would also like to Thank [Fabrício Matté](http://ultcombo.js.org/) for approving this article to be posted on JSRocks and the corrections he made.
+I would also like to thank [Fabrício Matté](http://ultcombo.js.org/) for approving this article to be posted on JS Rocks and the corrections he made.
