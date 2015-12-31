@@ -82,7 +82,7 @@ You need to include these presets in command you issue
 babel --presets es2015,stage-0 code/index.js -o build/app.js
 ```
 
-You will see normal es5 code generated in `app.js`, this is called **Transpiled code** (a term used widely in JS World). You can run this code using the command below.
+You will see normal es5 code generated in `app.js`, this is called **Transpiled code** (a term used widely in JS world). You can run this code using the command below.
 ```bash
 node build/app.js
 ```
