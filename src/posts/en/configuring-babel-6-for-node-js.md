@@ -4,21 +4,21 @@ title: Configuring Babel 6 for Node.js
 date: 2015-12-31T01:23:42.811Z
 comments: true
 published: true
-keywords: JavaScript, Node.js, ES6, Babel, transpiler
+keywords: JavaScript, Node.js, ES2015, Babel, transpiler
 description: Tutorial on configuring Babel for node.js to get up and running quickly
-categories: ES6, Babel, node.js
+categories: ES2015, Babel, node.js
 authorName: Hannan Ali
 authorLink: https://abdulhannanali.github.io
 authorPicture: //s.gravatar.com/avatar/89e5f7614cb88cd573359a953a09aa6e?s=80
 -->
 Hi! If you are like me, you are tired of writing the same old ES5 JS Code in your node applications.
 
-If yes, you can use the newer features of JavaScript ES6 and ES7 standards in your node applications today. ES6 and ES7 make the JavaScript development a cool breeze. But hey, not every ES6 feature is supported in our beloved [Node.js](https://nodejs.org).
+If yes, you can use the newer features of JavaScript ES2015 and ES2016 standards in your node applications today. ES2015 and ES2016 make the JavaScript development a cool breeze but hey, not every ES2015 feature is supported in our beloved [Node.js](https://nodejs.org).
 
-This is where [Babel](https://babeljs.io) comes to the rescue. Babel is a transpiler for JavaScript which transpiles your ES6 and ES7 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
+This is where [Babel](https://babeljs.io) comes to the rescue. Babel is a transpiler for JavaScript which transpiles your ES2015 and ES2016 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
 <!--more-->
 
-**Little Notice:** If you just want ES6 features and don't want to Babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` . But there aren't even all the features present in Node. So you may continue if you can access ES6 but also need to access **ES7** features.
+**Little Notice:** If you just want ES2015 features and don't want to Babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` but there aren't even all the features present in Node. So you may continue if you can access ES2015 but also need to access **ES2016** features.
 
 ### Some assumptions made
 There are some assumptions I am making about you! YES YOU!
@@ -26,7 +26,7 @@ There are some assumptions I am making about you! YES YOU!
 - You can install packages using [npmjs.com](http://npmjs.com)
 - You've both of 'em Node.js and NPM already installed.
 - You are okay with using some CLI sometimes.
-- It's good to know some ES6 or ES7 beforehand but not required.
+- It's good to know some ES2015 beforehand but not required.
 
 
 ### Following along the code
@@ -35,7 +35,7 @@ Type of person who follows code instead of just reading? Code is available here 
 ### Installing and getting started with Babel
 There are many ways you can set up Babel. Here we will be discussing enough to get up and running using babel-cli.
 
-Let's create a simple `index.js` in `code` **directory**  which will contain the following ES6 code
+Let's create a simple `index.js` in `code` **directory**  which will contain the following ES2015 code
 ```js
 function* jsRocksIsAwesome() {
   yield "JSRocks is Awesome";
@@ -65,7 +65,7 @@ babel code/index.js -d build/
 
 #### Plugins and Presets
 
-You will see the same code that you wrote appear in `build/index.js`. This is where Babel **plugins** and **presets** come. Babel doesn't do much on it's own, but, with **plugins** and **presets** it can do a lot. We want all the ES7 and ES6 goodness in our code.
+You will see the same code that you wrote appear in `build/index.js`. This is where Babel **plugins** and **presets** come. Babel doesn't do much on it's own, but, with **plugins** and **presets** it can do a lot. We want all the ES2016 and ES2015 goodness in our code.
 
 In order to do that we'll install two presets as part of our devDependencies
 - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
@@ -103,7 +103,7 @@ Now if you run
 ```bash
 babel -w code/ -d build/
 ```
-It will read the **presets** to use from `.babelrc` compile the code in `code/` directory and generate the compiled code javascript files in `build/` folder. But hey! The command didn't end. Notice the `-w` flag, **w** stands for **watch**, it will recompile the code as you make changes in your code directory. COOL! Now this is some magic I am talking about.
+It will read the **presets** to use from `.babelrc` compile the code in `code/` directory and generate the compiled code javascript files in `build/` folder but hey! The command didn't end. Notice the `-w` flag, **w** stands for **watch**, it will recompile the code as you make changes in your code directory. COOL! Now this is some magic I am talking about.
 
 #### Using Source maps in your file
 If you are thinking that's all cool and fun but what about syntax highlighting and real time code debugging. You don't have to be worried. Source maps are just for this purpose. Source maps tell node.js that this code is transpiled and let's you highlight **source** file instead of the **transpiled** file 😄. YAYY!
@@ -156,14 +156,14 @@ Now, we can run
 ```bash
 npm run build
 ```
-and get all the ES6/ES7 goodness instantly today. :)
+and get all the ES2015/ES2016 goodness instantly today. :)
 
 
 #### Learn more about Babel
 This is a basic tutorial on Babel but the Babel world just starts here. It's surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as [Grunt](https://www.npmjs.com/package/grunt-babel) and [gulp](https://npmjs.org/package/gulp-babel/). You can check them all out here on [Babel Website](https://babeljs.io/docs/setup/)
 
 These are some of the resources that can even up your game further in the Babel world
-- [Learn ES6 and Babel using this detailed tutorial](http://ccoenraets.github.io/es6-tutorial/index.html)
+- [Learn ES2015 and Babel using this detailed tutorial](http://ccoenraets.github.io/es6-tutorial/index.html)
 - [Read the Babel docs on setting up Babel (They're helpful)](https://babeljs.io/docs/setup/)
 
 
