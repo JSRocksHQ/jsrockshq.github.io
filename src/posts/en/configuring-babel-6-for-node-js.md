@@ -97,7 +97,7 @@ This is all good magic but what about doing some proper development using node.j
   "plugins": ["es2015", "stage-0"]
 }
 ```
-This is pretty much it for this tutorial, this will help us with our rest of development. Now whenever we want to add or subtract plugins. Instead of changing the command we will change the plugins array in this file. Easy! Isn't it?
+This is pretty much it of babel configuration for this tutorial. Now whenever we want to add or subtract plugins, instead of changing the command we will change the plugins array in this file. Easy! Isn't it?
 
 Now if you run
 ```bash
