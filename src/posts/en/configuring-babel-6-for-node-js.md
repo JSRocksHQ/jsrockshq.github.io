@@ -38,16 +38,16 @@ There are many ways you can set up Babel. Here we will be discussing enough to g
 Let's create a simple `index.js` in `code` **directory**  which will contain the following ES6 code
 ```js
 function* jsRocksIsAwesome() {
-  yield "JSRocks is Awesome"
-  yield "JSRocks says JavaScript Rocks"
-  return "because JavaScript really rocks"
+  yield "JSRocks is Awesome";
+  yield "JSRocks says JavaScript Rocks";
+  return "because JavaScript really rocks";
 }
 
-var jsRocks = jsRocksIsAwesome()
+var jsRocks = jsRocksIsAwesome();
 
-console.log(jsRocks.next())
-console.log(jsRocks.next())
-console.log(jsRocks.next())
+console.log(jsRocks.next());
+console.log(jsRocks.next());
+console.log(jsRocks.next());
 
 ```
 
@@ -111,14 +111,14 @@ If you are thinking that's all cool and fun but what about syntax highlighting a
 This file here `code/error.js` throws an error after the second yield in the generator but the transpiled code doesn't quite look like this.
 ```js
 function* errorFulGenerator() {
-  yield "yo"
-  throw new Error("source maps are awesome")
-  return ""
+  yield "yo";
+  throw new Error("source maps are awesome");
+  return "";
 }
 
-var errorGen = errorFulGenerator()
-errorGen.next()
-errorGen.next()
+var errorGen = errorFulGenerator();
+errorGen.next();
+errorGen.next();
 ```
 
 We use this command to generate **source maps** along with the **transpiled** code *notice the `--source-maps flag`*
@@ -130,7 +130,18 @@ Now when we encounter the error we get useful debugging such as this
 ```js
 errorGen.next()
          ^
+
 Error: source maps are awesome
+    at errorFulGenerator (/home/programreneur/Programming/githubRepos/babeljs-short-tutorial/code/error.js:3:9)
+    at next (native)
+    at Object.<anonymous> (/home/programreneur/Programming/githubRepos/babeljs-short-tutorial/code/error.js:10:10)
+    at Module._compile (module.js:425:26)
+    at Object.Module._extensions..js (module.js:432:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:313:12)
+    at Function.Module.runMain (module.js:457:10)
+    at startup (node.js:138:18)
+    at node.js:974:3
 ```
 So this is how you'll use source maps
 
