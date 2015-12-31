@@ -42,7 +42,7 @@ gulp.task('gulpTraceurCmdline',function() {
       out     : './dist/styleguide/js/main.js',
       debug   : false
     }))
-}); 
+});
 ```
 **Links**
 
