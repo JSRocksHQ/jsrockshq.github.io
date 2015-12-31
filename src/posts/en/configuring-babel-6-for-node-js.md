@@ -4,9 +4,9 @@ title: Configuring Babel 6 for Node.js
 date: 2015-12-31T01:23:42.811Z
 comments: true
 published: true
-keywords: JavaScript, Node.js, ES6, babel, transpiler
-description: Tutorial on configuring babel for node.js to get up and running quickly
-categories: ES6, babel, node.js
+keywords: JavaScript, Node.js, ES6, Babel, transpiler
+description: Tutorial on configuring Babel for node.js to get up and running quickly
+categories: ES6, Babel, node.js
 authorName: Hannan Ali
 authorLink: https://abdulhannanali.github.io
 authorPicture: //s.gravatar.com/avatar/89e5f7614cb88cd573359a953a09aa6e?s=80
@@ -18,7 +18,7 @@ If yes, you can use the newer features of JavaScript ES6 and ES7 standards in yo
 This is where [Babel](https://babeljs.io) comes to the rescue. Babel is a transpiler for JavaScript which transpiles your ES6 and ES7 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
 <!--more-->
 
-**Little Notice:** If you just want ES6 features and don't want to babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` . But there aren't even all the features present in Node. So you may continue if you can access ES6 but also need to access **ES7** features.
+**Little Notice:** If you just want ES6 features and don't want to Babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` . But there aren't even all the features present in Node. So you may continue if you can access ES6 but also need to access **ES7** features.
 
 ### Some assumptions made
 There are some assumptions I am making about you! YES YOU!
@@ -65,7 +65,7 @@ babel code/index.js -d build/
 
 #### Plugins and Presets
 
-You will see the same code that you wrote appear in `build/index.js`. This is where babel **plugins** and **presets** come. Babel doesn't do much on it's own, but, with **plugins** and **presets** it can do a lot. We want all the ES7 and ES6 goodness in our code.
+You will see the same code that you wrote appear in `build/index.js`. This is where Babel **plugins** and **presets** come. Babel doesn't do much on it's own, but, with **plugins** and **presets** it can do a lot. We want all the ES7 and ES6 goodness in our code.
 
 In order to do that we'll install two presets as part of our devDependencies
 - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
@@ -75,7 +75,7 @@ Type the following command in order to install these presets.
 ```bash
 npm install --save-dev babel-preset-es2015 babel-preset-stage-0
 ```
-In order to access a wide range of babel plug ins click [here](https://babeljs.io/docs/plugins/)
+In order to access a wide range of Babel plug ins click [here](https://babeljs.io/docs/plugins/)
 
 You need to include these presets in command you issue
 ```bash
@@ -87,11 +87,11 @@ You will see normal es5 code generated in `app.js`, this is called **Transpiled 
 node build/app.js
 ```
 
-### Setting up a proper build environment using babel
+### Setting up a proper build environment using Babel
 This is all good magic but what about doing some proper development using node.js.
 
 #### babel configuration file .babelrc
-`.babelrc` is a very neat way to separate all your babel stuff in one JSON file. It's also pretty easy to get started. This is our .babelrc file for this tutorial. You can access other .babelrc options [here](http://babeljs.io/docs/usage/options/) and make it as complex as you want it to be
+`.babelrc` is a very neat way to separate all your Babel stuff in one JSON file. It's also pretty easy to get started. This is our .babelrc file for this tutorial. You can access other .babelrc options [here](http://babeljs.io/docs/usage/options/) and make it as robust as you want it to be
 ```json
 {
   "plugins": ["es2015", "stage-0"]
@@ -135,7 +135,7 @@ Error: source maps are awesome
 So this is how you'll use source maps
 
 #### Setting up npm command
-In order to simplify the build process even more. You can update your `package.json` file to include a build script for babel. In `package.json` script object you can add a build script such as the one below
+In order to simplify the build process even more. You can update your `package.json` file to include a build script for Babel. In `package.json` script object you can add a build script such as the one below
 ```json
 "scripts": {
   "build": "babel -w code/ -d build -s"
@@ -149,9 +149,9 @@ and get all the ES6/ES7 goodness instantly today. :)
 
 
 #### Learn more about Babel
-This is a basic tutorial on babel but the Babel world just starts here. It's surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as [GruntJS](https://www.npmjs.com/package/grunt-babel) and [GulpJS](https://npmjs.org/package/gulp-babel/). You can check them all out here on [Babel Website](https://babeljs.io/docs/setup/)
+This is a basic tutorial on Babel but the Babel world just starts here. It's surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as [Grunt](https://www.npmjs.com/package/grunt-babel) and [gulp](https://npmjs.org/package/gulp-babel/). You can check them all out here on [Babel Website](https://babeljs.io/docs/setup/)
 
-These are some of the resources that can even up your game further in the babel world
+These are some of the resources that can even up your game further in the Babel world
 - [Learn ES6 and Babel using this detailed tutorial](http://ccoenraets.github.io/es6-tutorial/index.html)
 - [Read the Babel docs on setting up Babel (They're helpful)](https://babeljs.io/docs/setup/)
 
