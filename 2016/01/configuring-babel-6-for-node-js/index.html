@@ -392,7 +392,7 @@ Error: source maps are awesome
     at node.js:974:3
 </code></pre><p>So this is how you&#39;ll use source maps.</p>
 <h4 id="setting-up-npm-command">Setting up npm command</h4>
-<p>In order to simplify the build process even more, you can update your <code>package.json</code> file to include a build script for Babel. In the <code>package.json</code>&#39;s <code>script</code> object you can add a build script such as the one below:</p>
+<p>In order to simplify the build process even more, you can update your <code>package.json</code> file to include a build script for Babel. In the <code>package.json</code>&#39;s <code>scripts</code> object you can add a build script such as the one below:</p>
 <pre><code class="lang-javascript">&quot;scripts&quot;: {
   &quot;build&quot;: &quot;babel -w code/ -d build -s&quot;
 }
