@@ -18,7 +18,7 @@ If yes, you can use the newer features of JavaScript ES2015 and ES2016 standards
 This is where [Babel](https://babeljs.io) comes to the rescue. Babel is a transpiler for JavaScript which transpiles your ES2015 and ES2016 code into ES5 and even ES3 code. In simple words it converts it into JavaScript that node.js can run and make you really happy.
 <!--more-->
 
-**Little Notice:** If you just want ES2015 features and don't want to Babelify stuff. You can use `--harmony` flag before running your node application. In order to access more harmony flags for staging and experimental features run this command `node --v8-options | grep harmony` but there aren't even all the features present in Node. So you may continue if you can access ES2015 but also need to access **ES2016** features.
+**Small note:** Node.js already supports several ES2015 features, so if you don't want to transpile ES2015 code you may run Node.js with the --harmony flag to enable a few more (staged) features. In order to access more harmony flags for experimental features run this command: node --v8-options | grep harmony. However, note that not all features are supported even in the latest Node.js (version 5 at the time of writing), and the flagged features are often unstable or incomplete. So keep reading to make use of more ES2015 and ES2016 features, without requiring flags.
 
 ### Some assumptions made
 There are some assumptions I am making about you! YES YOU!
@@ -106,7 +106,7 @@ babel -w code/ -d build/
 It will read the **presets** to use from `.babelrc` compile the code in `code/` directory and generate the compiled code javascript files in `build/` folder but hey! The command didn't end. Notice the `-w` flag, **w** stands for **watch**, it will recompile the code as you make changes in your code directory. COOL! Now this is some magic I am talking about.
 
 #### Using Source maps in your file
-If you are thinking that's all cool and fun but what about syntax highlighting and real time code debugging. You don't have to be worried. Source maps are just for this purpose. Source maps tell node.js that this code is transpiled and let's you highlight **source** file instead of the **transpiled** file 😄. YAYY!
+If you are thinking that's all cool and fun but what some actual code debugging. You don't have to be worried. Source maps are just for this purpose. Source maps tell node.js that this code is transpiled and lets you point errors in the actual **source file** instead of the **transpiled file**!
 
 This file here `code/error.js` throws an error after the second yield in the generator but the transpiled code doesn't quite look like this.
 ```js
@@ -172,4 +172,4 @@ Source code for this tutorial is available in this [repo](https://github.com/abd
 
 If you find some typo or would like to make some update. Please do so using the power of issues and PR in our [Github Repo](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
-I would also like to thank [Fabrício Matté](http://ultcombo.js.org/) for approving this article to be posted on JS Rocks and the corrections he made.
+I would also like to thank [Fabrício Matté](http://ultcombo.js.org/) for approving this article to be posted on [JS Rocks](https://github.com/JSRocksHQ/jsrockshq.github.io/) and the corrections he made.
