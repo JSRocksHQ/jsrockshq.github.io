@@ -316,7 +316,7 @@
 <h3 id="installing-and-getting-started-with-babel">Installing and getting started with Babel</h3>
 <p>There are many ways you can set up Babel. Here we will be discussing enough to get up and running using babel-cli.</p>
 <p>Let&#39;s create a simple <code>index.js</code> in a <code>code</code> <strong>directory</strong> which will contain the following ES2015 code:</p>
-<pre><code class="lang-js">function* jsRocksIsAwesome() {
+<pre><code class="lang-javascript">function* jsRocksIsAwesome() {
   yield &quot;JS Rocks is Awesome&quot;;
   yield &quot;JS Rocks says JavaScript Rocks&quot;;
   return &quot;because JavaScript really rocks&quot;;
@@ -329,12 +329,10 @@ console.log(jsRocks.next());
 console.log(jsRocks.next());
 </code></pre>
 <p>We&#39;ll install the <strong>babel-cli</strong> package with the next command. This will install the latest stable version of <strong>babel-cli</strong> for the current project and list it as one of the <code>devDependencies</code> in <code>package.json</code> too:</p>
-<pre><code class="lang-bash">npm install --save-dev babel-cli
-</code></pre>
-<p>Now if you run:</p>
-<pre><code class="lang-bash">babel code/index.js -d build/
-</code></pre>
-<p>You will see the same code that you wrote appear in <code>build/index.js</code>. This is where Babel&#39;s <strong>plugins</strong> and <strong>presets</strong> come.</p>
+<pre><code>npm install --save-dev babel-cli
+</code></pre><p>Now if you run:</p>
+<pre><code>babel code/index.js -d build/
+</code></pre><p>You will see the same code that you wrote appear in <code>build/index.js</code>. This is where Babel&#39;s <strong>plugins</strong> and <strong>presets</strong> come.</p>
 <h4 id="plugins-and-presets">Plugins and Presets</h4>
 <p>Babel doesn&#39;t do much on its own, but with <strong>plugins</strong> and <strong>presets</strong> it can do a lot. We want all the ES2016 and ES2015 goodness in our code.</p>
 <p>In order to do that we&#39;ll install two presets as part of our <code>devDependencies</code>:</p>
@@ -343,33 +341,29 @@ console.log(jsRocks.next());
 <li><a href="https://babeljs.io/docs/plugins/preset-stage-0/">stage-0</a></li>
 </ul>
 <p>Run the following command to install these presets:</p>
-<pre><code class="lang-bash">npm install --save-dev babel-preset-es2015 babel-preset-stage-0
-</code></pre>
-<p>Babel has a wide range of plugins that you can <a href="https://babeljs.io/docs/plugins/">access here</a>.</p>
+<pre><code>npm install --save-dev babel-preset-es2015 babel-preset-stage-0
+</code></pre><p>Babel has a wide range of plugins that you can <a href="https://babeljs.io/docs/plugins/">access here</a>.</p>
 <p>Now you need to include these presets in the command you issue:</p>
-<pre><code class="lang-bash">babel --presets es2015,stage-0 code/index.js -o build/app.js
-</code></pre>
-<p>You will see normal ES5 code generated in <code>app.js</code>, this is called <strong>Transpiled code</strong> (a term used widely in the JS world). You can run this code using the command below.</p>
-<pre><code class="lang-bash">node build/app.js
-</code></pre>
-<h3 id="setting-up-a-proper-build-environment-using-babel">Setting up a proper build environment using Babel</h3>
+<pre><code>babel --presets es2015,stage-0 code/index.js -o build/app.js
+</code></pre><p>You will see normal ES5 code generated in <code>app.js</code>, this is called <strong>Transpiled code</strong> (a term used widely in the JS world). You can run this code using the command below.</p>
+<pre><code>node build/app.js
+</code></pre><h3 id="setting-up-a-proper-build-environment-using-babel">Setting up a proper build environment using Babel</h3>
 <p>This is all good magic, but what about doing some proper development using Node.js?</p>
 <h4 id="babel-configuration-file-babelrc">babel configuration file .babelrc</h4>
 <p><code>.babelrc</code> is a very neat way to separate all your Babel stuff in one JSON file. It&#39;s also pretty easy to get started. This is our <code>.babelrc</code> file for this tutorial:</p>
-<pre><code class="lang-json">{
+<pre><code class="lang-javascript">{
   &quot;plugins&quot;: [&quot;es2015&quot;, &quot;stage-0&quot;]
 }
 </code></pre>
 <p>You can access other <a href="http://babeljs.io/docs/usage/options/"><code>.babelrc</code> options</a> and make it as robust as you want it to be.</p>
 <p>This is pretty much it of Babel configuration for this tutorial. Now whenever we want to add or remove plugins, instead of changing the command we will change the plugins array in this file. Easy! Isn&#39;t it?</p>
 <p>Now if you run:</p>
-<pre><code class="lang-bash">babel -w code/ -d build/
-</code></pre>
-<p>It will read the <strong>presets</strong> to use from <code>.babelrc</code> compile the code in <code>code/</code> directory and generate the compiled JavaScript files in the <code>build/</code> folder, but hey! The command isn&#39;t over yet. Note the <code>-w</code> flag: it stands for <strong>watch</strong> and will recompile the code as you make changes in your <code>code</code> directory. COOL! Now this is some magic I am talking about.</p>
+<pre><code>babel -w code/ -d build/
+</code></pre><p>It will read the <strong>presets</strong> to use from <code>.babelrc</code> compile the code in <code>code/</code> directory and generate the compiled JavaScript files in the <code>build/</code> folder, but hey! The command isn&#39;t over yet. Note the <code>-w</code> flag: it stands for <strong>watch</strong> and will recompile the code as you make changes in your <code>code</code> directory. COOL! Now this is some magic I am talking about.</p>
 <h4 id="using-source-maps-in-your-file">Using source maps in your file</h4>
 <p>If you are thinking that&#39;s all cool and fun but what about some actual code debugging. You don&#39;t have to be worried. Source maps are just for this purpose. Source maps tell Node.js that this code is transpiled and point to errors in the actual <strong>source file</strong> instead of the <strong>transpiled file</strong>!</p>
 <p>This <code>code/error.js</code> file here throws an error after the second yield in the generator but the transpiled code looks quite different.</p>
-<pre><code class="lang-js">function* errorFulGenerator() {
+<pre><code class="lang-javascript">function* errorFulGenerator() {
   yield &quot;yo&quot;;
   throw new Error(&quot;source maps are awesome&quot;);
   return &quot;&quot;;
@@ -380,10 +374,9 @@ errorGen.next();
 errorGen.next();
 </code></pre>
 <p>We use this command to generate <strong>source maps</strong> along with the <strong>transpiled</strong> code. <em>Note the <code>--source-maps</code> flag</em>:</p>
-<pre><code class="lang-bash">babel code/ -d build/ --source-maps
-</code></pre>
-<p>Now when we encounter the error we get useful debugging such as this:</p>
-<pre><code class="lang-js">errorGen.next()
+<pre><code>babel code/ -d build/ --source-maps
+</code></pre><p>Now when we encounter the error we get useful debugging such as this:</p>
+<pre><code>errorGen.next()
          ^
 
 Error: source maps are awesome
@@ -397,18 +390,16 @@ Error: source maps are awesome
     at Function.Module.runMain (module.js:457:10)
     at startup (node.js:138:18)
     at node.js:974:3
-</code></pre>
-<p>So this is how you&#39;ll use source maps.</p>
+</code></pre><p>So this is how you&#39;ll use source maps.</p>
 <h4 id="setting-up-npm-command">Setting up npm command</h4>
 <p>In order to simplify the build process even more, you can update your <code>package.json</code> file to include a build script for Babel. In the <code>package.json</code>&#39;s <code>script</code> object you can add a build script such as the one below:</p>
-<pre><code class="lang-json">&quot;scripts&quot;: {
+<pre><code class="lang-javascript">&quot;scripts&quot;: {
   &quot;build&quot;: &quot;babel -w code/ -d build -s&quot;
 }
 </code></pre>
 <p>Now, we can run:</p>
-<pre><code class="lang-bash">npm run build
-</code></pre>
-<p>And get all the ES2015/ES2016 goodness instantly today. :)</p>
+<pre><code>npm run build
+</code></pre><p>And get all the ES2015/ES2016 goodness instantly today. :)</p>
 <h4 id="learn-more-about-babel">Learn more about Babel</h4>
 <p>This is a basic tutorial on Babel but the Babel world just starts here. It&#39;s surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as <a href="https://www.npmjs.com/package/grunt-babel">Grunt</a> and <a href="https://npmjs.org/package/gulp-babel/">gulp</a>. You can check them all out in the <a href="https://babeljs.io/docs/setup/">Babel Website</a>.</p>
 <p>These are some of the resources that can even up your game further in the Babel world:</p>
