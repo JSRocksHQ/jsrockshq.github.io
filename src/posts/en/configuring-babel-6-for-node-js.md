@@ -97,7 +97,7 @@ This is all good magic, but what about doing some proper development using Node.
 }
 ```
 
-You can access other [`.babelrc` options](http://babeljs.io/docs/usage/options/) and make it as robust as you want it to be.
+You can configure other [`.babelrc` options](http://babeljs.io/docs/usage/options/) and make it as robust as you want it to be.
 
 This is pretty much it of Babel configuration for this tutorial. Now whenever we want to add or remove plugins, instead of changing the command we will change the plugins array in this file. Easy! Isn't it?
 
