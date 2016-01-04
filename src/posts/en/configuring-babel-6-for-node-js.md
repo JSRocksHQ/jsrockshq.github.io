@@ -148,7 +148,7 @@ Error: source maps are awesome
 So this is how you'll use source maps.
 
 #### Setting up npm command
-In order to simplify the build process even more, you can update your `package.json` file to include a build script for Babel. In the `package.json`'s `script` object you can add a build script such as the one below:
+In order to simplify the build process even more, you can update your `package.json` file to include a build script for Babel. In the `package.json`'s `scripts` object you can add a build script such as the one below:
 ```javascript
 "scripts": {
   "build": "babel -w code/ -d build -s"
