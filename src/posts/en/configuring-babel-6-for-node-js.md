@@ -35,7 +35,7 @@ Type of person who follows code instead of just reading? Code is available here 
 There are many ways you can set up Babel. Here we will be discussing enough to get up and running using babel-cli.
 
 Let's create a simple `index.js` in a `code` **directory** which will contain the following ES2015 code:
-```js
+```javascript
 function* jsRocksIsAwesome() {
   yield "JS Rocks is Awesome";
   yield "JS Rocks says JavaScript Rocks";
@@ -51,12 +51,12 @@ console.log(jsRocks.next());
 
 We'll install the **babel-cli** package with the next command. This will install the latest stable version of **babel-cli** for the current project and list it as one of the `devDependencies` in `package.json` too:
 
-```bash
+```
 npm install --save-dev babel-cli
 ```
 
 Now if you run:
-```bash
+```
 babel code/index.js -d build/
 ```
 
@@ -71,18 +71,18 @@ In order to do that we'll install two presets as part of our `devDependencies`:
 - [stage-0](https://babeljs.io/docs/plugins/preset-stage-0/)
 
 Run the following command to install these presets:
-```bash
+```
 npm install --save-dev babel-preset-es2015 babel-preset-stage-0
 ```
 Babel has a wide range of plugins that you can [access here](https://babeljs.io/docs/plugins/).
 
 Now you need to include these presets in the command you issue:
-```bash
+```
 babel --presets es2015,stage-0 code/index.js -o build/app.js
 ```
 
 You will see normal ES5 code generated in `app.js`, this is called **Transpiled code** (a term used widely in the JS world). You can run this code using the command below.
-```bash
+```
 node build/app.js
 ```
 
@@ -91,7 +91,7 @@ This is all good magic, but what about doing some proper development using Node.
 
 #### babel configuration file .babelrc
 `.babelrc` is a very neat way to separate all your Babel stuff in one JSON file. It's also pretty easy to get started. This is our `.babelrc` file for this tutorial:
-```json
+```javascript
 {
   "plugins": ["es2015", "stage-0"]
 }
@@ -102,7 +102,7 @@ You can access other [`.babelrc` options](http://babeljs.io/docs/usage/options/)
 This is pretty much it of Babel configuration for this tutorial. Now whenever we want to add or remove plugins, instead of changing the command we will change the plugins array in this file. Easy! Isn't it?
 
 Now if you run:
-```bash
+```
 babel -w code/ -d build/
 ```
 It will read the **presets** to use from `.babelrc` compile the code in `code/` directory and generate the compiled JavaScript files in the `build/` folder, but hey! The command isn't over yet. Note the `-w` flag: it stands for **watch** and will recompile the code as you make changes in your `code` directory. COOL! Now this is some magic I am talking about.
@@ -111,7 +111,7 @@ It will read the **presets** to use from `.babelrc` compile the code in `code/` 
 If you are thinking that's all cool and fun but what about some actual code debugging. You don't have to be worried. Source maps are just for this purpose. Source maps tell Node.js that this code is transpiled and point to errors in the actual **source file** instead of the **transpiled file**!
 
 This `code/error.js` file here throws an error after the second yield in the generator but the transpiled code looks quite different.
-```js
+```javascript
 function* errorFulGenerator() {
   yield "yo";
   throw new Error("source maps are awesome");
@@ -124,12 +124,12 @@ errorGen.next();
 ```
 
 We use this command to generate **source maps** along with the **transpiled** code. *Note the `--source-maps` flag*:
-```bash
+```
 babel code/ -d build/ --source-maps
 ```
 
 Now when we encounter the error we get useful debugging such as this:
-```js
+```
 errorGen.next()
          ^
 
@@ -149,13 +149,13 @@ So this is how you'll use source maps.
 
 #### Setting up npm command
 In order to simplify the build process even more, you can update your `package.json` file to include a build script for Babel. In the `package.json`'s `script` object you can add a build script such as the one below:
-```json
+```javascript
 "scripts": {
   "build": "babel -w code/ -d build -s"
 }
 ```
 Now, we can run:
-```bash
+```
 npm run build
 ```
 And get all the ES2015/ES2016 goodness instantly today. :)
