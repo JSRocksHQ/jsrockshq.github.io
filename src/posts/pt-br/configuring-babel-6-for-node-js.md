@@ -11,14 +11,14 @@ authorName: Hannan Ali
 authorLink: https://abdulhannanali.github.io
 authorPicture: //s.gravatar.com/avatar/89e5f7614cb88cd573359a953a09aa6e?s=80
 -->
-Olá! Se você é como eu, você está cansado de escrever o velho código ES5 JS em suas aplicações Node.js.
+Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.
 
-Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa fresca, mas nem todos os recursos do ES2015 são suportados em nosso amado [Node.js](https://nodejs.org).
+Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado [Node.js](https://nodejs.org).
 
-Aqui é o onde o [Babel](https://babeljs.io) vem para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
+Aqui é o onde o [Babel](https://babeljs.io) chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
 <!--more-->
 
-**Nota:** Node.js já suporta várias funcionalidades ES2015, então se você não quiser transpilar o código ES2015, você pode executar o seu código Node.js seguido de `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades sinalizadas estão frequentemente instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
+**Nota:** Node.js já suporta várias funcionalidades ES2015, então se você não quiser transpilar o código ES2015, você pode executar o seu código Node.js seguido de `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags estão frequentemente instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
 
 ### Algumas premissas feitas
 Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!
@@ -98,16 +98,16 @@ Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando
 
 Você pode configurar mais opções do [`.babelrc`](http://babeljs.io/docs/usage/options/) e torná-lo tão robusto quanto você quiser.
 
-É basicamente isto de configuração do Babel que usaremos para este tutorial. Agora sempre que quisermos adicionar ou removermos plugins, ao invés de alterarmos o comando, vamos alterar o array de plugins nesse arquivo. Fácil. Não é?
+É basicamente isto de configuração do Babel que usaremos para este tutorial. Agora sempre que quisermos adicionar ou remover plugins, ao invés de alterarmos o comando, vamos alterar o array de plugins nesse arquivo. Fácil. Não é?
 
 Agora se você executar:
 ```
 babel -w code/ -d build/
 ```
-Ele irá ler os **presets** do `.babelrc` para compilar o código no diretório `code/` e gerar os arquivos JavaScript compilados no diretório `build/`, mas olhe! O comando ainda não acabou. Note que a flag `-w`: é para **assistir** e recompilar o código conforme você fizer mudanças em seu diretório de `códigos`. LEGAL! É dessa magia que estou falando.
+Ele irá ler os **presets** do `.babelrc` para compilar o código no diretório `code/` e gerar os arquivos JavaScript compilados no diretório `build/`, mas olhe! O comando ainda não acabou. Note a flag `-w`: é para **assistir** e recompilar o código conforme você fizer mudanças em seu diretório de `códigos`. LEGAL! É dessa magia que estou falando.
 
 #### Usando source maps em seu arquivo
-Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve ficar preocupado. Source maps são apenas para esse propósito. Source maps diz ao Node.js que este código é transpilado e aponta para os erros no **arquivo de origem** ao invés do **arquivo transpilado**!
+Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve ficar preocupado. Source maps são exatamente para esse propósito. Source maps dizem ao Node.js que este código é transpilado e aponta para os erros no **arquivo de origem** ao invés do **arquivo transpilado**!
 
 O arquivo `code/error.js` dispara um erro após o segundo yield no gerador, mas o código transpilado parece bem diferente.
 ```javascript
@@ -127,7 +127,7 @@ Nós usamos esse comando para gerar **source maps** junto com o código **transp
 babel code/ -d build/ --source-maps
 ```
 
-Agora quando encontrarmos o erro, nós encontramos informações úteis para debugar, como estas:
+Agora quando encontrarmos o erro, nós obteremos informações úteis para debugar, como estas:
 ```
 errorGen.next()
          ^
@@ -147,7 +147,7 @@ Error: source maps are awesome
 Então é assim que você vai usar source maps.
 
 #### Configurando o comando npm
-A fim de simplificar o processo de build ainda mais, você pode atualizar o seu arquivo `package.json` e incluir um script de build para o Babel. No objeto do arquivo `package.json` você pode adicionar o código tal como segue abaixo:
+A fim de simplificar o processo de build ainda mais, você pode editar o seu arquivo `package.json` e incluir um script de build para o Babel. No objeto do arquivo `package.json` você pode adicionar o código tal como segue abaixo:
 ```javascript
 "scripts": {
   "build": "babel -w code/ -d build -s"
@@ -162,7 +162,7 @@ E obtenha todas as vantagens do ES2015/ES2016 hoje. :)
 #### Aprenda mais sobre Babel
 Esse é um tutorial básico do Babel, mas o mundo do Babel apenas começa aqui. É cercado por uma comunidade maravilhosa e é usado por grandes nomes no mundo da TI. Babel tem suporte para todas as principais ferramentas de compilação como [Grunt](https://www.npmjs.com/package/grunt-babel) e [gulp](https://npmjs.org/package/gulp-babel/). Você pode checar tudo isso no [site do Babel](https://babeljs.io/docs/setup/).
 
-Estes são alguns dos recursos que podem ajudar a aprimiorar os teus conhecimentos no mundo do Babel:
+Estes são alguns dos recursos que podem ajudar a aprimorar os teus conhecimentos no mundo do Babel:
 - [Learn ES2015 and Babel using this detailed tutorial](http://ccoenraets.github.io/es6-tutorial/index.html)
 - [Read the Babel docs on setting up Babel (They're helpful)](https://babeljs.io/docs/setup/)
 
