@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>Configuring Babel 6 for Node.js - JS Rocks</title>
+    <title>Configurando Babel 6 para Node.js - JS Rocks</title>
 </head>
 <body>
     <div class="wrapper">
@@ -269,20 +269,20 @@
                             </div>
                         </div>
                         <div class="date-post">Mon Jan 04 2016 02:39:18 GMT+0000 (UTC)</div>
-                        <h1 class="title-post">Configuring Babel 6 for Node.js</h1>
+                        <h1 class="title-post">Configurando Babel 6 para Node.js</h1>
                         <div class="centering">
                             <ul class="tags-post">
                                 
                                     <li class="item-tag-post">
-                                        <a class="categoryTag ES2015" href="/categories/es2015">ES2015</a>
+                                        <a class="categoryTag ES2015" href="/categories/pt-br/es2015">ES2015</a>
                                     </li>
                                 
                                     <li class="item-tag-post">
-                                        <a class="categoryTag  Babel" href="/categories/babel"> Babel</a>
+                                        <a class="categoryTag  Babel" href="/categories/pt-br/babel"> Babel</a>
                                     </li>
                                 
                                     <li class="item-tag-post">
-                                        <a class="categoryTag  node.js" href="/categories/node.js"> node.js</a>
+                                        <a class="categoryTag  node.js" href="/categories/pt-br/node.js"> node.js</a>
                                     </li>
                                 
                             </ul>
@@ -294,28 +294,28 @@
                     <div class="col-xs-12">
                         <div class="article-content">
                             <aside class="share-post">
-                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/2016/01/configuring-babel-6-for-node-js" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/2016/01/configuring-babel-6-for-node-js" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/pt-br/2016/01/configuring-babel-6-for-node-js" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/pt-br/2016/01/configuring-babel-6-for-node-js" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
                             </aside>
-                            <p>Hi! If you are like me, you are tired of writing the same old ES5 JS code in your Node.js applications.</p>
-<p>If yes, you can use the newer features of JavaScript ES2015 and ES2016 standards in your Node.js applications today. ES2015 and ES2016 make the JavaScript development a cool breeze but hey, not every ES2015 feature is supported in our beloved <a href="https://nodejs.org">Node.js</a>.</p>
-<p>This is where <a href="https://babeljs.io">Babel</a> comes to the rescue. Babel is a transpiler for JavaScript that transpiles your ES2015 and ES2016 code into ES5 and even ES3 code. In simple words, it converts your code into JavaScript that Node.js can run and make you really happy.
+                            <p>Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.</p>
+<p>Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado <a href="https://nodejs.org">Node.js</a>.</p>
+<p>Aqui é o onde o <a href="https://babeljs.io">Babel</a> chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
 </p>
-<p><strong>Small note:</strong> Node.js already supports several ES2015 features, so if you don&#39;t want to transpile ES2015 code you may run Node.js with the <code>--harmony</code> flag to enable a few more (staged) features. In order to access more harmony flags for experimental features run this command: <code>node --v8-options | grep harmony</code>. However, note that not all features are supported even in the latest Node.js (version 5 at the time of writing), and the flagged features are often unstable or incomplete. So keep reading to make use of more ES2015 and <strong>ES2016</strong> features, without requiring flags.</p>
-<h3 id="some-assumptions-made">Some assumptions made</h3>
-<p>There are some assumptions I am making about you! YES YOU!</p>
+<p><strong>Nota:</strong> Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag <code>--harmony</code> para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais <code>--harmony</code>, execute o comando: <code>node --v8-options | grep harmony</code>. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags geralmente estão instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e <strong>ES2016</strong>, sem a necessidade de flags.</p>
+<h3 id="algumas-premissas-feitas">Algumas premissas feitas</h3>
+<p>Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!</p>
 <ul>
-<li>You know your way around <a href="https://nodejs.org">Node.js</a>.</li>
-<li>You can install packages using <a href="https://www.npmjs.com/">npm</a>.</li>
-<li>You have Node.js and npm already installed.</li>
-<li>You are okay with using some CLI occasionally.</li>
-<li>It&#39;s good to know some ES2015 beforehand, but not required.</li>
+<li>Você já possui alguma experiência com <a href="https://nodejs.org">Node.js</a>.</li>
+<li>Você consegue instalar pacotes usando o <a href="https://www.npmjs.com/">npm</a>.</li>
+<li>Você já tem Node.js e npm instalados.</li>
+<li>Você está confortável com o uso ocasional da linha de comando.</li>
+<li>É bom saber algo sobre ES2015, mas não é obrigatório.</li>
 </ul>
-<h3 id="following-along-the-code">Following along the code</h3>
-<p>Type of person who follows code instead of just reading? Code is available here in <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">this repo</a>.</p>
-<h3 id="installing-and-getting-started-with-babel">Installing and getting started with Babel</h3>
-<p>There are many ways you can set up Babel. Here we will be discussing enough to get up and running using babel-cli.</p>
-<p>Let&#39;s create a simple <code>index.js</code> in a <code>code</code> <strong>directory</strong> which will contain the following ES2015 code:</p>
+<h3 id="seguindo-ao-longo-do-c-digo">Seguindo ao longo do código</h3>
+<p>É do tipo de pessoa que segue o código em vez de apenas ler? O código está disponível nesse <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório</a>.</p>
+<h3 id="instalando-e-come-ando-com-babel">Instalando e começando com Babel</h3>
+<p>Há muitas maneiras de configurar o Babel. Aqui vamos discutir o suficiente para começar a usar o babel-cli.</p>
+<p>Vamos criar um simples <code>index.js</code> em um <strong>diretório</strong> <code>code</code> que conterá o seguinte código ES2015:</p>
 <pre><code class="lang-javascript">function* jsRocksIsAwesome() {
   yield &quot;JS Rocks is Awesome&quot;;
   yield &quot;JS Rocks says JavaScript Rocks&quot;;
@@ -328,41 +328,41 @@ console.log(jsRocks.next());
 console.log(jsRocks.next());
 console.log(jsRocks.next());
 </code></pre>
-<p>We&#39;ll install the <strong>babel-cli</strong> package with the next command. This will install the latest stable version of <strong>babel-cli</strong> for the current project and list it as one of the <code>devDependencies</code> in <code>package.json</code> too:</p>
+<p>Vamos instalar o pacote <strong>babel-cli</strong> com o próximo comando. Isto irá instalar a última versão estável do <strong>babel-cli</strong> para o projeto atual e listá-lo como uma das <code>devDependencies</code> no <code>package.json</code>:</p>
 <pre><code>npm install --save-dev babel-cli
-</code></pre><p>Now if you run:</p>
+</code></pre><p>Agora se você executar:</p>
 <pre><code>babel code/index.js -d build/
-</code></pre><p>You will see the same code that you wrote appear in <code>build/index.js</code>. This is where Babel&#39;s <strong>plugins</strong> and <strong>presets</strong> come.</p>
-<h4 id="plugins-and-presets">Plugins and Presets</h4>
-<p>Babel doesn&#39;t do much on its own, but with <strong>plugins</strong> and <strong>presets</strong> it can do a lot. We want all the ES2016 and ES2015 goodness in our code.</p>
-<p>In order to do that we&#39;ll install two presets as part of our <code>devDependencies</code>:</p>
+</code></pre><p>Você verá o mesmo código que você escreveu aparecer em <code>build/index.js</code>. É aqui que entra os <strong>plugins</strong> e <strong>presets</strong> do Babel.</p>
+<h4 id="plugins-e-presets">Plugins e Presets</h4>
+<p>Babel não faz muito por conta própria, mas com <strong>plugins</strong> e <strong>presets</strong> é possível fazer muito. Nós queremos todas as vantagens do ES2016 e ES2015 em nosso código.</p>
+<p>Para fazer isso, vamos instalar dois <em>presets</em> como parte de nossas <code>devDependencies</code>:</p>
 <ul>
 <li><a href="https://babeljs.io/docs/plugins/preset-es2015/">es2015</a></li>
 <li><a href="https://babeljs.io/docs/plugins/preset-stage-0/">stage-0</a></li>
 </ul>
-<p>Run the following command to install these presets:</p>
+<p>Execute o comando a seguir para instalar estes <em>presets</em>:</p>
 <pre><code>npm install --save-dev babel-preset-es2015 babel-preset-stage-0
-</code></pre><p>Babel has a wide range of plugins that you can <a href="https://babeljs.io/docs/plugins/">access here</a>.</p>
-<p>Now you need to include these presets in the command you issue:</p>
+</code></pre><p>Babel possui uma vasta gama de plugins que você pode <a href="https://babeljs.io/docs/plugins/">encontrar aqui</a>.</p>
+<p>Agora você precisa incluir estes <em>presets</em> no comando que você executará:</p>
 <pre><code>babel --presets es2015,stage-0 code/index.js -o build/app.js
-</code></pre><p>You will see normal ES5 code generated in <code>app.js</code>, this is called <strong>Transpiled code</strong> (a term used widely in the JS world). You can run this code using the command below.</p>
+</code></pre><p>Você verá o código ES5 normal gerado no arquivo <code>app.js</code>, isso é chamado de <strong>código transpilado</strong> (um termo largamente usado no mundo JS). Você pode rodar esse código usando o comando abaixo.</p>
 <pre><code>node build/app.js
-</code></pre><h3 id="setting-up-a-proper-build-environment-using-babel">Setting up a proper build environment using Babel</h3>
-<p>This is all good magic, but what about doing some proper development using Node.js?</p>
-<h4 id="babel-configuration-file-babelrc">babel configuration file .babelrc</h4>
-<p><code>.babelrc</code> is a very neat way to separate all your Babel stuff in one JSON file. It&#39;s also pretty easy to get started. This is our <code>.babelrc</code> file for this tutorial:</p>
+</code></pre><h3 id="configurando-um-ambiente-de-build-adequado-usando-babel">Configurando um ambiente de build adequado usando Babel</h3>
+<p>Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando Node.js?</p>
+<h4 id="arquivo-de-configura-o-do-babel-babelrc">Arquivo de configuração do Babel .babelrc</h4>
+<p><code>.babelrc</code> é uma maneira muito elegante de separar todas suas configurações do Babel em um arquivo JSON. É também muito fácil de começar. Esse é o nosso arquivo <code>.babelrc</code> para este tutorial:</p>
 <pre><code class="lang-javascript">{
   &quot;plugins&quot;: [&quot;es2015&quot;, &quot;stage-0&quot;]
 }
 </code></pre>
-<p>You can configure other <a href="http://babeljs.io/docs/usage/options/"><code>.babelrc</code> options</a> and make it as robust as you want it to be.</p>
-<p>This is pretty much it of Babel configuration for this tutorial. Now whenever we want to add or remove plugins, instead of changing the command we will change the plugins array in this file. Easy! Isn&#39;t it?</p>
-<p>Now if you run:</p>
+<p>Você pode configurar mais opções do <a href="http://babeljs.io/docs/usage/options/"><code>.babelrc</code></a> e torná-lo tão robusto quanto você desejar.</p>
+<p>É basicamente isto de configuração do Babel que usaremos para este tutorial. Agora sempre que quisermos adicionar ou remover plugins, ao invés de alterarmos o comando, vamos alterar o array de plugins nesse arquivo. Fácil. Não é?</p>
+<p>Agora se você executar:</p>
 <pre><code>babel -w code/ -d build/
-</code></pre><p>It will read the <strong>presets</strong> to use from <code>.babelrc</code> compile the code in <code>code/</code> directory and generate the compiled JavaScript files in the <code>build/</code> folder, but hey! The command isn&#39;t over yet. Note the <code>-w</code> flag: it stands for <strong>watch</strong> and will recompile the code as you make changes in your <code>code</code> directory. COOL! Now this is some magic I am talking about.</p>
-<h4 id="using-source-maps-in-your-file">Using source maps in your file</h4>
-<p>If you are thinking that&#39;s all cool and fun but what about some actual code debugging. You don&#39;t have to be worried. Source maps are just for this purpose. Source maps tell Node.js that this code is transpiled and point to errors in the actual <strong>source file</strong> instead of the <strong>transpiled file</strong>!</p>
-<p>This <code>code/error.js</code> file here throws an error after the second <code>yield</code> in the generator but the transpiled code looks quite different.</p>
+</code></pre><p>Ele irá ler os <strong>presets</strong> do <code>.babelrc</code> para compilar o código no diretório <code>code/</code> e gerar os arquivos JavaScript compilados no diretório <code>build/</code>, mas olhe! O comando ainda não acabou. Note a flag <code>-w</code>: é para <strong>observar</strong> e recompilar o código conforme você fizer mudanças em seu diretório <code>code</code>. LEGAL! É dessa magia que estou falando.</p>
+<h4 id="usando-source-maps-em-seu-arquivo">Usando source maps em seu arquivo</h4>
+<p>Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve se preocupar. Source maps são exatamente para esse propósito. Source maps dizem ao Node.js que este código é transpilado e aponta para os erros no <strong>arquivo de origem</strong> ao invés do <strong>arquivo transpilado</strong>!</p>
+<p>O arquivo <code>code/error.js</code> dispara um erro após o segundo <code>yield</code> no gerador, mas o código transpilado parece bem diferente.</p>
 <pre><code class="lang-javascript">function* errorFulGenerator() {
   yield &quot;yo&quot;;
   throw new Error(&quot;source maps are awesome&quot;);
@@ -373,9 +373,9 @@ var errorGen = errorFulGenerator();
 errorGen.next();
 errorGen.next();
 </code></pre>
-<p>We use this command to generate <strong>source maps</strong> along with the <strong>transpiled</strong> code. <em>Note the <code>--source-maps</code> flag</em>:</p>
+<p>Nós usamos esse comando para gerar <strong>source maps</strong> junto com o código <strong>transpiled</strong>. <em>Note a flag <code>--source-maps</code></em>:</p>
 <pre><code>babel code/ -d build/ --source-maps
-</code></pre><p>Now when we encounter the error we get useful debugging such as this:</p>
+</code></pre><p>Agora quando encontrarmos o erro, nós obteremos informações úteis para debugar, como estas:</p>
 <pre><code>errorGen.next()
          ^
 
@@ -390,27 +390,27 @@ Error: source maps are awesome
     at Function.Module.runMain (module.js:457:10)
     at startup (node.js:138:18)
     at node.js:974:3
-</code></pre><p>So this is how you&#39;ll use source maps.</p>
-<h4 id="setting-up-npm-command">Setting up npm command</h4>
-<p>In order to simplify the build process even more, you can update your <code>package.json</code> file to include a build script for Babel. In the <code>package.json</code>&#39;s <code>scripts</code> object you can add a build script such as the one below:</p>
+</code></pre><p>Então é assim que você vai usar source maps.</p>
+<h4 id="configurando-o-comando-npm">Configurando o comando npm</h4>
+<p>A fim de simplificar o processo de build ainda mais, você pode editar o seu arquivo <code>package.json</code> e incluir um script de build para o Babel. No objeto <code>scripts</code> do arquivo <code>package.json</code> você pode adicionar o código tal como segue abaixo:</p>
 <pre><code class="lang-javascript">&quot;scripts&quot;: {
   &quot;build&quot;: &quot;babel -w code/ -d build -s&quot;
 }
 </code></pre>
-<p>Now, we can run:</p>
+<p>Agora, podemos executar:</p>
 <pre><code>npm run build
-</code></pre><p>And get all the ES2015/ES2016 goodness instantly today. :)</p>
-<h4 id="learn-more-about-babel">Learn more about Babel</h4>
-<p>This is a basic tutorial on Babel but the Babel world just starts here. It&#39;s surrounded by a wonderful community and is used by big names in IT world. Babel has support for all the major build tools too such as <a href="https://www.npmjs.com/package/grunt-babel">Grunt</a> and <a href="https://npmjs.org/package/gulp-babel/">gulp</a>. You can check them all out in the <a href="https://babeljs.io/docs/setup/">Babel Website</a>.</p>
-<p>These are some of the resources that can even up your game further in the Babel world:</p>
+</code></pre><p>E obtenha todas as vantagens do ES2015/ES2016 hoje. :)</p>
+<h4 id="aprenda-mais-sobre-babel">Aprenda mais sobre Babel</h4>
+<p>Esse é um tutorial básico do Babel, mas o mundo do Babel apenas começa aqui. É cercado por uma comunidade maravilhosa e é usado por grandes nomes no mundo da TI. Babel tem suporte para todas as principais ferramentas de compilação como <a href="https://www.npmjs.com/package/grunt-babel">Grunt</a> e <a href="https://npmjs.org/package/gulp-babel/">gulp</a>. Você pode checar tudo isso no <a href="https://babeljs.io/docs/setup/">site do Babel</a>.</p>
+<p>Estes são alguns dos recursos que podem ajudar a aprimorar os teus conhecimentos no mundo do Babel:</p>
 <ul>
 <li><a href="http://ccoenraets.github.io/es6-tutorial/index.html">Learn ES2015 and Babel using this detailed tutorial</a></li>
 <li><a href="https://babeljs.io/docs/setup/">Read the Babel docs on setting up Babel (They&#39;re helpful)</a></li>
 </ul>
-<h5 id="source-code-and-contributions-and-thank-yous">Source code and Contributions and Thank yous</h5>
-<p>Source code for this tutorial is available in this <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repo</a>.</p>
-<p>If you find some typo or would like to make some update, please do so using the power of issues and PR in our <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">GitHub Repo</a>.</p>
-<p>I would also like to thank <a href="http://ultcombo.js.org/">Fabrício Matté</a> for approving this article to be posted on <a href="https://github.com/JSRocksHQ/jsrockshq.github.io/">JS Rocks</a> and the corrections he made.</p>
+<h5 id="c-digo-fonte-contribui-es-e-agradecimentos">Código-fonte, contribuições e agradecimentos</h5>
+<p>O código-fonte desse tutorial está disponível nesse <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório</a>.</p>
+<p>Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização, por favor, faça isso usando o poder das issues e PR em nosso <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório no GitHub</a>.</p>
+<p>Eu gostaria também de agradecer o <a href="http://ultcombo.js.org/">Fabrício Matté</a> por aprovar esse artigo no <a href="https://github.com/JSRocksHQ/jsrockshq.github.io/">JS Rocks</a> e pelas correções que ele fez.</p>
 
                         </div>
                     </div>
