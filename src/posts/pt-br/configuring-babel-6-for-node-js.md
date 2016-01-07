@@ -169,6 +169,6 @@ Estes são alguns dos recursos que podem ajudar a aprimorar os teus conhecimento
 ##### Código-fonte, contribuições e agradecimentos
 O código-fonte desse tutorial está disponível nesse [repositório](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
-Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização. Por favor, faça isso usando o poder das issues e PR em nosso [repositório no GitHub](https://github.com/abdulhannanali/babel-configuration-tutorial).
+Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização, por favor, faça isso usando o poder das issues e PR em nosso [repositório no GitHub](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
 Eu gostaria também de agradecer o [Fabrício Matté](http://ultcombo.js.org/) por aprovar esse artigo no [JS Rocks](https://github.com/JSRocksHQ/jsrockshq.github.io/) e pelas correções que ele fez.
