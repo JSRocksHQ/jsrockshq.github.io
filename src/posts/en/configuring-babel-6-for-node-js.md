@@ -170,6 +170,6 @@ These are some of the resources that can even up your game further in the Babel 
 ##### Source code and Contributions and Thank yous
 Source code for this tutorial is available in this [repo](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
-If you find some typo or would like to make some update. Please do so using the power of issues and PR in our [Github Repo](https://github.com/abdulhannanali/babel-configuration-tutorial).
+If you find some typo or would like to make some update, please do so using the power of issues and PR in our [GitHub Repo](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
 I would also like to thank [Fabrício Matté](http://ultcombo.js.org/) for approving this article to be posted on [JS Rocks](https://github.com/JSRocksHQ/jsrockshq.github.io/) and the corrections he made.
