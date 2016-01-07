@@ -1,7 +1,7 @@
 <!--
 layout: post
 title: Configurando Babel 6 para Node.js
-date: 2016-01-04T02:39:18.811Z
+date: 2016-01-07T11:09:18.811Z
 comments: true
 published: true
 keywords: JavaScript, Node.js, ES2015, Babel, transpiler
