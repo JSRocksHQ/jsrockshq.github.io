@@ -18,7 +18,7 @@ Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 e
 Aqui é o onde o [Babel](https://babeljs.io) chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
 <!--more-->
 
-**Nota:** Node.js já suporta várias funcionalidades ES2015, então se você não quiser transpilar o código ES2015, você pode executar o seu código Node.js seguido de `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags estão frequentemente instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
+**Nota:** Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags estão frequentemente instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
 
 ### Algumas premissas feitas
 Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!
@@ -34,7 +34,7 @@ Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!
 ### Instalando e começando com Babel
 Há muitas maneiras de configurar o Babel. Aqui vamos discutir o suficiente para começar a usar o babel-cli.
 
-Vamos criar um simples `index.js` em um **diretório** de códigos que conterá o seguinte código ES2015:
+Vamos criar um simples `index.js` em um **diretório** `code` que conterá o seguinte código ES2015:
 ```javascript
 function* jsRocksIsAwesome() {
   yield "JS Rocks is Awesome";
@@ -73,7 +73,7 @@ Execute o comando a seguir para instalar estes *presets*:
 ```
 npm install --save-dev babel-preset-es2015 babel-preset-stage-0
 ```
-Babel tem uma vasta gama de plugins que você pode [encontrar aqui](https://babeljs.io/docs/plugins/).
+Babel possui uma vasta gama de plugins que você pode [encontrar aqui](https://babeljs.io/docs/plugins/).
 
 Agora você precisa incluir estes *presets* no comando que você executará:
 ```
@@ -96,7 +96,7 @@ Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando
 }
 ```
 
-Você pode configurar mais opções do [`.babelrc`](http://babeljs.io/docs/usage/options/) e torná-lo tão robusto quanto você quiser.
+Você pode configurar mais opções do [`.babelrc`](http://babeljs.io/docs/usage/options/) e torná-lo tão robusto quanto você desejar.
 
 É basicamente isto de configuração do Babel que usaremos para este tutorial. Agora sempre que quisermos adicionar ou remover plugins, ao invés de alterarmos o comando, vamos alterar o array de plugins nesse arquivo. Fácil. Não é?
 
@@ -104,12 +104,12 @@ Agora se você executar:
 ```
 babel -w code/ -d build/
 ```
-Ele irá ler os **presets** do `.babelrc` para compilar o código no diretório `code/` e gerar os arquivos JavaScript compilados no diretório `build/`, mas olhe! O comando ainda não acabou. Note a flag `-w`: é para **assistir** e recompilar o código conforme você fizer mudanças em seu diretório de `códigos`. LEGAL! É dessa magia que estou falando.
+Ele irá ler os **presets** do `.babelrc` para compilar o código no diretório `code/` e gerar os arquivos JavaScript compilados no diretório `build/`, mas olhe! O comando ainda não acabou. Note a flag `-w`: é para **observar** e recompilar o código conforme você fizer mudanças em seu diretório `code`. LEGAL! É dessa magia que estou falando.
 
 #### Usando source maps em seu arquivo
-Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve ficar preocupado. Source maps são exatamente para esse propósito. Source maps dizem ao Node.js que este código é transpilado e aponta para os erros no **arquivo de origem** ao invés do **arquivo transpilado**!
+Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve se preocupar. Source maps são exatamente para esse propósito. Source maps dizem ao Node.js que este código é transpilado e aponta para os erros no **arquivo de origem** ao invés do **arquivo transpilado**!
 
-O arquivo `code/error.js` dispara um erro após o segundo yield no gerador, mas o código transpilado parece bem diferente.
+O arquivo `code/error.js` dispara um erro após o segundo `yield` no gerador, mas o código transpilado parece bem diferente.
 ```javascript
 function* errorFulGenerator() {
   yield "yo";
@@ -147,7 +147,7 @@ Error: source maps are awesome
 Então é assim que você vai usar source maps.
 
 #### Configurando o comando npm
-A fim de simplificar o processo de build ainda mais, você pode editar o seu arquivo `package.json` e incluir um script de build para o Babel. No objeto do arquivo `package.json` você pode adicionar o código tal como segue abaixo:
+A fim de simplificar o processo de build ainda mais, você pode editar o seu arquivo `package.json` e incluir um script de build para o Babel. No objeto `scripts` do arquivo `package.json` você pode adicionar o código tal como segue abaixo:
 ```javascript
 "scripts": {
   "build": "babel -w code/ -d build -s"
@@ -169,6 +169,6 @@ Estes são alguns dos recursos que podem ajudar a aprimorar os teus conhecimento
 ##### Código-fonte, contribuições e agradecimentos
 O código-fonte desse tutorial está disponível nesse [repositório](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
-Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização. Por favor, faça isso usando o poder das issues e PR em nosso [repositório no Github](https://github.com/abdulhannanali/babel-configuration-tutorial).
+Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização. Por favor, faça isso usando o poder das issues e PR em nosso [repositório no GitHub](https://github.com/abdulhannanali/babel-configuration-tutorial).
 
 Eu gostaria também de agradecer o [Fabrício Matté](http://ultcombo.js.org/) por aprovar esse artigo no [JS Rocks](https://github.com/JSRocksHQ/jsrockshq.github.io/) e pelas correções que ele fez.
