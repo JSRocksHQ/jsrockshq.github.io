@@ -15,8 +15,7 @@ Olá! Se você é como eu, você está cansado de escrever o mesmo velho código
 
 Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado [Node.js](https://nodejs.org).
 
-Aqui é o onde o [Babel](https://babeljs.io) chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
-<!--more-->
+Aqui é o onde o [Babel](https://babeljs.io) chega para o resgate.<!--more--> Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
 
 **Nota:** Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags geralmente estão instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
 
