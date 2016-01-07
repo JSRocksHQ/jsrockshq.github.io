@@ -6,20 +6,9 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Thu, 07 Jan 2016 13:02:50 GMT</pubDate>
+        <pubDate>Thu, 07 Jan 2016 13:09:51 GMT</pubDate>
         <language>pt-br</language>
         <atom:link href="http://jsrocks.org/pt-br/rss.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Configurando Babel 6 para Node.js</title>
-            <link>http://jsrocks.org/pt-br/2016/01/configuring-babel-6-for-node-js</link>
-            <description><![CDATA[<p>Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.</p>
-<p>Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado <a href="https://nodejs.org">Node.js</a>.</p>
-<p>Aqui é o onde o <a href="https://babeljs.io">Babel</a> chega para o resgate.</p>
-]]></description>
-            <pubDate>Mon, 04 Jan 2016 02:39:18 GMT</pubDate>
-            <guid>http://jsrocks.org/pt-br/2016/01/configuring-babel-6-for-node-js</guid>
-        </item>
         
         <item>
             <title>Como estou usando módulos es6 em produção</title>
@@ -81,6 +70,17 @@
             <description><![CDATA[]]></description>
             <pubDate>Thu, 28 Aug 2014 01:58:23 GMT</pubDate>
             <guid>http://jsrocks.org/pt-br/2014/08/what-you-need-to-know-about-block-scope-let</guid>
+        </item>
+        
+        <item>
+            <title>Configurando Babel 6 para Node.js</title>
+            <link>http://jsrocks.org/pt-br/NaN/aN/configuring-babel-6-for-node-js</link>
+            <description><![CDATA[<p>Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.</p>
+<p>Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado <a href="https://nodejs.org">Node.js</a>.</p>
+<p>Aqui é o onde o <a href="https://babeljs.io">Babel</a> chega para o resgate.</p>
+]]></description>
+            <pubDate>Invalid Date</pubDate>
+            <guid>http://jsrocks.org/pt-br/NaN/aN/configuring-babel-6-for-node-js</guid>
         </item>
         
     </channel>

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <!-- Responsive Meta Data -->
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Core Meta Data -->
+    
     <meta name="author" content="@italowaxman, @robsongajunior, @jaydson">
     <meta name="description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="keywords" content="javascript, JS, ECMAScript, ES6, Harmonic, front-end">
 
-    <!-- Facebook Tags -->
+    
     <meta property="og:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta property="og:image" content="http://jsrocks.org/images/thumb.png">
     <meta property="og:site_name" content="JS Rocks">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://jsrocks.org">
 
-    <!-- Twitter tags -->
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="http://jsrocks.org">
     <meta name="twitter:creator" content="@es6rocks">
@@ -29,10 +29,10 @@
     <meta name="twitter:description" content="A collaborative website about the latest JavaScript features and tools.">
     <meta name="twitter:image" content="http://jsrocks.org/images/thumb.png">
 
-    <!-- Humans -->
+    
     <link rel="author" href="/humans.txt" />
 
-    <!-- Favicon -->
+    
     <link rel="shortcut icon" href="http://jsrocks.org/favicon.ico">
     <link rel="apple-touch-icon image_src" href="http://jsrocks.org/favicon.png">
 
@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/animations.css">
 
-    <title>JS Rocks</title>
+    <title>Configurando Babel 6 para Node.js - JS Rocks</title>
 </head>
 <body>
     <div class="wrapper">
@@ -259,120 +259,202 @@
         <div class="content">
             <div class="container">
                 
-                <section class="posts-list">
-                    <div class="row">
+                <div class="row">
+                    <div class="col-xs-12 header-article">
+                        <div class="author-post">
+                            <div class="avatar-author"><img src="//s.gravatar.com/avatar/89e5f7614cb88cd573359a953a09aa6e?s=80" alt="Hannan Ali"></div>
+                            <div class="info-author">
+                                <span>Posted by</span>
+                                <a href="https://abdulhannanali.github.io" rel="author" class="author">Hannan Ali</a>
+                            </div>
+                        </div>
+                        <div class="date-post">Invalid Date</div>
+                        <h1 class="title-post">Configurando Babel 6 para Node.js</h1>
+                        <div class="centering">
+                            <ul class="tags-post">
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag ES2015" href="/categories/pt-br/es2015">ES2015</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  Babel" href="/categories/pt-br/babel"> Babel</a>
+                                    </li>
+                                
+                                    <li class="item-tag-post">
+                                        <a class="categoryTag  node.js" href="/categories/pt-br/node.js"> node.js</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                        
-                            
-                                <article class="col-sm-6 col-xs-12 post-big item-post post-fade-1">
-                            
-
-                                <div class="container-post">
-                                    <aside class="share-post">
-                                        <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/pt-br/NaN/aN/configuring-babel-6-for-node-js" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
-                                        <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/pt-br/NaN/aN/configuring-babel-6-for-node-js" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
-                                    </aside>
-                                    <div class="date-post">Invalid Date</div>
-                                    <h1 class="title-post"><a href="/pt-br/NaN/aN/configuring-babel-6-for-node-js" alt="Configurando Babel 6 para Node.js">Configurando Babel 6 para Node.js</a></h1>
-
-                                    <div class="intro-post"> <p>Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.</p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="article-content">
+                            <aside class="share-post">
+                                <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/pt-br/NaN/aN/configuring-babel-6-for-node-js" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
+                                <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/pt-br/NaN/aN/configuring-babel-6-for-node-js" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
+                            </aside>
+                            <p>Olá! Se você é como eu, você está cansado de escrever o mesmo velho código JS ES5 em suas aplicações Node.js.</p>
 <p>Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 em suas aplicações Node.js hoje. ES2015 e ES2016 tornam o desenvolvimento JavaScript uma brisa, mas nem todos os recursos do ES2015 são suportados em nosso amado <a href="https://nodejs.org">Node.js</a>.</p>
-<p>Aqui é o onde o <a href="https://babeljs.io">Babel</a> chega para o resgate.</p>
- </div>
+<p>Aqui é o onde o <a href="https://babeljs.io">Babel</a> chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.</p>
+<p><strong>Nota:</strong> Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag <code>--harmony</code> para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais <code>--harmony</code>, execute o comando: <code>node --v8-options | grep harmony</code>. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags geralmente estão instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e <strong>ES2016</strong>, sem a necessidade de flags.</p>
+<h3 id="algumas-premissas-feitas">Algumas premissas feitas</h3>
+<p>Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!</p>
+<ul>
+<li>Você já possui alguma experiência com <a href="https://nodejs.org">Node.js</a>.</li>
+<li>Você consegue instalar pacotes usando o <a href="https://www.npmjs.com/">npm</a>.</li>
+<li>Você já tem Node.js e npm instalados.</li>
+<li>Você está confortável com o uso ocasional da linha de comando.</li>
+<li>É bom saber algo sobre ES2015, mas não é obrigatório.</li>
+</ul>
+<h3 id="seguindo-ao-longo-do-c-digo">Seguindo ao longo do código</h3>
+<p>É do tipo de pessoa que segue o código em vez de apenas ler? O código está disponível nesse <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório</a>.</p>
+<h3 id="instalando-e-come-ando-com-babel">Instalando e começando com Babel</h3>
+<p>Há muitas maneiras de configurar o Babel. Aqui vamos discutir o suficiente para começar a usar o babel-cli.</p>
+<p>Vamos criar um simples <code>index.js</code> em um <strong>diretório</strong> <code>code</code> que conterá o seguinte código ES2015:</p>
+<pre><code class="lang-javascript">function* jsRocksIsAwesome() {
+  yield &quot;JS Rocks is Awesome&quot;;
+  yield &quot;JS Rocks says JavaScript Rocks&quot;;
+  return &quot;because JavaScript really rocks&quot;;
+}
 
+var jsRocks = jsRocksIsAwesome();
 
-                                    <section class="footer-post">
-                                        <ul class="tags-post">
-                                            
-                                                <li class="item-tag-post" data-post-category="ES2015">
-                                                    <a href="/categories/pt-br/es2015">ES2015</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" Babel">
-                                                    <a href="/categories/pt-br/babel"> Babel</a>
-                                                </li>
-                                            
-                                                <li class="item-tag-post" data-post-category=" node.js">
-                                                    <a href="/categories/pt-br/node.js"> node.js</a>
-                                                </li>
-                                            
-                                        </ul>
-                                        <div class="author-post">
-                                            <div class="avatar-author"><img src="//s.gravatar.com/avatar/89e5f7614cb88cd573359a953a09aa6e?s=80" alt="Hannan Ali"></div>
-                                             <div class="info-author">
-                                                <span>Posted by</span>
-                                                <a href="https://abdulhannanali.github.io" class="author" alt="Author: Hannan Ali">Hannan Ali</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </article>
+console.log(jsRocks.next());
+console.log(jsRocks.next());
+console.log(jsRocks.next());
+</code></pre>
+<p>Vamos instalar o pacote <strong>babel-cli</strong> com o próximo comando. Isto irá instalar a última versão estável do <strong>babel-cli</strong> para o projeto atual e listá-lo como uma das <code>devDependencies</code> no <code>package.json</code>:</p>
+<pre><code>npm install --save-dev babel-cli
+</code></pre><p>Agora se você executar:</p>
+<pre><code>babel code/index.js -d build/
+</code></pre><p>Você verá o mesmo código que você escreveu aparecer em <code>build/index.js</code>. É aqui que entra os <strong>plugins</strong> e <strong>presets</strong> do Babel.</p>
+<h4 id="plugins-e-presets">Plugins e Presets</h4>
+<p>Babel não faz muito por conta própria, mas com <strong>plugins</strong> e <strong>presets</strong> é possível fazer muito. Nós queremos todas as vantagens do ES2016 e ES2015 em nosso código.</p>
+<p>Para fazer isso, vamos instalar dois <em>presets</em> como parte de nossas <code>devDependencies</code>:</p>
+<ul>
+<li><a href="https://babeljs.io/docs/plugins/preset-es2015/">es2015</a></li>
+<li><a href="https://babeljs.io/docs/plugins/preset-stage-0/">stage-0</a></li>
+</ul>
+<p>Execute o comando a seguir para instalar estes <em>presets</em>:</p>
+<pre><code>npm install --save-dev babel-preset-es2015 babel-preset-stage-0
+</code></pre><p>Babel possui uma vasta gama de plugins que você pode <a href="https://babeljs.io/docs/plugins/">encontrar aqui</a>.</p>
+<p>Agora você precisa incluir estes <em>presets</em> no comando que você executará:</p>
+<pre><code>babel --presets es2015,stage-0 code/index.js -o build/app.js
+</code></pre><p>Você verá o código ES5 normal gerado no arquivo <code>app.js</code>, isso é chamado de <strong>código transpilado</strong> (um termo largamente usado no mundo JS). Você pode rodar esse código usando o comando abaixo.</p>
+<pre><code>node build/app.js
+</code></pre><h3 id="configurando-um-ambiente-de-build-adequado-usando-babel">Configurando um ambiente de build adequado usando Babel</h3>
+<p>Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando Node.js?</p>
+<h4 id="arquivo-de-configura-o-do-babel-babelrc">Arquivo de configuração do Babel .babelrc</h4>
+<p><code>.babelrc</code> é uma maneira muito elegante de separar todas suas configurações do Babel em um arquivo JSON. É também muito fácil de começar. Esse é o nosso arquivo <code>.babelrc</code> para este tutorial:</p>
+<pre><code class="lang-javascript">{
+  &quot;plugins&quot;: [&quot;es2015&quot;, &quot;stage-0&quot;]
+}
+</code></pre>
+<p>Você pode configurar mais opções do <a href="http://babeljs.io/docs/usage/options/"><code>.babelrc</code></a> e torná-lo tão robusto quanto você desejar.</p>
+<p>É basicamente isto de configuração do Babel que usaremos para este tutorial. Agora sempre que quisermos adicionar ou remover plugins, ao invés de alterarmos o comando, vamos alterar o array de plugins nesse arquivo. Fácil. Não é?</p>
+<p>Agora se você executar:</p>
+<pre><code>babel -w code/ -d build/
+</code></pre><p>Ele irá ler os <strong>presets</strong> do <code>.babelrc</code> para compilar o código no diretório <code>code/</code> e gerar os arquivos JavaScript compilados no diretório <code>build/</code>, mas olhe! O comando ainda não acabou. Note a flag <code>-w</code>: é para <strong>observar</strong> e recompilar o código conforme você fizer mudanças em seu diretório <code>code</code>. LEGAL! É dessa magia que estou falando.</p>
+<h4 id="usando-source-maps-em-seu-arquivo">Usando source maps em seu arquivo</h4>
+<p>Você pode estar pensando que é tudo legal e diverdito, mas que tal debuggar algum código de verdade. Você não deve se preocupar. Source maps são exatamente para esse propósito. Source maps dizem ao Node.js que este código é transpilado e aponta para os erros no <strong>arquivo de origem</strong> ao invés do <strong>arquivo transpilado</strong>!</p>
+<p>O arquivo <code>code/error.js</code> dispara um erro após o segundo <code>yield</code> no gerador, mas o código transpilado parece bem diferente.</p>
+<pre><code class="lang-javascript">function* errorFulGenerator() {
+  yield &quot;yo&quot;;
+  throw new Error(&quot;source maps are awesome&quot;);
+  return &quot;&quot;;
+}
+
+var errorGen = errorFulGenerator();
+errorGen.next();
+errorGen.next();
+</code></pre>
+<p>Nós usamos esse comando para gerar <strong>source maps</strong> junto com o código <strong>transpiled</strong>. <em>Note a flag <code>--source-maps</code></em>:</p>
+<pre><code>babel code/ -d build/ --source-maps
+</code></pre><p>Agora quando encontrarmos o erro, nós obteremos informações úteis para debugar, como estas:</p>
+<pre><code>errorGen.next()
+         ^
+
+Error: source maps are awesome
+    at errorFulGenerator (/home/programreneur/Programming/githubRepos/babeljs-short-tutorial/code/error.js:3:9)
+    at next (native)
+    at Object.&lt;anonymous&gt; (/home/programreneur/Programming/githubRepos/babeljs-short-tutorial/code/error.js:10:10)
+    at Module._compile (module.js:425:26)
+    at Object.Module._extensions..js (module.js:432:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:313:12)
+    at Function.Module.runMain (module.js:457:10)
+    at startup (node.js:138:18)
+    at node.js:974:3
+</code></pre><p>Então é assim que você vai usar source maps.</p>
+<h4 id="configurando-o-comando-npm">Configurando o comando npm</h4>
+<p>A fim de simplificar o processo de build ainda mais, você pode editar o seu arquivo <code>package.json</code> e incluir um script de build para o Babel. No objeto <code>scripts</code> do arquivo <code>package.json</code> você pode adicionar o código tal como segue abaixo:</p>
+<pre><code class="lang-javascript">&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;babel -w code/ -d build -s&quot;
+}
+</code></pre>
+<p>Agora, podemos executar:</p>
+<pre><code>npm run build
+</code></pre><p>E obtenha todas as vantagens do ES2015/ES2016 hoje. :)</p>
+<h4 id="aprenda-mais-sobre-babel">Aprenda mais sobre Babel</h4>
+<p>Esse é um tutorial básico do Babel, mas o mundo do Babel apenas começa aqui. É cercado por uma comunidade maravilhosa e é usado por grandes nomes no mundo da TI. Babel tem suporte para todas as principais ferramentas de compilação como <a href="https://www.npmjs.com/package/grunt-babel">Grunt</a> e <a href="https://npmjs.org/package/gulp-babel/">gulp</a>. Você pode checar tudo isso no <a href="https://babeljs.io/docs/setup/">site do Babel</a>.</p>
+<p>Estes são alguns dos recursos que podem ajudar a aprimorar os teus conhecimentos no mundo do Babel:</p>
+<ul>
+<li><a href="http://ccoenraets.github.io/es6-tutorial/index.html">Learn ES2015 and Babel using this detailed tutorial</a></li>
+<li><a href="https://babeljs.io/docs/setup/">Read the Babel docs on setting up Babel (They&#39;re helpful)</a></li>
+</ul>
+<h5 id="c-digo-fonte-contribui-es-e-agradecimentos">Código-fonte, contribuições e agradecimentos</h5>
+<p>O código-fonte desse tutorial está disponível nesse <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório</a>.</p>
+<p>Se você encontrou algum erro de digitação ou gostaria de fazer alguma atualização, por favor, faça isso usando o poder das issues e PR em nosso <a href="https://github.com/abdulhannanali/babel-configuration-tutorial">repositório no GitHub</a>.</p>
+<p>Eu gostaria também de agradecer o <a href="http://ultcombo.js.org/">Fabrício Matté</a> por aprovar esse artigo no <a href="https://github.com/JSRocksHQ/jsrockshq.github.io/">JS Rocks</a> e pelas correções que ele fez.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-comments">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <img class="icon-comments floating" src="/images/icon-content-comments.png" alt="icon comments">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="comments-container">
+                            <div id="disqus_thread"></div>
+                            <noscript>
+                                Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                            </noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-other-posts">
+                    <div class="col-md-12 title-testemonials title-comments-article">
+                        <div class="centering">
+                            <svg version="1.1" class="thunder" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="17.191px" height="29.535px" viewBox="0 0 17.191 29.535" enable-background="new 0 0 17.191 29.535" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FCCF0F" points="17.191,0 1.438,15.457 6.365,15.466 0,29.535
+                                17.166,12.907 11.773,12.661 "/>
+                            </svg>
+                            <h2>Other Posts</h2>
+                        </div>
+                    </div>
+                    <div id="otherPosts" class="list-other-posts">
                         
-
-                        <div id="containerMorePosts"> <!-- More posts --> </div>
-
                     </div>
-                    <div class="row row-more-posts">
-                        <div class="col-md-12 more-posts">
-                            <button id="morePosts" class="button-post button-more-posts">
-                                <img class="icon-more" src="/images/icon-button-more.png" alt="icon more posts">
-                                <span>More Posts</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                <section class="testemonials">
-                    <div class="row">
-                        <div class="col-md-12 title-testemonials">
-                            <div class="centering">
-                                <img class="icon-testemonials" src="/images/icon-title-testemonials.png" alt="icon testemonials">
-                                <h2>TESTIMONIALS</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="list-testemonials">
-                            <div class="centering">
+                </div>
 
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"ES6 improves developer ergonomics massively and jsrocks.org will help you grok the benefit you can reap and how to get it today. Love it."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/paulirish.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Paul Irish</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/paul_irish" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/paulirish" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Google</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 item-testemonial">
-                                    <div class="txt-testemonial">
-                                        <p>"JS Rocks is a brilliant initiative, if you're looking for relevant content about what's coming next for the JavaScript language, here's the place to find."</p>
-                                        <div class="arrow-talk"></div>
-                                    </div>
-                                    <div class="author-testemonial">
-                                        <div class="avatar-testemonial"><img src="/images/testimonials/zenorocha.jpeg" alt="image testemonial"></div>
-                                        <div class="info-author">
-                                            <h3 class="author">Zeno Rocha</h3>
-                                            <div class="social-list">
-                                                <a href="http://twitter.com/zenorocha" class="item-social"><img src="/images/icon-twitter-header.png" alt="icon twitter" title="Twitter"></a>
-                                                <a href="http://github.com/zenorocha" class="item-social"><img src="/images/icon-github-header.png" alt="icon github" title="Github"></a>
-                                            </div>
-                                            <span class="work-place">Liferay</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div class="row row-button">
+                    <button id="goToTop" class="button-post button-top">
+                        <img src="/images/icon-button-top.png" alt="icon scroll to top">
+                        <span>Scroll to Top</span>
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -541,7 +623,7 @@
 <script src="/js/socialnetwork.js"></script>
 <script src="/js/main.js"></script>
 
-<!-- Google Analytics: Altere UA-XXXXX-X pelo ID do seu site. -->
+
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
