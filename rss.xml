@@ -6,7 +6,7 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Thu, 07 Jan 2016 12:56:17 GMT</pubDate>
+        <pubDate>Thu, 07 Jan 2016 13:02:50 GMT</pubDate>
         <language>en</language>
         <atom:link href="http://jsrocks.org/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -15,7 +15,7 @@
             <link>http://jsrocks.org/2016/01/configuring-babel-6-for-node-js</link>
             <description><![CDATA[<p>Hi! If you are like me, you are tired of writing the same old ES5 JS code in your Node.js applications.</p>
 <p>If yes, you can use the newer features of JavaScript ES2015 and ES2016 standards in your Node.js applications today. ES2015 and ES2016 make the JavaScript development a cool breeze but hey, not every ES2015 feature is supported in our beloved <a href="https://nodejs.org">Node.js</a>.</p>
-<p>This is where <a href="https://babeljs.io">Babel</a> comes to the rescue. Babel is a transpiler for JavaScript that transpiles your ES2015 and ES2016 code into ES5 and even ES3 code. In simple words, it converts your code into JavaScript that Node.js can run and make you really happy.</p>
+<p>This is where <a href="https://babeljs.io">Babel</a> comes to the rescue.</p>
 ]]></description>
             <pubDate>Mon, 04 Jan 2016 02:39:18 GMT</pubDate>
             <guid>http://jsrocks.org/2016/01/configuring-babel-6-for-node-js</guid>
