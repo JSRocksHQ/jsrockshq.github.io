@@ -25,7 +25,7 @@ Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!
 - Você já possui alguma experiência com [Node.js](https://nodejs.org).
 - Você pode instalar pacotes usando o [npm](https://www.npmjs.com/).
 - Você já tem Node.js e npm instalados.
-- Você está confortável com o uso de CLI ocasionalmente.
+- Você está confortável com o uso ocasional da linha de comando.
 - É bom saber algo sobre ES2015, mas não é obrigatório.
 
 ### Seguindo ao longo do código
