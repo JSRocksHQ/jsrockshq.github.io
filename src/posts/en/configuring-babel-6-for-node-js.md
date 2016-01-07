@@ -110,7 +110,7 @@ It will read the **presets** to use from `.babelrc` compile the code in `code/` 
 #### Using source maps in your file
 If you are thinking that's all cool and fun but what about some actual code debugging. You don't have to be worried. Source maps are just for this purpose. Source maps tell Node.js that this code is transpiled and point to errors in the actual **source file** instead of the **transpiled file**!
 
-This `code/error.js` file here throws an error after the second yield in the generator but the transpiled code looks quite different.
+This `code/error.js` file here throws an error after the second `yield` in the generator but the transpiled code looks quite different.
 ```javascript
 function* errorFulGenerator() {
   yield "yo";
