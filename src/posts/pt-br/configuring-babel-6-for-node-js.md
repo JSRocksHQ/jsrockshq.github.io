@@ -5,7 +5,7 @@ date: 2016-01-04T02:39:18.811Z
 comments: true
 published: true
 keywords: JavaScript, Node.js, ES2015, Babel, transpiler
-description: Tutorial de configuração do Babel para Node.js para desenvolver rapidamente
+description: Tutorial de configuração do Babel para desenvolvimento rápido com Node.js
 categories: ES2015, Babel, node.js
 authorName: Hannan Ali
 authorLink: https://abdulhannanali.github.io
@@ -18,12 +18,12 @@ Se sim, você pode usar as novas funcionalidades do JavaScript ES2015 e ES2016 e
 Aqui é o onde o [Babel](https://babeljs.io) chega para o resgate. Babel é um transpiler para JavaScript que transpila seus códigos ES2015 e ES2016 para códigos ES5 e até mesmo ES3. Em palavras simples, ele converte seus códigos em um JavaScript que o Node.js pode executar e faz você muito feliz.
 <!--more-->
 
-**Nota:** Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags estão frequentemente instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
+**Nota:** Node.js já suporta várias funcionalidades do ES2015, então se você não quiser transpilar o código ES2015, você pode executar o Node.js com a flag `--harmony` para habilitar mais algumas funcionalidades (em fase de teste). Para obter mais flags do conjunto de funcionalidades experimentais `--harmony`, execute o comando: `node --v8-options | grep harmony`. Contudo, note que nem todas as funcionalidades são suportadas mesmo nas últimas versões do Node.js (versão 5 no momento da escrita), e as funcionalidades que necessitam de flags geralmente estão instáveis ou incompletas. Então continue lendo para fazer uso de mais funcionalidades do ES2015 e **ES2016**, sem a necessidade de flags.
 
 ### Algumas premissas feitas
 Existem algumas premissas que estou fazendo sobre você! SIM VOCÊ!
 - Você já possui alguma experiência com [Node.js](https://nodejs.org).
-- Você pode instalar pacotes usando o [npm](https://www.npmjs.com/).
+- Você consegue instalar pacotes usando o [npm](https://www.npmjs.com/).
 - Você já tem Node.js e npm instalados.
 - Você está confortável com o uso ocasional da linha de comando.
 - É bom saber algo sobre ES2015, mas não é obrigatório.
@@ -59,7 +59,7 @@ Agora se você executar:
 babel code/index.js -d build/
 ```
 
-Você verá o mesmo código que você escreveu aparecer em `build/index.js`. É aqui que entra os **plugins** e **presets** do Babel. 
+Você verá o mesmo código que você escreveu aparecer em `build/index.js`. É aqui que entra os **plugins** e **presets** do Babel.
 
 #### Plugins e Presets
 
@@ -86,10 +86,10 @@ node build/app.js
 ```
 
 ### Configurando um ambiente de build adequado usando Babel
-Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando Node.js? 
+Isso é tudo muito mágico, mas e que tal fazer um desenvolvimento sério usando Node.js?
 
 #### Arquivo de configuração do Babel .babelrc
-`.babelrc` é uma maneira muito elegante de separar todas suas configurações do Babel em um arquivo JSON. É também muito fácil de começar. Esse é o nosso arquivo `.babelrc` para esse tutorial:
+`.babelrc` é uma maneira muito elegante de separar todas suas configurações do Babel em um arquivo JSON. É também muito fácil de começar. Esse é o nosso arquivo `.babelrc` para este tutorial:
 ```javascript
 {
   "plugins": ["es2015", "stage-0"]
