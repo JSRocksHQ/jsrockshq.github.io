@@ -10,7 +10,7 @@ categories: iterables, iterators, ES2015, articles
 authorName: Fabrício S. Matté
 authorLink: https://twitter.com/Ult_Combo
 authorDescription: ECMAScript enthusiast, open source addict and Web Platform lover.
-authorPicture: https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png
+authorPicture: https://s.gravatar.com/avatar/326fba1c2980ce0073f6b212acf71ea0
 translator:hacke2
 -->
 
@@ -156,7 +156,7 @@ next方法返回了一个由value和done属性组成的对象，语法很简洁�
 
 看到这里，相信你已经完全上面例子里每行代码是怎么工作的了。`for-of`语法会调用 `[Symbol.iterator]`方法来获取遍历器对象，遍历对象里有一个next方法，通过调用next方法遍历元素。
 
-### 有必要把一个遍历接口设计得这么复杂?  
+### 有必要把一个遍历接口设计得这么复杂?
 恩，总之是需要的。下面我讲列出最常见的问题和疑惑，并以QA的方式展现给大家。
 
 #### Q. 为什么是`[Symbol.iterator]`属性是一个方法，这个方法会返回一个遍历器，而不是这个属性直接就是一个遍历器？

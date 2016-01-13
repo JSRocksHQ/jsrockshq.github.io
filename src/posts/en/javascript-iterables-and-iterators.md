@@ -10,7 +10,7 @@ categories: iterables, iterators, ES2015, articles
 authorName: Fabrício S. Matté
 authorLink: https://twitter.com/Ult_Combo
 authorDescription: ECMAScript enthusiast, open source addict and Web Platform lover.
-authorPicture: https://pbs.twimg.com/profile_images/490627147963187200/2BiH3pv4.png
+authorPicture: https://s.gravatar.com/avatar/326fba1c2980ce0073f6b212acf71ea0
 -->
 ECMAScript 2015 (ES6) introduces two new distinct, yet closely related, concepts: **iterables** and **iterators**.<br>
 Now you will truly learn how important these concepts are and how to make good use of them.

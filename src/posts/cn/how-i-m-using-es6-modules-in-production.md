@@ -6,14 +6,14 @@ comments: true
 published: true
 keywords:ES6 module
 description:如何让ES6 module 和 AMD module一起工作
-categories:
+categories: modules
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
 authorDescription: Web Carpenter - BrazilJS - http://nasc.io
 authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 
-我使用 [ES6 modules](/categories/modules/)工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。
+我使用 [ES6 modules](/categories/modules/)工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 module的。
 
 <!--more-->
 
@@ -42,13 +42,13 @@ Babel完美支持模块化，你可以自己决定你代码的风格，你可以
 import config from './config';//导入ES6模块
 import { globalpkg } from './config';//动态注入ES6模块参数
 import factory from './factory';
- 
- zaz.use((pkg) => {      
+
+ zaz.use((pkg) => {
    "use strict";
     config.dynamic.globalpkg = pkg;
     pkg.require(['modFactory'], (modFactory) => {
-        modFactory.create(pkg.utils.deepMerge(config._static, factory));     
-    }); 
+        modFactory.create(pkg.utils.deepMerge(config._static, factory));
+    });
  });
 
 ```
@@ -66,19 +66,19 @@ const type = "mod";
 const version = "0.0.1";
 const state = "ok";
 const description = "JavaScript API to deal with user data";
-let globalpkg = null; // default export 
-const config = {     
-  _static: {         
-  name,         
-  version,         
-  state,         
-  description,         
-  docs: `${githubURL}/pages/terra/zaz-${type}-${name}`,         
-  source: `${githubURL}/Terra/zaz-${type}-${name}`,         
-  tests: `${staticServer}/fe/${testsPath}`,         
-  dependencies: ['mod.wilson']     
+let globalpkg = null; // default export
+const config = {
+  _static: {
+  name,
+  version,
+  state,
+  description,
+  docs: `${githubURL}/pages/terra/zaz-${type}-${name}`,
+  source: `${githubURL}/Terra/zaz-${type}-${name}`,
+  tests: `${staticServer}/fe/${testsPath}`,
+  dependencies: ['mod.wilson']
   }
-}; 
+};
 export default config;
 
 ```
