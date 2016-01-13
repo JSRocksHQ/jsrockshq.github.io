@@ -274,7 +274,7 @@
                             <ul class="tags-post">
                                 
                                     <li class="item-tag-post">
-                                        <a class="categoryTag " href="/categories/cn/"></a>
+                                        <a class="categoryTag modules" href="/categories/cn/modules">modules</a>
                                     </li>
                                 
                             </ul>
@@ -289,7 +289,7 @@
                                 <a href="#" data-provider="https://www.facebook.com/sharer.php?u=" data-post-url="/cn/2015/05/how-i-m-using-es6-modules-in-production" class="share-face share-item" title="Share this post"><img src="/images/icon-face-header.png" alt="icon facebook"></a>
                                 <a href="#" data-provider="https://twitter.com/intent/tweet?text=" data-post-url="/cn/2015/05/how-i-m-using-es6-modules-in-production" class="share-twitter share-item" title="Tweet this post"><img src="/images/icon-twitter-header.png" alt="icon twitter"></a>
                             </aside>
-                            <p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。</p>
+                            <p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 module的。</p>
 
 <p>首先，向大家介绍一下Babel ，<a href="https://babeljs.io/">Babel</a>是用来JS转译的整合工具，它是一个非常活跃的项目，而且它几乎覆盖了所有现代JavaScript特征。（注：JS转译（Javascript Transpiler）请自行谷歌）
 Babel完美支持模块化，你可以自己决定你代码的风格，你可以使用AMD,Common,UMD这些规范，而且你甚至能自定义模块规范。</p>
@@ -311,12 +311,12 @@ Babel完美支持模块化，你可以自己决定你代码的风格，你可以
 import { globalpkg } from &#39;./config&#39;;//动态注入ES6模块参数
 import factory from &#39;./factory&#39;;
 
- zaz.use((pkg) =&gt; {      
+ zaz.use((pkg) =&gt; {
    &quot;use strict&quot;;
     config.dynamic.globalpkg = pkg;
     pkg.require([&#39;modFactory&#39;], (modFactory) =&gt; {
-        modFactory.create(pkg.utils.deepMerge(config._static, factory));     
-    }); 
+        modFactory.create(pkg.utils.deepMerge(config._static, factory));
+    });
  });
 </code></pre>
 <p>我们在代码的顶部导入了一些模块，并且在我们的AMD模块里还使用了这些导入的模块。在其他的应用中并不会用到这些ES6模块，但是使用了这些微模块后，编译后产生的最终源码有更高的可读性。</p>
@@ -329,19 +329,19 @@ const type = &quot;mod&quot;;
 const version = &quot;0.0.1&quot;;
 const state = &quot;ok&quot;;
 const description = &quot;JavaScript API to deal with user data&quot;;
-let globalpkg = null; // default export 
-const config = {     
-  _static: {         
-  name,         
-  version,         
-  state,         
-  description,         
-  docs: `${githubURL}/pages/terra/zaz-${type}-${name}`,         
-  source: `${githubURL}/Terra/zaz-${type}-${name}`,         
-  tests: `${staticServer}/fe/${testsPath}`,         
-  dependencies: [&#39;mod.wilson&#39;]     
+let globalpkg = null; // default export
+const config = {
+  _static: {
+  name,
+  version,
+  state,
+  description,
+  docs: `${githubURL}/pages/terra/zaz-${type}-${name}`,
+  source: `${githubURL}/Terra/zaz-${type}-${name}`,
+  tests: `${staticServer}/fe/${testsPath}`,
+  dependencies: [&#39;mod.wilson&#39;]
   }
-}; 
+};
 export default config;
 </code></pre>
 <p>这是项目的源码结构：</p>

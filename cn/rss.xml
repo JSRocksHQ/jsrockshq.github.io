@@ -6,7 +6,7 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Wed, 13 Jan 2016 16:12:35 GMT</pubDate>
+        <pubDate>Wed, 13 Jan 2016 23:35:26 GMT</pubDate>
         <language>cn</language>
         <atom:link href="http://jsrocks.org/cn/rss.xml" rel="self" type="application/rss+xml" />
         
@@ -23,7 +23,7 @@
         <item>
             <title>我是怎么在项目中使用ES6 模块化的</title>
             <link>http://jsrocks.org/cn/2015/05/how-i-m-using-es6-modules-in-production</link>
-            <description><![CDATA[<p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。</p>
+            <description><![CDATA[<p>我使用 <a href="/categories/modules/">ES6 modules</a>工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 module的。</p>
 ]]></description>
             <pubDate>Fri, 08 May 2015 04:51:30 GMT</pubDate>
             <guid>http://jsrocks.org/cn/2015/05/how-i-m-using-es6-modules-in-production</guid>
