@@ -9,8 +9,8 @@ description: Post sobre como estpu usando módulos es6 em produção
 categories: modules
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Estou usando [módulos ES6](/categories/modules/) já faz um tempo no meu trabalho diário e eu gostaria de compartilhar com vocês como estou fazendo isso.  
 Em primeiro lugar, o [Babel](https://babeljs.io/) é a ferramenta consolidada para fazer transpile. É um projeto bem ativo e cobre praticamente todas as novas features do JavaScript moderno.  

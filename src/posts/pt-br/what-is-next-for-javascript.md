@@ -9,8 +9,8 @@ description: Slides da palestra do Dr. Axel Rauschmayer sobre o que podemos espe
 categories: talks, videos
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Se você está interessado em ES6, você deve seguir o [Dr. Axel Rauschmayer](https://twitter.com/rauschma).<!--more-->  
 Ele mantêm o incrível blog [2ality](http://www.2ality.com/) e escreve uma série de coisas legais sobre ES6.  

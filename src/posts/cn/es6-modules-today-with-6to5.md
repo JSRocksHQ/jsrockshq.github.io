@@ -9,6 +9,8 @@ description: 使用基于Node.js的6to5，让支持ES5的环境也能使用ES6�
 categories: Modules, Tutorial
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 
 我之前在Twitter上发过一个照片，表达出我有多快乐，这像是一个时光机让我们可以穿梭到未来-ES6的时代！下面让我来展示如何使用6to5让今天就可以练手ES6的模块化。

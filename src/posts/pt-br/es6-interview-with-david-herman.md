@@ -9,8 +9,8 @@ description: Entrevista feita com David Herman sobre ES6
 categories: ES6, Interview
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Fizemos uma entrevista bem legal com o [David Herman](https://twitter.com/littlecalculist) sobre ES6.<!--more-->  
 Para quem não conhece, o David é o principal pesquisador e fundador da Mozilla Research, onde ele trabalha para expandir as fundações da Open Web. Ele está envolvido com diversos projetos de plataformas Web, incluindo [task.js](http://taskjs.org/), [sweet.js](http://sweetjs.org/), [asm.js](http://asmjs.org/), [Rust](http://www.rust-lang.org/), [Servo](https://github.com/mozilla/servo/) e Parallel JS.  

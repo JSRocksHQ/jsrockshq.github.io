@@ -9,8 +9,8 @@ description: Mathias Bynens talking about Unicode in JavaScript
 categories: Unicode, Videos
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 O Mathias Bynens deu uma palestra incrível na última edição da [JSConfEU](http://2014.jsconf.eu).<!--more-->  
 Ele falou sobre Unicode no JavaScript, e se você precisa trabalhar pesado com strings, você DEVE assistir esta palestra.  

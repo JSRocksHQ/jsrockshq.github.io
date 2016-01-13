@@ -9,6 +9,8 @@ description:如何让ES6 module 和 AMD module一起工作
 categories:
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 
 我使用 [ES6 modules](/categories/modules/)工作已经有一段时间了，今天我就向大家分享下我是怎么使用ES6 moudule的。

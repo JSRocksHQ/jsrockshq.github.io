@@ -9,8 +9,8 @@ description: Hello world post
 categories: JavaScript, ES6
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Olá pessoal, bem-vindos ao ES6Rocks!
 Nossa missão aqui é discutir sobre a [a nova versão do JavaScript](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts), mais conhecida como Harmony ou ES.next.<!--more-->

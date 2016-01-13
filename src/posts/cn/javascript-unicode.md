@@ -7,6 +7,10 @@ published: true
 keywords: ES6, Unicode
 description: Mathias Bynens 关于JavaScript编码的一些谈论
 categories: Unicode, Videos
+authorName: Jaydson Gomes
+authorLink: http://twitter.com/jaydson
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Mathias Bynens给出了一个非常棒的话题在上一次jsConfEu版本上.
 他提出了javascript的统一编码，如果你在字符上花了很多功夫，那你一定要 看一下这个话题.

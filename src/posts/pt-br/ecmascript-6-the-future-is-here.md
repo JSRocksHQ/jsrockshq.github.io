@@ -9,8 +9,8 @@ description: talk about es6
 categories: talks
 authorName: Jaydson Gomes
 authorLink: http://twitter.com/jaydson
-authorDescription: JavaScript enthusiast - FrontEnd Engineer at Terra Networks - BrazilJS and RSJS curator
-authorPicture: https://pbs.twimg.com/profile_images/453720347620032512/UM2nE21c_400x400.jpeg
+authorDescription: Web Carpenter - BrazilJS - http://nasc.io
+authorPicture: https://s.gravatar.com/avatar/572696200604e59baa59ee90d61f7d02?s=80
 -->
 Uma palestra do [Sebastiano Armeli](https://twitter.com/sebarmeli) mostrando algumas features da ES6 como scoping, generators, collections, modules and proxies.<!--more-->  
 Infelizmente nós não temos o vídeo da palestra, mas você pode ter alguma ideia pelos slides.  
