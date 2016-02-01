@@ -6,9 +6,19 @@
         <description>A collaborative website about the latest JavaScript features and tools.</description>
         <managingEditor>JS Rocks</managingEditor>
         <webMaster>JS Rocks</webMaster>
-        <pubDate>Thu, 14 Jan 2016 00:17:42 GMT</pubDate>
+        <pubDate>Mon, 01 Feb 2016 12:25:33 GMT</pubDate>
         <language>cn</language>
         <atom:link href="http://jsrocks.org/cn/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>为你的Node.js配置babel 6</title>
+            <link>http://jsrocks.org/cn/2016/01/configuring-babel-6-for-node-js</link>
+            <description><![CDATA[<p>如果你像我一样在你的Node.js应用上还在使用老的ES5 js代码，那么你可以抛弃之前的习惯，现在就可以使用JavaScript ES2015的特性和ES2016的标准在你的Node.js应用上。ES2015和ES2016让JavaScript宛如清风般一样开发，但是，不是每一个ES2015特性在我们心爱的<a href="https://nodejs.org">Node.js</a>上支持。</p>
+<p>这时候<a href="https://babeljs.io">Babel</a>就派上用场了。</p>
+]]></description>
+            <pubDate>Mon, 04 Jan 2016 02:39:18 GMT</pubDate>
+            <guid>http://jsrocks.org/cn/2016/01/configuring-babel-6-for-node-js</guid>
+        </item>
         
         <item>
             <title>JavaScript中的 iterables and iterators</title>
