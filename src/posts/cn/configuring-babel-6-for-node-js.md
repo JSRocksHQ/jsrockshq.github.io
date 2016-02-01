@@ -1,4 +1,3 @@
-
 <!--
 layout: post
 title: 为你的Node.js配置babel 6
