@@ -294,6 +294,16 @@ So, I guess that's finally it. We reached the end of the line. You may be wonder
 
 And as always, if you can improve this article, please visit the [JS Rocks repository](https://github.com/JSRocksHQ/jsrockshq.github.io) and do so. I'll be glad to discuss and review improvements!
 
+## Video version
+
+Do you prefer to watch instead of reading? No problem!
+
+The Webucator company kindly produced a video version of this blog post. Check it out:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ng3UOE2aFMQ" frameborder="0" allowfullscreen></iframe>
+
+You can watch more Webucator videos in their [YouTube channel](https://www.youtube.com/channel/UCRskdIbvjRLK9jzkldMG19Q), and enroll in their [JavaScript training classes](https://www.webucator.com/webdesign/javascript.cfm).
+
 ## Reference
 
 - [ECMAScript® 2015 Language Specification - Ecma International](http://www.ecma-international.org/ecma-262/6.0/index.html)
