@@ -384,8 +384,8 @@ Ou seja, podemos chamar esta função do mesmo modo que já estamos acostumados:
 };
 </code></pre>
 <p>Podemos apontar algumas considerações relevantes:</p>
-<p><strong>- <code>arguments</code> funciona exatamente como esperado</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
+<p><strong>- <code>arguments</code> não será criado ou definido para sua função</strong></p>
+<pre><code class="lang-javascript">console.log(arguments); // not defined
 </code></pre>
 <p><strong>- <code>typeof</code> e <code>instanceof</code> também</strong></p>
 <pre><code class="lang-javascript">func instanceof Function; // true
