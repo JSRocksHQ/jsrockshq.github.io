@@ -181,8 +181,8 @@ return x++;
 };
 </code></pre>
 <p>Podemos apontar algumas considerações relevantes:</p>
-<p><strong>- <em>arguments</em> funciona exatamente como esperado</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
+<p><strong>- <em>arguments</em> também não é passado para a função</strong></p>
+<pre><code class="lang-javascript">console.log(arguments); // error
 </code></pre>
 <p><strong>- <em>typeof</em> e <em>instanceof</em> também</strong></p>
 <pre><code class="lang-javascript">func instanceof Function; // true
