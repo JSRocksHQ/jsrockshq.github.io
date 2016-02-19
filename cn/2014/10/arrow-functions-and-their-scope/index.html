@@ -374,8 +374,8 @@ var func = param =&gt; param.split(&quot; &quot;);
 };
 </code></pre>
 <p>我们列出了一些常见的问题：</p>
-<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>是我们预料的那样工作</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
+<p><strong>- 箭头函数创建的临时函数的<code>arguments</code>它不会被置</strong></p>
+<pre><code class="lang-javascript">console.log(arguments); // not defined
 </code></pre>
 <p><strong>- <code>typeof</code>和<code>instanceof</code>函数也能正常检查临时函数</strong></p>
 <pre><code class="lang-javascript">func instanceof Function; // true
