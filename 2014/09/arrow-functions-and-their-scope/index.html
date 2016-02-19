@@ -181,8 +181,8 @@ Like so:</p>
 };
 </code></pre>
 <p>We may point some relevant considerations:</p>
-<p><strong>- <code>arguments</code> works just as expected</strong></p>
-<pre><code class="lang-javascript">console.log(arguments);
+<p><strong>- <code>arguments</code> will not be passed/defined for your function</strong></p>
+<pre><code class="lang-javascript">console.log(arguments); // not defined
 </code></pre>
 <p><strong>- <code>typeof</code> and <code>instanceof</code> work just fine as well</strong></p>
 <pre><code class="lang-javascript">func instanceof Function; // true
