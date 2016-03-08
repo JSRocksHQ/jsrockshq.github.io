@@ -820,6 +820,8 @@ footer{
 }
 .article-content p{
     margin: 1em 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#333;
 }
 .article-content p a{
     color: #e5b900;
