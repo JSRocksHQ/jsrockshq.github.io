@@ -59,7 +59,7 @@ This is a pretty common issue where a program can be easily broken by lack of at
 Another important factor in JavaScript is that the omission of _var_ to declare a variable causes it to be allocated in the global scope, and this can cause many problems.  
 
 ## let declaration
-The _let_ arrives in ES6 as a substitute for _var_. Yes, the idea is that var will be discontinued in a distant future,  because today it would be impossible completely stop supporting it without breaking the whole internet.  
+The `let` arrives in ES6 as a substitute for _var_. Yes, the idea is that var will be discontinued in a distant future,  because today it would be impossible completely stop supporting it without breaking the whole internet.  
 The _let_ works as expected, setting the variable in the place where it was declared.  
 Example:  
 ```javascript
@@ -89,20 +89,20 @@ try {
 }
 ```
 
-## Support today
-You can use _let_ today*  
-Check out the awesome Kangax ES6 table > [http://kangax.github.io/compat-table/es6/#](http://kangax.github.io/compat-table/es6/#).  
-_let_ is currently supported by the modern browsers (even IE11) in theirs last versions and [Traceur](https://github.com/google/traceur-compiler) as well.  
-You can try ES6 _let_ on Firefox devtools:  
+## Can I Use?
+You can use `let` today - check out the awesome Kangax ES6 table here:
+[http://kangax.github.io/compat-table/es6/#](http://kangax.github.io/compat-table/es6/#).  
 
-![let on firefox nightly](/img/let.gif)  
+`__let__` is currently supported by the modern browsers (even IE11) in theirs last versions and [Traceur](https://github.com/google/traceur-compiler) as well.  
 
-* __NOTE__: As well pointed by Michał Gołębiowski on the comments below, browsers implementations are not fully according with the spec, so you may find some bugs.  
-For real world applications, you'll need to use a traspiler (at least, for a while until mid 2015).  
+![let on firefox nightly](https://github.com/JSRocksHQ/jsrockshq.github.io/blob/master/img/let.gif)  
+
+* __NOTE__: As well pointed by Michał Gołębiowski on the comments below, browsers implementations are not fully aligned with the spec, so you may find some bugs.
+For real world applications, you'll need to use a transpiler.  
 
 ## Conclusion
 Although simple, declaring variables in JavaScript can cause headache for beginners in the language.  
-With _let_, to declare variables is much more intuitive and consistent with a C-based language.  
-The use of _var_ should be discontinued, and only the _let_ must exist in the future.  
-There's no _hoisting_ behavior for variables declared with _let_.  
+With `let`, to declare variables is much more intuitive and consistent with a C-based language.  
+The use of `var` should be discouraged, and only _let_ var exist in use cases with legacy code. `let` and `const` will be the future of JavaScript declarations.  
+There's no _hoisting_ behavior for variables declared with _let_, which is another topic for later.  
 
